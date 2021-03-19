@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u8*92rzu&vj%5oe#7k3=f-(znqe67l*-fh535(#a-qg%q#(l4!'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,10 +78,10 @@ WSGI_APPLICATION = 'community.wsgi.application'
 DATABASES = {
     'default': {
          'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': 'comgis',
-         'USER': 'postgres',
-         'PASSWORD':'postgres',
-         'HOST':'localhost',
+         'NAME': config('NAME'),
+         'USER': config('USER'),
+         'PASSWORD': config('PASSWORD'),
+         'HOST': config('HOST'),
     },
 }
 
