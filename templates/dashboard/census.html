@@ -287,9 +287,9 @@ table, th, td
       &nbsp;&nbsp;
       <div class="tooltips" title="Please select the Pincode">
         <select class='form-control' id="pincode">
-<option value=""> Select Pincode</option>
+        <option value=""> Select Pincode</option>
 
-</div>
+      </div>
     <div style="text-align: center"> 
         <button style="display: inline-block ;position: relative;top: 100px" id="closebutton" name="closebutton" class="btn btn-secondary"><span class="fa fa-power-off"></span></button> 
     </div>
@@ -472,6 +472,14 @@ var LayerList = [];
 const domain = ['https://communitygis.net/','http://localhost/'];
 
 var rootUrl = domain[0] + 'geoserver/geonode/ows';
+
+var base_url =
+      domain[0] +
+      "geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&outputformat=application/json&";
+    
+
+var attribute_table = L.control({ position: "bottomright" });
+
 
 var defaultParameters = {
 service: 'WFS',
@@ -1320,12 +1328,12 @@ let listState = {
                                     var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                                         layers: "geonode:india_pincodes_12june",
                                         cql_filter: "pincode='" + pincode + "'",
-                                        cql_filter: `pincode='${pincode}' AND state='${state}'`,
+                                        cql_filter: `pincode='${pincode}' AND district='${district}'`,
                                         format: 'image/png',
                                         transparent: 'true',
                                     });
                                     wms_layer.addTo(mymap);
-                                    setView('geonode:india_pincodes_12june', pincode);
+                                    // setView('geonode:india_pincodes_12june', pincode);
 
                                     pinLayerList.push(wms_layer);
 
