@@ -968,13 +968,13 @@
                                     let boundary = obj.value;
                                     if ($(obj).is(":checked")) {
                                         if (boundary == "{mahatown}")
-                                            putWMSru("geonode:TownHealth0");
+                                            putWMSru("geonode:townhealth0");
                                         else if (boundary == "{maharural}")
                                             putWMSru("geonode:maha_village_polygon_29mar");
 
                                     } else {
                                         if (boundary == "{mahatown}")
-                                            removeWMS("geonode:TownHealth0");
+                                            removeWMS("geonode:townhealth0");
                                         else if (boundary == "{maharural}")
                                             removeWMS("geonode:maha_village_polygon_29mar");
 
