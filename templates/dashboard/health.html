@@ -906,11 +906,11 @@
                                         else if (boundary == "{mumwards}")
                                             putwards("Mumbai City", 'geonode:corporatorwardboundary_mumbai_13may');
                                         else if (boundary == "{mumadm}")
-                                            putwards("Mumbai City", 'geonode:Mumbai_Ward_Boundary_19may2020');
+                                            putwards("Mumbai City", 'geonode:mumbai_ward_boundary');
                                         else if (boundary == "{mumsubwards}")
                                             putwards("Mumbai Suburban", 'geonode:corporatorwardboundary_mumbai_13may');
                                         else if (boundary == "{mumadmsubwards}")
-                                            putwards("Mumbai Suburban", 'geonode:Mumbai_Ward_Boundary_19may2020');
+                                            putwards("Mumbai Suburban", 'geonode:mumbai_ward_boundary');
                                         else
                                             putWMS("geonode:maha_demography_v10_cleaned_12may2021");
                                     } else {
@@ -2087,6 +2087,7 @@
                                         cql_filter: "district='" + dist + "'",
                                         style: ""
                                     });
+                                    console.log(wms_layer);
                                     //clear_layer();
                                     //clearpoint_layer();
                                     wms_layer.addTo(mymap);
