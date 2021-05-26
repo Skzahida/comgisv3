@@ -267,9 +267,9 @@ var villageLayerCode = ['geonode:villagecensus_maharashtra_1_0','Akola','Amravat
 
 var houseLayerCode = ['geonode:household','Akola','Amravati','Buldana','Yavatmal','Washim','Aurangabad','Bid','Jalna','Osmanabad','Nanded','Latur','Parbhani','Hingoli','mumbai_city','mumbai_suburban','Thane','Palghar','Raigarh','Ratnagiri','Sindhudurg','Bhandara','Gadchiroli','Chandrapur','Gondia','Nagpur','Wardha','Ahmadnagar','Dhule','Jalgaon','Nandurbar','Nashik','Kolhapur','Pune','Sangli','Satara','Solapur'];
 
-var townLayerCode = ['geonode:town','AKOLA','AMRAVATI','BULDANA','YAVATMAL','WASHIM','AURANGABAD','BID','JALNA','OSMANABAD','NANDED','LATUR','PARBHANI','HINGOLI *','mumbai_city','mumbai_suburban','THANE','Palghar','RAIGARH','RATNAGIRI','SINDHUDURG','BHANDARA','GADCHIROLI','CHANDRAPUR','GONDIYA *','NAGPUR','WARDHA','AHMADNAGAR','DHULE','JALGAON','NANDURBAR','NASHIK','KOLHAPUR','PUNE','SANGLI','SATARA','SOLAPUR'];
+var townLayerCode = ['geonode:towncensus_maharashtra_1_00','AKOLA','AMRAVATI','BULDANA','YAVATMAL','WASHIM','AURANGABAD','BID','JALNA','OSMANABAD','NANDED','LATUR','PARBHANI','HINGOLI *','mumbai_city','mumbai_suburban','THANE','Palghar','RAIGARH','RATNAGIRI','SINDHUDURG','BHANDARA','GADCHIROLI','CHANDRAPUR','GONDIYA *','NAGPUR','WARDHA','AHMADNAGAR','DHULE','JALGAON','NANDURBAR','NASHIK','KOLHAPUR','PUNE','SANGLI','SATARA','SOLAPUR'];
 
-var demoLayerCode = ['geonode:maha_demography','akola','amravati','buldhana','yavatmal','washim','aurangabad','beed','jalna','osmanabad','nanded','latur','parbhani','hingoli','mumbai_city','mumbai_suburban','thane','palghar','raigarh','ratnagiri','sindhudurg','bhandara','gadchiroli','chandrapur','gondia','nagpur','wardha','ahmadnagar','dhule','jalgaon','nandurbar','nashik','kolhapur','pune','sangli','satara','solapur'];
+var demoLayerCode = ['geonode:maha_demography_v10_cleaned_12may2021','akola','amravati','buldhana','yavatmal','washim','aurangabad','beed','jalna','osmanabad','nanded','latur','parbhani','hingoli','mumbai_city','mumbai_suburban','thane','palghar','raigarh','ratnagiri','sindhudurg','bhandara','gadchiroli','chandrapur','gondia','nagpur','wardha','ahmadnagar','dhule','jalgaon','nandurbar','nashik','kolhapur','pune','sangli','satara','solapur'];
 
 var adminLayerCode = ['geonode:maha_rural_plus_urban','akola','amravati','buldhana','yavatmal','washim','aurangabad','beed','jalna','osmanabad','nanded','latur','parbhani','hingoli','mumbai_city','mumbai_suburban','thane','palghar','raigad','ratnagiri','sindhudurg','bhandara','gadchiroli','chandrapur','gondia','nagpur','wardha','ahmednagar','dhule','jalgaon','nandurbar','nashik','kolhapur','pune','sangli','satara','solapur'];
 var districtLat = [19.076,20.7002,20.9374,20.4561,20.3888,20.139,19.8762,18.9891,19.8297,18.207,19.1383,18.4088,19.2644,19.5781,19.0176,19.1538,19.2183,19.6936,18.5158,16.9902,16.3492,21.0736,19.4969,19.9615,21.4624,21.1458,20.7453,19.0948,20.9042,21.0077,21.7469,19.9975,16.705,18.5204,16.8524,17.6805,17.6599];
@@ -279,7 +279,7 @@ var districtZoom = [7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
 
 var LayerList = [];
 
-const domain = ['https://communitygis.net/','http://localhost/'];
+const domain = ['https://geonode.communitygis.net/','http://localhost/'];
 
 var rootUrl = domain[0] + 'geoserver/geonode/ows';
 
@@ -305,7 +305,7 @@ function addMyNewLayers(amenity,dis){
    var index = listOfDistrict.indexOf(dis);
    mymap.setView([districtLat[index], districtLong[index]], districtZoom[index]);
    
-// var base_url = "https://communitygis.net/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&";
+// var base_url = "https://geonode.communitygis.net/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&";
 
 
 var tempParameter = defaultParameters;
@@ -335,7 +335,7 @@ else if(amenity === 'Household Amenities'){
         info.addTo(mymap);
         mymap.removeControl(legend);
         //tempParameter.propertyName="id,the_geom,district_n,area_name,tot_p,tot_f,tot_m,p_ill,p_lit";    
-    //     var base_url = "https://communitygis.net/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&";
+    //     var base_url = "https://geonode.communitygis.net/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&";
     // layer_url =base_url + "&typeName=geonode%3Ahousehold&cql_filter=district_n='"+houseLayerCode[index]+"'";
     displayPolygon(tempParameter,districtLat[index],districtLong[index]);
 
@@ -348,7 +348,7 @@ else if(amenity === 'Household Amenities'){
          if(townLayerCode[index] == ''){
             alert('layer of '+ dis + ' not found');
         }else{
-            tempParameter.typeName = "geonode:TownCensus_maharashtra_1_00";
+            tempParameter.typeName = "geonode:towncensus_maharashtra_1_00";
             tempParameter.cql_filter="district_n='"+townLayerCode[index]+"'";
             tempParameter.propertyName="fid,the_geom,census_201,district_n,town_name,civic_stat,sex_rati_2,tot_pop";
             legend.addTo(mymap);
@@ -365,7 +365,7 @@ else if(amenity === 'Household Amenities'){
         if(demoLayerCode[index] == ''){
             alert('layer of '+ dis + ' not found');
         }else{
-            tempParameter.typeName = "geonode:maha_demography";
+            tempParameter.typeName = "geonode:maha_demography_v10_cleaned_12may2021";
             tempParameter.cql_filter="district_n='"+demoLayerCode[index]+"'";
             tempParameter.propertyName="id,the_geom,district_n,area_name,tot_p,tot_f,tot_m,p_ill,p_lit";
             legend.addTo(mymap);
