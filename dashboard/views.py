@@ -11,3 +11,5 @@ def Dash(request):
 def Census(request):
     return render(request, "dashboard/census.html")
 
+def health(request):
+    return render(request, "dashboard/health.html")
