@@ -75,14 +75,12 @@ WSGI_APPLICATION = 'community.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': config('NAME'),
-         'USER': config('DBUSER'),
-         'PASSWORD':config('PASSWORD'),
-         'HOST': config('HOST'),
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 

@@ -13,3 +13,7 @@ def Census(request):
 
 def health(request):
     return render(request, "dashboard/health.html")
+
+def edu(request):
+    return render(request, "dashboard/education.html") 
+
