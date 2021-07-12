@@ -1,0 +1,697 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+
+<style>
+
+label{
+    font-size: 15px; 
+    
+
+}
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+
+#checkboxes1 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes1 label {
+  display: block;
+}
+
+#checkboxes1 label:hover {
+  background-color: #1e90ff;
+}
+
+.border {
+        padding: 6px 8px;
+        border-style: groove;
+        border-radius: 5px;
+        margin: 20px;
+    }
+    
+    
+    table,
+    th,
+    td {
+        border-bottom: 1px solid #ddd;
+        border-collapse: collapse;
+        padding: 2px 3px;
+        text-align: center;
+    }
+    
+    th {
+        font-weight: bold;
+    }
+    
+    tr:hover {
+        background-color: #c9dbe6;
+    }
+
+    
+    .table {
+        border-collapse: collapse;
+        padding: 50px;
+        font-weight: bold;
+        /* background:rgba(191, 149, 233, 0.473); */
+    }
+    /* css to customize Leaflet default styles  */
+    
+    .leaflet-popup-content-wrapper {
+        background: rgba(0, 0, 0, 0.9);
+        color: #ffffff;
+    }
+    
+    .leaflet-popup-content {
+        font-weight: bold;
+    }
+    
+    h6 {
+        color: blue;
+    }
+    
+</style>
+
+<div id="side-bar" style="background-color: rgba(255, 255, 255);">                <!-- Main container -->
+
+  <div class="border">
+    <table>
+        <tr>
+            <h6>Mumbai Ward Boundaries</h6>
+        </tr>
+        <div class="text-center">
+            <div class="checkbox" id="boundary">
+                <tr>
+                    <tb> <label><input type="checkbox" value="{corporator}" onchange="getWard(this)"></tb><tb><span> Corporator Wards </span></label></tb>
+                </tr>
+            </div>
+            <div class="checkbox" id="boundary">
+              <tr>
+                <tb><label><input type="checkbox" value="{admin}" onchange="getWard(this)"></label></tb><tb><span> Admin Wards </span></label></tb>
+              </tr>  
+              </div>
+
+        </div>
+    </table>
+</div>
+
+    <div class="field_wrapper arrange">
+       <hr>
+        <div>            
+            <br> 
+            <div class="multiselect">
+                <div class="selectBox" onclick="showCheckboxes()">
+                  <select>
+                    <option>Select Wards</option>
+                  </select>
+                  <div class="overSelect"></div>
+                </div>
+                <div class="tooltips" id="checkboxes">
+                  <label for="A">
+                    <input type="checkbox" id="ward" value="A" onchange="getWard(this)" />Ward A</label>
+                  <label for="B">
+                    <input type="checkbox" id="ward" value="B" onchange="getWard(this)" />Ward B</label>
+                  <label for="C">
+                    <input type="checkbox" id="ward" value="C" onchange="getWard(this)" />Ward C</label>
+                  <label for="D">
+                    <input type="checkbox" id="ward" value="D" onchange="getWard(this)" />Ward D</label>
+                  <label for="E">
+                    <input type="checkbox" id="ward" value="E" onchange="getWard(this)" />Ward E</label>
+                  <label for="FN">
+                    <input type="checkbox" id="ward" value="FN" onchange="getWard(this)" />Ward FN</label>
+                  <label for="FS">
+                    <input type="checkbox" id="ward" value="FS" onchange="getWard(this)" />Ward FS</label>
+                  <label for="GN">
+                    <input type="checkbox" id="ward" value="GN" onchange="getWard(this)" />Ward GN</label>
+                  <label for="GS">
+                    <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>
+                                                                                                                                                    
+                  </div>
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              
+            <div class="multiselect">
+                <div class="selectBox" onclick="showCheckboxes1()">
+                  <select>
+                    <option>Select Layers</option>
+                  </select>
+                  <div class="overSelect"></div>
+                </div>
+                <div class="tooltips" id="checkboxes1">
+                  
+                  <label for="building">
+                    <input type="checkbox" id="facility" value="building" onchange="getFacility(this)" />Buildings</label>
+                  <label for="roads">
+                    <input type="checkbox" id="facility" value="roads" onchange="getFacility(this)" />Roads</label>
+                    
+                  <label for="education">
+                    <input type="checkbox" id="facility" value="education" onchange="getFacility(this)" />Education</label>
+                  <label for="health">
+                    <input type="checkbox" id="facility" value="health" onchange="getFacility(this)" />Health</label>
+                  <label for="housing">
+                    <input type="checkbox" id="facility" value="housing" onchange="getFacility(this)" />Housing</label>
+                  <label for="municipal_services">
+                    <input type="checkbox" id="facility" value="municipal_services" onchange="getFacility(this)" />Municipal Services</label>
+                  <label for="offices">
+                    <input type="checkbox" id="facility" value="offices" onchange="getFacility(this)" />Offices</label>
+                    <label for="open_spaces">
+                    <input type="checkbox" id="facility" value="open_spaces" onchange="getFacility(this)" />Open Spaces</label>
+                  <label for="primary_activities">
+                    <input type="checkbox" id="facility" value="primary_activities" onchange="getFacility(this)" />Primary Activities</label>
+                  <label for="public_utility_and_facilities">
+                    <input type="checkbox" id="facility" value="public_utility_and_facilities" onchange="getFacility(this)" />Public utility and facilities</label>
+                  <label for="social_amenities">
+                    <input type="checkbox" id="facility" value="social_amenities" onchange="getFacility(this)" />Social Amenities</label>
+                  <label for="transportation">
+                    <input type="checkbox" id="facility" value="transportation" onchange="getFacility(this)" />Transportation</label>
+                  <label for="waste_management">
+                      <input type="checkbox" id="facility" value="waste_management" onchange="getFacility(this)" disabled/>Waste Management</label>
+                    
+                  <label for="fire_station">
+                    <input type="checkbox" id="facility" value="fire_station" onchange="getFacility(this)" disabled/>Fire Station</label>
+                                                                  
+                  </div>
+              </div>
+              &nbsp;&nbsp;
+<!--               
+                <div id = 'selectedata'></div>
+                <button class = 'btn btn-success' onclick="showLayers()">Show Layers</button>
+                <button class = 'btn btn-danger'onclick="clearAllLayers()">Clear All Layers</button>
+     -->
+<!-- 
+            <select class='form-control' id="amenities" >
+                <option>Select Themes</option>
+  
+                <option>Ward Boundaries</option>
+                <option>DP Polygon</option>
+                <option>OSM Roads</option>
+                <option >Building Footprints</option>
+                <option>Admin Boundaries</option>
+                
+              </select>
+ -->
+              &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="tooltips" style="display:none;" title="Please select facility" id="A">
+            
+            <tr><tb>  <label><input type="checkbox" value="{transport}" onchange="getBoundary(this)"></tb><tb><span> transportation </span></label></tb>
+                                </tr> &nbsp;&nbsp;
+                                <tr>
+                                    <tb> <label><input type="checkbox" value="{edu}" onchange="getBoundary(this)"></tb><tb><span> education </span></label></tb>
+                                </tr>
+
+                            </div>
+</div>
+</div>
+</div>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+                            <script src="https://d3js.org/d3.v4.min.js"></script>
+                            <script src="{% static 'js/jquery.multiselect.js'%}"></script>
+
+                        <script>  
+
+                        
+// function showLayers(){
+//     // var check = x;
+//     // clearAllLayers();
+//     var ward = document.getElementById('one').value;
+//     // for (i = 0; i < check; i++) {
+//     var facility = document.getElementById("trans").value;
+    
+//     // addMyNewLayers(amenity,dis);
+//     // console.log(myDistrictLayerList);
+//     // }
+//     console.log(ward,facility);
+//     addMyNewLayer(ward,facility);
+// }  
+
+// function addMyNewLayer(ward,facility){
+//   console.log(ward);
+//   if (ward == "A"){
+//     if (facility == "Transportation")
+//     putWMS("geonode:mumbai_islandcity");
+//   }
+
+// }
+
+
+                                const domain = ['https://geoserver2.communitygis.net/', 'http://localhost/'];
+                                var rootUrl = domain[0] + 'geoserver/geonode/ows';
+
+                                var defaultParameters = {
+                                    service: 'WFS',
+                                    version: '1.0.0',
+                                    request: 'GetFeature',
+                                    outputFormat: 'json'
+                                };
+                                var newLayerList=[];
+                                var wms_legend;
+                                let activatedHealthFacility={};
+                                
+                                
+                                // $('select[multiple]').multiselect();
+                    var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
+
+function showCheckboxes1() {
+  var checkboxes1 = document.getElementById("checkboxes1");
+  if (!expanded) {
+    checkboxes1.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes1.style.display = "none";
+    expanded = false;
+  }
+}
+
+                        function getWard(obj) {
+                                    let ward = obj.value;
+                                    console.log(ward);
+                                    mymap.setView([19.0110, 72.8512], 12);
+                                    if ($(obj).is(":checked")) {
+                                        if (ward == "A"){
+                                            // var layer = {layer};
+                                            // console.log(layer);
+                                            putWards("A")                                                                                       
+                                        }
+                                        else if (ward == "B")
+                                          putWards("B")
+                                        else if (ward == "C")
+                                          putWards("C")  
+                                        else if (ward == "D")
+                                          putWards("D")  
+                                        else if (ward == "E")
+                                          putWards("E")  
+                                        else if (ward == "FN")
+                                          putWards("FN")
+                                        else if (ward == "FS")
+                                          putWards("FS")  
+                                        else if (ward == "GN")
+                                          putWards("GN")  
+                                        else if (ward == "GS")
+                                          putWards("GS")   
+                                        else if (ward == "{corporator}")
+                                          putCorpWards("{corporator}")  
+                                        else if (ward == "{admin}")
+                                          putAdminWards("{admin}")                                      
+                                        
+                                        
+                                    } else {
+                                        if (ward == "A"){
+                                          removeWards("A")
+                                        }  
+                                          else if (ward == "B")
+                                          removeWards("B")
+                                        else if (ward == "C")
+                                          removeWards("C")
+                                        else if (ward == "D")
+                                          removeWards("D")
+                                        else if (ward == "E")
+                                          removeWards("E")
+                                        else if (ward == "FN")
+                                          removeWards("FN")
+                                        else if (ward == "FS")
+                                          removeWards("FS")
+                                        else if (ward == "GN")
+                                          removeWards("GN")
+                                        else if (ward == "GS")
+                                          removeWards("GS")
+                                        else if (ward == "{corporator}")
+                                          removeLayer("geonode:corporatorwardboundary_mumbai_13may")
+                                        else if (ward == "{admin}")
+                                          removeLayer("geonode:mumbai_ward_boundary")    
+                                          
+                                     }
+                                     
+                                }
+
+
+                                function getFacility(obj) {
+                                  mymap.setView([19.0110, 72.8512], 12);
+                                    let facility = obj.value;
+                                    console.log(facility);
+                                    if ($(obj).is(":checked")) {
+                                        if(facility =="building")
+                                          putFacility1("building")
+                                        else if (facility == "roads")
+                                          putFacility2("roads")  
+                                        else if (facility == "education"){
+                                            // var layer = {layer};
+                                            // console.log(layer);
+                                            
+                                            putFacility("education")                                                                                       
+                                        }
+                                        else if (facility == "health")
+                                          putFacility("health")
+                                        else if (facility == "housing")
+                                          putFacility("housing")  
+                                        else if (facility == "municipal_services")
+                                          putFacility("municipal_services")
+                                        else if (facility == "offices")
+                                          putFacility("offices")
+                                        else if (facility == "open_spaces")
+                                          putFacility("open_spaces")
+                                        else if (facility == "primary_activities")
+                                          putFacility("primary_activities")
+                                        else if (facility == "public_utility_and_facilities")
+                                          putFacility("public_utility_and_facilities")
+                                        else if (facility == "social_amenities")
+                                          putFacility("social_amenities")
+                                        else if (facility == "transportation")
+                                          putFacility("transportation")
+                                        else if (facility == "fire_station")
+                                          putFacility("fire_station")                                    
+                                          
+                                       
+                                          
+                                          
+                                            
+                                            // putWMS("geonode:TRANSPORTATION_A");
+                                        // else
+                                        //     putWMS("geonode:maha_demography_v10_cleaned_12may2021");
+                                    } else {
+                                        if (facility == "education")
+                                          removeFacility("education")
+                                        
+                                          else if (facility == "health")
+                                          removeFacility("health")
+                                        else if (facility == "housing")
+                                          removeFacility("housing")  
+                                        else if (facility == "municipal_services")
+                                          removeFacility("municipal_services")
+                                        else if (facility == "offices")
+                                          removeFacility("offices")
+                                        else if (facility == "open_spaces")
+                                          removeFacility("open_spaces")
+                                        else if (facility == "primary_activities")
+                                          removeFacility("primary_activities")
+                                        else if (facility == "public_utility_and_facilities")
+                                          removeFacility("public_utility_and_facilities")
+                                        else if (facility == "social_amenities")
+                                          removeFacility("social_amenities")
+                                        else if (facility == "transportation")
+                                          removeFacility("transportation")
+                                        else if (facility == "fire_station")
+                                          removeWards1("fire_station")
+                                        else if (facility == "building")
+                                          removeLayer("geonode:osm_building_islandcity_14june") 
+                                        else if (facility == "roads")
+                                          removeLayer("geonode:osm_road_islandcity_14june")      
+                                     }
+                                }
+
+                                
+                                // function putWFS(opt){
+                                //   const url = 'https://geoserver2.communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:mumbai_islandcity';
+                                //   if (opt == 'GN')
+                                //   {
+                                //     // newurl = url + `&cql_filter=ward_nameGN`;
+                                //     newurl = url +  `&cql_filter=BBOX(the_geom,${opt})`;                               
+                                //   } 
+                                //   console.log(newurl); 
+                                // }
+
+                                //this function is for wards
+                                function putWards(opt) {
+                                    // var district = document.getElementById("district").value;
+                                    console.log(opt);
+                                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: 'geonode:island_city_revised_2_july',
+                                        format: 'image/png',
+                                        transparent: 'true',
+                                        cql_filter: `ward_name='${opt}'`,
+                                        // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`                                        
+                                        // cql_filter: `district_n=${district}`,                                        
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+                                    console.log(newLayerList);
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(wms_layer);
+                                    //console.log(wms_legend); 
+                                    // addWMSLegend(layer);
+                                    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                                    // // console.log(TRIBLAYER);
+
+                                }
+
+                                //to remove unchecked layer
+                                function removeWards1(opt) {
+                                  console.log(newLayerList);
+                                    newLayerList.forEach(layer => mymap.removeLayer(layer));
+                                }
+
+
+
+
+                                function removeWards(opt) {
+                                  console.log(opt);
+                                    var a = "ward_name="+"'"+opt+"'";
+                                    console.log(a);
+                                    newLayerList.forEach((layer, index) => {
+                                        if (layer.options.cql_filter === a) {
+                                            mymap.removeLayer(layer);
+                                            newLayerList.splice(index, 1);
+                                        }
+                                    });
+
+                                }
+
+
+                                //this function is for facilities
+                                function putFacility(opt) {
+                                    // var ward = document.getElementById("ward").value;
+                                    // var district = document.getElementById("district").value;
+                                    console.log(opt);
+                                    console.log(ward);
+                                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: 'geonode:island_city_revised_2_july',
+                                        format: 'image/png',
+                                        
+                                        transparent: 'true',
+                                        // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
+                                        cql_filter: `layer_name='${opt}'`,                                        
+                                        // cql_filter: `district_n=${district}`,                                        
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(wms_layer);
+                                    //console.log(wms_legend); 
+                                    // addWMSLegend(layer);
+                                    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                                    // // console.log(TRIBLAYER);
+
+                                }
+                                //buildings
+                                function putFacility1(opt) {
+                                    // var ward = document.getElementById("ward").value;
+                                    // var district = document.getElementById("district").value;
+                                    console.log(opt);
+                                    console.log(ward);
+                                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: 'geonode:osm_building_islandcity_14june',
+                                        format: 'image/png',
+                                        
+                                        transparent: 'true',
+                                        // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
+                                        // cql_filter: `layer_name='${opt}'`,                                        
+                                        // cql_filter: `district_n=${district}`,                                        
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(wms_layer);
+                                    //console.log(wms_legend); 
+                                    // addWMSLegend(layer);
+                                    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                                    // // console.log(TRIBLAYER);
+
+                                }
+
+                                //roads
+                                function putFacility2(opt) {
+                                    // var ward = document.getElementById("ward").value;
+                                    // var district = document.getElementById("district").value;
+                                    console.log(opt);
+                                    console.log(ward);
+                                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: 'geonode:osm_road_islandcity_14june',
+                                        format: 'image/png',
+                                        
+                                        transparent: 'true',
+                                        // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
+                                        // cql_filter: `layer_name='${opt}'`,                                        
+                                        // cql_filter: `district_n=${district}`,                                        
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(wms_layer);
+                                    //console.log(wms_legend); 
+                                    // addWMSLegend(layer);
+                                    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                                    // // console.log(TRIBLAYER);
+
+                                }
+
+                                //for mumbai corporator ward boundaries
+                                function putCorpWards(opt) {
+                                    // var ward = document.getElementById("ward").value;
+                                    // var district = document.getElementById("district").value;
+                                    console.log(opt);
+                                    console.log(ward);
+                                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: 'geonode:corporatorwardboundary_mumbai_13may',
+                                        format: 'image/png',
+                                        
+                                        transparent: 'true',
+                                        // cql_filter: "district= Mumbai City",
+                                        // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
+                                        // cql_filter: `layer_name='${opt}'`,                                        
+                                        // cql_filter: `district_n=${district}`,                                        
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(wms_layer);
+                                    //console.log(wms_legend); 
+                                    // addWMSLegend(layer);
+                                    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                                    // // console.log(TRIBLAYER);
+
+                                }
+
+
+                                
+                                //for mumbai admin ward boundaries
+                                function putAdminWards(opt) {
+                                    // var ward = document.getElementById("ward").value;
+                                    // var district = document.getElementById("district").value;
+                                    console.log(opt);
+                                    console.log(ward);
+                                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: 'geonode:mumbai_ward_boundary',
+                                        format: 'image/png',
+                                        
+                                        transparent: 'true',
+                                        // cql_filter: "district='" + opt + "'",
+                                        // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
+                                        // cql_filter: `layer_name='${opt}'`,                                        
+                                        // cql_filter: `district_n=${district}`,                                        
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(wms_layer);
+                                    //console.log(wms_legend); 
+                                    // addWMSLegend(layer);
+                                    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                                    // // console.log(TRIBLAYER);
+
+                                }
+
+
+
+
+                                function addWMSLegend(layer) {
+                                    lagendGraphic = "https://geoserver2.communitygis.net/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer + "&LEGEND_OPTIONS=forceLabels:on";
+                                    wms_legend = L.wmsLegend(lagendGraphic);
+                                }
+
+                                function removeFacility(layer_name) {
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(layer_name);
+                                    var a = "layer_name="+"'"+layer_name+"'";
+                                    console.log(a);
+                                    newLayerList.forEach((layer, index) => {
+                                        if (layer.options.cql_filter === a) {
+                                            mymap.removeLayer(layer);
+                                            newLayerList.splice(index, 1);
+                                        }
+                                    });
+                                }
+
+                                function removeLayer(unchecked_layer) {
+                                  newLayerList.forEach((layer, index) => {
+                                  if (layer.options.layers === unchecked_layer) {
+                                      mymap.removeLayer(layer);
+                                      newLayerList.splice(index, 1);
+                                  }
+                                  });
+                                }
+
+                                function remove(opt){
+                                  console.log(opt);
+                                  console.log(newLayerList[opt]);
+                                  mymap.removeLayer(newLayerList[opt]);
+                                  remove(opt);
+                                }
+
+                     </script>
+
+                  {% endblock %}              
+

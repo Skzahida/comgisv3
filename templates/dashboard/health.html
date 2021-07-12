@@ -2070,7 +2070,7 @@
                                         cql_filter: `pincode='${pincode}' AND district='${district}'`,
                                         format: 'image/png',
                                         transparent: 'true',
-                                        
+                                        style: ""
                                     });
                                     wms_layer.addTo(mymap);
                                     setView('geonode:india_pincodes_12june', pincode);
@@ -2094,7 +2094,7 @@
                                         transparent: 'true',
                                         // version: '1.3.0',
                                         cql_filter: "district='" + dist + "'",
-                                        style: ""
+                                        
                                     });
                                     console.log(wms_layer);
                                     //clear_layer();
@@ -2181,9 +2181,10 @@
                                         cql_filter: `pincode='${pincode}' AND state='${state}'`,
                                         format: 'image/png',
                                         transparent: 'true',
+                                        style: style
                                     });
                                     wms_layer.addTo(mymap);
-                                    setView('geonode:india_pincodes_12june', pincode);
+                                    setView1('geonode:india_pincodes_12june', pincode);
 
                                     pinLayerList.push(wms_layer);
 
@@ -2193,6 +2194,42 @@
 
                                 }
 
+                                // let area = null;
+
+function setView1(layerName, selectedBoundary) {
+    if (area) {
+        mymap.removeLayer(area);
+    }
+    let rootUrl = 'https://geoserver2.communitygis.net/geoserver/geonode/ows';
+
+    let options = {
+        service: 'WFS',
+        version: '1.0.0',
+        request: 'GetFeature',
+        outputFormat: 'application/json',
+        typeName: layerName,
+        cql_filter: `pincode='${selectedBoundary}'`,
+        propertyName: 'the_geom'
+    };
+    let parameters = L.Util.extend(options);
+    layer_url = rootUrl + L.Util.getParamString(parameters)
+    fetch(layer_url).then(
+        function(response) {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                return;
+            }
+            response.json().then(function(geojsonData) {
+                area = L.geoJson(geojsonData.features).addTo(mymap)
+                lat = area.getBounds()._northEast.lat
+                lng = area.getBounds()._northEast.lng
+                mymap.setView([lat, lng - 0.4], 10)
+            });
+        }).catch(function(err) {
+        console.log('Fetch Error :-S', err);
+    });
+}
 
 
                                 function putWMSru(layer) {

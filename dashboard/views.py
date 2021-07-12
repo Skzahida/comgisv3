@@ -40,3 +40,8 @@ def pwss(request):
 def edu(request):
     return render(request, "dashboard/education.html") 
 
+
+def swm(request):
+    return render(request, "dashboard/swm_opt-chk.html")       
+
+
