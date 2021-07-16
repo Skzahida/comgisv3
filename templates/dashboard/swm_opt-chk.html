@@ -141,14 +141,16 @@ label{
                   <div class="overSelect"></div>
                 </div>
                 <div class="tooltips" id="checkboxes">
+                  
+                  <label><b>Mumbai Island City</b></label>
                   <label for="A">
-                    <input type="checkbox" id="ward" value="A" onchange="getWard(this)" />Ward A</label>
+                    <input type="checkbox" id="wardA" value="A" onchange="getWard(this)" />Ward A</label>
                   <label for="B">
-                    <input type="checkbox" id="ward" value="B" onchange="getWard(this)" />Ward B</label>
+                    <input type="checkbox" id="wardB" value="B" onchange="getWard(this)" />Ward B</label>
                   <label for="C">
-                    <input type="checkbox" id="ward" value="C" onchange="getWard(this)" />Ward C</label>
+                    <input type="checkbox" id="wardC" value="C" onchange="getWard(this)" />Ward C</label>
                   <label for="D">
-                    <input type="checkbox" id="ward" value="D" onchange="getWard(this)" />Ward D</label>
+                    <input type="checkbox" id="wardD" value="D" onchange="getWard(this)" />Ward D</label>
                   <label for="E">
                     <input type="checkbox" id="ward" value="E" onchange="getWard(this)" />Ward E</label>
                   <label for="FN">
@@ -159,7 +161,7 @@ label{
                     <input type="checkbox" id="ward" value="GN" onchange="getWard(this)" />Ward GN</label>
                   <label for="GS">
                     <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>
-                                                                                                                                                    
+                    <a href="https://swk.communitygis.net/map/">GS Ward Waste Management</a>                                                                                                                             
                   </div>
               </div>
               &nbsp;&nbsp;&nbsp;&nbsp;
@@ -173,11 +175,13 @@ label{
                 </div>
                 <div class="tooltips" id="checkboxes1">
                   
+                  <label><b>OSM Data</b></label>
                   <label for="building">
                     <input type="checkbox" id="facility" value="building" onchange="getFacility(this)" />Buildings</label>
                   <label for="roads">
                     <input type="checkbox" id="facility" value="roads" onchange="getFacility(this)" />Roads</label>
-                    
+                  
+                  <label><b>DP Polygons</b></label>  
                   <label for="education">
                     <input type="checkbox" id="facility" value="education" onchange="getFacility(this)" />Education</label>
                   <label for="health">
@@ -207,6 +211,10 @@ label{
                   </div>
               </div>
               &nbsp;&nbsp;
+              
+              <!-- <div>
+              <a href="https://swk.communitygis.net/map/"><b>GS Ward Waste Management</b></a>
+            </div> -->
 <!--               
                 <div id = 'selectedata'></div>
                 <button class = 'btn btn-success' onclick="showLayers()">Show Layers</button>
@@ -237,6 +245,8 @@ label{
 </div>
 </div>
 </div>
+<div id="output"></div>
+
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
                             <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -244,7 +254,10 @@ label{
 
                         <script>  
 
-                        
+    
+
+
+                    
 // function showLayers(){
 //     // var check = x;
 //     // clearAllLayers();
@@ -286,8 +299,11 @@ label{
                                 // $('select[multiple]').multiselect();
                     var expanded = false;
 
+                          
+
 function showCheckboxes() {
   var checkboxes = document.getElementById("checkboxes");
+  console.log(checkboxes);
   if (!expanded) {
     checkboxes.style.display = "block";
     expanded = true;
@@ -311,6 +327,7 @@ function showCheckboxes1() {
                         function getWard(obj) {
                                     let ward = obj.value;
                                     console.log(ward);
+
                                     mymap.setView([19.0110, 72.8512], 12);
                                     if ($(obj).is(":checked")) {
                                         if (ward == "A"){
@@ -327,13 +344,13 @@ function showCheckboxes1() {
                                         else if (ward == "E")
                                           putWards("E")  
                                         else if (ward == "FN")
-                                          putWards("FN")
+                                          putWards("F/N")     //use "FN" for islandcity layer
                                         else if (ward == "FS")
-                                          putWards("FS")  
+                                          putWards("F/S")  
                                         else if (ward == "GN")
-                                          putWards("GN")  
+                                          putWards("G/N")  
                                         else if (ward == "GS")
-                                          putWards("GS")   
+                                          putWards("G/S")   
                                         else if (ward == "{corporator}")
                                           putCorpWards("{corporator}")  
                                         else if (ward == "{admin}")
@@ -353,13 +370,13 @@ function showCheckboxes1() {
                                         else if (ward == "E")
                                           removeWards("E")
                                         else if (ward == "FN")
-                                          removeWards("FN")
+                                          removeWards("F/N")
                                         else if (ward == "FS")
-                                          removeWards("FS")
+                                          removeWards("F/S")
                                         else if (ward == "GN")
-                                          removeWards("GN")
+                                          removeWards("G/N")
                                         else if (ward == "GS")
-                                          removeWards("GS")
+                                          removeWards("G/S")
                                         else if (ward == "{corporator}")
                                           removeLayer("geonode:corporatorwardboundary_mumbai_13may")
                                         else if (ward == "{admin}")
@@ -406,13 +423,6 @@ function showCheckboxes1() {
                                         else if (facility == "fire_station")
                                           putFacility("fire_station")                                    
                                           
-                                       
-                                          
-                                          
-                                            
-                                            // putWMS("geonode:TRANSPORTATION_A");
-                                        // else
-                                        //     putWMS("geonode:maha_demography_v10_cleaned_12may2021");
                                     } else {
                                         if (facility == "education")
                                           removeFacility("education")
@@ -460,10 +470,12 @@ function showCheckboxes1() {
                                     // var district = document.getElementById("district").value;
                                     console.log(opt);
                                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-                                        layers: 'geonode:island_city_revised_2_july',
+                                        // layers: 'geonode:island_city_revised_2_july',
+                                        layers: 'geonode:mumbai_ward_boundary',
                                         format: 'image/png',
                                         transparent: 'true',
-                                        cql_filter: `ward_name='${opt}'`,
+                                        cql_filter: `Name='${opt}'`,
+                                        // cql_filter: `ward_name='${opt}'`,
                                         // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`                                        
                                         // cql_filter: `district_n=${district}`,                                        
                                     });
@@ -492,7 +504,8 @@ function showCheckboxes1() {
 
                                 function removeWards(opt) {
                                   console.log(opt);
-                                    var a = "ward_name="+"'"+opt+"'";
+                                    // var a = "ward_name="+"'"+opt+"'";
+                                    var a = "Name="+"'"+opt+"'";
                                     console.log(a);
                                     newLayerList.forEach((layer, index) => {
                                         if (layer.options.cql_filter === a) {
@@ -503,20 +516,119 @@ function showCheckboxes1() {
 
                                 }
 
-
+// var wards = ["A","B","C","D"];
                                 //this function is for facilities
                                 function putFacility(opt) {
-                                    // var ward = document.getElementById("ward").value;
+                                    var ward = document.getElementById('ward').value;
+                                    var checks = $('input[type="checkbox"]:checked').map(function() {
+                                      
+                                       return $(this).val();
+                                      }).get()
+                                      console.log(checks);
+                                      var newchecks = $('input[type="checkbox"]:checked').val();
+                                      // var checkedValue = $('.mess:checked').val();
+                                      // console.log(newchecks);
+
+//                                       var checkedValue = null; 
+// var inputElements = document.getElementsByClassName('tooltips');
+// for(var i=0; inputElements[i]; ++i){
+//       if(inputElements[i].checked){
+//            checkedValue = inputElements[i].value;
+//            break;
+//       }
+// }
+// console.log(checkedValue);
+// var id;
+$('input[type=checkbox]:checked').each(function () {
+                var status = (this.checked ? $(this).val() : "");
+                var id = $(this).attr("value");
+                $('#output').append("<h3>" + id  + "</h3>");
+                // console.log(document.getElementById('output'));
+                // console.log(id);
+                //  return id;         
+              });
+              // console.log(document.getElementById('output').textContent);
+              var checkedWard = document.getElementById('output').innerText;
+              var text = $('#output').text();
+              // console.log(text);
+              $('#output').each(function () {
+                var text1 = document.getElementById('output').innerText;
+                var ward = ["A","B","C","D","E","FS","FN","GN","GS"];
+                // console.log(text1.length);
+                
+                for(var i=0; i<ward.length; i++) {
+                  if(text1.includes(ward[i])) {
+                    console.log(ward[i]);
+                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: 'geonode:island_city_revised_2_july',
+                                        format: 'image/png',
+                                        
+                                        transparent: 'true',
+                                        cql_filter: `layer_name='${opt}' AND ward_name='${ward[i]}'`,
+                                        // cql_filter: `layer_name='${opt}'`,                                        
+                                        // cql_filter: `district_n=${district}`,                                        
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+
+                                    // if (wms_legend) {
+                                    //     mymap.removeControl(wms_legend);
+                                    // }
+                                    console.log(wms_layer);
+                  }
+                  // else {
+                  //   var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                  //                       layers: 'geonode:island_city_revised_2_july',
+                  //                       format: 'image/png',
+                                        
+                  //                       transparent: 'true',
+                  //                       cql_filter: `layer_name='${opt}'`,
+                  //                       // cql_filter: `layer_name='${opt}'`,                                        
+                  //                       // cql_filter: `district_n=${district}`,                                        
+                  //                   });
+                  //                   wms_layer.addTo(mymap);
+                  //                   newLayerList.push(wms_layer);
+
+                  //                   // if (wms_legend) {
+                  //                   //     mymap.removeControl(wms_legend);
+                  //                   // }
+                  //                   console.log(wms_layer);
+                  // }
+                }
+
+              });
+              // console.log(checkedWard);
+              // console.log(checkedWard.length);
+              // var ward = ["A","B"];
+              // for(var i=0; ward.length; i++) {
+              //   if(checkedWard.includes(ward[i]) )
+              //   {
+              //     console.log(ward[i]);
+              //   }
+              // } 
+              // console.log(id); 
+                                      // for (var i=0; wards.length; i++)
+                                      // {
+                                      //   for (var j=0; checks.length; j++)
+                                      //   {
+                                      //     if (wards[i] === checks[j])
+                                      //     {
+                                      //       var w = checks[j];
+                                      //       console.log(checks[j]);
+                                      //     }
+                                      //   }
+                                      // }
+                                       
                                     // var district = document.getElementById("district").value;
-                                    console.log(opt);
-                                    console.log(ward);
+                                    // console.log(opt);
+                                    // console.log(ward);//this always takes first value only
                                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                                         layers: 'geonode:island_city_revised_2_july',
                                         format: 'image/png',
                                         
                                         transparent: 'true',
-                                        // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
-                                        cql_filter: `layer_name='${opt}'`,                                        
+                                        cql_filter: `layer_name='${opt}' AND ward_name='${newchecks}'`,
+                                        // cql_filter: `layer_name='${opt}'`,                                        
                                         // cql_filter: `district_n=${district}`,                                        
                                     });
                                     wms_layer.addTo(mymap);
@@ -664,15 +776,35 @@ function showCheckboxes1() {
                                     // if (wms_legend) {
                                     //     mymap.removeControl(wms_legend);
                                     // }
+                                 
+                                    $('#output').each(function () {
+                                     var text1 = document.getElementById('output').innerText;
+                                
+                                     var ward = ["A","B","C","D","E","FN","FS","GN","GS"];
                                     console.log(layer_name);
+                                    for (var i=0; i<ward.length; i++) {
+                                      if (text1.includes(ward[i])){
+                                    var a = "layer_name="+"'"+layer_name+"'"+" AND "+"ward_name="+"'"+ward[i]+"'";
+                                    console.log(a);
+                                    newLayerList.forEach((layer, index) => {
+                                        if (layer.options.cql_filter === a) {
+                                            mymap.removeLayer(layer);
+                                            // newLayerList.splice(index, 1);
+                                        }
+                                    });
+                                  }
+                                  else {
                                     var a = "layer_name="+"'"+layer_name+"'";
                                     console.log(a);
                                     newLayerList.forEach((layer, index) => {
                                         if (layer.options.cql_filter === a) {
                                             mymap.removeLayer(layer);
-                                            newLayerList.splice(index, 1);
+                                            // newLayerList.splice(index, 1);
                                         }
                                     });
+                                  }
+                                }
+                              });
                                 }
 
                                 function removeLayer(unchecked_layer) {
