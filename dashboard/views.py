@@ -41,7 +41,7 @@ def edu(request):
     return render(request, "dashboard/education.html") 
 
 
-def swm(request):
+def urban_livability(request):
     return render(request, "dashboard/swm_opt-chk.html")       
 
 
