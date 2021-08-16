@@ -17,5 +17,6 @@ urlpatterns = [
     path('dashboard/pwss', views.pwss, name = 'pwss'),
     path('dashboard/edu', views.edu, name = 'edu'),
     path('dashboard/urban_livability', views.urban_livability, name = 'urban_livability'),
+    path('dashboard/rtp', views.rtp, name = 'rtp'),
 
 ]
