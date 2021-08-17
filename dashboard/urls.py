@@ -18,5 +18,7 @@ urlpatterns = [
     path('dashboard/edu', views.edu, name = 'edu'),
     path('dashboard/urban_livability', views.urban_livability, name = 'urban_livability'),
     path('dashboard/rtp', views.rtp, name = 'rtp'),
+    path('dashboard/Tribal_Area_Maharashtra', views.Tribal_Area_Maharashtra, name = 'Tribal Area(Maharashtra)'),
+    path('dashboard/fgis', views.map, name = 'map'),
 
 ]

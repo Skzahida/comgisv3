@@ -48,4 +48,10 @@ def urban_livability(request):
 def rtp(request):
     return render(request, "dashboard/rtp.html")    
 
+def Tribal_Area_Maharashtra(request):
+    return render(request, "dashboard/tdd.html")    
+
+def map(request):
+    return render(request, "dashboard/map.html")    
+
 
