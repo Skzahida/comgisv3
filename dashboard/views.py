@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from dashboard.models import IndiaFinal1617BasicLatlong
+# from dashboard.models import IndiaFinal1617BasicLatlong
 
 # Create your views here.
 def HomePage(request):
