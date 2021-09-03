@@ -46,9 +46,9 @@ def urban_livability(request):
 
 
 def rtp(request):
-    toilets = new_toilet.objects.all()
-    context = {'toilets':toilets}
-    return render(request, "dashboard/rtp.html", context)    
+    # toilets = new_toilet.objects.all()
+    # context = {'toilets':toilets}
+    return render(request, "dashboard/rtp.html")    
 
 def Tribal_Area_Maharashtra(request):
     return render(request, "dashboard/tdd.html")    
