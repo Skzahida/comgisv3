@@ -24,7 +24,7 @@ urlpatterns = [
     path('dashboard/rtp', views.rtp, name = 'rtp'),
     path('dashboard/Tribal_Area_Maharashtra', views.Tribal_Area_Maharashtra, name = 'Tribal Area(Maharashtra)'),
     path('dashboard/fgis', views.map, name = 'map'),
-    path('dashboard/schools', views.schools, name = 'schools'),
+    # path('dashboard/schools', views.schools, name = 'schools'),
     path('dashboard/chandrapurgis', views.chandrapurgis, name = 'chandrapurgis'),
     # path('',include(router.urls)),
 
