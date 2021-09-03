@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from dashboard.models import IndiaFinal1617BasicLatlong
 
 # Create your views here.
 def HomePage(request):
@@ -46,12 +46,22 @@ def urban_livability(request):
 
 
 def rtp(request):
-    return render(request, "dashboard/rtp.html")    
+    toilets = new_toilet.objects.all()
+    context = {'toilets':toilets}
+    return render(request, "dashboard/rtp.html", context)    
 
 def Tribal_Area_Maharashtra(request):
     return render(request, "dashboard/tdd.html")    
 
 def map(request):
-    return render(request, "dashboard/map.html")    
+    return render(request, "dashboard/map.html") 
+
+def chandrapurgis(request):
+    return render(request, "dashboard/chandrapurgis.html")   
+
+def schools(request):
+    school_states = IndiaFinal1617BasicLatlong.objects.values_list('states', flat=True).distinct().order_by('states')
+    context={'school_states': school_states}
+    return render(request, "dashboard/schools.html",context)     
 
 
