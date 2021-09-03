@@ -59,9 +59,9 @@ def map(request):
 def chandrapurgis(request):
     return render(request, "dashboard/chandrapurgis.html")   
 
-def schools(request):
-    school_states = IndiaFinal1617BasicLatlong.objects.values_list('states', flat=True).distinct().order_by('states')
-    context={'school_states': school_states}
-    return render(request, "dashboard/schools.html",context)     
+# def schools(request):
+#     school_states = IndiaFinal1617BasicLatlong.objects.values_list('states', flat=True).distinct().order_by('states')
+#     context={'school_states': school_states}
+#     return render(request, "dashboard/schools.html",context)     
 
 
