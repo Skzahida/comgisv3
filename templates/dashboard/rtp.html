@@ -261,12 +261,12 @@
                     putWMS("geonode:all_india_districts_11june2020");
                 else if (boundary == "{mumbai_toil}"){
                     // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
-                    putWMSmumbai("rtp:mumbai_toilets_nancleared");            //postgis
+                    putWMSmumbai("rtp:mumbai_nanCleared");            //postgis
                 }
                     
                 else if (boundary == "{pune_toil}"){
                     // putWMS("rtp:pune_toilets");
-                    putWMSpune("rtp:pune_toiletss");
+                    putWMSpune("rtp:pune_toilets");
                 }
                     
                 // else if (boundary == "{mumwards}")
@@ -285,9 +285,9 @@
                 else if (boundary == "{district}")
                     removeWMS("geonode:all_india_districts_11june2020");
                 else if (boundary == "{mumbai_toil}")
-                    removeWMS("rtp:mumbai_toilets_nancleared");
+                    removeWMS("rtp:mumbai_nanCleared");
                 else if (boundary == "{pune_toil}")
-                    removeWMS("rtp:pune_toiletss");
+                    removeWMS("rtp:pune_toilets");
                 // else if (boundary == "{mumwards}")
                 //     removewards();
                 // else if (boundary == "{mumsubwards}")
