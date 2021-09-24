@@ -1,5 +1,5 @@
 <!--code for Ahmednagar -->
-{% extends 'dashboard/base_fgis_nav.html' %}
+{% extends 'dashboard/chandrapur_base.html' %}
 {% load static%} {% block content %}
 <style>
     h6 {
@@ -483,9 +483,9 @@
                             <div class="checkbox" id="boundary">
                                 <label><input type="checkbox" value="{water}" onchange="getBoundaryru(this)"><span> Water Bodies</span></label>
                             </div>
-                            <div class="checkbox">
+                            <!-- <div class="checkbox">
                                 <label><input type="checkbox" value="{land}" onchange="getBoundaryru(this)"><span> Land Use</span></label>
-                            </div>
+                            </div> -->
                             <div class="checkbox">
                                 <label><input type="checkbox" value="{trans}" onchange="getBoundaryru(this)"><span> Transport</span></label>
                             </div>
@@ -583,14 +583,14 @@
                                         </div>
                                         <hr>
 
-                                        <div id="ur" value="ur">Nutrition
+                                        <!-- <div id="ur" value="ur">Nutrition
                                             <label for="three">
                       <input type="checkbox" id=""  value="{awc}" onchange="GetSelectedfac(this)" /> Anganwadi Data</label>
                                             <label for="three">
                       <input type="checkbox" id="gsc" value="{}" onchange="GetSelectedfac(this)" disabled="" /> Nutrition Rehabilitation Center</label>
 
                                         </div>
-                                        <hr>
+                                        <hr> -->
 
                                     </div>
                                 </div>
@@ -2683,7 +2683,7 @@ function querybufawc(currentPos) {
                 
 
 
-                } else if (layer=="geonode:villagecensus_maharashtra_1_0"){
+                } else if (layer=="geonode:maha_village_polygon_29mar"){
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
@@ -2693,7 +2693,18 @@ function querybufawc(currentPos) {
                     // alert("in chandrapur villages")
                      TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                    
-                }else if (layer=="chandrapur:line_waterway") {
+                }else if (layer=="geonode:villagecensus_maharashtra_1_0"){
+                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                        layers: layer,
+                        format: 'image/png',
+                        transparent: 'true',
+                        cql_filter: "district_n='Chandrapur'"
+                    });
+                    // alert("in chandrapur villages")
+                     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                   
+                }
+                else if (layer=="chandrapur:line_waterway") {
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
@@ -2702,8 +2713,8 @@ function querybufawc(currentPos) {
                         
                     });
                    
-                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-                
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    console.log(TRIBLAYER);
 
                 }else if (layer=="chandrapur:polygon_landuse") {
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
@@ -2714,20 +2725,9 @@ function querybufawc(currentPos) {
                         
                     });
                    
-                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-                
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    console.log(TRIBLAYER);
 
-                }else if (layer=="chandrapur:polygon_landuse") {
-                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-                        layers: layer,
-                        format: 'image/png',
-                        transparent: 'true',
-                        
-                        
-                    });
-                   
-                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-                
 
                 }else if (layer=="chandrapur:line_transportation") {
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
@@ -2738,7 +2738,7 @@ function querybufawc(currentPos) {
                         
                     });
                    
-                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 
 
                 }else if (layer=="chandrapur:point_power") {
@@ -2750,7 +2750,7 @@ function querybufawc(currentPos) {
                         
                     });
                    
-                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 
 
                 }else if (layer=="chandrapur:point_government") {
@@ -2762,23 +2762,24 @@ function querybufawc(currentPos) {
                         
                     });
                    
-                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 
 
                 }
             
                 console.log(wms_layer);
                 wms_layer.addTo(mymap);
+                console.log('hii');
                 newLayerList.push(wms_layer);
                 mymap.setView([19.9615, 79.2961],9);
                 // console.log(wms_layer);
 
 
                 
-                // if (wms_legend) {
-                //     mymap.removeControl(wms_legend);
-                // }
-                // addWMSLegend(layer);
+                if (wms_legend) {
+                    mymap.removeControl(wms_legend);
+                }
+                addWMSLegend(layer);
             }
 
 
@@ -2847,6 +2848,9 @@ function querybufawc(currentPos) {
                         mymap.removeLayer(layer);
                         newLayerList.splice(index, 1);
                     }
+                    if (wms_legend) {
+                    mymap.removeControl(wms_legend);
+                }
                 });
             }
 
@@ -3111,8 +3115,9 @@ function querybufawc(currentPos) {
                 else if (facility == 'jany')
                     newurl = url8;
 
-                    
+                console.log(newurl);    
                 tableurl = newurl;
+
 
                 function onEachFeatureForPoint(feature, layer) {
                     if (facility === 'CHC') {
@@ -3436,7 +3441,7 @@ function querybufawc(currentPos) {
                 console.log(e);
 
                 var URL = TRIBLAYER + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
-                // console.log(URL);
+                console.log(URL);
                 //send GetFeatureInfo as asynchronous HTTP request using jQuery $.ajax
                 $.ajax({
                     url: URL,
@@ -3504,7 +3509,42 @@ function querybufawc(currentPos) {
                                     "<tr><td>Total Scheduled Tribes Population of Town</td><td><b>"+ feature.properties.tot_st_pop+"<b></td></tr>"+    
                                     "<tr><td>Density (Census 2011)</td><td><b>"+ feature.properties.density_20+"<b></td></tr></table>";
 
-                            }else if (feature.properties.village_na) {
+                            }else if (feature.properties.waterway) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>Waterways</b></td><td>" + feature.properties.district + "</td></tr>" +
+                                    "<tr><td><b>Name</b></td><td>" + feature.properties.name + "</td></tr>" +
+                                     "<tr><td>Waterway Type</td><td><b>"+ feature.properties.waterway+"<b></td></tr>"+    
+                                    "<tr><td>District</td><td><b>"+ feature.properties.district+"<b></td></tr>"+    
+                                    "<tr><td>State</td><td><b>"+ feature.properties.state+"<b></td></tr>"+    
+                                    "</table>";
+
+                            }else if (feature.properties.power) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>Power</b></td><td>" + feature.properties.district + "</td></tr>" +
+                                    
+                                     "<tr><td>Power</td><td><b>"+ feature.properties.power+"<b></td></tr>"+    
+                                    "<tr><td>District</td><td><b>"+ feature.properties.district+"<b></td></tr>"+    
+                                    "<tr><td>State</td><td><b>"+ feature.properties.state+"<b></td></tr>"+    
+                                    "</table>";
+
+                            }else if (feature.properties.highway) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>Transport</b></td><td>" + feature.properties.district + "</td></tr>" +
+                                    "<tr><td><b>Name</b></td><td>" + feature.properties.name + "</td></tr>" +
+                                     "<tr><td>Type</td><td><b>"+ feature.properties.highway+"<b></td></tr>"+    
+                                    "<tr><td>District</td><td><b>"+ feature.properties.district+"<b></td></tr>"+    
+                                    "<tr><td>State</td><td><b>"+ feature.properties.state+"<b></td></tr>"+    
+                                    "</table>";
+
+                            }
+
+                            else if (feature.properties.office) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>Govt office</b></td><td>" + feature.properties.district + "</td></tr>" +
+                                    "<tr><td><b>Name</b></td><td>" + feature.properties.name + "</td></tr>" +
+                                     "<tr><td>Office</td><td><b>"+ feature.properties.office+"<b></td></tr>"+    
+                                    "<tr><td>District</td><td><b>"+ feature.properties.district+"<b></td></tr>"+    
+                                    "<tr><td>State</td><td><b>"+ feature.properties.state+"<b></td></tr>"+    
+                                    "</table>";
+
+                            }
+                            else if (feature.properties.village_na) {
                                 insti_content = "<table class = 'popupclass' ><tr><td><b>Village Census 2011</b></td><td>" + feature.properties.district_n + "</td></tr>" +
                                     "<tr><td><b>Village Name</b></td><td>" + feature.properties.village_na + "</td></tr>" +
                                     "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.taluka_nam + "</td></tr>"+
