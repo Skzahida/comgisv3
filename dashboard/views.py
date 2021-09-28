@@ -42,7 +42,7 @@ def edu(request):
 
 
 def urban_livability(request):
-    return render(request, "dashboard/swm_opt-chk.html")       
+    return render(request, "dashboard/urban.html")       
 
 
 def rtp(request):
