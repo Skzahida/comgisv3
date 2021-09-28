@@ -152,7 +152,7 @@ label{
       </table>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
     <div class="tooltips" title="Please select District">
-      <h6>Mumbai Districts</h6>
+      <h6>Mumbai</h6>
         <select class='form-control' id="indstate" name="indstate">
             <option value="All">Select District</option>
             <!-- <optgroup label="District">  -->
@@ -170,12 +170,16 @@ label{
             <label for="S">
                 <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" />Ward S</label>
               <div id ="wardSdiv">
+                <label for="iitb">
+                  <input type="checkbox" id="Sward" value="iitb" onchange="getWard(this)" disabled/>&emsp;IITB</label>
                 <label for="ward122">
-                  <input type="checkbox" id="Sward" value="ward122" onchange="getWard(this)"/>&emsp;Ward 122</label>
-                  <label for="zones">
-                    <input type="checkbox" id="Sward" value="zones" onchange="getWard(this)"/>Zones</label>
-                  <label for="122_plastic">
-                    <input type="checkbox" id="Sward" value="buildings" onchange="getWard(this)"/>Buildings </label>
+                  <input type="checkbox" id="Sward" value="ward122" onchange="getWard(this)"/>Ward 122</label>
+                <label for="zones">
+                  <input type="checkbox" id="Sward" value="zones" onchange="getWard(this)"/>Zones</label>
+                <label for="122_plastic">
+                  <input type="checkbox" id="Sward" value="buildings" onchange="getWard(this)"/>Building Cluster </label>
+                    <!-- <label for="building"><p><b>Building</b></p></label> -->
+
                 <label for="122_plastic">
                   <input type="checkbox" id="Sward" value="122_plastic" onchange="getWard(this)"/>Building Collecting Plastic</label>
                 <!-- <label for="122_buildings2-7">
@@ -184,11 +188,11 @@ label{
                   <input type="checkbox" id="Sward" value="122_buildings8-9" onchange="getWard(this)"/>Buildings 8 and 9</label> -->
                 
                 <label for="bubbles">
-                    <input type="checkbox" id="Sward" value="bubbles" onchange="getWard(this)"/>Bubbles</label>
-                <label for="spots">
+                    <input type="checkbox" id="Sward" value="bubbles" onchange="getWard(this)"/>Wings</label>
+                <!-- <label for="spots">
                     <input type="checkbox" id="Sward" value="spots" onchange="getWard(this)" disabled/>Spots</label>
                     <label for="wings">
-                      <input type="checkbox" id="Sward" value="wings" onchange="getWard(this)" disabled/>Wings</label>
+                      <input type="checkbox" id="Sward" value="wings" onchange="getWard(this)" disabled/>Wings</label> -->
                       <label for="floors">
                         <input type="checkbox" id="Sward" value="floors" onchange="getWard(this)" disabled/>Floors</label>
                         <label for="flats">
