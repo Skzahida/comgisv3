@@ -168,7 +168,7 @@ label{
          <div class="tooltips" style="display:none;" title="Please select the Maharashtra's Blocks" id="mumsubwards">
 
             <label for="S">
-                <input type="checkbox" id="wardS" value="S" onchange="ViewWards(this)" />Ward S</label>
+                <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" />Ward S</label>
               <div id ="wardSdiv">
                 <label for="ward122">
                   <input type="checkbox" id="Sward" value="ward122" onchange="getWard(this)"/>&emsp;Ward 122</label>
@@ -200,7 +200,7 @@ label{
                 <br>
                 <br>
               <label for="L">
-                <input type="checkbox" id="wardL" value="L" onchange="ViewWards(this)" />Ward L</label>
+                <input type="checkbox" id="wardL" value="L" onclick="ViewWards(this)" />Ward L</label>
                   <br>
                 <div id ="wardLdiv">
                   <label for="L">
@@ -424,12 +424,12 @@ $('#indstate').on('change', function() {
         $("#mumsubwards").hide();
         // removewards();
 
-        $("#block").hide();
+        // $("#block").hide();
     } else if (this.value == 'Mumbai Suburban') {
         putLayer("Mumbai Suburban");
         $("#mumbaiCity").hide();
         $("#mumsubwards").show();
-        $("#block").hide();
+        // $("#block").hide();
     }
     // } else if (indstate == "Chhattisgarh") {
 
@@ -549,8 +549,16 @@ function ViewWards(obj) {
     layer = 'geonode:L_ward_polygons_16Apr2020'
     currentPos = [19.0959,72.8933];
   }
+  if(checkboxes1.style.display == "block")
+    expanded = true;
+  else  
+    expanded = false;
+
+    // alert(expanded);
 
   if (!expanded) {
+    // alert(checkboxes1.style.display);
+    // alert(checkbox.style.display);
     checkboxes1.style.display = "block";
     checkbox.style.display ="block";
     expanded = true;
@@ -640,15 +648,15 @@ function getWard(obj) {
         else if (ward == "Lbuildings")
           putWards122("Lbuildings")   
 
-        else if(ward == "city"){
-          putLayer("Mumbai");
-          // mymap.setView([19.1538,72.8752],14)
-          removeWards("Mumbai Suburban");
-        }                             
-        else if(ward == "suburban"){
-          putLayer("Mumbai Suburban");
-          removeWards("Mumbai");
-        }   
+        // else if(ward == "city"){
+        //   putLayer("Mumbai");
+        //   // mymap.setView([19.1538,72.8752],14)
+        //   removeWards("Mumbai Suburban");
+        // }                             
+        // else if(ward == "suburban"){
+        //   putLayer("Mumbai Suburban");
+        //   removeWards("Mumbai");
+        // }   
                 
     } else {
         if (ward == "A"){
@@ -811,6 +819,11 @@ function putLayer(opt) {
     wms_layer.addTo(mymap);
     wardLayerList.push(wms_layer);
     console.log(wms_layer);
+    if(opt == 'Mumbai')
+      mymap.setView([19.0110, 72.8512], 12);
+      
+    else
+      mymap.setView([19.1186, 72.8064], 12);
 }
 
 
@@ -1034,6 +1047,10 @@ function putFacility(opt) {
                       // if (wms_legend) {
                       //     mymap.removeControl(wms_legend);
                       // }
+                //       if (wms_legend) {
+                //     mymap.removeControl(wms_legend);
+                // }
+                // addWMSLegend(wms_layer);
                       console.log(wms_layer);
     }  
   }
