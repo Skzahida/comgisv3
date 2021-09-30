@@ -593,7 +593,7 @@ function ViewWards(obj) {
     
   }
   
-  // putWards122()
+ 
   
 }
 
@@ -601,7 +601,7 @@ function getWard(obj) {
     let ward = obj.value;
     console.log(ward);
     // alert("obj is-"+obj.value)
-    mymap.setView([19.0110, 72.8512], 12);
+    
     if ($(obj).is(":checked")) {
       // alert("Ward selected is",ward);
         if (ward == "A"){
@@ -796,11 +796,13 @@ function putWards(opt) {
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
+    mymap.setView([19.0110, 72.8512], 12);
     console.log(newLayerList);
     // if (wms_legend) {
     //     mymap.removeControl(wms_legend);
     // }
     console.log(wms_layer);
+
     //console.log(wms_legend); 
     // addWMSLegend(layer);
     // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
@@ -835,151 +837,65 @@ function putLayer(opt) {
 function putWards122(opt) {
     // var district = document.getElementById("district").value;
     // console.log("putward122 is : "+opt);
-    mymap.setView([19.1176, 72.9060],11);
+    // mymap.setView([19.1176, 72.9060],11);
     let ward = opt;
+      
     if(ward == 'ward122'){
       layer = "WARD-S:ward_122_16sept2021"
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
-        layers: layer,
-        format: 'image/png',
-        transparent: 'true',
-                                             
-    });
-    wms_layer.addTo(mymap);
-    newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    mymap.setView([19.119,72.9145],14)
-      // alert("I am in ward 122."+layer);
+      currentPos = [19.119,72.9145]
+      zoom_level = 14
     }
-    if(ward == '122_plastic'){    
-      mymap.setView([19.1164, 72.90471],11);
-      layer = "WARD-S:ward_122_building_collecting_plastic" 
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
-        layers: layer,
-        format: 'image/png',
-        transparent: 'true',
-                                             
-    });
-    wms_layer.addTo(mymap);
-    newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    mymap.setView([19.1167,72.9379],14)    
+    else if(ward == '122_plastic'){  
+      layer = "WARD-S:ward_122_building_collecting_plastic"
+      currentPos = [19.119,72.9145]
+      zoom_level = 14
     }
-    if(ward == 'buildings'){    
+    else if(ward == 'buildings'){    
       layer = "WARD-S:buildings"  
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
-        layers: layer,
-        format: 'image/png',
-        transparent: 'true',
-                                             
-    });
-    wms_layer.addTo(mymap);
-    newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    mymap.setView([19.1172,72.9145],15) 
+      currentPos = [19.119,72.9145]
+      zoom_level = 14
     }
-    if(ward == 'zones'){    
+    else if(ward == 'zones'){    
       layer = "WARD-S:zones"
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
-        layers: layer,
-        format: 'image/png',
-        transparent: 'true',
-                                             
-    });
-    wms_layer.addTo(mymap);
-    newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    mymap.setView([19.1172,72.9145],15)
+      currentPos = [19.119,72.9145]
+      zoom_level = 14
     }
-    if(ward == 'bubbles'){    
+    else if(ward == 'bubbles'){    
       layer = "WARD-S:bubbles"   
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
+      currentPos = [19.119,72.9145]
+      zoom_level = 14
+    }
+    else if(ward == 'Lwardroads'){    
+      layer = "geonode:osm_lward_roads_03Apr2020"
+      currentPos = [19.094,72.8737]
+      zoom_level = 14
+     }
+    else if(ward == 'Lzones'){    
+      layer = "geonode:l_ward_15may" 
+      currentPos = [19.094,72.8737]
+      zoom_level = 14 
+     }
+    else if(ward == 'Lbuildings'){    
+      layer = "geonode:raheja_lward_swm_5nov19"
+      currentPos = [19.094,72.8737]
+      zoom_level = 14 
+    }
+    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: layer,
         format: 'image/png',
         transparent: 'true',
-                                             
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    mymap.setView([19.1172,72.9145],14)
-    }
-    if(ward == 'Lwardroads'){    
-      layer = "geonode:osm_lward_roads_03Apr2020"   
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
-        layers: layer,
-        format: 'image/png',
-        transparent: 'true',
-                                             
-    });
-    wms_layer.addTo(mymap);
-    newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    mymap.setView([19.1172,72.9145],14)
-    }
-    if(ward == 'Lzones'){    
-      layer = "geonode:l_ward_15may"   
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
-        layers: layer,
-        format: 'image/png',
-        transparent: 'true',
-                                             
-    });
-    wms_layer.addTo(mymap);
-    newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    // mymap.setView([19.1172,72.9145],30)
-    // mymap.setView([19.409,72.4145],16)
-    mymap.setView([19.1172,72.9145],14)
-    }
-    if(ward == 'Lbuildings'){    
-      layer = "geonode:raheja_lward_swm_5nov19"   
-      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-        // layers: 'geonode:island_city_revised_2_july',
-        
-        layers: layer,
-        format: 'image/png',
-        transparent: 'true',
-                                             
-    });
-    wms_layer.addTo(mymap);
-    newLayerList.push(wms_layer);
-    console.log(newLayerList);
-    mymap.setView([19.1172,72.9145],14)
-    // mymap.setView([19.409,72.4145],16)
-    }
-    
-
-    
-    // if (wms_legend) {
-    //     mymap.removeControl(wms_legend);
-    // }
-    console.log(wms_layer);
-    //console.log(wms_legend); 
+    // console.log(newLayerList);
+    mymap.setView(currentPos,zoom_level)  
+    // console.log(wms_layer);
     addWMSLegend(layer);
-    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-    // // console.log(TRIBLAYER);
-
-
-    
+       
     if (wms_legend) {
-                    mymap.removeControl(wms_legend);
-                }
-                addWMSLegend(layer);
+      mymap.removeControl(wms_legend);
+    }
+    addWMSLegend(layer);
 }
 
 //to remove unchecked layer
@@ -1238,8 +1154,12 @@ function removeFacility(layer_name) {
 }
 
 function removeLayer(unchecked_layer) {
-  // alert("in removeLayers"+"-"+unchecked_layer)
+  
+//   for(var i = 0; i < newLayerList.length ; i++){
+//     console.log("ARRAY LIST" + newLayerList[i.value])
+// }
   newLayerList.forEach((layer, index) => {
+    console.log("newlayerlist :"+ layer.options.layers+":"+index)
   if (layer.options.layers === unchecked_layer) {
       mymap.removeLayer(layer);
       
@@ -1247,9 +1167,9 @@ function removeLayer(unchecked_layer) {
       // mymap.removeControl(wmsLegend);
   } 
   if (wms_legend) {
-                    mymap.removeControl(wms_legend);
-                }
-  mymap.removeLayer(layer);
+    mymap.removeControl(wms_legend);
+  }
+  
   });
 }
 
