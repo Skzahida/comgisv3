@@ -77,6 +77,14 @@ label{
   border: 1px #dadada solid;
 }
 
+#wardkwestdiv label {
+  display: block;
+}
+#wardkwestdiv {
+  display: none;
+  border: 1px #dadada solid;
+}
+
 #wardLdiv label {
   display: block;
 }
@@ -165,7 +173,7 @@ label{
   </div>  
       &nbsp;&nbsp;&nbsp;&nbsp;
 
-<div class="tooltips" style="display:none;" title="Please select the Maharashtra's Blocks" id="mumsubwards">
+<div class="tooltips" style="display:none;" title="Please select the ward" id="mumsubwards">
 
   <label for="S">
       <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" />Ward S</label>
@@ -216,50 +224,62 @@ label{
       <br>
     <a href="https://ee.humanitarianresponse.info/x/xsUkgeZ7"><u>Greenness SWM</u></a>                                                                                                                             
       <br>
+      <br>
+      <label for="K">
+        <input type="checkbox" id="" value="Kwest" onclick="ViewWards(this)" />Ward K WEST</label>
+        <br>
+        
+      <div id ="wardkwestdiv">
+        <label for="kwest">
+          <input type="checkbox" id="Kwestward" value="Lwardroads" onchange="getWard(this)"/>Roads</label>
           <br>
-            <label for="H">
+          <label for="kwest">
+            <input type="checkbox" id="Kwestward" value="Lzones" onchange="getWard(this)"/>Zones</label>
+          <br>
+      
+            <label for="L">
+            <input type="checkbox" id="Kwestward" value="Lbuildings" onchange="getWard(this)"/>Raheja Buildings </label>
+      </div>
+
+      <br>
+        <label for="K">
+          <input type="checkbox" id="" value="" onchange="" disabled/>Ward K EAST</label>
+          <br>
+      <label for="H">
       <input type="checkbox" id="" value="" onchange="" disabled/>Ward H EAST</label>
       <br>
       <label for="H">
         <input type="checkbox" id="" value="" onchange="" disabled/>Ward H WEST</label>
       <br>
-      
       <label for="H">
-        <input type="checkbox" id="" value="" onchange="" disabled/>Ward K EAST</label>
+        <input type="checkbox" id="" value="" onchange="" disabled/>Ward M WEST</label>
+      <br>
+      <label for="H">
+        <input type="checkbox" id="" value="" onchange="" disabled/>Ward M EAST</label>
+        <br>
+        
+        <label for="H">
+          <input type="checkbox" id="" value="" onchange="" disabled/>Ward P NORTH</label>
         <br>
         <label for="H">
-          <input type="checkbox" id="" value="" onchange="" disabled/>Ward K WEST</label>
+          <input type="checkbox" id="" value="" onchange="" disabled/>Ward P SOUTH</label>
           <br>
           
-          <label for="H">
-            <input type="checkbox" id="" value="" onchange="" disabled/>Ward M WEST</label>
+          <label for="R">
+            <input type="checkbox" id="" value="" onchange="" disabled/>Ward R NORTH</label>
           <br>
-          <label for="H">
-            <input type="checkbox" id="" value="" onchange="" disabled/>Ward M EAST</label>
+          <label for="R">
+            <input type="checkbox" id="" value="" onchange="" disabled/>Ward R SOUTH</label>
             <br>
+          <label for="R">
+            <input type="checkbox" id="" value="" onchange="" disabled/>Ward R CENTRAL</label>
+          <br>                          
             
-            <label for="H">
-              <input type="checkbox" id="" value="" onchange="" disabled/>Ward P NORTH</label>
+          <label for="T">
+            <input type="checkbox" id="" value="" onchange="" disabled/>Ward T</label>
             <br>
-            <label for="H">
-              <input type="checkbox" id="" value="" onchange="" disabled/>Ward P SOUTH</label>
-              <br>
-              
-              <label for="R">
-                <input type="checkbox" id="" value="" onchange="" disabled/>Ward R NORTH</label>
-              <br>
-              <label for="R">
-                <input type="checkbox" id="" value="" onchange="" disabled/>Ward R SOUTH</label>
-                <br>
-              <label for="R">
-                <input type="checkbox" id="" value="" onchange="" disabled/>Ward R CENTRAL</label>
-              <br>                          
-                
-              <label for="T">
-                <input type="checkbox" id="" value="" onchange="" disabled/>Ward T</label>
-                <br>
-              <label for="N">
-                <input type="checkbox" id="" value="" onchange="" disabled/>Ward N</label>
+          <label for="N">
+            <input type="checkbox" id="" value="" onchange="" disabled/>Ward N</label>
   </div>
 
 <div class="tooltips">    
@@ -488,6 +508,12 @@ function ViewWards(obj) {
   if(obj.value == 'L'){
     var checkboxes1 = document.getElementById("wardLdiv");
     var checkbox = document.getElementById("Lward")
+    layer = 'geonode:L_ward_polygons_16Apr2020'
+    currentPos = [19.0959,72.8933];
+  }
+  if(obj.value == 'kwest'){
+    var checkboxes1 = document.getElementById("wardkwestdiv");
+    var checkbox = document.getElementById("Kwestward")
     layer = 'geonode:L_ward_polygons_16Apr2020'
     currentPos = [19.0959,72.8933];
   }
@@ -1083,7 +1109,7 @@ function removeLayer(unchecked_layer) {
 //   for(var i = 0; i < newLayerList.length ; i++){
 //     console.log("ARRAY LIST" + newLayerList[i.value])
 // }
-alert(unchecked_layer)
+// alert(unchecked_layer)
   newLayerList.forEach((layer, index) => {
     console.log("newlayerlist :"+ layer.options.layers+":"+index)
   if (layer.options.layers === unchecked_layer) {
