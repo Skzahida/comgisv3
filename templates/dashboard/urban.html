@@ -150,256 +150,217 @@ label{
             </div>
          </div>
       </table>
-    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-    <div class="tooltips" title="Please select District">
-      <h6>Mumbai</h6>
-        <select class='form-control' id="indstate" name="indstate">
-            <option value="All">Select District</option>
-            <!-- <optgroup label="District">  -->
-              <option value="Mumbai City">Mumbai: Mumbai City</option>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<div class="tooltips" title="Please select District">
+  <h6>Mumbai</h6>
+    <select class='form-control' id="indstate" name="indstate">
+        <option value="All">Select District</option>
+        <!-- <optgroup label="District">  -->
+          <option value="Mumbai City">Mumbai: Mumbai City</option>
 
-                <option value="Mumbai Suburban">Mumbai: Mumbai Suburban</option>
-                
-    
-          </select> 
-     </div>  
-         &nbsp;&nbsp;&nbsp;&nbsp;
-
-         <div class="tooltips" style="display:none;" title="Please select the Maharashtra's Blocks" id="mumsubwards">
-
-            <label for="S">
-                <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" />Ward S</label>
-              <div id ="wardSdiv">
-                <label for="iitb">
-                  <input type="checkbox" id="Sward" value="iitb" onchange="getWard(this)" disabled/>&emsp;IITB</label>
-                <label for="ward122">
-                  <input type="checkbox" id="Sward" value="ward122" onchange="getWard(this)"/>Ward 122</label>
-                <label for="zones">
-                  <input type="checkbox" id="Sward" value="zones" onchange="getWard(this)"/>Zones</label>
-                <label for="122_plastic">
-                  <input type="checkbox" id="Sward" value="buildings" onchange="getWard(this)"/>Building Cluster </label>
-                    <!-- <label for="building"><p><b>Building</b></p></label> -->
-
-                <label for="122_plastic">
-                  <input type="checkbox" id="Sward" value="122_plastic" onchange="getWard(this)"/>Building Collecting Plastic</label>
-                <!-- <label for="122_buildings2-7">
-                  <input type="checkbox" id="Sward" value="122_buildings2-7" onchange="getWard(this)"/>Buildings 2 to 7</label>
-                <label for="122_buildings8-9">
-                  <input type="checkbox" id="Sward" value="122_buildings8-9" onchange="getWard(this)"/>Buildings 8 and 9</label> -->
-                
-                <label for="bubbles">
-                    <input type="checkbox" id="Sward" value="bubbles" onchange="getWard(this)"/>Wings</label>
-                <!-- <label for="spots">
-                    <input type="checkbox" id="Sward" value="spots" onchange="getWard(this)" disabled/>Spots</label>
-                    <label for="wings">
-                      <input type="checkbox" id="Sward" value="wings" onchange="getWard(this)" disabled/>Wings</label> -->
-                      <label for="floors">
-                        <input type="checkbox" id="Sward" value="floors" onchange="getWard(this)" disabled/>Floors</label>
-                        <label for="flats">
-                          <input type="checkbox" id="Sward" value="flats" onchange="getWard(this)" disabled/>Flats</label>
-                                            
-                </div>
-              <br>
-              <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>                                                                                                                             
-                <br>
-                <br>
-              <label for="L">
-                <input type="checkbox" id="wardL" value="L" onclick="ViewWards(this)" />Ward L</label>
-                  <br>
-                <div id ="wardLdiv">
-                  <label for="L">
-                    <input type="checkbox" id="Lward" value="Lwardroads" onchange="getWard(this)"/>Roads</label>
-                    <br>
-                    <label for="L">
-                      <input type="checkbox" id="Lward" value="Lzones" onchange="getWard(this)"/>Zones</label>
-                    <br>
-                      <label for="L">
-                      <input type="checkbox" id="Lward" value="Lbuildings" onchange="getWard(this)"/>Raheja Buildings </label>
-                </div>
-
-                <br>
-              <a href="https://ee.humanitarianresponse.info/x/xsUkgeZ7"><u>Greenness SWM</u></a>                                                                                                                             
-                <br>
-                    <br>
-                      <label for="H">
-                <input type="checkbox" id="" value="" onchange="" disabled/>Ward H EAST</label>
-                <br>
-                <label for="H">
-                  <input type="checkbox" id="" value="" onchange="" disabled/>Ward H WEST</label>
-                <br>
-                
-                <label for="H">
-                  <input type="checkbox" id="" value="" onchange="" disabled/>Ward K EAST</label>
-                  <br>
-                  <label for="H">
-                    <input type="checkbox" id="" value="" onchange="" disabled/>Ward K WEST</label>
-                    <br>
-                    
-                    <label for="H">
-                      <input type="checkbox" id="" value="" onchange="" disabled/>Ward M WEST</label>
-                    <br>
-                    <label for="H">
-                      <input type="checkbox" id="" value="" onchange="" disabled/>Ward M EAST</label>
-                      <br>
-                      
-                      <label for="H">
-                        <input type="checkbox" id="" value="" onchange="" disabled/>Ward P NORTH</label>
-                      <br>
-                      <label for="H">
-                        <input type="checkbox" id="" value="" onchange="" disabled/>Ward P SOUTH</label>
-                        <br>
-                        
-                        <label for="R">
-                          <input type="checkbox" id="" value="" onchange="" disabled/>Ward R NORTH</label>
-                        <br>
-                        <label for="R">
-                          <input type="checkbox" id="" value="" onchange="" disabled/>Ward R SOUTH</label>
-                          <br>
-                        <label for="R">
-                          <input type="checkbox" id="" value="" onchange="" disabled/>Ward R CENTRAL</label>
-                        <br>                          
-                          
-                        <label for="T">
-                          <input type="checkbox" id="" value="" onchange="" disabled/>Ward T</label>
-                          <br>
-                        <label for="N">
-                          <input type="checkbox" id="" value="" onchange="" disabled/>Ward N</label>
-            </div>
-
-              <div class="tooltips">    
-                <div class="field_wrapper arrange" id="mumbaiCity" style="display:none;">
-                   <!-- <hr> -->
-                    <div>            
-                        <br> 
-                        <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes()">
-                              <select>
-                                <option>Select Wards</option>
-                              </select>
-                              <div class="overSelect"></div>
-                            </div>
-                            <div class="tooltips" id="checkboxes">
-                              
-                              <!-- <label><b><input type="checkbox" id="Mumbai City" value="Mumbai City" onchange="getWard(this)" />Mumbai City</b></label> -->
-                              <label for="A">
-                                <input type="checkbox" id="ward" value="A" onchange="getWard(this)" />Ward A</label>
-                              <label for="B">
-                                <input type="checkbox" id="ward" value="B" onchange="getWard(this)" />Ward B</label>
-                              <label for="C">
-                                <input type="checkbox" id="ward" value="C" onchange="getWard(this)" />Ward C</label>
-                              <label for="D">
-                                <input type="checkbox" id="ward" value="D" onchange="getWard(this)" />Ward D</label>
-                              <label for="E">
-                                <input type="checkbox" id="ward" value="E" onchange="getWard(this)" />Ward E</label>
-                              <label for="FN">
-                                <input type="checkbox" id="ward" value="FN" onchange="getWard(this)" />Ward FN</label>
-                              <label for="FS">
-                                <input type="checkbox" id="ward" value="FS" onchange="getWard(this)" />Ward FS</label>
-                              <label for="GN">
-                                <input type="checkbox" id="ward" value="GN" onchange="getWard(this)" />Ward GN</label>
-                              <label for="GS">
-                                <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>
-                              <!-- <hr> -->
-                              <!-- <label><b><input type="checkbox" id="suburban" value="suburban" onchange="getWard(this)" /> SubUrban District</b></label> -->
-                              <!-- <label for="S">
-                                <input type="checkbox" id="wardS" value="S" onchange="ViewWards(this)" />Ward S</label>
-                              <div id ="wardSdiv">
-                                <label for="ward122">
-                                  <input type="checkbox" id="Sward" value="ward122" onchange="getWard(this)"/>&emsp;Ward 122</label>
-                                <label for="122_plastic">
-                                  <input type="checkbox" id="Sward" value="122_plastic" onchange="getWard(this)"/>Building Collecting Plastic</label>
-                                <label for="122_buildings2-7">
-                                  <input type="checkbox" id="Sward" value="122_buildings2-7" onchange="getWard(this)"/>Buildings 2 to 7</label>
-                                <label for="122_buildings8-9">
-                                  <input type="checkbox" id="Sward" value="122_buildings8-9" onchange="getWard(this)"/>Buildings 8 and 9</label>
-                              </div>  -->
-                              <!-- <a href="https://swk.communitygis.net/map/">GS Ward(Worli -Koliwada) Waste Management</a>                                                                                                                               -->
-                              </div>
-                          </div>
-                          &nbsp;&nbsp;&nbsp;&nbsp;
-                          
-                        <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes1()">
-                              <select>
-                                <option>Select Layers</option>
-                              </select>
-                              <div class="overSelect"></div>
-                            </div>
-                            <div class="tooltips" id="checkboxes1">
-                              
-                              <label><b>OSM Data</b></label>
-                              <label for="building">
-                                <input type="checkbox" id="facility" value="building" onchange="getFacility(this)" />Buildings</label>
-                              <label for="roads">
-                                <input type="checkbox" id="facility" value="roads" onchange="getFacility(this)" />Roads</label>
-                              
-                              <label><b>DP Polygons</b></label>  
-                              <label for="education">
-                                <input type="checkbox" id="facility" value="education" onchange="getFacility(this)" />Education</label>
-                              <label for="health">
-                                <input type="checkbox" id="facility" value="health" onchange="getFacility(this)" />Health</label>
-                              <label for="housing">
-                                <input type="checkbox" id="facility" value="housing" onchange="getFacility(this)" />Housing</label>
-                              <label for="municipal_services">
-                                <input type="checkbox" id="facility" value="municipal_services" onchange="getFacility(this)" />Municipal Services</label>
-                              <label for="offices">
-                                <input type="checkbox" id="facility" value="offices" onchange="getFacility(this)" />Offices</label>
-                                <label for="open_spaces">
-                                <input type="checkbox" id="facility" value="open_spaces" onchange="getFacility(this)" />Open Spaces</label>
-                              <label for="primary_activities">
-                                <input type="checkbox" id="facility" value="primary_activities" onchange="getFacility(this)" />Primary Activities</label>
-                              <label for="public_utility_and_facilities">
-                                <input type="checkbox" id="facility" value="public_utility_and_facilities" onchange="getFacility(this)" />Public utility and facilities</label>
-                              <label for="social_amenities">
-                                <input type="checkbox" id="facility" value="social_amenities" onchange="getFacility(this)" />Social Amenities</label>
-                              <label for="transportation">
-                                <input type="checkbox" id="facility" value="transportation" onchange="getFacility(this)" />Transportation</label>
-                              <label for="waste_management">
-                                  <input type="checkbox" id="facility" value="waste_management" onchange="getFacility(this)" disabled/>Waste Management</label>
-                                
-                              <label for="fire_station">
-                                <input type="checkbox" id="facility" value="fire_station" onchange="getFacility(this)" disabled/>Fire Station</label>
-                                                                              
-                              </div>
-                          </div>
-                          </div>
-                          &nbsp;&nbsp;
-                          
-                          <!-- <div>
-                          <a href="https://swk.communitygis.net/map/"><b>GS Ward Waste Management</b></a>
-                        </div> -->
-            <!--               
-                            <div id = 'selectedata'></div>
-                            <button class = 'btn btn-success' onclick="showLayers()">Show Layers</button>
-                            <button class = 'btn btn-danger'onclick="clearAllLayers()">Clear All Layers</button>
-                 -->
-            <!-- 
-                        <select class='form-control' id="amenities" >
-                            <option>Select Themes</option>
-              
-                            <option>Ward Boundaries</option>
-                            <option>DP Polygon</option>
-                            <option>OSM Roads</option>
-                            <option >Building Footprints</option>
-                            <option>Admin Boundaries</option>
-                            
-                          </select>
-             -->
-                          &nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="tooltips" style="display:none;" title="Please select facility" id="A">
-                        
-                        <tr><tb>  <label><input type="checkbox" value="{transport}" onchange="getBoundary(this)"></tb><tb><span> transportation </span></label></tb>
-                                            </tr> &nbsp;&nbsp;
-                                            <tr>
-                                                <tb> <label><input type="checkbox" value="{edu}" onchange="getBoundary(this)"></tb><tb><span> education </span></label></tb>
-                                            </tr>
+            <option value="Mumbai Suburban">Mumbai: Mumbai Suburban</option>
             
-                                        </div>
-            </div>
-            </div>
-        </div>    
-    </div>
+
+      </select> 
+  </div>  
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+<div class="tooltips" style="display:none;" title="Please select the Maharashtra's Blocks" id="mumsubwards">
+
+  <label for="S">
+      <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" />Ward S</label>
+    <div id ="wardSdiv">
+      <label for="iitb">
+        <input type="checkbox" id="Sward" value="iitb" onchange="getWard(this)" disabled/>&emsp;IITB</label>
+      <label for="ward122">
+        <input type="checkbox" id="Sward" value="ward122" onchange="getWard(this)"/>Ward 122</label>
+      <label for="zones">
+        <input type="checkbox" id="Sward" value="zones" onchange="getWard(this)"/>Zones</label>
+      <label for="122_plastic">
+        <input type="checkbox" id="Sward" value="buildings" onchange="getWard(this)"/>Building Cluster </label>
+          <!-- <label for="building"><p><b>Building</b></p></label> -->
+
+      <label for="122_plastic">
+        <input type="checkbox" id="Sward" value="122_plastic" onchange="getWard(this)"/>Building Collecting Plastic</label>
+
+      <label for="bubbles">
+          <input type="checkbox" id="Sward" value="bubbles" onchange="getWard(this)"/>Wings</label>
+      <!-- <label for="spots">
+          <input type="checkbox" id="Sward" value="spots" onchange="getWard(this)" disabled/>Spots</label>
+          <label for="wings">
+            <input type="checkbox" id="Sward" value="wings" onchange="getWard(this)" disabled/>Wings</label> -->
+      <label for="floors">
+        <input type="checkbox" id="Sward" value="floors" onchange="getWard(this)" disabled/>Floors</label>
+        <label for="flats">
+          <input type="checkbox" id="Sward" value="flats" onchange="getWard(this)" disabled/>Flats</label>
+                                  
+      </div>
+    <br>
+    <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>                                                                                                                             
+      <br>
+      <br>
+    <label for="L">
+      <input type="checkbox" id="wardL" value="L" onclick="ViewWards(this)" />Ward L</label>
+        <br>
+      <div id ="wardLdiv">
+        <label for="L">
+          <input type="checkbox" id="Lward" value="Lwardroads" onchange="getWard(this)"/>Roads</label>
+          <br>
+          <label for="L">
+            <input type="checkbox" id="Lward" value="Lzones" onchange="getWard(this)"/>Zones</label>
+          <br>
+            <label for="L">
+            <input type="checkbox" id="Lward" value="Lbuildings" onchange="getWard(this)"/>Raheja Buildings </label>
+      </div>
+
+      <br>
+    <a href="https://ee.humanitarianresponse.info/x/xsUkgeZ7"><u>Greenness SWM</u></a>                                                                                                                             
+      <br>
+          <br>
+            <label for="H">
+      <input type="checkbox" id="" value="" onchange="" disabled/>Ward H EAST</label>
+      <br>
+      <label for="H">
+        <input type="checkbox" id="" value="" onchange="" disabled/>Ward H WEST</label>
+      <br>
+      
+      <label for="H">
+        <input type="checkbox" id="" value="" onchange="" disabled/>Ward K EAST</label>
+        <br>
+        <label for="H">
+          <input type="checkbox" id="" value="" onchange="" disabled/>Ward K WEST</label>
+          <br>
+          
+          <label for="H">
+            <input type="checkbox" id="" value="" onchange="" disabled/>Ward M WEST</label>
+          <br>
+          <label for="H">
+            <input type="checkbox" id="" value="" onchange="" disabled/>Ward M EAST</label>
+            <br>
+            
+            <label for="H">
+              <input type="checkbox" id="" value="" onchange="" disabled/>Ward P NORTH</label>
+            <br>
+            <label for="H">
+              <input type="checkbox" id="" value="" onchange="" disabled/>Ward P SOUTH</label>
+              <br>
+              
+              <label for="R">
+                <input type="checkbox" id="" value="" onchange="" disabled/>Ward R NORTH</label>
+              <br>
+              <label for="R">
+                <input type="checkbox" id="" value="" onchange="" disabled/>Ward R SOUTH</label>
+                <br>
+              <label for="R">
+                <input type="checkbox" id="" value="" onchange="" disabled/>Ward R CENTRAL</label>
+              <br>                          
+                
+              <label for="T">
+                <input type="checkbox" id="" value="" onchange="" disabled/>Ward T</label>
+                <br>
+              <label for="N">
+                <input type="checkbox" id="" value="" onchange="" disabled/>Ward N</label>
   </div>
+
+<div class="tooltips">    
+  <div class="field_wrapper arrange" id="mumbaiCity" style="display:none;">
+      <!-- <hr> -->
+      <div>            
+          <br> 
+          <div class="multiselect">
+              <div class="selectBox" onclick="showCheckboxes()">
+                <select>
+                  <option>Select Wards</option>
+                </select>
+                <div class="overSelect"></div>
+              </div>
+              <div class="tooltips" id="checkboxes">
+                
+                <!-- <label><b><input type="checkbox" id="Mumbai City" value="Mumbai City" onchange="getWard(this)" />Mumbai City</b></label> -->
+                <label for="A">
+                  <input type="checkbox" id="ward" value="A" onchange="getWard(this)" />Ward A</label>
+                <label for="B">
+                  <input type="checkbox" id="ward" value="B" onchange="getWard(this)" />Ward B</label>
+                <label for="C">
+                  <input type="checkbox" id="ward" value="C" onchange="getWard(this)" />Ward C</label>
+                <label for="D">
+                  <input type="checkbox" id="ward" value="D" onchange="getWard(this)" />Ward D</label>
+                <label for="E">
+                  <input type="checkbox" id="ward" value="E" onchange="getWard(this)" />Ward E</label>
+                <label for="FN">
+                  <input type="checkbox" id="ward" value="FN" onchange="getWard(this)" />Ward FN</label>
+                <label for="FS">
+                  <input type="checkbox" id="ward" value="FS" onchange="getWard(this)" />Ward FS</label>
+                <label for="GN">
+                  <input type="checkbox" id="ward" value="GN" onchange="getWard(this)" />Ward GN</label>
+                <label for="GS">
+                  <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>
+                        </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            
+<div class="multiselect">
+    <div class="selectBox" onclick="showCheckboxes1()">
+      <select>
+        <option>Select Layers</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div class="tooltips" id="checkboxes1">
+      
+      <label><b>OSM Data</b></label>
+      <label for="building">
+        <input type="checkbox" id="facility" value="building" onchange="getFacility(this)" />Buildings</label>
+      <label for="roads">
+        <input type="checkbox" id="facility" value="roads" onchange="getFacility(this)" />Roads</label>
+      
+      <label><b>DP Polygons</b></label>  
+      <label for="education">
+        <input type="checkbox" id="facility" value="education" onchange="getFacility(this)" />Education</label>
+      <label for="health">
+        <input type="checkbox" id="facility" value="health" onchange="getFacility(this)" />Health</label>
+      <label for="housing">
+        <input type="checkbox" id="facility" value="housing" onchange="getFacility(this)" />Housing</label>
+      <label for="municipal_services">
+        <input type="checkbox" id="facility" value="municipal_services" onchange="getFacility(this)" />Municipal Services</label>
+      <label for="offices">
+        <input type="checkbox" id="facility" value="offices" onchange="getFacility(this)" />Offices</label>
+        <label for="open_spaces">
+        <input type="checkbox" id="facility" value="open_spaces" onchange="getFacility(this)" />Open Spaces</label>
+      <label for="primary_activities">
+        <input type="checkbox" id="facility" value="primary_activities" onchange="getFacility(this)" />Primary Activities</label>
+      <label for="public_utility_and_facilities">
+        <input type="checkbox" id="facility" value="public_utility_and_facilities" onchange="getFacility(this)" />Public utility and facilities</label>
+      <label for="social_amenities">
+        <input type="checkbox" id="facility" value="social_amenities" onchange="getFacility(this)" />Social Amenities</label>
+      <label for="transportation">
+        <input type="checkbox" id="facility" value="transportation" onchange="getFacility(this)" />Transportation</label>
+      <label for="waste_management">
+          <input type="checkbox" id="facility" value="waste_management" onchange="getFacility(this)" disabled/>Waste Management</label>
+        
+      <label for="fire_station">
+        <input type="checkbox" id="facility" value="fire_station" onchange="getFacility(this)" disabled/>Fire Station</label>
+                                                      
+      </div>
+  </div>
+  </div>
+  &nbsp;&nbsp;
+
+  &nbsp;&nbsp;&nbsp;&nbsp;
+<div class="tooltips" style="display:none;" title="Please select facility" id="A">
+
+<tr><tb>  <label><input type="checkbox" value="{transport}" onchange="getBoundary(this)"></tb><tb><span> transportation </span></label></tb>
+</tr> &nbsp;&nbsp;
+<tr>
+    <tb> <label><input type="checkbox" value="{edu}" onchange="getBoundary(this)"></tb><tb><span> education </span></label></tb>
+</tr>
+
+</div>
+  </div>
+  </div>
+</div>    
+</div>
+</div>
 <div id="output"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -409,15 +370,6 @@ label{
 
 <script>  
 $(document).ready(function() {
-
-//  $('#indstate').on('change', function() {
-//    if (this.value == 'Chhattisgarh'){
-//        $("#block").hide();
-//    }
-
-// });
-//console.log("hi",indstate);
-
 $('#indstate').on('change', function() {
     //$("#block").show();
     // var state=document.getElementById("indstate");
@@ -434,17 +386,7 @@ $('#indstate').on('change', function() {
         $("#mumbaiCity").hide();
         $("#mumsubwards").show();
         // $("#block").hide();
-    }
-    // } else if (indstate == "Chhattisgarh") {
-
-    //     $("#block").hide();
-
-    // } else {
-    //     $("#mumwards").hide();
-    //     $("#mumsubwards").hide();
-    //     $("#block").show();
-
-    // }
+    }  
 });
 
 $('#view_s').on('change', function() { 
@@ -491,23 +433,19 @@ $('#view_s').on('change', function() {
 
 });
 });
+const domain = ['https://geoserver2.communitygis.net/', 'http://localhost/'];
+  var rootUrl = domain[0] + 'geoserver/geonode/ows';
 
-
-
-
-      const domain = ['https://geoserver2.communitygis.net/', 'http://localhost/'];
-        var rootUrl = domain[0] + 'geoserver/geonode/ows';
-
-        var defaultParameters = {
-            service: 'WFS',
-            version: '1.0.0',
-            request: 'GetFeature',
-            outputFormat: 'json'
-        };
-        var newLayerList=[];
-        var wardLayerList = [];
-        var wms_legend;
-        let activatedHealthFacility={};
+  var defaultParameters = {
+      service: 'WFS',
+      version: '1.0.0',
+      request: 'GetFeature',
+      outputFormat: 'json'
+  };
+  var newLayerList=[];
+  var wardLayerList = [];
+  var wms_legend;
+  let activatedHealthFacility={};
         
         
         // $('select[multiple]').multiselect();
@@ -589,12 +527,8 @@ function ViewWards(obj) {
   } else {
     checkboxes1.style.display = "none";
     checkbox.style.display ="none";
-    expanded = false;
-    
-  }
-  
- 
-  
+    expanded = false;    
+  } 
 }
 
 function getWard(obj) {
@@ -650,17 +584,7 @@ function getWard(obj) {
         else if (ward == "Lzones")
           putWards122("Lzones") 
         else if (ward == "Lbuildings")
-          putWards122("Lbuildings")   
-
-        // else if(ward == "city"){
-        //   putLayer("Mumbai");
-        //   // mymap.setView([19.1538,72.8752],14)
-        //   removeWards("Mumbai Suburban");
-        // }                             
-        // else if(ward == "suburban"){
-        //   putLayer("Mumbai Suburban");
-        //   removeWards("Mumbai");
-        // }   
+          putWards122("Lbuildings")          
                 
     } else {
         if (ward == "A"){
@@ -686,6 +610,7 @@ function getWard(obj) {
           removeLayer("geonode:corporatorwardboundary_mumbai_13may")
         else if (ward == "{admin}")
           removeLayer("geonode:mumbai_ward_boundary")
+       
         else if (ward == 'ward122')
           removeLayer("WARD-S:ward_122_16sept2021")
         else if (ward == "122_plastic")
@@ -703,11 +628,11 @@ function getWard(obj) {
         else if (ward == "spots")
           removeLayer("WARD-S:spots")
         else if (ward == "Lwardroads")
-          removeLayer("Lwardroads")
+          removeLayer("geonode:osm_lward_roads_03Apr2020")
         else if (ward == "Lzones")
-          removeLayer("Lzones") 
+          removeLayer("geonode:l_ward_15may") 
         else if (ward == "Lbuildings")
-          removeLayer("Lbuildings") 
+          removeLayer("geonode:raheja_lward_swm_5nov19") 
           
       }
       
@@ -1158,6 +1083,7 @@ function removeLayer(unchecked_layer) {
 //   for(var i = 0; i < newLayerList.length ; i++){
 //     console.log("ARRAY LIST" + newLayerList[i.value])
 // }
+alert(unchecked_layer)
   newLayerList.forEach((layer, index) => {
     console.log("newlayerlist :"+ layer.options.layers+":"+index)
   if (layer.options.layers === unchecked_layer) {
