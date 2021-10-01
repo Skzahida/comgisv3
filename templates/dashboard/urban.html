@@ -231,14 +231,19 @@ label{
         
       <div id ="wardkwestdiv">
         <label for="kwest">
-          <input type="checkbox" id="Kwestward" value="Lwardroads" onchange="getWard(this)"/>Roads</label>
+          <input type="checkbox" id="Kwestward" value="ward61" onchange="getWard(this)"/>Corporator Ward 61</label>
+          <br>
+        <label for="kwest">
+          <input type="checkbox" id="Kwestward" value="ward61buildings" onchange="getWard(this)"/>Buildings</label>
           <br>
           <label for="kwest">
-            <input type="checkbox" id="Kwestward" value="Lzones" onchange="getWard(this)"/>Zones</label>
+            <input type="checkbox" id="Kwestward" value="ward61edu" onchange="getWard(this)"/>Education Places</label>
           <br>
-      
-            <label for="L">
-            <input type="checkbox" id="Kwestward" value="Lbuildings" onchange="getWard(this)"/>Raheja Buildings </label>
+            <label for="kwest">
+            <input type="checkbox" id="Kwestward" value="ward61government" onchange="getWard(this)" disabled/>Government Offices </label>
+            <br>
+            <label for="kwest">
+            <input type="checkbox" id="Kwestward" value="ward61fuel" onchange="getWard(this)"/>Power(Fuel) </label>  
       </div>
 
       <br>
@@ -511,11 +516,11 @@ function ViewWards(obj) {
     layer = 'geonode:L_ward_polygons_16Apr2020'
     currentPos = [19.0959,72.8933];
   }
-  if(obj.value == 'kwest'){
+  if(obj.value == 'Kwest'){
     var checkboxes1 = document.getElementById("wardkwestdiv");
     var checkbox = document.getElementById("Kwestward")
-    layer = 'geonode:L_ward_polygons_16Apr2020'
-    currentPos = [19.0959,72.8933];
+    layer = 'ward61:k_west_mumbai'
+    currentPos = [19.1233,72.7784];
   }
   if(checkboxes1.style.display == "block")
     expanded = true;
@@ -589,14 +594,11 @@ function getWard(obj) {
           putCorpWards("{corporator}")  
         else if (ward == "{admin}")
           putAdminWards("{admin}")
+          // ward 122
         else if (ward == "ward122")
           putWards122("ward122")
         else if (ward == "122_plastic")
           putWards122("122_plastic")
-        // else if (ward == "122_buildings2-7")
-        //   putWards122("122_buildings2-7")
-        // else if (ward == "122_buildings8-9")
-        //   putWards122("122_buildings8-9")
         else if (ward == "zones")
           putWards122("zones")
         else if (ward == "buildings")
@@ -605,12 +607,26 @@ function getWard(obj) {
           putWards122("bubbles")
         else if (ward == "spots")
           putWards122("spots")
+          // ward L
         else if (ward == "Lwardroads")
           putWards122("Lwardroads")
         else if (ward == "Lzones")
           putWards122("Lzones") 
         else if (ward == "Lbuildings")
-          putWards122("Lbuildings")          
+          putWards122("Lbuildings")
+          // ward 61 
+        else if (ward == "ward61")
+         putWards122("ward61")
+        else if (ward == "ward61buildings")
+          putWards122("ward61buildings")
+        else if (ward == "ward61edu")
+          putWards122("ward61edu")
+        else if (ward == "ward61fuel")
+          putWards122("ward61fuel")
+        else if (ward == "ward61government")
+          putWards122("ward61government")
+          
+                  
                 
     } else {
         if (ward == "A"){
@@ -636,16 +652,12 @@ function getWard(obj) {
           removeLayer("geonode:corporatorwardboundary_mumbai_13may")
         else if (ward == "{admin}")
           removeLayer("geonode:mumbai_ward_boundary")
-       
+       //ward 122 - S ward-----------------------------
         else if (ward == 'ward122')
           removeLayer("WARD-S:ward_122_16sept2021")
         else if (ward == "122_plastic")
           removeLayer("WARD-S:ward_122_building_collecting_plastic")
-        // else if (ward == "122_buildings2-7")
-        //   removeLayer("WARD-S:ward_122_2-7Buildings")
-        // else if (ward == "122_buildings8-9")
-        //   removeLayer("WARD-S:122_buildings8-9")
-        else if (ward == "buildings")
+       else if (ward == "buildings")
           removeLayer("WARD-S:buildings")  
         else if (ward == "zones")
           removeLayer("WARD-S:zones") 
@@ -653,12 +665,24 @@ function getWard(obj) {
           removeLayer("WARD-S:bubbles") 
         else if (ward == "spots")
           removeLayer("WARD-S:spots")
+         ///--ward L -------------------- 
         else if (ward == "Lwardroads")
           removeLayer("geonode:osm_lward_roads_03Apr2020")
         else if (ward == "Lzones")
           removeLayer("geonode:l_ward_15may") 
         else if (ward == "Lbuildings")
           removeLayer("geonode:raheja_lward_swm_5nov19") 
+        //---ward 61--------------
+        else if (ward == "ward61")
+          removeLayer("ward61:corporator61boundary")
+        else if (ward == "ward61buildings")
+          removeLayer("ward61:buiding_polygon")
+        else if (ward == "ward61edu")
+          removeLayer("ward61:education_polygon")
+        else if (ward == "ward61fuel")
+          removeLayer("ward61:power_polygons")
+        else if (ward == "ward61government")
+          removeLayer("ward61:ward61government")
           
       }
       
@@ -790,7 +814,7 @@ function putWards122(opt) {
     // console.log("putward122 is : "+opt);
     // mymap.setView([19.1176, 72.9060],11);
     let ward = opt;
-      
+    //-----ward 122 (S ward)  ----------------
     if(ward == 'ward122'){
       layer = "WARD-S:ward_122_16sept2021"
       currentPos = [19.119,72.9145]
@@ -816,6 +840,7 @@ function putWards122(opt) {
       currentPos = [19.119,72.9145]
       zoom_level = 14
     }
+    //--------ward L------------------------
     else if(ward == 'Lwardroads'){    
       layer = "geonode:osm_lward_roads_03Apr2020"
       currentPos = [19.094,72.8737]
@@ -830,6 +855,32 @@ function putWards122(opt) {
       layer = "geonode:raheja_lward_swm_5nov19"
       currentPos = [19.094,72.8737]
       zoom_level = 14 
+    }
+    // ----ward 61 (K west) ------------------
+    else if(ward == 'ward61'){    
+      layer = "ward61:corporator61boundary"
+      currentPos = [19.1423,72.8137]
+      zoom_level = 14 
+    }
+    else if(ward == 'ward61buildings'){    
+      layer = "ward61:buiding_polygon"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16 
+    }
+    else if(ward == 'ward61edu'){    
+      layer = "ward61:education_polygon"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16  
+    }
+    else if(ward == 'ward61fuel'){    
+      layer = "ward61:power_polygons"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16 
+    }
+    else if(ward == 'ward61government'){    
+      layer = "ward61:government_polygon"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16 
     }
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: layer,
@@ -1109,7 +1160,7 @@ function removeLayer(unchecked_layer) {
 //   for(var i = 0; i < newLayerList.length ; i++){
 //     console.log("ARRAY LIST" + newLayerList[i.value])
 // }
-// alert(unchecked_layer)
+//  alert(unchecked_layer)
   newLayerList.forEach((layer, index) => {
     console.log("newlayerlist :"+ layer.options.layers+":"+index)
   if (layer.options.layers === unchecked_layer) {
