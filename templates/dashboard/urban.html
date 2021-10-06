@@ -67,11 +67,22 @@ label{
 #wardSdiv {
   display: none;
   border: 1px #dadada solid;
+  
 }
 
 #wardSdiv label {
   display: block;
 }
+
+#wardGSdiv {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#wardGSdiv label {
+  display: block;
+}
+
 #wardLdiv {
   display: none;
   border: 1px #dadada solid;
@@ -174,10 +185,11 @@ label{
       &nbsp;&nbsp;&nbsp;&nbsp;
 
 <div class="tooltips" style="display:none;" title="Please select the ward" id="mumsubwards">
-
+  
   <label for="S">
-      <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" />Ward S</label>
+      <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" /><b>Ward S</b></label>
     <div id ="wardSdiv">
+      <p style="padding-left: 30px;">
       <label for="iitb">
         <input type="checkbox" id="Sward" value="iitb" onchange="getWard(this)" disabled/>&emsp;IITB</label>
       <label for="ward122">
@@ -201,50 +213,95 @@ label{
         <input type="checkbox" id="Sward" value="floors" onchange="getWard(this)" disabled/>Floors</label>
         <label for="flats">
           <input type="checkbox" id="Sward" value="flats" onchange="getWard(this)" disabled/>Flats</label>
-                                  
+        </p>                                
       </div>
     <br>
-    <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>                                                                                                                             
-      <br>
+    <!-- <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>     -->
+    
+    
+<!--  
+  <label for="GS">
+      <input type="checkbox" id="wardGS" value="GS" onclick="ViewWards(this)" /><b> GS</b></label>
+    <div id ="wardGSdiv">
+    <p style="padding-left: 30px;">
+        <label for="worli-koliwada">
+        <input type="checkbox" id="GSward" value="worli-koliwada" onchange="getWard(this)" />Worli-Koliwada</label>
+        
+    <label for="GSlanes">
+      <input type="checkbox" id="GSward" value="GSlanes" onchange="getWard(this)" />Lanes/Bin paths</label>
+    
+      <label for="GSspots">
+      <input type="checkbox" id="GSward" value="GSspots" onchange="getWard(this)" />Spots</label>
+      
+      <label for="GSbubbles">
+      <input type="checkbox" id="GSward" value="GSbubbles" onchange="getWard(this)"/>Bubbles</label>
+      
+      <label for="GSzones">
+      <input type="checkbox" id="GSward" value="GSzones" onchange="getWard(this)"/>Zones</label>
+     
+      
+          
+    <label for="GSgrounds">
+      <input type="checkbox" id="GSward" value="GSgrounds" onchange="getWard(this)" />Grounds</label>
+      
+      <label for="GStoilets">
+      <input type="checkbox" id="GSward" value="GStoilets" onchange="getWard(this)" />Public Toilets</label>
+      
+    <label for="GScompost">
+      <input type="checkbox" id="GSward" value="GScompost" onchange="getWard(this)" />Compost Pits</label>
+      
+      <label for="GSopen_places">
+      <input type="checkbox" id="GSward" value="GSopen_places" onchange="getWard(this)" />Open Places</label>
+    
+      <label for="GStemples">
+      <input type="checkbox" id="GSward" value="GStemples" onchange="getWard(this)" />Temples</label>
+    </p>                            
+      </div> -->
+                                                                                                                               
+      
       <br>
     <label for="L">
-      <input type="checkbox" id="wardL" value="L" onclick="ViewWards(this)" />Ward L</label>
+      <input type="checkbox" id="wardL" value="L" onclick="ViewWards(this)" /><b> L</b></label>
         <br>
       <div id ="wardLdiv">
+        <p style="padding-left: 30px;">
         <label for="L">
           <input type="checkbox" id="Lward" value="Lwardroads" onchange="getWard(this)"/>Roads</label>
-          <br>
+          
           <label for="L">
             <input type="checkbox" id="Lward" value="Lzones" onchange="getWard(this)"/>Zones</label>
-          <br>
+          
             <label for="L">
             <input type="checkbox" id="Lward" value="Lbuildings" onchange="getWard(this)"/>Raheja Buildings </label>
-      </div>
-
+            </p>
+          </div>
+ 
       <br>
     <a href="https://ee.humanitarianresponse.info/x/xsUkgeZ7"><u>Greenness SWM</u></a>                                                                                                                             
       <br>
       <br>
       <label for="K">
-        <input type="checkbox" id="" value="Kwest" onclick="ViewWards(this)" />Ward K WEST</label>
+        <input type="checkbox" id="" value="Kwest" onclick="ViewWards(this)" /><b> K WEST</b></label>
         <br>
         
       <div id ="wardkwestdiv">
+        <p style="padding-left: 30px;">
         <label for="kwest">
           <input type="checkbox" id="Kwestward" value="ward61" onchange="getWard(this)"/>Corporator Ward 61</label>
-          <br>
+          
         <label for="kwest">
           <input type="checkbox" id="Kwestward" value="ward61buildings" onchange="getWard(this)"/>Buildings</label>
-          <br>
+          
           <label for="kwest">
             <input type="checkbox" id="Kwestward" value="ward61edu" onchange="getWard(this)"/>Education Places</label>
-          <br>
+          
             <label for="kwest">
             <input type="checkbox" id="Kwestward" value="ward61government" onchange="getWard(this)" disabled/>Government Offices </label>
-            <br>
+            
             <label for="kwest">
             <input type="checkbox" id="Kwestward" value="ward61fuel" onchange="getWard(this)"/>Power(Fuel) </label>  
-      </div>
+          </p>    
+          </div>
 
       <br>
         <label for="K">
@@ -318,9 +375,53 @@ label{
                   <input type="checkbox" id="ward" value="FS" onchange="getWard(this)" />Ward FS</label>
                 <label for="GN">
                   <input type="checkbox" id="ward" value="GN" onchange="getWard(this)" />Ward GN</label>
-                <label for="GS">
-                  <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>
-                        </div>
+                <!-- <label for="GS">  -->
+                  <!-- <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>  -->
+                  
+                  <label for="GS"> 
+                    <input type="checkbox" id="wardGS" value="GS" onclick="ViewWards(this)" />GS</label>  
+                  <div id ="wardGSdiv">
+                  <p style="padding-left: 30px;">
+                      <label for="worli-koliwada">
+                      <input type="checkbox" id="GSward" value="worli-koliwada" onchange="getWard(this)" />Worli-Koliwada</label>
+                    
+                      <label for="GSzones">
+                        <input type="checkbox" id="GSward" value="GSzones" onchange="getWard(this)"/>Zones</label>
+                    
+                        <label for="GSbubbles">
+                          <input type="checkbox" id="GSward" value="GSbubbles" onchange="getWard(this)"/>Bubbles</label>
+                  
+                          <label for="GSspots">
+                            <input type="checkbox" id="GSward" value="GSspots" onchange="getWard(this)" />Spots</label>
+                                        
+                  <label for="GSlanes">
+                    <input type="checkbox" id="GSward" value="GSlanes" onchange="getWard(this)" />Lanes/Bin paths</label>
+                   
+                    
+                        
+                  <label for="GSgrounds">
+                    <input type="checkbox" id="GSward" value="GSgrounds" onchange="getWard(this)" />Grounds</label>
+                    
+                    <label for="GStoilets">
+                    <input type="checkbox" id="GSward" value="GStoilets" onchange="getWard(this)" />Public Toilets</label>
+                    
+                  <label for="GScompost">
+                    <input type="checkbox" id="GSward" value="GScompost" onchange="getWard(this)" />Compost Pits</label>
+                    
+                    <label for="GSopen_places">
+                    <input type="checkbox" id="GSward" value="GSopen_places" onchange="getWard(this)" />Open Places</label>
+                  
+                    <label for="GStemples">
+                    <input type="checkbox" id="GSward" value="GStemples" onchange="getWard(this)" />Temples</label>
+                  </p>         
+                  
+                  <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>    
+    
+                    </div>
+                
+  
+  
+                </div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;
             
@@ -471,6 +572,7 @@ const domain = ['https://geoserver2.communitygis.net/', 'http://localhost/'];
   var wardLayerList = [];
   var wms_legend;
   let activatedHealthFacility={};
+  var content,popup_layer;
         
         
         // $('select[multiple]').multiselect();
@@ -510,6 +612,12 @@ function ViewWards(obj) {
     layer = 'WARD-S:s_ward';
     currentPos = [19.126,72.9296];
   }
+  if(obj.value == 'GS'){
+    var checkboxes1 = document.getElementById("wardGSdiv");
+    var checkbox = document.getElementById("GSward")
+    layer = 'geonode:mumbai_ward_boundary';
+    currentPos = [19.0182,72.8168]
+  }
   if(obj.value == 'L'){
     var checkboxes1 = document.getElementById("wardLdiv");
     var checkbox = document.getElementById("Lward")
@@ -538,6 +646,27 @@ function ViewWards(obj) {
     // layer = 'WARD-S:s_ward';
     // removeWards1(layer);
     // alert(layer);
+    if(layer == "geonode:mumbai_ward_boundary"){
+      var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+        // layers: 'geonode:island_city_revised_2_july',
+        layers: layer,
+        format: 'image/png',
+        transparent: 'true',
+        cql_filter: `Name='G/S'`,
+                                             
+    });
+    wms_layer.addTo(mymap);
+    newLayerList.push(wms_layer);
+    console.log(newLayerList);
+    // mymap.setView([19.126,72.9296],13)
+    mymap.setView(currentPos, 13)
+    // if (wms_legend) {
+    //     mymap.removeControl(wms_legend);
+    // }
+    console.log(wms_layer);  
+    }else{
+
+
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         // layers: 'geonode:island_city_revised_2_july',
         layers: layer,
@@ -555,6 +684,7 @@ function ViewWards(obj) {
     //     mymap.removeControl(wms_legend);
     // }
     console.log(wms_layer);
+  }
   } else {
     checkboxes1.style.display = "none";
     checkbox.style.display ="none";
@@ -609,22 +739,43 @@ function getWard(obj) {
           putWards122("spots")
           // ward L
         else if (ward == "Lwardroads")
-          putWards122("Lwardroads")
+          putLWard("Lwardroads")
         else if (ward == "Lzones")
-          putWards122("Lzones") 
+          putLWard("Lzones") 
         else if (ward == "Lbuildings")
-          putWards122("Lbuildings")
+          putLWard("Lbuildings")
           // ward 61 
         else if (ward == "ward61")
-         putWards122("ward61")
+         putWard61("ward61")
         else if (ward == "ward61buildings")
-          putWards122("ward61buildings")
+          putWard61("ward61buildings")
         else if (ward == "ward61edu")
-          putWards122("ward61edu")
+          putWard61("ward61edu")
         else if (ward == "ward61fuel")
-          putWards122("ward61fuel")
+          putWard61("ward61fuel")
         else if (ward == "ward61government")
-          putWards122("ward61government")
+          putWard61("ward61government")
+          // ward GS
+        else if (ward == "worli-koliwada")
+          putGSWard("worli-koliwada")  
+        else if (ward == "GSlanes")
+          putGSWard("GSlanes")
+        else if (ward == "GSspots")
+          putGSWard("GSspots")
+          else if (ward == "GSbubbles")
+          putGSWard("GSbubbles")
+          else if (ward == "GSzones")
+          putGSWard("GSzones")    
+          else if (ward == "GSgrounds")
+          putGSWard("GSgrounds")
+          else if (ward == "GStoilets")
+          putGSWard("GStoilets")
+          else if (ward == "GScompost")
+          putGSWard("GScompost")
+          else if (ward == "GSopen_places")
+          putGSWard("GSopen_places")
+          else if (ward == "GStemples")
+          putGSWard("GStemples")
           
                   
                 
@@ -653,7 +804,9 @@ function getWard(obj) {
         else if (ward == "{admin}")
           removeLayer("geonode:mumbai_ward_boundary")
        //ward 122 - S ward-----------------------------
-        else if (ward == 'ward122')
+       else if (ward == "L")
+        removeLayer("geonode:L_ward_polygons_16Apr2020") 
+       else if (ward == 'ward122')
           removeLayer("WARD-S:ward_122_16sept2021")
         else if (ward == "122_plastic")
           removeLayer("WARD-S:ward_122_building_collecting_plastic")
@@ -683,7 +836,28 @@ function getWard(obj) {
           removeLayer("ward61:power_polygons")
         else if (ward == "ward61government")
           removeLayer("ward61:ward61government")
-          
+
+        //---ward GS(worli-koliwada)--------------
+        else if (ward == "GSlanes")
+          removeLayer("worli-koliwada:worli_binpath_28june21")
+        else if (ward == "GSspots")
+          removeLayer("worli-koliwada:worli_spots_28june21")
+        else if (ward == "GSbubbles")
+          removeLayer("worli-koliwada:worli_bubbles_28june21")
+        else if (ward == "GSzones")
+          removeLayer("worli-koliwada:worli_zones_28june21")
+        else if (ward == "GSgrounds")
+          removeLayer("worli-koliwada:ground_20june21")
+        else if (ward == "GStoilets")
+          removeLayer("worli-koliwada:public_toilets_20june21")
+        else if (ward == "GScompost")
+          removeLayer("worli-koliwada:worli_pits28june21")
+        else if (ward == "GSopen_places")
+          removeLayer("worli-koliwada:worli_openplace_28june21")
+        else if (ward == "GStemples")
+          removeLayer("worli-koliwada:temples_21june21")
+        else if (ward == "worli-koliwada")
+          removeLayer("geonode:worli_pincodes_30_25_18")  
       }
       
 }
@@ -780,8 +954,8 @@ function putWards(opt) {
 
     //console.log(wms_legend); 
     // addWMSLegend(layer);
-    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-    // // console.log(TRIBLAYER);
+    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&cql_filter=" + wms_layer.options.cql_filter;
+    // console.log(TRIBLAYER);
 
 }
 
@@ -808,7 +982,7 @@ function putLayer(opt) {
 }
 
 
-
+//s ward
 function putWards122(opt) {
     // var district = document.getElementById("district").value;
     // console.log("putward122 is : "+opt);
@@ -840,6 +1014,61 @@ function putWards122(opt) {
       currentPos = [19.119,72.9145]
       zoom_level = 14
     }
+
+    //GS Ward
+    if (ward == "worli-koliwada"){
+      layer = "geonode:worli_pincodes_30_25_18"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSlanes'){
+      layer = "worli-koliwada:worli_binpath_28june21"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSspots'){  
+      layer = "worli-koliwada:worli_spots_28june21"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSbubbles'){    
+      layer = "worli-koliwada:worli_bubbles_28june21"  
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSzones'){    
+      layer = "worli-koliwada:worli_zones_28june21"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+      // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/worli-koliwada/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + layer.options.layers + "&QUERY_LAYERS=" + layer.options.layers;
+    // console.log("tribbb",TRIBLAYER);
+    }
+    else if(ward == 'GSgrounds'){    
+      layer = "worli-koliwada:ground_20june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GStoilets'){    
+      layer = "worli-koliwada:public_toilets_20june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GScompost'){    
+      layer = "worli-koliwada:worli_pits28june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSopen_places'){    
+      layer = "worli-koliwada:worli_openplace_28june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GStemples'){    
+      layer = "worli-koliwada:temples_21june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    
     //--------ward L------------------------
     else if(ward == 'Lwardroads'){    
       layer = "geonode:osm_lward_roads_03Apr2020"
@@ -849,7 +1078,9 @@ function putWards122(opt) {
     else if(ward == 'Lzones'){    
       layer = "geonode:l_ward_15may" 
       currentPos = [19.094,72.8737]
-      zoom_level = 14 
+      zoom_level = 14
+      TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+    console.log("tribbb",TRIBLAYER); 
      }
     else if(ward == 'Lbuildings'){    
       layer = "geonode:raheja_lward_swm_5nov19"
@@ -898,7 +1129,192 @@ function putWards122(opt) {
       mymap.removeControl(wms_legend);
     }
     addWMSLegend(layer);
+    //TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+    //console.log(TRIBLAYER);
+    mymap.addEventListener('click', Identify);        
 }
+
+
+//gs ward
+function putGSWard(opt) {
+    // var district = document.getElementById("district").value;
+    // console.log("putward122 is : "+opt);
+    // mymap.setView([19.1176, 72.9060],11);
+    let ward = opt;
+   
+    //GS Ward
+    if (ward == "worli-koliwada"){
+      layer = "geonode:worli_pincodes_30_25_18"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSlanes'){
+      layer = "worli-koliwada:worli_binpath_28june21"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSspots'){  
+      layer = "worli-koliwada:worli_spots_28june21"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+      TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/worli-koliwada/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+      console.log("hiiiiiii");
+    }
+    else if(ward == 'GSbubbles'){    
+      layer = "worli-koliwada:worli_bubbles_28june21"  
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSzones'){    
+      layer = "worli-koliwada:worli_zones_28june21"
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSgrounds'){    
+      layer = "worli-koliwada:ground_20june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GStoilets'){    
+      layer = "worli-koliwada:public_toilets_20june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GScompost'){    
+      layer = "worli-koliwada:worli_pits28june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GSopen_places'){    
+      layer = "worli-koliwada:worli_openplace_28june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+    else if(ward == 'GStemples'){    
+      layer = "worli-koliwada:temples_21june21"   
+      currentPos = [19.0182,72.8168]
+      zoom_level = 16
+    }
+   
+    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+        layers: layer,
+        format: 'image/png',
+        transparent: 'true',
+    });
+    wms_layer.addTo(mymap);
+    newLayerList.push(wms_layer);
+    // console.log(newLayerList);
+    mymap.setView(currentPos,zoom_level)  
+    // console.log(wms_layer);
+    addWMSLegend(layer);
+       
+    if (wms_legend) {
+      mymap.removeControl(wms_legend);
+    }
+    addWMSLegend(layer);
+    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/worli-koliwada/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+    console.log(TRIBLAYER);        
+}
+
+
+//L ward
+function putLWard(opt) {
+    // var district = document.getElementById("district").value;
+    // console.log("putward122 is : "+opt);
+    // mymap.setView([19.1176, 72.9060],11);
+    let ward = opt;
+   
+    //L Ward
+    if(ward == 'Lwardroads'){    
+      layer = "geonode:osm_lward_roads_03Apr2020"
+      currentPos = [19.094,72.8737]
+      zoom_level = 14
+     }
+    else if(ward == 'Lzones'){    
+      layer = "geonode:l_ward_15may" 
+      currentPos = [19.094,72.8737]
+      zoom_level = 14 
+     }
+    else if(ward == 'Lbuildings'){    
+      layer = "geonode:raheja_lward_swm_5nov19"
+      currentPos = [19.094,72.8737]
+      zoom_level = 14 
+    }
+   
+    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+        layers: layer,
+        format: 'image/png',
+        transparent: 'true',
+    });
+    wms_layer.addTo(mymap);
+    newLayerList.push(wms_layer);
+    // console.log(newLayerList);
+    mymap.setView(currentPos,zoom_level)  
+    // console.log(wms_layer);
+    addWMSLegend(layer);
+       
+    if (wms_legend) {
+      mymap.removeControl(wms_legend);
+    }
+    addWMSLegend(layer);
+    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+    console.log(TRIBLAYER);        
+}
+
+
+// ward 61 (K West)
+function putWard61(opt) {
+    // var district = document.getElementById("district").value;
+    // console.log("putward122 is : "+opt);
+    // mymap.setView([19.1176, 72.9060],11);
+    let ward = opt;
+   
+    if(ward == 'ward61'){    
+      layer = "ward61:corporator61boundary"
+      currentPos = [19.1423,72.8137]
+      zoom_level = 14 
+    }
+    else if(ward == 'ward61buildings'){    
+      layer = "ward61:buiding_polygon"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16 
+    }
+    else if(ward == 'ward61edu'){    
+      layer = "ward61:education_polygon"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16  
+    }
+    else if(ward == 'ward61fuel'){    
+      layer = "ward61:power_polygons"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16 
+    }
+    else if(ward == 'ward61government'){    
+      layer = "ward61:government_polygon"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16 
+    }
+   
+    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+        layers: layer,
+        format: 'image/png',
+        transparent: 'true',
+    });
+    wms_layer.addTo(mymap);
+    newLayerList.push(wms_layer);
+    // console.log(newLayerList);
+    mymap.setView(currentPos,zoom_level)  
+    // console.log(wms_layer);
+    addWMSLegend(layer);
+       
+    if (wms_legend) {
+      mymap.removeControl(wms_legend);
+    }
+    addWMSLegend(layer);
+    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/ward61/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+    console.log(TRIBLAYER);        
+}
+
 
 //to remove unchecked layer
 function removeWards1(opt) {
@@ -1182,6 +1598,231 @@ function remove(opt){
   mymap.removeLayer(newLayerList[opt]);
   remove(opt);
 }
+
+
+        mymap.addEventListener('click', Identify);
+        function Identify(e) {
+
+console.log("Identify",e);
+// set parameters needed for GetFeatureInfo WMS request
+var sw = mymap.options.crs.project(mymap.getBounds().getSouthWest());
+var ne = mymap.options.crs.project(mymap.getBounds().getNorthEast());
+var BBOX = sw.x + "," + sw.y + "," + ne.x + "," + ne.y;
+var WIDTH = mymap.getSize().x;
+var HEIGHT = mymap.getSize().y;
+
+var X = Math.trunc(mymap.layerPointToContainerPoint(e.layerPoint).x);
+var Y = Math.trunc(mymap.layerPointToContainerPoint(e.layerPoint).y);
+
+// compose the URL for the request
+
+
+var URL = TRIBLAYER + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
+console.log(URL);
+//send GetFeatureInfo as asynchronous HTTP request using jQuery $.ajax
+$.ajax({
+    url: URL,
+    dataType: "json",
+    type: "GET",
+    success: function(data) {
+        if (data.features.length !== 0) { // at least one feature returned in response
+            var feature = data.features[0]; // first feature from response
+            console.log(feature);
+            // Set up popup for clicked feature and open it
+            var popup = new L.Popup({
+                maxWidth: 300
+            });
+            if (feature.properties.zono_numbe) {
+                console.log("I reached at");
+                
+                if(feature.properties.zono_numbe == 1){
+                    lanes = "Akbar saikh chowl,"+"Muktabai chowl,"+"Laxman patel chowl,"+"Sulochna bane chowl,"+"John golbo chowl,"+"Atmaram sonar chowl,"+"	Dilima house,"+"Kutina house,"+"Rita john house,"+"Anthony kini house,"+"Mahendra niwas,"+"Rojibai agosti chowl,"+"Micle josef chowl,"+"Savitribai chowl,"+"Tigdi chowl,"+"Narayan niwas chowl,"+"Nitore chowl,"+"Vitthal worlikar chowl,"+"Naryan krupa chowl,"+"Guru krupa chowl,"+"Parvati bai niwas";
+
+                }
+                if(feature.properties.zono_numbe == 2){
+                    lanes = "Jayhind Krida Mandal,"+"Naveet Galli,"+"Buddist chaal,"+"Ganesa krida mandal,"+"Sanjay krida mandal,"+"Sarasvati band pataka,"+"Lakshmi narayan sadan,"+"Kalikhan chaal,"+"Hamuman galli,"+"Buddey house,"+"Tare Galli";
+
+                }
+                if(feature.properties.zono_numbe == 3){
+                    lanes = "Our Lady Of Velenkanni Cross,"+"Bhandarwada Ground,"+"Siddhivinayak Grhanirmana Sanstha ,"+"Waras Lane,"+"Love Star Krida Mandal,"+"Love Star Krida Mandal 2,"+"Amar Prem Chowk,"+"Amar Prem Krida mandal,"+"Ram singh chowl,"+"Mohan jayram chowl	Bhagirathi,"+"Daru pawar chowl,"+"Munsipal chaowl,"+"Gokhran chowl,"+"Ganpat shivra chowl,"+"ramdhani gupta niwas chowl,"+"Atmaram kharote chowl,"+"Bhagirathi niwas,"+"Chikane house";
+                }
+                if(feature.properties.zono_numbe == 4){
+                    lanes = "Milinda mitra mandal,"+"Datta kupa mandal,"+"Datta kupa mandal 2,"+"Baji Bala mitra mandal,"+"Sangama krida mandal,"+"Sambhaji mitra mandal,"+"Lucky matton shop";
+
+                }
+                if(feature.properties.zono_numbe == 5){
+                    lanes = "Jamat Hall	Datta Kridamandal,"+"Baji Balmandal	Amol classes,"+"Pakhari Galli,"+"Bajar Galli,"+"Vijay Mitra Mandal,"+"Chotu Bai Ganapat House,"+"Fish Market,"+"Aaradhna,"+"Yashwant Asharm,"+"Teen Batti Naka,"+"Bal Mitra Seva Mandal";
+
+                }
+                if(feature.properties.zono_numbe == 6){
+                    lanes = "Bhagat Galli,"+"Tare Galli,"+"Balchandra Nivas	Vrundavan,"+"Gonta Galli,"+"Jagruti Mandal,"+"Swarajya Mandal,"+"Manik Nakva House,"+"Pimpal Galli,"+"Lakshimi Jaganath Shruti Nivas,"+"Randhir Seva Mandal,"+"Mata Hirkani Nivas,"+"Jay Malhar House,"+"Aanad Classes,"+"Aaradhna Shankar Mandir";
+
+                }
+                if(feature.properties.zono_numbe == 7){
+                    lanes = "Dukkur Galli,"+"Dukkur Galli 2,"+"Tare House,"+"Isana John Koli,"+"Amar Meghnath Mandal,"+"Sadguru Bhavan,"+"Dyaneshwar Mandal,"+"Ekvira Nivas (Shriram Galli)	Shriram Galli,"+"Shriram Galli 2,"+"Shri Lakshimi Nivas,"+"Amar Sports Clube,"+"120 Kridamandal,"+"K House (Sonapur Lane),"+"Sonapur Lane,"+"Dyaneshwar Kridamandal Mandal,"+"Shriram Galli 3,"+"Matru Smruti Nivas,"+"Sonapur Lane 2,"+"Ekvira Nivas (Sonpur Lane),"+"Sai baba mandir";
+
+                }
+                if(feature.properties.zono_numbe == 8){
+                    lanes = "Walmiki Chowk,"+"Ganesha Temple,"+"Walmiki Chowk 2,"+"Pandharinath Niwas,"+"Janaki sadhan,"+"Balvir Galli,"+"Parvatibai,"+"Parashuram Niwas,"+"Balvir Galli 2,"+"Balvir Galli 3,"+"Walmiki Chowk 3,"+"Shankar Patil Niwas";
+
+                }
+                if(feature.properties.zono_numbe == 9){
+                    lanes = "Taak galli,"+"Dinesh store,"+"Taak galli 1,"+"Shree krishna mandir,"+"taak galli,"+"Taak galli 2,"+"Sri sai madir ,"+"Sai baba madir,"+"Siddhivinayak krida mandal,"+"Sri ram galli,"+"Astik brass band Pathak	Amar meghnath mandal,"+"Nautan bala mitra mandal";
+
+                }
+                if(feature.properties.zono_numbe == 10){
+                    lanes = "Kranti Kridamandal,"+"Lkshimi Sahwas,"+"Ashish Bhavan ,"+"Vikas Mitra Mandam,"+"Vijay Jayant Koli Nivas,"+"Vikas Galli,"+"Mahapooja Mandal,"+"Vikas Galli,"+"Dinesh Store,"+"Taak Galli,"+"Shree Ganesh Seva Mandal,"+"Navjivan Kridamandal,"+"Navjivan Wasahat,"+"Navjivan Wasahat 2,"+"Killa (Worli Koliwada),"+"K House (Killa),"+"	Sai Baba Mandir (Navjivan)";
+
+                }
+                if(feature.properties.zono_numbe == 11){
+                    lanes = "Sri Sai Prasad Sadan,"+"Nikam House,"+"Frank Mery Villa,"+"Worli Village Nagari vikasa Sanstha,"+"Damodara Seva Mandal,"+"Damodara Ground,"+"Dattatraya save Mandal,"+"Datta mandir ";
+
+                }
+                if(feature.properties.zono_numbe == 12){
+                    lanes = "Golfadevi Navratrotsava Mandal,"+"Golfadevi Navratrotsava Mandal 2	,"+"Dhananjaya krida mandal,"+"Jana seva mandal,"+"Sai baba mandir Ghumata mandal,"+"Golfadevi mandir,"+"Golfadevi Krida mandal";
+
+                }
+                if(feature.properties.zono_numbe == 13){
+                    lanes = "Ganpti Mandir,"+"Amol classes,"+"Prakash Arun Band Pathk,"+"Shilpa Hair Saloon Galli,"+"Dr Yadav Galli,"+"Mary Nivas,"+"Shree Sai Krupa Market,"+"Hanuman Nivas,"+"SAP Enterpriser ,"+"Sangam Kridamandal,"+"Sangam Kridamandal 2	,"+"Sangam Kridamandal 3";
+
+                }
+                
+                content = "<table class = 'popupclass' ><tr colspan='5'><b>Zone Information</b></tr>" +
+                    "<tr><td><b>Name</b></td><td>" + feature.properties.zone_name + "</td></tr>" +
+                    "<tr><td><b>Number </b></td><td>" + feature.properties.zono_numbe+ "</td></tr>" + 
+                    "<tr><td><b>Lanes</b></td><td>" + lanes+ "</td></tr>" +"</table>";
+            }
+            if (feature.properties.layer) {
+                console.log("I reached at");
+                content = "<table class = 'popupclass' ><tr><td><b>BinPath Information</b></td><td></td></tr>" +
+                    "<tr><td><b>Zone Name</b></td><td>" + feature.properties.zone_name + "</td></tr>" +
+                    "<tr><td><b>Zone Id</b></td><td>" + feature.properties.zone_id+ "</td></tr>" + "</table>";
+            } 
+            if (feature.properties.bubble_nm) {
+                console.log("I reached at");
+                content = "<table class = 'popupclass' ><tr><td><b>Bubble Information</b></td><td></td></tr>" +
+                    "<tr><td><b>Bubble Id: </b></td><td>" + feature.properties.bubble_id + "</td></tr>" +
+                    "<tr><td><b>Bubble Name: </b></td><td>" + feature.properties.bubble_nm + "</td></tr>" +
+                    "<tr><td><b>Zone Name: </b></td><td>" + feature.properties.zone_name + "</td></tr>" +
+                    "<tr><td><b>Zone Number: </b></td><td>" + feature.properties.zone_id+ "</td></tr>" + "</table>";
+            } 
+            if (feature.properties.spot_id) {
+                // console.log("I reached at");
+            
+                str1 = feature.properties.zone_id
+                items = str1.split('_')
+                spot_num = items[items.length - 1]
+                fn = feature.properties.spot_name.trim()
+                // console.log(items[items.length - 1]);
+                // console.log(items);
+                // console.log
+                // filename = spot_num + '.' + feature.properties.spot_id +fn+'.jpg';
+                filename = spot_num + '.' + feature.properties.spot_id +fn;
+                console.log(filename)
+
+                content = "<table border = 2 class = 'popupclass' ><tr colspan='4'><b>Spot Information</b></tr>"+
+                    "<tr><td colSpan='5'><b>Spot Number: </b></td><td>" + feature.properties.spot_id + "</td></tr>" +
+                    "<tr><td colSpan='5'><b>Spot Name: </b></td><td>" + feature.properties.spot_name + "</td></tr>" +
+                    "<tr><td colSpan='5'><b>Zone ID: </b></td><td>" + feature.properties.zone_id + "</td></tr>" +
+                    "<tr><td colSpan='5'><b>Zone Name: </b></td><td>" + feature.properties.zone_name+ "</td></tr>" +
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='../static/images/SPOT21.4.2021/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+            } 
+            
+            if (feature.properties.Temple_nam) {
+                // console.log("For Grounds(lanmark menu)
+                str1 = feature.properties.Temple_nam
+                items = str1.split('.')
+                Temple_nam = items[items.length - 2]
+                fn = feature.properties.Temple_nam.trim()
+                console.log(items[items.length - 2 ]);
+                console.log(items);
+                // console.log
+                filename = Temple_nam+'.jpg';
+                console.log(filename)
+              
+                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Worship Place Information</b></tr>"+
+                    
+                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +Temple_nam+ "</td></tr>" +
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='../static/images/Temple/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+            } 
+            if (feature.properties.Name) {
+                // console.log("For Grounds(lanmark menu)
+                str1 = feature.properties.Name
+                items = str1.split('.')
+                ground_name = items[items.length - 2]
+                fn = feature.properties.Name.trim()
+                console.log(items[items.length - 2 ]);
+                console.log(items);
+                // console.log
+                filename = ground_name+'.jpg';
+                console.log(filename)
+              
+                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Ground Information</b></tr>"+
+                    
+                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +ground_name+ "</td></tr>" +
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='../static/images/Ground/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+            }
+            if (feature.properties.Toilet_Nam) {
+                console.log("For Toilets(lanmark menu)")
+                str1 = feature.properties.Toilet_Nam
+                items = str1.split('.')
+                Toilet_Nam = items[items.length - 2]
+                fn = feature.properties.Toilet_Nam.trim()
+                console.log(items[items.length - 2 ]);
+                console.log(items);
+                // console.log
+                filename = Toilet_Nam+'.jpg';
+                console.log(filename)
+              
+                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Toilet Information</b></tr>"+
+                    
+                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +Toilet_Nam+ "</td></tr>" +
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='../static/images/Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+            } 
+            if (feature.properties.Name) {
+                console.log("For OpenPlace(lanmark menu)")
+                // alert("In openplace")
+                str1 = feature.properties.OpenPlace
+                items = str1.split('.')
+                OpenPlace = items[items.length - 2]
+                fn = feature.properties.OpenPlace.trim()
+                console.log(items[items.length - 2 ]);
+                console.log(items);
+                // console.log
+                filename = OpenPlace+'.jpg';
+                console.log(filename)
+              
+                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Workship Places Information</b></tr>"+
+                    
+                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +OpenPlace+ "</td></tr>" +
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='../static/images/Open Spaces/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+            } 
+            if (feature.properties.Pits_Name) {
+                console.log("For Pits_Name(lanmark menu)")
+                str1 = feature.properties.Pits_Name
+                items = str1.split('.')
+                Pits_Name = items[items.length - 2]
+                fn = feature.properties.Pits_Name.trim()
+                console.log(items[items.length - 2 ]);
+                console.log(items);
+                // console.log
+                filename = Pits_Name+'.jpg';
+                console.log(filename)
+              
+                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Pit Information</b></tr>"+
+                    
+                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +Pits_Name+ "</td></tr>" +
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='../static/images/Pits/kandevadi composting.jpg' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+            }
+
+            popup.setContent(content);
+                popup.setLatLng(e.latlng);
+                mymap.openPopup(popup);
+            }
+        }
+    });
+}
+
 
 </script>
 
