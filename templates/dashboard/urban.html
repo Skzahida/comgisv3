@@ -857,7 +857,7 @@ function getWard(obj) {
         else if (ward == "GStemples")
           removeLayer("worli-koliwada:temples_21june21")
         else if (ward == "worli-koliwada")
-          removeLayer("geonode:worli_pincodes_30_25_18")  
+          removeLayer("worli-koliwada:worli-koliwada_boundary_7oct21")  
       }
       
 }
@@ -1461,7 +1461,7 @@ function putFacility2(opt) {
     console.log(wms_layer);
     //console.log(wms_legend); 
     // addWMSLegend(layer);
-    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
     // // console.log(TRIBLAYER);
 
 }
@@ -1576,7 +1576,7 @@ function removeLayer(unchecked_layer) {
 //   for(var i = 0; i < newLayerList.length ; i++){
 //     console.log("ARRAY LIST" + newLayerList[i.value])
 // }
-//  alert(unchecked_layer)
+  // alert(unchecked_layer)
   newLayerList.forEach((layer, index) => {
     console.log("newlayerlist :"+ layer.options.layers+":"+index)
   if (layer.options.layers === unchecked_layer) {
@@ -1600,10 +1600,12 @@ function remove(opt){
 }
 
 
-        mymap.addEventListener('click', Identify);
-        function Identify(e) {
+mymap.addEventListener('click', Identify);
+
+function Identify(e) {
 
 console.log("Identify",e);
+console.log("Triblayer is"+TRIBLAYER)
 // set parameters needed for GetFeatureInfo WMS request
 var sw = mymap.options.crs.project(mymap.getBounds().getSouthWest());
 var ne = mymap.options.crs.project(mymap.getBounds().getNorthEast());
@@ -1813,6 +1815,24 @@ $.ajax({
                     
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +Pits_Name+ "</td></tr>" +
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='../static/images/Pits/kandevadi composting.jpg' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+            }
+            if (Feature.properties.name) {
+                
+                // str1 = feature.properties.Pits_Name
+                // items = str1.split('.')
+                // Pits_Name = items[items.length - 2]
+                // fn = feature.properties.Pits_Name.trim()
+                // console.log(items[items.length - 2 ]);
+                // console.log(items);
+                // console.log
+                // filename = 'Roads Name+'.jpg';
+                // console.log(filename)
+              
+                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Road Information</b></tr>"+
+                    
+                    "<tr><td colSpan='5'><b>Road Name:</b></td><td>" +name+ "</td></tr>" +
+                    
+                    "<tr><td colSpan='5'><b>Type: </b></td><td>"+"</a></td></tr>" + "</table>";
             }
 
             popup.setContent(content);
