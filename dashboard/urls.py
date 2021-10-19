@@ -26,6 +26,7 @@ urlpatterns = [
     path('dashboard/fgis', views.map, name = 'map'),
     # path('dashboard/schools', views.schools, name = 'schools'),
     path('dashboard/chandrapurgis', views.chandrapurgis, name = 'chandrapurgis'),
+    path('dashboard/raigadgis', views.raigadgis, name = 'raigadgis'),
     # path('',include(router.urls)),
 
 
