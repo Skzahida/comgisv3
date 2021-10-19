@@ -57,7 +57,10 @@ def map(request):
     return render(request, "dashboard/map.html") 
 
 def chandrapurgis(request):
-    return render(request, "dashboard/chandrapurgis.html")   
+    return render(request, "dashboard/chandrapurgis.html") 
+    
+def raigadgis(request):
+    return render(request, "dashboard/raigadgis.html")       
 
 # def schools(request):
 #     school_states = IndiaFinal1617BasicLatlong.objects.values_list('states', flat=True).distinct().order_by('states')
