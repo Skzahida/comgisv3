@@ -904,6 +904,7 @@
                                 function getBoundary(obj) {
                                     let boundary = obj.value;
                                     if ($(obj).is(":checked")) {
+                                        
                                         if (boundary == "{state}")
                                             putWMS("geonode:states_in_india");
                                         else if (boundary == "{district}")
@@ -941,6 +942,7 @@
                                     var district = document.getElementById('district').value;
                                     console.log(district);
                                     if ($(obj).is(":checked")) {
+                                        mymap.setView([19.7515,75.7139],7);
                                         if (boundary == "{mahadem}")
                                             putWMS("geonode:maha_demography_with_mumbai");
                                             else if(boundary == "{mahatown}"){
