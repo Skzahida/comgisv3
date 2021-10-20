@@ -2835,7 +2835,15 @@ function setView1(layerName, selectedBoundary) {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>Urban Areas</b></td><td>" + 
                                                         "<tr><td><b>State</b></td><td>" + feature.properties.state_name + "</td></tr>" +
                                                         "<tr><td><b>District</b></td><td>" + feature.properties.district_n + "</td></tr>" +
-                                                        "<tr><td><b>Town Name</b></td><td>" + feature.properties.town_name + "</td></tr>";
+                                                        "<tr><td><b>Town Name</b></td><td>" + feature.properties.town_name + "</td></tr>"+
+                                                        "<tr><td><b>Total Houses</b></td><td>" + feature.properties.tot_hh + "</td></tr>" +
+                                                        "<tr><td><b>Total Population</b></td><td>" + feature.properties.tot_pop + "</td></tr>" +
+                                                        "<tr><td><b>Total Male Population</b></td><td>" + feature.properties.tot_mpop + "</td></tr>" +
+                                                        "<tr><td><b>Total Female Population</b></td><td>" + feature.properties.tot_f_pop + "</td></tr>" +
+                                                        "<tr><td><b>Total SC Population</b></td><td>" + feature.properties.tot_sc_pop + "</td></tr>" +
+                                                        "<tr><td><b>Pucca Road</b></td><td>" + feature.properties.pucca_road + "</td></tr>" +
+                                                        "<tr><td><b>Kutcha Road</b></td><td>" + feature.properties.kutcha_roa + "</td></tr>" ;                                                      
+
 
                                                 }
                                                  else {
