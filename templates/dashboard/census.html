@@ -308,6 +308,7 @@ function addMyNewLayers(amenity,dis){
 // var base_url = "https://geonode.communitygis.net/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&";
 
 
+
 var tempParameter = defaultParameters;
 if(amenity === 'Village Amenities'){
     if(villageLayerCode[index] == ''){
@@ -338,8 +339,8 @@ else if(amenity === 'Household Amenities'){
     //     var base_url = "https://geonode.communitygis.net/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&";
     // layer_url =base_url + "&typeName=geonode%3Ahousehold&cql_filter=district_n='"+houseLayerCode[index]+"'";
     displayPolygon(tempParameter,districtLat[index],districtLong[index]);
-
-    //  console.log(tempParameter);
+    
+     console.log(tempParameter);
 
      myDistrictLayerList.push(houseLayerCode[index]);
         } 
@@ -356,7 +357,7 @@ else if(amenity === 'Household Amenities'){
 
             displayPolygon(tempParameter,districtLat[index],districtLong[index]);
 
-    // //    console.log(layer_url);
+        console.log(layer_url);
 
         myDistrictLayerList.push(townLayerCode[index]);
         } 
