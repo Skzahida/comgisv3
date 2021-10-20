@@ -417,6 +417,11 @@
                                                     <tb> <label><input type="checkbox" value="{mahadem}" onchange="getBoundaryst(this)"></tb><tb><span> Demography (Maharashtra's only as for now) </span></label></tb>
                                                 </tr>
                                             </div>
+                                            <div class="checkbox" id="stboun">
+                                                <tr>
+                                                    <tb> <label><input type="checkbox" value="{mahatown}" onchange="getBoundaryst(this)"></tb><tb><span> Urban Areas (Maharashtra's only as for now) </span></label></tb>
+                                                </tr>
+                                            </div>
                                             <div class="checkbox">
                                                 <label><input type="checkbox" value="{maharoad}" onchange="getBoundaryst(this)"><span>  Road Network (Maharashtra's only as for now)</span></label>
                                             </div>
@@ -938,6 +943,9 @@
                                     if ($(obj).is(":checked")) {
                                         if (boundary == "{mahadem}")
                                             putWMS("geonode:maha_demography_with_mumbai");
+                                            else if(boundary == "{mahatown}"){
+                                                putWMS("geonode:TownCensus_maharashtra_1_00");
+                                            }
                                         else if (boundary == "{maharoad}"){
                                             // if (district){
                                             //     console.log(district);
@@ -957,6 +965,9 @@
                                     } else {
                                         if (boundary == "{mahadem}")
                                             removeWMS("geonode:maha_demography_with_mumbai");
+                                            else if(boundary == "{mahatown}"){
+                                                removeWMS("geonode:TownCensus_maharashtra_1_00");
+                                            }
                                         else if (boundary == "{maharoad}")
                                             removeWMS("geonode:osm_highways");
                                         else if (boundary == "{mahatrib}")
@@ -2817,7 +2828,15 @@ function setView1(layerName, selectedBoundary) {
                                                         "<tr><td><b>Village</b></td><td>" + feature.properties.village_na + "</td></tr>" +
                                                         "<tr><td><b>School Name</b></td><td>" + feature.properties.school_nam + "</td></tr>";
 
-                                                } else {
+                                                }
+                                                else if (feature.properties.town_name) {
+                                                    insti_content = "<table class = 'popupclass' ><tr><td><b>Urban Areas</b></td><td>" + 
+                                                        "<tr><td><b>State</b></td><td>" + feature.properties.state_name + "</td></tr>" +
+                                                        "<tr><td><b>District</b></td><td>" + feature.properties.district_n + "</td></tr>" +
+                                                        "<tr><td><b>Town Name</b></td><td>" + feature.properties.town_name + "</td></tr>";
+
+                                                }
+                                                 else {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>Facility Name</b></td><td>" + feature.properties.facltyname + "</td></tr>" +
                                                         "<tr><td><b>Facility Type</b></td><td>" + feature.properties.facltytyp + "</td></tr>" +
                                                         "<tr><td><b>Amenities</b></td><td>" + feature.properties.amenities + "</td></tr>" +

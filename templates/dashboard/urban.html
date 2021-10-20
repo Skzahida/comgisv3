@@ -379,7 +379,7 @@ label{
                   <!-- <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>  -->
                   
                   <label for="GS"> 
-                    <input type="checkbox" id="wardGS" value="GS" onclick="ViewWards(this)" />GS</label>  
+                    <input type="checkbox" id="wardGS" value="GS" onclick="ViewWards(this)" />Ward GS</label>  
                   <div id ="wardGSdiv">
                   <p style="padding-left: 30px;">
                       <label for="worli-koliwada">
@@ -606,12 +606,15 @@ function showCheckboxes1() {
 }
 function ViewWards(obj) {
   // alert(obj.value)
+  if ($(obj).is(":checked")) {
+
   if(obj.value == 'S'){
     var checkboxes1 = document.getElementById("wardSdiv");
     var checkbox = document.getElementById("Sward")
     layer = 'WARD-S:s_ward';
     currentPos = [19.126,72.9296];
   }
+    
   if(obj.value == 'GS'){
     var checkboxes1 = document.getElementById("wardGSdiv");
     var checkbox = document.getElementById("GSward")
@@ -689,12 +692,20 @@ function ViewWards(obj) {
     checkboxes1.style.display = "none";
     checkbox.style.display ="none";
     expanded = false;    
-  } 
+  }
+  
+}
+  else{
+    console.log("else in view wards");
+    if(obj.value == 'GS'){
+      removeWards("G/S")
+    }
+  }
 }
 
 function getWard(obj) {
     let ward = obj.value;
-    console.log(ward);
+    console.log("ward_value",ward);
     // alert("obj is-"+obj.value)
     
     if ($(obj).is(":checked")) {
@@ -1159,6 +1170,8 @@ function putLWard(opt) {
     if (wms_legend) {
       mymap.removeControl(wms_legend);
     }
+
+
     addWMSLegend(layer);
     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
     console.log(TRIBLAYER);        
@@ -1228,7 +1241,7 @@ newLayerList.forEach(layer => mymap.removeLayer(layer));
 
 function removeWards(opt) {
   //  alert("In remove Wards"+opt);
-  console.log(opt);
+  console.log("removeward=",opt);
   // var a = "ward_name="+"'"+opt+"'";
   var a = "Name="+"'"+opt+"'";
   console.log(a);
@@ -1704,7 +1717,11 @@ $.ajax({
                 content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Toilet Information</b></tr>"+
                     
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +Toilet_Nam+ "</td></tr>" +
+<<<<<<< HEAD
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+=======
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Public Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+>>>>>>> 591dabcf9c5931988cd8980f1d04ff9261c7503b
             } 
             if (feature.properties.opnplace) {
                 
