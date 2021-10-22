@@ -1717,7 +1717,11 @@ $.ajax({
                 content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Toilet Information</b></tr>"+
                     
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +Toilet_Nam+ "</td></tr>" +
+
+                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Public Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
+
             } 
             if (feature.properties.opnplace) {
                 
