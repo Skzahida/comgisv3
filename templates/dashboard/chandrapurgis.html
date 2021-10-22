@@ -470,6 +470,9 @@
                             <div class="checkbox">
                                 <label><input type="checkbox" value="{pincode}" onchange="getBoundaryru(this)"><span> Pincode</span></label>
                             </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="{cfr_villages}" onchange="getBoundaryru(this)"><span> CFR Villages</span></label>
+                            </div>
                             
                         </div>
                     </div>  
@@ -989,7 +992,12 @@
                         putWMSru("geonode:maha_village_polygon_29mar");
                     else if (boundary == "{pincode}")
                         putWMSru("chandrapur:india_pincodes_13may");
-                    else if (boundary == "{taluka}")
+                    else if (boundary == "{cfr_villages}"){
+                        putWMSru("chandrapur:chandrapur_villages_cfr");  
+                        putWMSru("chandrapur:chandrapur_cfr_centroids");
+                        // putCfr("chandrapur:chandrapur_cfr_centroids");
+                    }
+                        else if (boundary == "{taluka}")
                         putWMSru("geonode:maha_taluka_13march2021");
                     else if (boundary == "{demog}")
                         putWMSru("geonode:maha_demography_with_mumbai");
@@ -1018,6 +1026,8 @@
                         removeWMS("geonode:maha_village_polygon_29mar");
                     else if (boundary == "{pincode}")
                         removeWMS("chandrapur:india_pincodes_13may");
+                    else if (boundary == "{cfr_villages}")
+                        removeWMS("chandrapur:chandrapur_villages_cfr");    
                     else if (boundary == "{taluka}")
                         removeWMS("geonode:maha_taluka_13march2021");
                     else if (boundary == "{demog}")
@@ -2195,6 +2205,110 @@ function querybufawc(currentPos) {
                 });
 
             }
+//chandrapur cfr villages
+            function putCfr(facility) {
+                let rootUrl = 'https://geoserver2.communitygis.net/geoserver/chandrapur/ows';
+                //onsole.log(facility);
+                var cql = facility;
+                let options = {
+                    service: 'WFS',
+                    version: '1.0.0',
+                    request: 'GetFeature',
+                    outputFormat: 'application/json',
+                    typeName: facility,
+                    // cql_filter: `category='${cql}' AND district='CHANDRAPUR'`,
+                    propertyName: 'sno,taluka_eng,sum_areas_',
+
+                };
+                let parameters = L.Util.extend(options);
+                cql_url = rootUrl + L.Util.getParamString(parameters)
+                console.log(cql_url);
+                tableurl=cql_url;
+                function geojsonMarkerOptions(feature, fac) {
+                    var rad;
+                    var num = `${feature.properties.sum_areas_}`;
+                    if (num > 0 && num < 30) {
+                        rad = 7;
+                    } else if (num > 30 && num < 100) {
+                        rad = 9;
+                    } else {
+                        rad = 11;
+                    }
+
+                    let circleProp = {
+                        radius: rad,
+                        fillColor: "#",
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    };
+                    if (fac === 'chandrapur:chandrapur_cfr_centroids') circleProp['fillColor'] = '#fa4646'
+                    // else if (fac === 'DCHC') circleProp['fillColor'] = '#a8fc0d'
+                    // else if (fac === 'DCCC') circleProp['fillColor'] = '#fc0de8'
+
+                    return circleProp
+                };
+
+                function onEachFeatureForPoint(feature, layer) {
+                    const unavailable = '-';
+                    const updateDate = "Dedicated COVID Facilities-Arogya";
+                    layer.bindPopup(`<table class = 'popupclass'>
+                        <tr><td>Facility Name:</td><td> ${feature.properties.faclty_nam}</td></tr>
+                        <tr><td>Category:</td><td> ${feature.properties.category}</td></tr>
+                         <tr><td>Facility Type:</td><td> ${feature.properties.type}</td></tr>
+                        <tr><td>Total Isolation beds(excluding ICU beds)</td><td> ${feature.properties.iso_minus_}</td></tr>
+                        <tr><td>Isolation beds of Confirmed Cases:</td><td> ${feature.properties.iso_cnfm_}</td></tr>
+                        <tr><td>Isolation beds for Suspected Cases:</td><td> ${feature.properties.iso_suspec}</td></tr>
+                        <tr><td>O2 Supported Beds:</td><td> ${feature.properties.o2suported}</td></tr>
+                        <tr><td>Total ICU Beds:</td><td> ${feature.properties.total_icu}</td></tr>
+                        <tr><td>No. of Ventilators:</td><td> ${feature.properties.ventilator}</td></tr>
+                        <tr><td>Address:</td><td> ${feature.properties.address}</td></tr>
+                        <tr><td>Management:</td><td> ${unavailable}</td></tr>
+                        <tr><td>Food Arrangement:</td><td> ${unavailable}</td></tr>
+                        <tr><td>Email ID:</td><td> ${unavailable}</td></tr>
+                        <tr><td>Website:</td><td> ${unavailable}</td></tr>
+                        <tr><td>Phone number:</td><td> ${unavailable}</td></tr>
+                        <tr><td>Last updated:</td><td> ${feature.properties.date}</td></tr>
+                        <tr><button type="button" class="btn btn-outline-dark" style="color:white;"><a style="color:white;text-decoration:none" href="https://ee.humanitarianresponse.info/x/#BLiUveaW">Click here for Correction/Feedbacks</a></button></tr>
+                        </table>`)
+                }
+
+                // mymap.spin(true, {
+                //     lines: 9,
+                //     length: 2,
+                //     width: 20,
+                //     scale: 60,
+                //     radius: 70,
+                //     color: "grey"
+                // });
+                fetch(cql_url).then(
+                    function(response) {
+                        if (response.status !== 200) {
+                            console.log('Looks like there was a problem. Status Code: ' +
+                                response.status);
+                            return;
+                        }
+                        response.json().then(function(geojsonData) {
+                            healthFacility = L.geoJson(geojsonData.features, {
+                                pointToLayer: function(feature, latlng) {
+                                    return L.circleMarker(latlng, geojsonMarkerOptions(feature, facility));
+                                },
+                                // onEachFeature: onEachFeatureForPoint,
+                            }).addTo(mymap);
+                            // legend.addTo(mymap);
+                            
+                            LayerList.push(healthFacility);
+                            activatedHealthFacility[facility] = healthFacility;
+                            // legend.update();
+                        });
+
+
+                    }).catch(function(err) {
+                    console.log('Fetch Error :-S', err);
+                });
+
+            }
 
 
             // IF LOCATION FETCH BY BROWSER SUCCESS
@@ -2716,7 +2830,38 @@ function querybufawc(currentPos) {
                     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                     console.log(TRIBLAYER);
 
-                }else if (layer=="chandrapur:polygon_landuse") {
+                }
+                else if (layer=="chandrapur:chandrapur_villages_cfr") {
+                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                        layers: layer,
+                        format: 'image/png',
+                        transparent: 'true',
+                        
+                        
+                    });
+                   
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    console.log(TRIBLAYER);
+
+                    
+                   
+                }
+                else if (layer=="chandrapur:chandrapur_cfr_centroids") {
+                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                        layers: layer,
+                        format: 'image/png',
+                        transparent: 'true',
+                        
+                        
+                    });
+                   
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    console.log(TRIBLAYER);
+
+                    
+                   
+                }
+                else if (layer=="chandrapur:polygon_landuse") {
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
@@ -2766,7 +2911,9 @@ function querybufawc(currentPos) {
                 
 
                 }
-            
+                
+
+
                 console.log(wms_layer);
                 wms_layer.addTo(mymap);
                 console.log('hii');
@@ -3441,7 +3588,8 @@ function querybufawc(currentPos) {
                 console.log(e);
 
                 var URL = TRIBLAYER + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
-                console.log(URL);
+                // console.log(URL);
+                console.log("URL",URL);
                 //send GetFeatureInfo as asynchronous HTTP request using jQuery $.ajax
                 $.ajax({
                     url: URL,
@@ -3509,7 +3657,17 @@ function querybufawc(currentPos) {
                                     "<tr><td>Total Scheduled Tribes Population of Town</td><td><b>"+ feature.properties.tot_st_pop+"<b></td></tr>"+    
                                     "<tr><td>Density (Census 2011)</td><td><b>"+ feature.properties.density_20+"<b></td></tr></table>";
 
-                            }else if (feature.properties.waterway) {
+                            }
+                            else if (feature.properties.taluka_eng) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>CFR Villages</b></td><td>" + 
+                                    "<tr><td><b>District</b></td><td>" + "Chandrapur" + "</td></tr>" +
+                                     "<tr><td>Taluka</td><td><b>"+ feature.properties.taluka_eng+"<b></td></tr>"+    
+                                    "<tr><td>Village Name</td><td><b>"+ feature.properties.village__1+"<b></td></tr>"+    
+                                    "<tr><td>Total Area</td><td><b>"+ feature.properties.sum_areas_+"<b></td></tr>"+    
+                                    "</table>";
+
+                            }
+                            else if (feature.properties.waterway) {
                                 insti_content = "<table class = 'popupclass' ><tr><td><b>Waterways</b></td><td>" + feature.properties.district + "</td></tr>" +
                                     "<tr><td><b>Name</b></td><td>" + feature.properties.name + "</td></tr>" +
                                      "<tr><td>Waterway Type</td><td><b>"+ feature.properties.waterway+"<b></td></tr>"+    

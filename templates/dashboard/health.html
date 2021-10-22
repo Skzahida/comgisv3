@@ -2791,6 +2791,7 @@ function setView1(layerName, selectedBoundary) {
 
                                     var URL = TRIBLAYER + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
                                     //console.log(e);
+                                    // console.log("URL",URL);
                                     $.ajax({
                                         url: URL,
                                         dataType: "json",
