@@ -663,9 +663,9 @@ function ViewWards(obj) {
     console.log(newLayerList);
     // mymap.setView([19.126,72.9296],13)
     mymap.setView(currentPos, 13)
-    // if (wms_legend) {
-    //     mymap.removeControl(wms_legend);
-    // }
+    if (wms_legend) {
+        mymap.removeControl(wms_legend);
+    }
     console.log(wms_layer);  
     }else{
 
@@ -683,9 +683,9 @@ function ViewWards(obj) {
     console.log(newLayerList);
     // mymap.setView([19.126,72.9296],13)
     mymap.setView(currentPos, 13)
-    // if (wms_legend) {
-    //     mymap.removeControl(wms_legend);
-    // }
+    if (wms_legend) {
+        mymap.removeControl(wms_legend);
+    }
     console.log(wms_layer);
   }
   } else {
@@ -1034,7 +1034,7 @@ function putWards122(opt) {
     // console.log(newLayerList);
     mymap.setView(currentPos,zoom_level)  
     // console.log(wms_layer);
-    addWMSLegend(layer);
+    // addWMSLegend(layer);
        
     if (wms_legend) {
       mymap.removeControl(wms_legend);
@@ -1165,8 +1165,8 @@ function putLWard(opt) {
     // console.log(newLayerList);
     mymap.setView(currentPos,zoom_level)  
     // console.log(wms_layer);
-    addWMSLegend(layer);
-    alert(wms_legend)
+    // addWMSLegend(layer);
+    // alert(wms_legend)
     if (wms_legend) {
       mymap.removeControl(wms_legend);
     }
@@ -1221,7 +1221,7 @@ function putWard61(opt) {
     // console.log(newLayerList);
     mymap.setView(currentPos,zoom_level)  
     // console.log(wms_layer);
-    addWMSLegend(layer);
+    // addWMSLegend(layer);
        
     if (wms_legend) {
       mymap.removeControl(wms_legend);
@@ -1531,7 +1531,7 @@ function remove(opt){
   console.log(opt);
   console.log(newLayerList[opt]);
   mymap.removeLayer(newLayerList[opt]);
-  remove(opt);
+  // remove(opt);
   if (wms_legend) {
         // alert(wms_legend)
         mymap.removeControl(wms_legend);
