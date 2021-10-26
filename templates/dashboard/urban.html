@@ -293,6 +293,9 @@ label{
           <input type="checkbox" id="Kwestward" value="ward61buildings" onchange="getWard(this)"/>Buildings</label>
           
           <label for="kwest">
+            <input type="checkbox" id="Kwestward" value="ward61roads" onchange="getWard(this)"/>Roads</label>
+          
+          <label for="kwest">
             <input type="checkbox" id="Kwestward" value="ward61edu" onchange="getWard(this)"/>Education Places</label>
           
             <label for="kwest">
@@ -760,6 +763,8 @@ function getWard(obj) {
          putWard61("ward61")
         else if (ward == "ward61buildings")
           putWard61("ward61buildings")
+        else if(ward =="ward61roads")
+          putWard61("ward61roads")
         else if (ward == "ward61edu")
           putWard61("ward61edu")
         else if (ward == "ward61fuel")
@@ -841,6 +846,8 @@ function getWard(obj) {
           removeLayer("ward61:corporator61boundary")
         else if (ward == "ward61buildings")
           removeLayer("ward61:buiding_polygon")
+        else if (ward == "ward61roads")
+          removeLayer("ward61:ward61osmroad25OCT")
         else if (ward == "ward61edu")
           removeLayer("ward61:education_polygon")
         else if (ward == "ward61fuel")
@@ -1194,6 +1201,11 @@ function putWard61(opt) {
       layer = "ward61:buiding_polygon"
       currentPos = [19.1467,72.8283]
       zoom_level = 16 
+    }
+    else if(ward == 'ward61roads'){    
+      layer = "ward61:ward61osmroad25OCT"
+      currentPos = [19.1467,72.8283]
+      zoom_level = 16  
     }
     else if(ward == 'ward61edu'){    
       layer = "ward61:education_polygon"
