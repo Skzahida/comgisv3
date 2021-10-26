@@ -334,6 +334,17 @@
   display: block;
 }
 
+
+#active_villages {
+  display: none;
+  border: 1px #dadada solid;
+  
+}
+
+#active_villages label {
+  display: block;
+}
+
 </style>
 
 <div id="side-bar" style="background-color: rgba(255, 255, 255);">
@@ -484,6 +495,12 @@
                                     <p style="padding-left: 30px;">
                                     <label><input type="checkbox" id="village" value="{swadesh}" onchange="getVillage(this)"><span> Swadesh Villages</span></label>
                                     <label><input type="checkbox" id="village" value="{active}" onchange="getVillage(this)"><span> Active Villages</span></label>
+                                    <div id="active_villages">
+                                        <label><input type="checkbox" id="active" value="{case1}" onchange="getVillage(this)"><span> Case 1</span></label>
+                                        <label><input type="checkbox" id="active" value="{case2}" onchange="getVillage(this)"><span> Case 2</span></label>
+                                        <label><input type="checkbox" id="active" value="{case3}" onchange="getVillage(this)"><span> Case 3</span></label>
+
+                                    </div>
                                 </p>
 
                                 </div>
@@ -904,7 +921,21 @@
                 }
             }
 
-          
+            function getVillage(obj){
+                let boundary = obj.value;
+                if ($(obj).is(":checked")){
+                    if(boundary == "{swadesh}")
+                        putSwadeshVillage("Y");
+                    else if(boundary == "{active}")
+                        putActiveVillage("Y"); 
+                }
+                else{
+                    if (boundary == "{swadesh}")
+                        removeWMS("geonode:raigarh_villages");
+                    else if(boundary == "{active}")
+                        removeWMS("geonode:raigarh_villages");    
+                }
+            }
 
             function getBoundary(obj) {
                 let boundary = obj.value;
@@ -974,6 +1005,68 @@
                 }
             }
 
+            function putSwadeshVillage(opt) {
+    // var district = document.getElementById("district").value;
+    console.log("putvillage",opt);
+    
+    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+        // layers: 'geonode:island_city_revised_2_july',
+        layers: 'geonode:raigarh_villages',
+        format: 'image/png',
+        transparent: 'true',
+        cql_filter: `swadesh_vi='${opt}'`,
+        // cql_filter: `ward_name='${opt}'`,
+        // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`                                        
+        // cql_filter: `district_n=${district}`,                                        
+    });
+    wms_layer.addTo(mymap);
+    newLayerList.push(wms_layer);
+    //mymap.setView([19.0110, 72.8512], 12);
+    console.log(newLayerList);
+    // if (wms_legend) {
+    //     mymap.removeControl(wms_legend);
+    // }
+    console.log(wms_layer);
+
+    //console.log(wms_legend); 
+    // addWMSLegend(layer);
+    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&cql_filter=" + wms_layer.options.cql_filter;
+    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+        
+    console.log(TRIBLAYER);
+    mymap.addEventListener('click', Identify);
+}
+function putActiveVillage(opt) {
+    // var district = document.getElementById("district").value;
+    console.log("putvillage",opt);
+    
+    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+        // layers: 'geonode:island_city_revised_2_july',
+        layers: 'geonode:raigarh_villages',
+        format: 'image/png',
+        transparent: 'true',
+        cql_filter: `active_vil='${opt}'`,
+        // cql_filter: `ward_name='${opt}'`,
+        // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`                                        
+        // cql_filter: `district_n=${district}`,                                        
+    });
+    wms_layer.addTo(mymap);
+    newLayerList.push(wms_layer);
+    //mymap.setView([19.0110, 72.8512], 12);
+    console.log(newLayerList);
+    // if (wms_legend) {
+    //     mymap.removeControl(wms_legend);
+    // }
+    console.log(wms_layer);
+
+    //console.log(wms_legend); 
+    // addWMSLegend(layer);
+    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&cql_filter=" + wms_layer.options.cql_filter;
+    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+        
+    console.log(TRIBLAYER);
+    mymap.addEventListener('click', Identify);
+}
 
             function putWMStrib(layer, cql) {
                 //console.log(cql);
@@ -1037,7 +1130,38 @@
     // removeWards1(layer);
     // alert(layer);
   
-                        putWMSru("geonode:maha_village_polygon_29mar");
+                        // putWMSru("geonode:maha_village_polygon_29mar");
+                        putWMSru("geonode:raigarh_all_villages");
+                    }else {
+    checkboxes1.style.display = "none";
+    checkbox.style.display ="none";
+    expanded = false;    
+  }
+                }
+                else if (boundary == "{maharural}")
+                    {
+                        var checkboxes1 = document.getElementById("active_villa");
+                        var checkbox = document.getElementById("village");
+                        console.log(checkboxes1,checkbox);
+                        if(checkboxes1.style.display == "block")
+    expanded = true;
+  else  
+    expanded = false;
+
+    // alert(expanded);
+
+  if (!expanded) {
+    // alert(checkboxes1.style.display);
+    // alert(checkbox.style.display);
+    checkboxes1.style.display = "block";
+    checkbox.style.display ="block";
+    expanded = true;
+    // layer = 'WARD-S:s_ward';
+    // removeWards1(layer);
+    // alert(layer);
+  
+                        // putWMSru("geonode:maha_village_polygon_29mar");
+                        putWMSru("geonode:raigarh_all_villages");
                     }else {
     checkboxes1.style.display = "none";
     checkbox.style.display ="none";
@@ -1068,7 +1192,7 @@
                     if (boundary == "{mahatown}" || boundary == "{town}" )
                         removeWMS("geonode:TownCensus_maharashtra_1_00");
                     else if (boundary == "{maharural}" )
-                        removeWMS("geonode:maha_village_polygon_29mar");
+                        removeWMS("geonode:raigarh_all_villages");
                     else if (boundary == "{pincode}")
                         removeWMS("geonode:india_pincodes_12june");
                     else if (boundary == "{taluka}")
@@ -2736,7 +2860,7 @@ function querybufawc(currentPos) {
                 
 
 
-                } else if (layer=="geonode:maha_village_polygon_29mar"){
+                } else if (layer=="geonode:raigarh_all_villages"){
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
@@ -2744,8 +2868,10 @@ function querybufawc(currentPos) {
                         cql_filter: "district_n='Raigarh'"
                     });
                     // alert("in chandrapur villages")
+                    console.log(layer);
                      TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                      mymap.setView([18.5158,73.1822],9);
+                     console.log(TRIBLAYER);
                 }else if (layer=="geonode:villagecensus_maharashtra_1_0"){
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                         layers: layer,
@@ -2833,6 +2959,8 @@ function querybufawc(currentPos) {
                     mymap.removeControl(wms_legend);
                 }
                 addWMSLegend(layer);
+
+                mymap.addEventListener('click', Identify);
             }
 
 
@@ -3475,7 +3603,7 @@ function querybufawc(currentPos) {
 
 
 
-
+            // mymap.addEventListener('click', Identify);
 
             function Identify(e) {
 
@@ -3570,7 +3698,21 @@ function querybufawc(currentPos) {
                                     "<tr><td>State</td><td><b>"+ feature.properties.state+"<b></td></tr>"+    
                                     "</table>";
 
-                            }else if (feature.properties.power) {
+                            }
+                            else if (feature.properties.swadesh_vi) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>District</b></td><td>" + feature.properties.district_n + "</td></tr>" +
+                                    "<tr><td><b>Taluka</b></td><td>" + feature.properties.taluka_nam + "</td></tr>" +
+                                     "<tr><td>Village</td><td><b>"+ feature.properties.village_na+"<b></td></tr>"+    
+                                    "<tr><td>Village Code</td><td><b>"+ feature.properties.village_co+"<b></td></tr>"+    
+                                    "<tr><td>Total Population</td><td><b>"+ feature.properties.tot_popu+"<b></td></tr>"+    
+                                        "<tr><td>Collection Date</td><td><b>"+ feature.properties.pickup_dat+"<b></td></tr>"+    
+                                            "<tr><td>Quantity Collected</td><td><b>"+ feature.properties.waste_coll+"<b></td></tr>"+    
+                                                "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='' alt='image not found - '>"+"</a></td></tr>"+                                                        
+
+                                        "</table>";
+
+                            }
+                            else if (feature.properties.power) {
                                 insti_content = "<table class = 'popupclass' ><tr><td><b>Power</b></td><td>" + feature.properties.district + "</td></tr>" +
                                     
                                      "<tr><td>Power</td><td><b>"+ feature.properties.power+"<b></td></tr>"+    
@@ -3603,8 +3745,11 @@ function querybufawc(currentPos) {
                                     "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.taluka_nam + "</td></tr>"+
                                      "<tr><td>Total Population</td><td><b>"+ feature.properties.tot_popu+"<b></td></tr>"+    
                                     "<tr><td>Total Household</td><td><b>"+ feature.properties.tot_hh+"<b></td></tr>"+    
-                                    "<tr><td>Number of Govt Pre-Primary School</td><td><b>"+ feature.properties.govt_pre_1+"<b></td></tr>"+
-                                    "<tr><td>Number of Govt Primary School</td><td><b>"+ feature.properties.govt_pri_1+"<b></td></tr></table>";
+                                    "<tr><td>Collection Date</td><td><b>"+ feature.properties.pickup_dat+"<b></td></tr>"+
+                                    "<tr><td>Quantity Collected</td><td><b>"+ feature.properties.waste_coll+"<b></td></tr>" +
+                                        "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='' alt='image not found - '>"+"</a></td></tr>" +                                                    
+
+                                        "</table>";
 
                             }
 
