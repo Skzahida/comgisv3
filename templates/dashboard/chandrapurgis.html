@@ -2833,21 +2833,6 @@ function querybufawc(currentPos) {
                     console.log(TRIBLAYER);
 
                 }
-                else if (layer=="chandrapur:chandrapur_villages_cfr") {
-                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
-                        layers: layer,
-                        format: 'image/png',
-                        transparent: 'true',
-                        
-                        
-                    });
-                   
-                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-                    console.log(TRIBLAYER);
-
-                    
-                   
-                }
                 else if (layer=="chandrapur:chandrapur_cfr_centroids") {
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                         layers: layer,
@@ -2863,6 +2848,22 @@ function querybufawc(currentPos) {
                     
                    
                 }
+                else if (layer=="chandrapur:chandrapur_villages_cfr") {
+                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                        layers: layer,
+                        format: 'image/png',
+                        transparent: 'true',
+                        
+                        
+                    });
+                   
+                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/chandrapur/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    console.log(TRIBLAYER);
+
+                    
+                   
+                }
+                
                 else if (layer=="chandrapur:polygon_landuse") {
                     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                         layers: layer,
@@ -2929,6 +2930,8 @@ function querybufawc(currentPos) {
                     mymap.removeControl(wms_legend);
                 }
                 addWMSLegend(layer);
+
+                mymap.addEventListener('click', Identify);
             }
 
 
