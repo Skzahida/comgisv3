@@ -671,16 +671,16 @@
 
 
 
-                <div id="side-bar" style="background-color: rgba(255, 255, 255);">
-                    <!-- side-bar container -->
+                <!-- <div id="side-bar" style="background-color: rgba(255, 255, 255);">
+                    side-bar container 
                     <button title="Show Attribute table" class='btn btn-info select' style="margin-left:-12px;width: 42px;" id="displaytable"><i class="fa fa-table" aria-hidden="true"></i></button>
                     <button title="Download Attribute table" class='btn btn-success' id="downloadtable" style="width: 42px;"><i class="fa fa-download" aria-hidden="true"></i></button><br>
 
 
 
 
-                </div>
-
+                </div> -->
+<!-- 
                 <div class="border">
                     <button type="button" class="btn btn-primary" id='locate'>Your Location</button>
                     <button type="button" class="btn btn-primary" id='setlocation'>Set Location</button>
@@ -699,7 +699,7 @@
                         <button type="button" class="btn btn-primary" id='setbuffer'>Facilities within <span id="demo"></span> Km </button>
 
                     </div>
-                </div>
+                </div> -->
 
                 <!-- <div class="border row">
                     <input type="text" style="margin-left:34px;" placeholder="Enter facility Name" disabled="" class="form-control col-9" id="usr">
@@ -1026,8 +1026,10 @@
                         removeWMS("geonode:maha_village_polygon_29mar");
                     else if (boundary == "{pincode}")
                         removeWMS("chandrapur:india_pincodes_13may");
-                    else if (boundary == "{cfr_villages}")
+                    else if (boundary == "{cfr_villages}"){
                         removeWMS("chandrapur:chandrapur_villages_cfr");    
+                        removeWMS("chandrapur:chandrapur_cfr_centroids")
+                    }    
                     else if (boundary == "{taluka}")
                         removeWMS("geonode:maha_taluka_13march2021");
                     else if (boundary == "{demog}")
