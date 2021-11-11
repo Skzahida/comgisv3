@@ -931,9 +931,9 @@
                 }
                 else{
                     if (boundary == "{swadesh}")
-                        removeWMS("geonode:raigarh_villages");
+                        removeWMS("geonode:raigad_villages_11nov21");
                     else if(boundary == "{active}")
-                        removeWMS("geonode:raigarh_villages");    
+                        removeWMS("geonode:raigad_villages_11nov21");    
                 }
             }
 
@@ -1008,10 +1008,10 @@
             function putSwadeshVillage(opt) {
     // var district = document.getElementById("district").value;
     console.log("putvillage",opt);
-    layer= "geonode:raigarh_villages"; 
+    layer= "geonode:raigad_villages_11nov21"; 
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         // layers: 'geonode:island_city_revised_2_july',
-        layers: 'geonode:raigarh_villages',
+        layers: 'geonode:raigad_villages_11nov21',
         format: 'image/png',
         transparent: 'true',
         cql_filter: `swadesh_vi='${opt}'`,
@@ -1043,10 +1043,10 @@
 function putActiveVillage(opt) {
     // var district = document.getElementById("district").value;
     console.log("putvillage",opt);
-    layer= "geonode:raigarh_villages";
+    layer= "geonode:raigad_villages_11nov21";
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         // layers: 'geonode:island_city_revised_2_july',
-        layers: 'geonode:raigarh_villages',
+        layers: 'geonode:raigad_villages_11nov21',
         format: 'image/png',
         transparent: 'true',
         cql_filter: `active_vil='${opt}'`,
@@ -3709,8 +3709,15 @@ function querybufawc(currentPos) {
                                      "<tr><td>Village</td><td><b>"+ feature.properties.village_na+"<b></td></tr>"+    
                                     "<tr><td>Village Code</td><td><b>"+ feature.properties.village_co+"<b></td></tr>"+    
                                     "<tr><td>Total Population</td><td><b>"+ feature.properties.tot_popu+"<b></td></tr>"+    
-                                        "<tr><td>Collection Date</td><td><b>"+ feature.properties.pickup_dat+"<b></td></tr>"+    
-                                            "<tr><td>Quantity Collected</td><td><b>"+ feature.properties.waste_coll+"<b></td></tr>"+    
+                                        "<tr><td>CleanUp Done</td><td><b>"+ feature.properties.cleanup_do+"<b></td></tr>"+ 
+                                            "<tr><td>Workshop Done</td><td><b>"+ feature.properties.workshop_d+"<b></td></tr>"+    
+                                                "<tr><td>Segregation Commencement</td><td><b>"+ feature.properties.segre_comm+"<b></td></tr>"+    
+                                                    "<tr><td>Percentage Segregation at household</td><td><b>"+ feature.properties.segre_per_+"<b></td></tr>"+    
+                                                        "<tr><td>Aggregation Bin</td><td><b>"+ feature.properties.bin_presen+"<b></td></tr>"+    
+
+                                                "<tr><td>Total Waste Collection</td><td><b>"+ feature.properties.waste_coll+"<b></td></tr>"+    
+
+                                            "<tr><td>Ratings of Villages</td><td><b>"+ feature.properties.rating_vil+"<b></td></tr>"+    
                                                 "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='' alt='image not found - '>"+"</a></td></tr>"+                                                        
 
                                         "</table>";
