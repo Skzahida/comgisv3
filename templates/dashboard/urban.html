@@ -699,10 +699,17 @@ function ViewWards(obj) {
   
 }
   else{
+    //removelayer for viewwards()
     console.log("else in view wards");
-    if(obj.value == 'GS'){
+    if(obj.value == 'GS')
       removeWards("G/S")
-    }
+      else if (obj.value == 'S')
+      removeLayer("WARD-S:s_ward")
+      else if(obj.value == 'L')
+      removeLayer("geonode:L_ward_polygons_16Apr2020")
+      else if(obj.value == "Kwest")
+      removeLayer("ward61:k_west_mumbai")
+    
   }
 }
 
@@ -842,10 +849,13 @@ function getWard(obj) {
         else if (ward == "Lbuildings")
           removeLayer("geonode:raheja_lward_swm_5nov19") 
         //---ward 61--------------
-        else if (ward == "ward61")
-          removeLayer("ward61:corporator61boundary")
+        
+        else if (ward == "ward61"){
+          // removeLayer("ward61:corporator61boundary")
+          removeLayer("ward61:ward61_boundary_1nov21")
+        }
         else if (ward == "ward61buildings")
-          removeLayer("ward61:buiding_polygon")
+          removeLayer("ward61:buildings_2nov")
         else if (ward == "ward61roads")
           removeLayer("ward61:ward61osmroad25OCT")
         else if (ward == "ward61edu")
@@ -1193,12 +1203,14 @@ function putWard61(opt) {
     let ward = opt;
    
     if(ward == 'ward61'){    
-      layer = "ward61:corporator61boundary"
+      // layer = "ward61:corporator61boundary"
+      layer = "ward61:ward61_boundary_1nov21"
       currentPos = [19.1423,72.8137]
       zoom_level = 14 
     }
     else if(ward == 'ward61buildings'){    
-      layer = "ward61:buiding_polygon"
+      // layer = "ward61:buiding_polygon"
+      layer = "ward61:buildings_2nov"
       currentPos = [19.1467,72.8283]
       zoom_level = 16 
     }
