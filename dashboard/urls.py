@@ -4,6 +4,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path ,include
 
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
+
+
 from . import views
 
 # from rest_framework import routers
@@ -25,9 +30,14 @@ urlpatterns = [
     path('dashboard/Tribal_Area_Maharashtra', views.Tribal_Area_Maharashtra, name = 'Tribal Area(Maharashtra)'),
     path('dashboard/fgis', views.map, name = 'map'),
     # path('dashboard/schools', views.schools, name = 'schools'),
-    path('dashboard/chandrapurgis', views.chandrapurgis, name = 'chandrapurgis'),
+    path('dashboard/chandrapurcfrgis', views.chandrapurcfrgis, name = 'chandrapurcfrgis'),
+    path('dashboard/chandrapurruralgis', views.chandrapurruralgis, name = 'chandrapurruralgis'),
+
     path('dashboard/raigadgis', views.raigadgis, name = 'raigadgis'),
     # path('',include(router.urls)),
+    path('dashboard/cms/', include(wagtailadmin_urls)),
+    path('dashboard/documents/', include(wagtaildocs_urls)),
+    path('dashboard/pages/', include(wagtail_urls)),
 
 
 ]

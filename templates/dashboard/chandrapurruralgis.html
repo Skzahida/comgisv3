@@ -1,5 +1,5 @@
 <!--code for Ahmednagar -->
-{% extends 'dashboard/chandrapur_base.html' %}
+{% extends 'dashboard/chandrapur_rural_base.html' %}
 {% load static%} {% block content %}
 <style>
     h6 {
@@ -470,9 +470,9 @@
                             <div class="checkbox">
                                 <label><input type="checkbox" value="{pincode}" onchange="getBoundaryru(this)"><span> Pincode</span></label>
                             </div>
-                            <div class="checkbox">
+                            <!-- <div class="checkbox">
                                 <label><input type="checkbox" value="{cfr_villages}" onchange="getBoundaryru(this)"><span> CFR Villages</span></label>
-                            </div>
+                            </div> -->
                             
                         </div>
                     </div>  
@@ -499,7 +499,7 @@
                             </div>
                         </div>
                     </div>   -->
-<!-- 
+
                     <div class="multiselect">
                         <div class="selectBox" onclick="showCheckboxes7()">
                             <button type="button" class="btn btn-outline-dark" style="width: 90%;font-size:12px; "> Census Information 2011</button>
@@ -515,19 +515,19 @@
                             <div class="checkbox">
                                 <label><input type="checkbox" value="{vill}" onchange="getBoundaryru(this)"><span> Village Amenities</span></label>
                             </div>
-                            <div class="checkbox">
+                            <!-- <div class="checkbox">
                                 <label><input type="checkbox" value="{town}" onchange="getBoundaryru(this)"><span> Town Amenities</span></label>
-                            </div>
+                            </div> -->
                            
                         
                         </div>
                     </div>
- -->
 
-<!-- 
+
+
                     <div class="multiselect">
                         <div class="selectBox" onclick="showCheckboxes2()">
-                            <button type="button" class="btn btn-outline-dark" style="width: 90%;font-size:12px; ">Tribal Villages & Towns</button>
+                            <button type="button" class="btn btn-outline-dark" style="width: 90%;font-size:12px; ">Tribal Villages</button>
                             <div class="overSelect"></div>
                         </div>
                         <div id="checkboxes2">
@@ -545,8 +545,8 @@
                                 <label><input type="checkbox" value="{at}" onchange="getBoundarytrib(this)"><span> Additional TSP</span></label>
                             </div>
                         </div>
-                    </div> -->
-<!-- 
+                    </div>
+
 
                     <div class="text-center">
 
@@ -563,33 +563,33 @@
                                     <div id="checkboxes">
                                         <div id="ru" value="ru">Health Rural-Census 2011
                                             <label for="one">
-                      <input type="checkbox" id="val" value="{CHC}" name='Rural' onchange="GetSelectedfac(this);buffer(this);"/> CHC</label>
+                                                <input type="checkbox" id="val" value="{CHC}" name='Rural' onchange="GetSelectedfac(this);buffer(this);"/> CHC</label>
                                             <label for="two">
-                      <input type="checkbox" id="phs" value="{PHC}" name='Rural' onchange="GetSelectedfac(this);buffer(this);"/> PHC</label>
+                                                <input type="checkbox" id="phs" value="{PHC}" name='Rural' onchange="GetSelectedfac(this);buffer(this);"/> PHC</label>
                                         </div>
                                         <hr>
-                                        <div id="ur" value="ur">Health Urban - Census 2011
+                                        <!-- <div id="ur" value="ur">Health Urban - Census 2011
                                             <label for="three">
-                      <input type="checkbox" id="allo"  value="{Allo}" onchange="GetSelectedfac(this);buffer(this);"/> Allopathy Hospital</label>
+                                                <input type="checkbox" id="allo"  value="{Allo}" onchange="GetSelectedfac(this);buffer(this);"/> Allopathy Hospital</label>
                                             <label for="three">
-                      <input type="checkbox" id="alt" value="{Alt}" onchange="GetSelectedfac(this);buffer(this);"/> Alternate Hospital</label>
+                                                <input type="checkbox" id="alt" value="{Alt}" onchange="GetSelectedfac(this);buffer(this);"/> Alternate Hospital</label>
                                         </div>
-                                        <hr>
+                                        <hr> -->
                                         <div id="ur" value="ur">Dedicated COVID Facilities
                                             <label for="three">
-                      <input type="checkbox" id="sch"  value="{DCH}" onchange="GetSelectedfac(this);buffer(this);"/> Dedicated COVID Hospitals</label>
+                                                <input type="checkbox" id="sch"  value="{DCH}" onchange="GetSelectedfac(this);buffer(this);"/> Dedicated COVID Hospitals</label>
                                             <label for="three">
-                      <input type="checkbox" id="gsc" value="{DCHC}" onchange="GetSelectedfac(this);buffer(this);"/> Dedicated Health Centers</label>
+                                                <input type="checkbox" id="gsc" value="{DCHC}" onchange="GetSelectedfac(this);buffer(this);"/> Dedicated Health Centers</label>
                                             <label for="three">
-                      <input type="checkbox" id="gsc" value="{DCCC}" onchange="GetSelectedfac(this);buffer(this);"/> Dedicated COVID Centers</label>
+                                                <input type="checkbox" id="gsc" value="{DCCC}" onchange="GetSelectedfac(this);buffer(this);"/> Dedicated COVID Centers</label>
                                         </div>
                                         <hr>
 
                                         <div id="ur" value="ur">Nutrition
                                             <label for="three">
-                      <input type="checkbox" id=""  value="{awc}" onchange="GetSelectedfac(this)" /> Anganwadi Data</label>
+                                                <input type="checkbox" id=""  value="{awc}" onchange="GetSelectedfac(this)" /> Anganwadi Data</label>
                                              <label for="three">
-                      <input type="checkbox" id="gsc" value="{}" onchange="GetSelectedfac(this)" disabled="" /> Nutrition Rehabilitation Center</label> 
+                                                <input type="checkbox" id="gsc" value="{}" onchange="GetSelectedfac(this)" disabled="" /> Nutrition Rehabilitation Center</label> 
 
                                         </div>
                                         <hr> 
@@ -599,8 +599,8 @@
 
                             </form>
 
-                        </form> -->
-                        <!-- <div class="multiselect">
+                        </form>
+                        <div class="multiselect">
                             <div class="selectBox" onclick="showCheckboxes4()">
                                 <button type="button" class="btn btn-outline-dark" style="width: 90%;font-size:12px; "> Skill & Education</button>
                                 <div class="overSelect"></div>
@@ -619,7 +619,7 @@
                                     <label><input type="checkbox" value="{bif}" onchange="GetSelectedfac(this);buffer(this);"><span> Bifocals</span></label>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                         <!-- <div class="multiselect">
                             <div class="selectBox" onclick="showCheckboxes5()">
@@ -679,7 +679,7 @@
 
 
                 </div> -->
-<!-- 
+
                 <div class="border">
                     <button type="button" class="btn btn-primary" id='locate'>Your Location</button>
                     <button type="button" class="btn btn-primary" id='setlocation'>Set Location</button>
@@ -698,7 +698,7 @@
                         <button type="button" class="btn btn-primary" id='setbuffer'>Facilities within <span id="demo"></span> Km </button>
 
                     </div>
-                </div> -->
+                </div>
 
                 <!-- <div class="border row">
                     <input type="text" style="margin-left:34px;" placeholder="Enter facility Name" disabled="" class="form-control col-9" id="usr">
@@ -966,11 +966,13 @@
 
 
                 wms_layer.addTo(mymap);
+                
                 TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 tribLayerList.push(wms_layer);
                 if (wms_legend) {
                     mymap.removeControl(wms_legend);
                 }
+                console.log(TRIBLAYER);
                 addWMSLegend(layer);
                 mymap.setView([19.9615, 79.2961],9);
             }
@@ -1129,6 +1131,7 @@
                 
             }
 
+
             function toggleKoboFacility(clickedCheckBox) {
                 let value = clickedCheckBox.value;
                 if ($(clickedCheckBox).is(':checked')) {
@@ -1186,10 +1189,10 @@
             }
             
             let healthFacility,
-                $locate = $('#locate'),
-                $body = $('body'),
-                $findNearest = $('#find-nearest'),
-                $setlocation = $('#setlocation')
+            $locate = $('#locate'),
+            $body = $('body'),
+            $findNearest = $('#find-nearest'),
+            $setlocation = $('#setlocation')
             $setbuffer = $('#setbuffer')
 
             let currentPos = null;
@@ -3577,7 +3580,7 @@ function querybufawc(currentPos) {
 
             function Identify(e) {
 
-                //console.log("Identify");
+                console.log("Identify");
                 // set parameters needed for GetFeatureInfo WMS request
                 var sw = mymap.options.crs.project(mymap.getBounds().getSouthWest());
                 var ne = mymap.options.crs.project(mymap.getBounds().getNorthEast());
@@ -3608,7 +3611,7 @@ function querybufawc(currentPos) {
                                 maxWidth: 300
                             });
                             if (feature.properties.category === "at") {
-                                //console.log("I reached at");
+                                console.log("I reached at");
                                 insti_content = "<table class = 'popupclass' ><tr><td><b>Additional TSP District</b></td><td>" + feature.properties.district + "</td></tr>" +
                                     "<tr><td><b>Village Name</b></td><td>" + feature.properties.area_name + "</td></tr>" +
                                     "<tr><td><b>Total Population</b></td><td>" + feature.properties.tot_p + "</td></tr>" +
