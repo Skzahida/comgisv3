@@ -35,9 +35,6 @@ urlpatterns = [
 
     path('dashboard/raigadgis', views.raigadgis, name = 'raigadgis'),
     # path('',include(router.urls)),
-    path('dashboard/cms/', include(wagtailadmin_urls)),
-    path('dashboard/documents/', include(wagtaildocs_urls)),
-    path('dashboard/pages/', include(wagtail_urls)),
-
+    
 
 ]
