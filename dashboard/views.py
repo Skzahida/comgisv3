@@ -56,8 +56,11 @@ def Tribal_Area_Maharashtra(request):
 def map(request):
     return render(request, "dashboard/map.html") 
 
-def chandrapurgis(request):
+def chandrapurcfrgis(request):
     return render(request, "dashboard/chandrapurgis.html") 
+
+def chandrapurruralgis(request):
+    return render(request, "dashboard/chandrapurruralgis.html") 
     
 def raigadgis(request):
     return render(request, "dashboard/raigadgis.html")       
