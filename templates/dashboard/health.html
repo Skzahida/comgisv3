@@ -1953,6 +1953,17 @@
                                     }
                                 }
 
+                                function styleset() {
+                                    //var layer = e.target;
+
+                                    layer.setStyle({
+                                        weight: 5
+                                    });
+                                    
+                                }
+
+
+
                                 function resetHighlight(e) {
                                     geojson.resetStyle(e.target);
                                     info.update();
@@ -2134,12 +2145,15 @@
                                     if (wms_legend) {
                                         mymap.removeControl(wms_legend);
                                     }
-                                    //console.log(wms_legend); 
+                                    console.log(wms_legend); 
                                     addWMSLegend(layer);
                                     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-
+                                    setView2(layer);
+                                    //styling(layer);
 
                                 }
+
+
 
                                 function addWMSLegend(layer) {
                                     lagendGraphic = "https://geoserver2.communitygis.net/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer + "&LEGEND_OPTIONS=forceLabels:on";
@@ -2147,8 +2161,90 @@
                                 }
 
 
+                                function getColor(d) {
+    return d < 500 ? '#008080' :
+            d > 500 ? '#5F9EA0' :
+                      '#FFEDA0';
+}
+
+function style(feature) {
+    if(feature.properties.daily_wast){
+        console.log(feature.properties.daily_wast);
+        return {
+        fillColor: getColor(feature.properties.daily_wast),
+        weight: 3,
+        opacity: 1,
+        color: 'white',
+        fillOpacity: 0.9
+    };
+    }
+    
+}
+var geojson_layer;
+
+function styling(layer){
+    //var geojson_layer;
+     geojson_layer.eachLayer(function (layer) {  
+  if(layer.feature.properties.daily_wast == 2000) {    
+    layer.setStyle({fillColor :'red'}) 
+  }
+});
+}
+
+
                                 let area = null;
 
+                                function setView2(layerName) {
+                                    if (area) {
+                                        mymap.removeLayer(area);
+                                    }
+                                    let rootUrl = 'https://geoserver2.communitygis.net/geoserver/geonode/ows';
+
+                                    let options = {
+                                        service: 'WFS',
+                                        version: '1.0.0',
+                                        request: 'GetFeature',
+                                        outputFormat: 'application/json',
+                                        typeName: layerName,
+                                        //cql_filter: `taluka_nam='${selectedBoundary}'`,
+                                        properties: 'daily_wast'
+                                    };
+                                    let parameters = L.Util.extend(options);
+                                    layer_url = rootUrl + L.Util.getParamString(parameters)
+                                    console.log(layer_url)
+                                    fetch(layer_url).then(
+                                        function(response) {
+                                            if (response.status !== 200) {
+                                                console.log('Looks like there was a problem. Status Code: ' +
+                                                    response.status);
+                                                return;
+                                            }
+                                            response.json().then(function(geojsonData) {
+                                                area = L.geoJson(geojsonData.features, {
+                                                    style : function(features){
+                                                    console.log('inside style');
+                                                    if(features.properties.daily_wast==2000){
+                                                        console.log(features.properties.daily_wast);
+                                                        //return {color: "red"};
+                                                        layer_url.setStyle({})
+                                                    }
+                                                }
+                                                //style : style
+                                                //onEachFeature: onEachFeature
+                                                }).addTo(mymap)
+
+                                                console.log(area);
+                                                //lat = area.getBounds()._northEast.lat
+                                                //lng = area.getBounds()._northEast.lng
+                                                //mymap.setView([lat, lng - 0.4], 10)
+                                            });
+                                        }).catch(function(err) {
+                                        console.log('Fetch Error :-S', err);
+                                    });
+                                }
+
+
+                    
                                 function setView(layerName, selectedBoundary) {
                                     if (area) {
                                         mymap.removeLayer(area);

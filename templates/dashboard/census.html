@@ -279,9 +279,9 @@ var districtZoom = [7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
 
 var LayerList = [];
 
-const domain = ['https://geoserver2.communitygis.net/','http://localhost/'];
+const domain = ['https://geoserver2.communitygis.net/','http://localhost/','https://geonode.communitygis.in/'];
 
-var rootUrl = domain[0] + 'geoserver/geonode/ows';
+var rootUrl = domain[2] + 'geoserver/geonode/ows';
 
 var defaultParameters = {
 service: 'WFS',
@@ -584,7 +584,7 @@ function displayPolygon(param_obj,lat,long){
 var parameters = L.Util.extend(param_obj);
 layer_url = rootUrl + L.Util.getParamString(parameters)
 LayerList.forEach(layer => mymap.removeLayer(layer));
-// console.log(layer_url);
+console.log(layer_url);
 mymap.spin(true,{lines: 15, length: 1, width: 50, scale: 200,radius: 200, color: "grey"});
 fetch(layer_url)
 .then(
