@@ -330,7 +330,7 @@ else if(amenity === 'Household Amenities'){
     if(houseLayerCode[index] == ''){
         alert('layer of '+ dis + ' not found');
     }else{
-        tempParameter.typeName = "geonode:household";
+        tempParameter.typeName = "geonode:household0";
         tempParameter.cql_filter="district_n='"+houseLayerCode[index]+"'";
         tempParameter.propertyName="the_geom,census_201,area_name,taluka_nam,district_n,msdw_taput,mroof_gra,plat_vent,nobathroom";
         info.addTo(mymap);
