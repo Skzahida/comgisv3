@@ -1,5 +1,5 @@
 from django.urls import path
-from django.conf.urls import url
+# from django.conf.urls import url
 
 from django.contrib import admin
 from django.urls import path ,include
@@ -15,6 +15,7 @@ urlpatterns = [
     path('dashboard/', views.Dash, name = 'dash'),
     path('dashboard/census', views.Census, name = 'census'),
     path('dashboard/health', views.health, name = 'health'),      
+    path('dashboard/healthv2', views.healthv2, name = 'healthv2'),      
     path('dashboard/tdsc', views.tdsc, name = 'tdsc'),
     path('dashboard/thakkar_buppa_yojana', views.tby, name = 'thakkar_buppa_yojana'),
     path('dashboard/deonadi', views.deonadi, name = 'deonadi'),

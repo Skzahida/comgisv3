@@ -125,10 +125,31 @@ body {
     and (max-device-width : 480px){ 
       .mobileShow {display: inline;}
   }
+
+  .logo-img{
+    width: 300px !important;
+    height: 50px !important;
+  }
+
+  .project-title{
+    color: #000000;
+    font-size: 20px;
+    margin-right: 100px;
+    text-align: center;
+}
+
+
+.navbar{
+  border: red;
+}
+
   </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">HealthGIS</a>
+  <a class="navbar-brand" href="#"> <img src="{% static 'images/logo-removebg.png' %}" alt="community-gis" class="logo-img"> </a>
+
+  <div class="project-title">HealthGIS<div style="font-size: x-small;">Source: Census 2011</div></div>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -136,26 +157,25 @@ body {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item disable">
-        <a class="nav-link" href="#">Source: Census 2011 <span class="sr-only">(current)</span></a>
+        <p> <span class="sr-only">(current)</span></p>
       </li>
 
 
 
 
       <li class="nav-item active">
-          <a class="nav-link" href="https://ee.humanitarianresponse.info/x/#URXRVsvI">Volunteer<span class="sr-only">(current)</span></a>
+          <a class="btn btn-secondary" href="https://ee.humanitarianresponse.info/x/#URXRVsvI" style="background-color: rgb(233,89,89, 0.508);">Volunteer Form</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
-
+      <a class = 'btn btn-secondary' href="/" style="background-color: rgba(233, 89, 89, 0.508);">Home</a>
+      <a class = 'btn btn-secondary' href="/dashboard" style="background-color: rgb(233,89,89, 0.508);" >Themes</a>
     </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
+
   </div>
 </nav>
+
 
 <div class="full-height">
   <div class="row h-100">
@@ -266,7 +286,6 @@ $('.select').click(function () {
   var ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
   
   ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
-  ctlAttribute.addAttribution('&copy; <a href="http://www.makerghat.org">makerGHAT</a>');
 
       
 </script>

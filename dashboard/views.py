@@ -14,6 +14,9 @@ def Census(request):
 def health(request):
     return render(request, "dashboard/health.html")
 
+def healthv2(request):
+    return render(request, "dashboard/healthv2.html")
+
 def tdsc(request):
     return render(request, "dashboard/tdsc.html")
 
