@@ -27,6 +27,7 @@ urlpatterns = [
     # path('dashboard/schools', views.schools, name = 'schools'),
     path('dashboard/chandrapurgis', views.chandrapurgis, name = 'chandrapurgis'),
     path('dashboard/raigadgis', views.raigadgis, name = 'raigadgis'),
+    path('dashboard/urban_nutrition', views.urban_nutrition, name = 'urban_nutrition'),
     # path('',include(router.urls)),
 
 
