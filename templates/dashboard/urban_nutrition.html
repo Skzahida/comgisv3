@@ -1443,7 +1443,7 @@ function putAwcp(opt) {
 
         mymap.setView([19.1110, 72.8112], 13);
         // wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
-          wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+          wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
             // layers: 'geonode:island_city_revised_2_july',
             layers: 'geonode:awc1',
             format: 'image/png',
@@ -1468,7 +1468,7 @@ function putAwcp(opt) {
         console.log(t.toString())
         
           mymap.setView([19.1110, 72.8112], 13);
-          wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+          wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
               layers: 'geonode:awc1',
               format: 'image/png',
               transparent: 'true',
