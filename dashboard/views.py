@@ -68,6 +68,10 @@ def chandrapurruralgis(request):
 def raigadgis(request):
     return render(request, "dashboard/raigadgis.html")       
 
+# urban nutrition route
+def urban_nutrition(request):
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'}) 
+
 # def schools(request):
 #     school_states = IndiaFinal1617BasicLatlong.objects.values_list('states', flat=True).distinct().order_by('states')
 #     context={'school_states': school_states}
