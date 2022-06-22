@@ -29,7 +29,7 @@ urlpatterns = [
     path('dashboard/chandrapurcfrgis', views.chandrapurcfrgis, name = 'chandrapurcfrgis'),
     path('dashboard/chandrapurruralgis', views.chandrapurruralgis, name = 'chandrapurruralgis'),
 
-    path('dashboard/raigadgis', views.raigadgis, name = 'raigadgis')
+    path('dashboard/raigadgis', views.raigadgis, name = 'raigadgis'),
     path('dashboard/urban_nutrition', views.urban_nutrition, name = 'urban_nutrition'),
     # path('',include(router.urls)),
     
