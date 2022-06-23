@@ -540,7 +540,7 @@ label{
           <label for=""><input onchange="putBeat(10)" type="checkbox" id="10" name="" > <span>10</span></label>
         </div>
 
-        <button class="btn btn-outline-dark" onclick="putAwcp()">Anganwadi Centers</button>
+        <button class="btn btn-outline-dark" onclick="putAWCPoints()">Anganwadi Centers</button>
         </div>
 
       
@@ -563,7 +563,7 @@ label{
 <script>  
 
 // beats
-
+var awcplotted = false;
 var idArray = [];
 var layerArray = [];
 function putBeat(id){
@@ -1428,71 +1428,67 @@ function putSlums(opt) {
 // awc
 
 
-var awcplotted = false;
+
 var points=[];
 var popup_layer=[];
-function putAwcp(opt) {
-    // var district = document.getElementById("district").value;
-    // console.log("putlayer",opt);
-    // console.log(layerArray)
-    var wms_layer;
+var wms_layer1;
+function putAWCPoints(opt){
     
 
     if(!awcplotted){
       if(layerArray.length === 0){
 
         mymap.setView([19.1110, 72.8112], 13);
-        // wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
-          wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
-            // layers: 'geonode:island_city_revised_2_july',
-            layers: 'geonode:awc1',
-            format: 'image/png',
-            transparent: 'true',
-            
-            // cql_filter: `beat_no=${element.options.cql_filter.slice(3,)}`,
-            
-        });
-        // var l =[1,2,3,5,4,6]
-        // console.log(wms_layer)
-        wms_layer.addTo(mymap);
-        
-        
-        points.push(wms_layer);
-          
-        // console.log(awcplotted)
-             
+
+          fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
+          .then(result=>result.json())
+          .then((output)=>{
+            wms_layer1 = L.geoJson(output,{
+              onEachFeature: function(feature, layer){
+                layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
+              },
+            })
+            wms_layer1.addTo(mymap)
+            points.push(wms_layer1);
+          })
+
 
 
       }else{
         var t = layerArray.map(x => x.options.cql_filter.slice(3,))
-        console.log(t.toString())
-        
+        console.log(t)
+      
           mymap.setView([19.1110, 72.8112], 13);
-          wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
-              layers: 'geonode:awc1',
-              format: 'image/png',
-              transparent: 'true',
-              cql_filter: `beat_no IN (${t})`,
+          fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
+          .then(result=>result.json())
+          .then((output)=>{
+            wms_layer1 = L.geoJson(output,{
+              onEachFeature: function(feature, layer){
+                layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
+              },
+              filter: function(feature, layer){
+                for(i of t){
+                  if(feature.properties.beat_no == i){
+                    return feature.properties.beat_no;
+                  }
+                }
+              }
               
-          });
-          console.log(wms_layer)
-          wms_layer.addTo(mymap);
-          points.push(wms_layer)
+            })
+            wms_layer1.addTo(mymap)
+            points.push(wms_layer1);
+          })
 
           
       }
-
+        
       awcplotted = true;
     }else{
-      console.log(popup_layer)
-      // mymap.removeLayer(popup_layer);
-      console.log(awcplotted)
-      awcplotted = false;
-      points.forEach(element => {
+    awcplotted = false;
+     points.forEach(element => {
         mymap.removeLayer(element)
       });
     }
-
 }
 
 //to remove unchecked layer
