@@ -590,10 +590,14 @@ function putBeat(id){
           // cql_filter: `district_n=${district}`,                                        
         }); 
         // console.log(wms_layer)
-        putAwcp()
+       
         wmsLayer.addTo(mymap);
         layerArray.push(wmsLayer)
-        putAwcp()
+        if(awcplotted && layerArray.length!=0) {
+          awcplotted = true
+          putAWCPoints();
+          putAWCPoints();
+        }
         // console.log(wmsLayer.options.layers.slice(8,))
         // console.log(wmsLayer.options.cql_filter.slice(3,))
         // console.log(`${idArray},${layerArray}`)
