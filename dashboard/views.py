@@ -45,8 +45,7 @@ def edu(request):
 
 
 def urban_livability(request):
-    return render(request, "dashboard/urban.html")       
-
+    return render(request, "dashboard/urban.html",{'title':'URBAN LIVABILITY'})      
 
 def rtp(request):
     # toilets = new_toilet.objects.all()
