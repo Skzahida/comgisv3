@@ -314,42 +314,37 @@
         <select class='form-control' id="indstate" name="indstate">
             <option value="All">Select State</option>
             <optgroup label="States"> 
-              <option value="Andaman & Nicobar Island">Andaman & Nicobar Island</option>
-
-                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                <option value="Arunachal Pradesh" >Arunachal Pradesh</option>
-                 <option value="Assam" >Assam </option>
-                <option value="Bihar" >Bihar</option>
-                <option value="Chhattisgarh" >Chhattisgarh</option>
-                <option value="Goa" >Goa</option>
-                <option value="Gujarat" >Gujarat</option>
-                <option value="Haryana" >Haryana</option>
-                <option value="Himachal Pradesh" >Himachal Pradesh</option>
-                <option value="Jharkhand" >Jharkhand</option>
-                <option value="Karnataka" >Karnataka</option>
-                <option value="Kerala" >Kerala</option>
-                <option value="Madhya Pradesh" >Madhya Pradesh</option>
                 <option value="Maharashtra" >Maharashtra</option>
-                <option value="Manipur" >Manipur</option>
-                <option value="Meghalaya" >Meghalaya</option>
-                <option value="Mizoram" >Mizoram</option>
-                <option value="Nagaland" >Nagaland</option>
-           
-  
-                <option value="Odisha" >Odisha</option>
-                <option value="Punjab" >Punjab</option>
-                <option value="Rajasthan" >Rajasthan</option>
-                <option value="Sikkim" >Sikkim</option>
-                <option value="Tamil Nadu" >Tamil Nadu</option>
-                <option value="Telangana" >Telangana</option>
-           
-  
-                <option value="Tripura" >Tripura</option>
-                <option value="Uttar Pradesh" >Uttar Pradesh</option>
-                <option value="Uttarakhand" >Uttarakhand</option>
-                <option value="West Bengal" >West Bengal</option>
-                <optgroup label="Union Territories"> 
+                <option disabled value="Andaman & Nicobar Island">Andaman & Nicobar Island</option>
+                <option disabled value="Andhra Pradesh">Andhra Pradesh</option>
+                <option disabled value="Arunachal Pradesh" >Arunachal Pradesh</option>
+                <option disabled value="Assam" >Assam </option>
+                <option disabled value="Bihar" >Bihar</option>
+                <option disabled value="Chhattisgarh" >Chhattisgarh</option>
+                <option disabled value="Goa" >Goa</option>
+                <option disabled value="Gujarat" >Gujarat</option>
+                <option disabled value="Haryana" >Haryana</option>
+                <option disabled value="Himachal Pradesh" >Himachal Pradesh</option>
+                <option disabled value="Jharkhand" >Jharkhand</option>
+                <option disabled value="Karnataka" >Karnataka</option>
+                <option disabled value="Kerala" >Kerala</option>
+                <option disabled value="Madhya Pradesh" >Madhya Pradesh</option>
+                <option disabled value="Manipur" >Manipur</option>
+                <option disabled value="Meghalaya" >Meghalaya</option>
+                <option disabled value="Mizoram" >Mizoram</option>
+                <option disabled value="Nagaland" >Nagaland</option>
+                <option disabled value="Odisha" >Odisha</option>
+                <option disabled value="Punjab" >Punjab</option>
+                <option disabled value="Rajasthan" >Rajasthan</option>
+                <option disabled value="Sikkim" >Sikkim</option>
+                <option disabled value="Tamil Nadu" >Tamil Nadu</option>
+                <option disabled value="Telangana" >Telangana</option>
+                <option disabled value="Tripura" >Tripura</option>
+                <option disabled value="Uttar Pradesh" >Uttar Pradesh</option>
+                <option disabled value="Uttarakhand" >Uttarakhand</option>
+                <option disabled value="West Bengal" >West Bengal</option>
 
+                <optgroup label="Union Territories"> 
                 <option value="Andaman & Nicobar Islands" >Andaman & Nicobar Islands</option>
                 <option value="Chandigarh" >Chandigarh</option>
                 <option value="Dadra & Nagar Havelli" >Dadra & Nagar Havelli</option>
@@ -422,20 +417,20 @@
                                                     <tb> <label><input type="checkbox" value="{mahatown}" onchange="getBoundaryst(this)"></tb><tb><span> Urban Areas (Maharashtra's only as for now) </span></label></tb>
                                                 </tr>
                                             </div>
-                                            <div class="checkbox">
+                                            <!-- <div class="checkbox">
                                                 <label><input type="checkbox" value="{maharoad}" onchange="getBoundaryst(this)"><span>  Road Network (Maharashtra's only as for now)</span></label>
-                                            </div>
+                                            </div> -->
                                             <div class="checkbox">
                                                 <label><input type="checkbox" value="{mahaschool}" onchange="getBoundaryst(this)"><span> Schools (Maharashtra's only as for now) </span></label>
                                             </div>
 
-                                            <div class="checkbox">
+                                            <!-- <div class="checkbox">
                                                 <label><input type="checkbox" value="{govtri}" onchange="getBoundaryst(this)"><span> Government Schools (Maharashtra's only as for now) </span></label>
                                             </div>
 
                                             <div class="checkbox">
                                                 <label><input type="checkbox" value="{aidtri}" onchange="getBoundaryst(this)"><span> Aided Schools (Maharashtra's only as for now) </span></label>
-                                            </div>
+                                            </div> -->
                                             <div class="checkbox">
                                                 <label><input type="checkbox" value="{mahatrib}" onchange="getBoundaryst(this)"><span> Tribal Areas (Maharashtra's only as for now) </span></label>
                                             </div>
@@ -462,9 +457,9 @@
                                                         <h6 style="color: #820522"> Maharashtra Government Health Facilities</h6>
                                                         <div id="ru" value="ru">Facilities from Census 2011-Rural
                                                             <label for="one">
-                      <input type="checkbox" id="val" value="{CHC}" name='Rural' onchange="GetSelectedfac(this)"/> CHC</label>
+                      <input type="checkbox" id="val" value="{CHC}" name='Rural' onchange="GetSelectedfac(this)"/> CHC - 2011</label>
                                                             <label for="two">
-                      <input type="checkbox" id="phs" value="{PHC}" name='Rural' onchange="GetSelectedfac(this)"/> PHC</label>
+                      <input type="checkbox" id="phs" value="{PHC}" name='Rural' onchange="GetSelectedfac(this)"/> PHC - 2011</label>
                                                         </div>
                                                         <hr>
                                                         <div id="ur" value="ur">Facilities from Census 2011-Urban
@@ -532,12 +527,12 @@
        
 
         <form id="projectList" style="width: 100%">
-            <h6>COVID-19 Lockdown Zones</h6>
+            <!-- <h6>COVID-19 Lockdown Zones</h6> -->
              <form>
-              <div class="multiselect">
+              <!-- <div class="multiselect">
                 <div class="selectBox" onclick="showCheckboxes3()">
                     <button type="button" class="btn btn-outline-dark" style="width: 90%;font-size:12px; ">Select Zone</button>
-                    <!-- <option>Select Health Facilities</option> -->
+                    <option>Select Health Facilities</option>
                   <div class="overSelect"></div>
                 </div>
                 <div id="checkboxes3">
@@ -558,7 +553,7 @@
 
 
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <hr>
 
                                             <div class="border">
@@ -601,24 +596,31 @@
                                     <button type="button" class="btn btn-primary" id='find-nearest'>Find Nearest Facility</button>
                                     <div id="slider">
                                         <label>Set Range</label><br>
-                                        <input type="range" min="1" max="20" value="1" class="slider" id="myRange" step="1">
+                                        <input type="range" min="1" max="50" value="1" class="slider" id="myRange" step="1">
                                         <div class="sliderticks">
                                             <p>1</p>
                                             <p>5</p>
                                             <p>10</p>
                                             <p>15</p>
                                             <p>20</p>
+                                            <p>25</p>
+                                            <p>30</p>
+                                            <p>35</p>
+                                            <p>40</p>
+                                            <p>50</p>
                                         </div>
+                                            <button type="button" class="btn btn-primary" id='setbuffer'>Health facilities within <span id="demo"></span> Km </button>
+                                            <a id="downloadAnchorElem" style="display:none">download</a>
 
-                                        <button type="button" class="btn btn-primary" id='setbuffer'>Health facilities within <span id="demo"></span> Km </button>
+                                            <button type="button" class="btn btn-primary mb-5" onclick=downloadBufferData()>Download </button>
 
                                     </div>
                                 </div>
 
-                                <div class="border row">
+                                <!-- <div class="border row">
                                     <input type="text" placeholder="Enter facility Name" disabled="" class="form-control col-7" id="usr">
                                     <button type="button" class="btn btn-primary col" onclick="searchFacilities()" disabled="">Search Facility</button>
-                                </div>
+                                </div> -->
 
 
                             </div>
@@ -628,6 +630,7 @@
 
 
                             <script>
+                               
                                 $(document).ready(function() {
 
                                     //  $('#indstate').on('change', function() {
@@ -940,13 +943,12 @@
                                 function getBoundaryst(obj) {
                                     let boundary = obj.value;
                                     var district = document.getElementById('district').value;
-                                    console.log(district);
                                     if ($(obj).is(":checked")) {
-                                        mymap.setView([19.7515,75.7139],7);
+                                        // mymap.setView([19.7515,75.7139],7);
                                         if (boundary == "{mahadem}")
-                                            putWMS("geonode:maha_demography_with_mumbai");
+                                                putWMSDistrictLevel("geonode:maha_demography_with_mumbai",'district_n',district.toLowerCase());
                                             else if(boundary == "{mahatown}"){
-                                                putWMS("geonode:TownCensus_maharashtra_1_00");
+                                                putWMSDistrictLevel("geonode:TownCensus_maharashtra_1_00",'district_n',district.toUpperCase());
                                             }
                                         else if (boundary == "{maharoad}"){
                                             // if (district){
@@ -957,13 +959,13 @@
                                                 putWMS("geonode:osm_highways");    
                                         }     
                                         else if (boundary == "{mahatrib}")
-                                            putWMS("geonode:maha_tribal_villages_and_towns");
+                                            putWMSDistrictLevel("geonode:maha_tribal_villages_and_towns",'district',district.charAt(0).toUpperCase() + district.slice(1));
                                         else if (boundary == "{govtri}")
                                             putWMS("geonode:govt_schools_30april");
                                         else if (boundary == "{aidtri}")
                                             putWMS("geonode:aided_schools_30april");
                                         else
-                                            putWMS("geonode:school_16_17_11april");
+                                            putWMSDistrictLevel("geonode:school_16_17_11april",'distname',district.toUpperCase());
                                     } else {
                                         if (boundary == "{mahadem}")
                                             removeWMS("geonode:maha_demography_with_mumbai");
@@ -1005,26 +1007,27 @@
                                 }
 
                                 function GetSelectedfac(obj) {
+
                                     let fac = obj.value;
+                                    var district = document.getElementById('district').value;
                                     if ($(obj).is(":checked")) {
                                         if (fac == "{CHC}")
-                                            putWFSFacility("CHC");
+                                            putWFSFacility("CHC",district.charAt(0).toUpperCase() + district.slice(1));
                                         else if (fac == "{PHC}")
-                                            putWFSFacility("PHC");
+                                            putWFSFacility("PHC",district.charAt(0).toUpperCase() + district.slice(1));
                                         else if (fac == '{Allo}')
-                                            putWFSFacility("Allo");
+                                            putWFSFacility("Allo",district.toUpperCase());
 
                                         else if (fac == '{Alt}')
-                                            putWFSFacility("Alt");
+                                            putWFSFacility("Alt",district.toUpperCase());
                                         else if (fac == '{DCH}')
-                                            putArogya("DCH");
+                                            putArogya("DCH",district.toUpperCase());
                                         else if (fac == '{DCHC}')
-                                            putArogya("DCHC");
+                                            putArogya("DCHC",district.toUpperCase());
                                         else if (fac == '{DCCC}')
-                                            putArogya("DCCC");
+                                            putArogya("DCCC",district.toUpperCase());
                                     } else {
                                         mymap.removeLayer(circle);
-                                        console.log("remove buffer", oldhfbb);
                                         oldhfbb.forEach(layer => mymap.removeLayer(layer));
                                         healthFacilityInBB = null;
                                         healthFacility2 = null;
@@ -1049,7 +1052,6 @@
 
                                 function toggleKoboFacility(clickedCheckBox) {
                                     let value = clickedCheckBox.value;
-                                    console.log(value);
                                     if ($(clickedCheckBox).is(':checked')) {
                                         putKoboHealthFacity(value);
                                     } else {
@@ -1066,7 +1068,6 @@
 
                                 function toggleKoboFacilitywms(clickedCheckBox) {
                                     let value = clickedCheckBox.value;
-                                    console.log(value);
                                     if ($(clickedCheckBox).is(':checked')) {
                                         putKoboHealthFacitywms(value);
                                     } else {
@@ -1186,13 +1187,80 @@
                                 var circle = new L.circle();
                                 let healthFacilityInBB = null;
                                 let oldhfbb = [];
+                                let oldhfbbObj = {};
                                 let healthFacility1 = null;
                                 let healthFacility2 = null;
+                                
+                                let getTodaysDate = () =>{
+                                    var currentdate = new Date(); 
+                                    var datetime = " " + currentdate.getDate() + "/"
+                                                    + (currentdate.getMonth()+1)  + "/" 
+                                                    + currentdate.getFullYear() + " @ "  
+                                                    + currentdate.getHours() + ":"  
+                                                    + currentdate.getMinutes() + ":" 
+                                                    + currentdate.getSeconds();
+                                    return datetime;
+                                }
+                               
 
+                                function downloadBufferData(){
+                                    let keys = Object.keys(activatedHealthFacility);
+                                    let covidkeys = ["DCH", "DCHC", "DCCC"]
+                                    let updatedKeys = []
+                                    let flag = false;
+                                    keys.map(k => {
+                                    if (covidkeys.includes(k)){
+                                        if(!flag){
+                                        flag = true;
+                                        updatedKeys.push(k)
+                                        }
+                                    }else{
+                                        updatedKeys.push(k)
+                                    }
+                                    })
+
+                                    updatedKeys.map(activatedLayers =>{
+                                        let props = []
+                                        let filename = activatedLayers;
+
+                                        if(covidkeys.includes(filename)){
+                                            filename = "Covid Facilities";
+                                        }
+                                        let feat = oldhfbbObj[activatedLayers]._layers
+                                        for (x in feat){
+                                            props.push(feat[x].feature.properties)
+                                        }
+
+                                        let csv = jsonToCSV(props);
+                                        downloadCSV(filename + getTodaysDate() + ".csv",csv);
+                                        dlAnchorElem.click();
+                                    })
+                                }
+
+                                function jsonToCSV(jsonObject){
+                                var json = jsonObject
+                                var fields = Object.keys(json[0])
+                                var replacer = function(key, value) { return value === null ? '' : value } 
+                                var csv = json.map(function(row){
+                                    return fields.map(function(fieldName){
+                                    return JSON.stringify(row[fieldName], replacer)
+                                    }).join(',')
+                                })
+                                    csv.unshift(fields.join(',')) // add header column
+                                    csv = csv.join('\r\n');
+                                return csv;
+                                }
+
+                                function downloadCSV(filename,csvVariable){
+                                var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(csvVariable);
+                                    dlAnchorElem = document.getElementById('downloadAnchorElem');
+                                dlAnchorElem.setAttribute("href", dataStr);
+                                dlAnchorElem.setAttribute("download", filename);
+                                }
+
+                                
                                 $setbuffer.on('click', function(e) {
-                                    console.log("Hi m a new buffer");
                                     if (oldhfbb) {
-                                        console.log("remove buffer");
                                         mymap.removeLayer(circle);
                                         oldhfbb.forEach(layer => mymap.removeLayer(layer));
                                         // oldhfbb = null;
@@ -1211,23 +1279,22 @@
                                     }
                                     circle = new L.circle(circleCenter, radius, circleOptions);
                                     circle.addTo(mymap);
-                                    console.log("active in buffer", activatedHealthFacility);
                                     let keys = Object.keys(activatedHealthFacility);
                                     let k = '';
                                     keys.forEach((v, i) => {
                                             k = v;
                                             if (k === "Allo")
-                                                querybufAllo(currentPos);
+                                                querybufAllo(currentPos,k);
                                             if (k === 'Alt')
-                                                querybufALt(currentPos);
+                                                querybufALt(currentPos,k);
                                             if (k === 'CHC')
-                                                querybufCHC(currentPos);
+                                                querybufCHC(currentPos,k);
                                             if (k === 'PHC')
-                                                querybufPHC(currentPos);
+                                                querybufPHC(currentPos,k);
                                             if (k === 'DCH' || k === 'DCHC' || k === 'DCCC')
-                                                queryArog(currentPos);
+                                                queryArog(currentPos,k);
                                             if (k === 'hospital' || k === 'subcenter' || k === 'mhu' || k === 'phc' || k === 'clinic' || k === 'phu' || k === 'ashu' || k === 'mobmedu' || k === 'hfwi' || k === 'mhi' || k === 'dc' || k === 'phrmcy' || k === 'optical' || k === 'delvry' || k === 'dropin' || k === 'dspnsry' || k === 'dropin' || k === 'othr')
-                                                querybuf(currentPos);
+                                                querybuf(currentPos,k);
 
                                         })
                                         //querybuf(currentPos);
@@ -1238,7 +1305,7 @@
                                     // let indstate = document.getElementById('indstate').value;
 
 
-                                function querybuf(currentPos) {
+                                function querybuf(currentPos,typeoFFacility) {
 
                                     function onEachFeatureForPointBB(feature, layer) {
                                         const unavailable = '-';
@@ -1276,7 +1343,6 @@
                                         }
 
                                     })
-                                    console.log(query, "querybuf")
 
                                     let rootUrl = 'https://geoserver2.communitygis.net/geoserver/geonode/ows';
                                     let bbOffset = output.innerHTML / 111;
@@ -1291,7 +1357,6 @@
                                     };
                                     let parameters = L.Util.extend(options);
                                     cql_url = rootUrl + L.Util.getParamString(parameters);
-                                    console.log('bound', cql_url)
 
                                     fetch(cql_url).then(
                                         function(response) {
@@ -1313,8 +1378,8 @@
                                                     },
                                                     onEachFeature: onEachFeatureForPointBB,
                                                 }).addTo(mymap);
+                                                oldhfbbObj[typeoFFacility] = healthFacilityBB;
                                                 oldhfbb.push(healthFacilityBB);
-                                                console.log("oldhfbb", oldhfbb);
                                             });
 
 
@@ -1326,7 +1391,7 @@
 
                                 }
 
-                                function queryArog(currentPos) {
+                                function queryArog(currentPos,typeoFFacility) {
 
                                     function onEachFeatureForPointBB(feature, layer) {
                                         const unavailable = '-';
@@ -1352,7 +1417,6 @@
                                           </table>`)
                                     }
 
-                                    console.log("active layers", activatedHealthFacility);
                                     let keys = Object.keys(activatedHealthFacility)
                                     let query = ''
                                     keys.forEach((v, i) => {
@@ -1379,7 +1443,6 @@
                                     };
                                     let parameters = L.Util.extend(options);
                                     cql_url = rootUrl + L.Util.getParamString(parameters);
-                                    console.log('bound', cql_url)
 
                                     //tableurl=cql_url;    
                                     fetch(cql_url).then(
@@ -1403,13 +1466,12 @@
                                                     onEachFeature: onEachFeatureForPointBB,
                                                 }).addTo(mymap);
                                                 //mymap.spin(false);
+                                                oldhfbbObj[typeoFFacility] = healthFacilityInBB;
                                                 oldhfbb.push(healthFacilityInBB);
-                                                console.log("oldhfbb", oldhfbb);
                                             });
 
 
                                         }).catch(function(err) {
-                                        console.log('Fetch Error :-S', err);
                                     });
 
                                 }
@@ -1417,10 +1479,8 @@
 
 
 
-                                function querybufCHC(currentPos) {
-                                    console.log("chckeandr", activatedHealthFacility);
+                                function querybufCHC(currentPos,typeoFFacility) {
                                     let keys = Object.keys(activatedHealthFacility);
-                                    console.log(keys)
 
 
                                     let query = 'chc_num>0';
@@ -1431,7 +1491,6 @@
 
                                     newurl = url + `&cql_filter=BBOX(the_geom,${currentPos[1]-bbOffset},${currentPos[0]-bbOffset},${currentPos[1]+bbOffset},${currentPos[0]+bbOffset})AND(${query})`;
 
-                                    console.log("chc", query);
 
                                     tableurl = newurl;
 
@@ -1473,9 +1532,7 @@
                                                     },
                                                     onEachFeature: onEachFeatureForPointBB,
                                                 }).addTo(mymap);
-                                                console.log("healthFacilityBB", healthFacilityBB);
-
-                                                console.log("oldhfbb", oldhfbb);
+                                                oldhfbbObj[typeoFFacility] = healthFacilityBB;
                                                 oldhfbb.push(healthFacilityBB);
 
                                             });
@@ -1487,10 +1544,8 @@
 
                                 }
 
-                                function querybufPHC(currentPos) {
-                                    console.log("phckeandr", activatedHealthFacility);
+                                function querybufPHC(currentPos,typeoFFacility) {
                                     let keys = Object.keys(activatedHealthFacility);
-                                    console.log(keys)
 
 
                                     let query = 'phc_num>0';
@@ -1501,7 +1556,6 @@
 
                                     newurl = url + `&cql_filter=BBOX(the_geom,${currentPos[1]-bbOffset},${currentPos[0]-bbOffset},${currentPos[1]+bbOffset},${currentPos[0]+bbOffset})AND(${query})`;
 
-                                    console.log("phcphc", query);
 
                                     tableurl = newurl;
 
@@ -1544,8 +1598,8 @@
                                                     },
                                                     onEachFeature: onEachFeatureForPointBB,
                                                 }).addTo(mymap);
+                                                oldhfbbObj[typeoFFacility] = healthFacilityBB;
                                                 oldhfbb.push(healthFacilityBB);
-                                                console.log("oldhfbb", oldhfbb);
                                             });
 
 
@@ -1556,7 +1610,7 @@
                                 }
 
 
-                                function querybufAllo(currentPos) {
+                                function querybufAllo(currentPos,typeoFFacility) {
                                     let keys = Object.keys(activatedHealthFacility);
                                     let query = 'h_allo_tot>0';
                                     const url2 = 'https://geoserver2.communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
@@ -1605,8 +1659,8 @@
                                                     },
                                                     onEachFeature: onEachFeatureForPointBB,
                                                 }).addTo(mymap);
+                                                oldhfbbObj[typeoFFacility] = healthFacilityBB;
                                                 oldhfbb.push(healthFacilityBB);
-                                                console.log("oldhfbb", oldhfbb);
                                             });
 
 
@@ -1618,7 +1672,7 @@
 
 
 
-                                function querybufALt(currentPos) {
+                                function querybufALt(currentPos,typeoFFacility) {
                                     let keys = Object.keys(activatedHealthFacility);
                                     let query = 'h_alt_tot>0';
                                     const url2 = 'https://geoserver2.communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
@@ -1668,6 +1722,7 @@
                                                     },
                                                     onEachFeature: onEachFeatureForPointBB,
                                                 }).addTo(mymap);
+                                                oldhfbbObj[typeoFFacility] = healthFacilityBB;
                                                 oldhfbb.push(healthFacilityBB);
                                             });
 
@@ -2049,6 +2104,8 @@
                                     //clear_layer();
                                     //clearpoint_layer();
                                     wms_layer.addTo(mymap);
+                                    setViewByDistrict('geonode:india_pincodes_12june', state,dist);
+
                                     //mymap.setView([stLayerLatLong[1],stLayerLatLong[2]],8);
                                     distLayerList.push(wms_layer);
                                     // addWMSLegend(layer);
@@ -2120,7 +2177,6 @@
                                         cql_filter: "district='" + dist + "'",
                                         
                                     });
-                                    console.log(wms_layer);
                                     //clear_layer();
                                     //clearpoint_layer();
                                     wms_layer.addTo(mymap);
@@ -2134,7 +2190,7 @@
 
                                 //this function is for state boundary
                                 function putWMS(layer) {
-                                    var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                                         layers: layer,
                                         format: 'image/png',
                                         transparent: 'true',
@@ -2145,12 +2201,32 @@
                                     if (wms_legend) {
                                         mymap.removeControl(wms_legend);
                                     }
-                                    console.log(wms_legend); 
                                     addWMSLegend(layer);
                                     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-                                    setView2(layer);
-                                    //styling(layer);
 
+                                }
+
+                                function putWMSDistrictLevel(layer,distFieldName,districtName) {
+                                    let stateName = document.getElementById('indstate').value
+                                    
+                                    if (stateName === "Maharashtra"){
+                                        var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
+                                        layers: layer,
+                                        format: 'image/png',
+                                        transparent: 'true',
+                                        cql_filter: `${distFieldName}='${districtName}'`,
+                                        propertyName: 'the_geom'
+                                    });
+                                    wms_layer.addTo(mymap);
+                                    newLayerList.push(wms_layer);
+
+                                    if (wms_legend) {
+                                        mymap.removeControl(wms_legend);
+                                    }
+                                    addWMSLegend(layer);
+                                    TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+
+                                    }
                                 }
 
 
@@ -2169,7 +2245,6 @@
 
 function style(feature) {
     if(feature.properties.daily_wast){
-        console.log(feature.properties.daily_wast);
         return {
         fillColor: getColor(feature.properties.daily_wast),
         weight: 3,
@@ -2211,7 +2286,6 @@ function styling(layer){
                                     };
                                     let parameters = L.Util.extend(options);
                                     layer_url = rootUrl + L.Util.getParamString(parameters)
-                                    console.log(layer_url)
                                     fetch(layer_url).then(
                                         function(response) {
                                             if (response.status !== 200) {
@@ -2222,9 +2296,7 @@ function styling(layer){
                                             response.json().then(function(geojsonData) {
                                                 area = L.geoJson(geojsonData.features, {
                                                     style : function(features){
-                                                    console.log('inside style');
                                                     if(features.properties.daily_wast==2000){
-                                                        console.log(features.properties.daily_wast);
                                                         //return {color: "red"};
                                                         layer_url.setStyle({})
                                                     }
@@ -2233,7 +2305,6 @@ function styling(layer){
                                                 //onEachFeature: onEachFeature
                                                 }).addTo(mymap)
 
-                                                console.log(area);
                                                 //lat = area.getBounds()._northEast.lat
                                                 //lng = area.getBounds()._northEast.lng
                                                 //mymap.setView([lat, lng - 0.4], 10)
@@ -2279,6 +2350,43 @@ function styling(layer){
                                         console.log('Fetch Error :-S', err);
                                     });
                                 }
+
+                                function setViewByDistrict(layerName, state,district) {
+                                    // if (area) {
+                                    //     mymap.removeLayer(area);
+                                    // }
+                                    let rootUrl = 'https://geoserver2.communitygis.net/geoserver/geonode/ows';
+
+                                    let options = {
+                                        service: 'WFS',
+                                        version: '1.0.0',
+                                        request: 'GetFeature',
+                                        outputFormat: 'application/json',
+                                        typeName: layerName,
+                                        cql_filter: `state='${state}' AND district='${district}'`,
+                                        propertyName: 'the_geom'
+                                    };
+                                    let parameters = L.Util.extend(options);
+                                    layer_url = rootUrl + L.Util.getParamString(parameters)
+
+                                    fetch(layer_url).then(
+                                        function(response) {
+                                            if (response.status !== 200) {
+                                                console.log('Looks like there was a problem. Status Code: ' +
+                                                    response.status);
+                                                return;
+                                            }
+                                            response.json().then(function(geojsonData) {
+                                                area = L.geoJson(geojsonData.features)
+                                                lat = area.getBounds()._northEast.lat
+                                                lng = area.getBounds()._northEast.lng
+                                                mymap.setView([lat - .5, lng - 0.9], 9)
+                                            });
+                                        }).catch(function(err) {
+                                        console.log('Fetch Error :-S', err);
+                                    });
+                                }
+
 
                                 function putWMSLayerpincode(pincode) {
                                     clear_pinlayer();
@@ -2595,7 +2703,6 @@ function setView1(layerName, selectedBoundary) {
                                         radius: 70,
                                         color: "grey"
                                     });
-                                    console.log(cql_url);
                                     fetch(cql_url).then(
                                         function(response) {
                                             if (response.status !== 200) {
@@ -2625,7 +2732,7 @@ function setView1(layerName, selectedBoundary) {
                                 }
 
 
-                                function putArogya(facility) {
+                                function putArogya(facility,district) {
                                     // let rootUrl = 'https://geonode3.communitygis.net/geoserver/geonode/ows';
                                     let rootUrl = 'https://geoserver2.communitygis.net/geoserver/geonode/ows';
                                     //console.log(facility);
@@ -2636,13 +2743,12 @@ function setView1(layerName, selectedBoundary) {
                                         request: 'GetFeature',
                                         outputFormat: 'application/json',
                                         typeName: 'geonode:covid_dedicated_hospitals',
-                                        cql_filter: `category='${cql}'`,
+                                        cql_filter: `category='${cql}' AND district='${district}'`,
                                         propertyName: 'the_geom,faclty_nam,type,iso_minus_,iso_confm_,iso_suspec,o2suported,total_icu,ventilator,address,category,date'
 
                                     };
                                     let parameters = L.Util.extend(options);
                                     cql_url = rootUrl + L.Util.getParamString(parameters)
-                                    console.log(cql_url);
 
                                     function geojsonMarkerOptions(feature, fac) {
                                         var rad;
@@ -2735,7 +2841,7 @@ function setView1(layerName, selectedBoundary) {
 
 
 
-                                function putWFSFacility(facility) {
+                                function putWFSFacility(facility,district) {
 
                                     var geojsonMarkerOptions = {
                                         radius: 6,
@@ -2781,14 +2887,13 @@ function setView1(layerName, selectedBoundary) {
                                     // const url3 = 'https://geoserver2.communitygis.net/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Astates&maxFeatures=50&outputFormat=application%2Fjson'; 
                                     // const url4 = 'http://geoserver2.communitygis.net:8080/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Astates&maxFeatures=50&outputFormat=application%2Fjson';
                                     if (facility == 'CHC')
-                                        newurl = url + `&cql_filter=chc_num>0`;
+                                        newurl = url + `&cql_filter=chc_num>0 AND district_n='${district}'`;
                                     else if (facility == 'PHC')
-                                        newurl = url + `&cql_filter=phc_num>0`;
+                                        newurl = url + `&cql_filter=phc_num>0 AND district_n='${district}'`;
                                     else if (facility == 'Allo')
-                                        newurl = url2 + `&cql_filter=h_allo_tot>0`;
+                                        newurl = url2 + `&cql_filter=h_allo_tot>0 AND district_n='${district}'`;
                                     else if (facility == 'Alt')
-                                        newurl = url2 + `&cql_filter=h_alt_tot>0`;
-
+                                        newurl = url2 + `&cql_filter=h_alt_tot>0 AND district_n='${district}'`;
 
                                     function onEachFeatureForPoint(feature, layer) {
                                         if (facility === 'CHC') {
@@ -2834,7 +2939,6 @@ function setView1(layerName, selectedBoundary) {
                                         }
 
                                     }
-                                    console.log(newurl);
                                     fetch(newurl).then(
                                         function(response) {
                                             if (response.status !== 200) {
@@ -2844,7 +2948,6 @@ function setView1(layerName, selectedBoundary) {
                                             }
                                             response.json().then(function(geojsonData) {
                                                 // console.log(geojsonData.features);
-                                                console.log(geojsonData);
                                                 healthFacility = L.geoJson(geojsonData.features, {
                                                     pointToLayer: function(feature, latlng) {
                                                         if (facility === 'CHC')
@@ -3005,7 +3108,6 @@ function setView1(layerName, selectedBoundary) {
                                 };
 
                                 legend.update = function() {
-                                    console.log("activated facility", activatedHealthFacility)
                                     legendValues = {
                                         "CHC": ['CHC', '#f5ce42'],
                                         "PHC": ['PHC', '#0004ff'],
