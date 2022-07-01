@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from .models import User, Awc
+from django.contrib.auth import authenticate, login, logout
+
 # from dashboard.models import IndiaFinal1617BasicLatlong
 
 # Create your views here.
@@ -67,11 +70,61 @@ def chandrapurruralgis(request):
 def raigadgis(request):
     return render(request, "dashboard/raigadgis.html")  
 
+user={'is_authenticated':FALSE}
 # urban nutrition route
 def urban_nutrition(request):
 
+    data = Awc.objects.all()
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION','user':user,'data':data})
+
+def loginUser(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        role = request.POST['role']
+        user = authenticate(username=username, password=password)
+        print(username,password,user)
+
+        if user is not None:
+            # if user.is_active: 
+            login(request, user)
+            request.session['username']=username
+            request.session['role']=role
+            # form = User(username, password,role)
+            # messages.info(request,_(u"Logged in sucessfully."))
+                # analytics = initialize_analyticsreporting()
+                # response = get_report(analytics)
+                # recd_response = print_response(response)
+                # context = {
+                #     'Visitor_count': recd_response
+                # }
+
+                # return render(request, "rating.html", context)
+            return render(request,"dashboard/profile.html",{'title':'URBAN NUTRITION', 'user':request.session['username'], 'role':role})
+
+    context = {}
+    context['form']= User()
+   
+    return render(request, "dashboard/login.html",context)
+
+
+def logoutUser(request):
+    del request.session['username']
+    logout(request)
+    return render(request,"dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'})
+# def schools(request):
+#     school_states = IndiaFinal1617BasicLatlong.objects.values_list('states', flat=True).distinct().order_by('states')
+#     context={'school_states': school_states}
+#     return render(request, "dashboard/schools.html",context)     
+def profile(request):
+    user = request.session['username']
+    return render(request, "dashboard/profile.html",{'user':request.session['username']})
+
+
+
     return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'})
     return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'}) 
+
 
 # def schools(request):
 #     school_states = IndiaFinal1617BasicLatlong.objects.values_list('states', flat=True).distinct().order_by('states')
