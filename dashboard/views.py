@@ -48,8 +48,7 @@ def edu(request):
 
 
 def urban_livability(request):
-    return render(request, "dashboard/urban.html")       
-
+    return render(request, "dashboard/urban.html",{'title':'URBAN LIVABILITY'})      
 
 def rtp(request):
     # toilets = new_toilet.objects.all()
@@ -69,11 +68,12 @@ def chandrapurruralgis(request):
     return render(request, "dashboard/chandrapurruralgis.html") 
     
 def raigadgis(request):
-    return render(request, "dashboard/raigadgis.html")       
+    return render(request, "dashboard/raigadgis.html")  
 
 user={'is_authenticated':FALSE}
 # urban nutrition route
 def urban_nutrition(request):
+
     data = Awc.objects.all()
     return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION','user':user,'data':data})
 
@@ -119,6 +119,11 @@ def logoutUser(request):
 def profile(request):
     user = request.session['username']
     return render(request, "dashboard/profile.html",{'user':request.session['username']})
+
+
+
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'})
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'}) 
 
 
 # def schools(request):
