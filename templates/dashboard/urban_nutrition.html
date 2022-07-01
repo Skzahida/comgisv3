@@ -547,6 +547,7 @@ label{
           <label for=""><input onchange="putBeat(10)" type="checkbox" id="10" name="" > <span>10</span></label>
         </div>
 
+
         <button class="btn btn-outline-dark" onclick="putAWCPoints()">Anganwadi Centers</button>
         </div>
 
@@ -562,6 +563,20 @@ label{
             <li>{{ i.latitude }}</li>
           {% endfor %}
         </div> -->
+
+
+        <button class="btn btn-outline-dark" onclick="putAwcp()">Anganwadi Centers</button>
+
+        <button class="btn btn-outline-dark" onclick="putAWCPoints()">Anganwadi Centers</button>
+        </div>
+
+      
+</div>
+
+
+
+ <div style="text-align: center"> 
+    <button style="display: inline-block ;position: relative;top: 100px" id="closebutton" name="closebutton" class="btn btn-secondary"><span class="fa fa-power-off"></span></button> 
 
 </div>
 
@@ -593,6 +608,8 @@ label{
 // beats
 var awcplotted = false;
 
+var awcplotted = false;
+
 var idArray = [];
 var layerArray = [];
 function putBeat(id){
@@ -619,16 +636,35 @@ function putBeat(id){
           // cql_filter: `district_n=${district}`,
         });
         // console.log(wms_layer)
+
         // putAWCPoints()
+
+
+        putAwcp()
+
         wmsLayer.addTo(mymap);
 
         layerArray.push(wmsLayer)
+
         if(awcplotted && layerArray.length!=0) {
           // awcplotted = true
           putAWCPoints();
           putAWCPoints();
         }
         // putAWCPoints()
+
+        putAwcp()
+
+       
+        wmsLayer.addTo(mymap);
+        layerArray.push(wmsLayer)
+        if(awcplotted && layerArray.length!=0) {
+          awcplotted = true
+          putAWCPoints();
+          putAWCPoints();
+        }
+
+
         // console.log(wmsLayer.options.layers.slice(8,))
         // console.log(wmsLayer.options.cql_filter.slice(3,))
         // console.log(`${idArray},${layerArray}`)
@@ -1591,6 +1627,20 @@ function putAWCPoints(opt){
 
 
 
+function putAwcp(opt) {
+    // var district = document.getElementById("district").value;
+    // console.log("putlayer",opt);
+    // console.log(layerArray)
+    var wms_layer;
+
+
+var points=[];
+var popup_layer=[];
+var wms_layer1;
+function putAWCPoints(opt){
+
+
+
     if(!awcplotted){
 
 
@@ -1631,6 +1681,16 @@ function putAWCPoints(opt){
           //   points.push(wms_layer1);
           // })
             // console.log('executing...')
+
+        // wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+          wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+            // layers: 'geonode:island_city_revised_2_july',
+            layers: 'geonode:awc1',
+            format: 'image/png',
+            transparent: 'true',
+            
+            // cql_filter: `beat_no=${element.options.cql_filter.slice(3,)}`,
+
             
           '{% for i in data %}'
             // console.log(`${parseFloat('{{i.latitude}}')},${parseFloat('{{i.longitude}}')}`)
@@ -1648,8 +1708,24 @@ function putAWCPoints(opt){
           '{% endfor %}'
 
 
+          fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
+          .then(result=>result.json())
+          .then((output)=>{
+            wms_layer1 = L.geoJson(output,{
+              onEachFeature: function(feature, layer){
+                layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
+              },
+            })
+            wms_layer1.addTo(mymap)
+            points.push(wms_layer1);
+          })
+
+
+
+
       }else{
         var t = layerArray.map(x => x.options.cql_filter.slice(3,))
+
         console.log(t)
 
           mymap.setView([19.1110, 72.8112], 13);
@@ -1698,6 +1774,23 @@ function putAWCPoints(opt){
 
 
 
+
+
+        console.log(t.toString())
+        
+          mymap.setView([19.1110, 72.8112], 13);
+          wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+              layers: 'geonode:awc1',
+              format: 'image/png',
+              transparent: 'true',
+              cql_filter: `beat_no IN (${t})`,
+              
+          });
+          console.log(wms_layer)
+          wms_layer.addTo(mymap);
+          points.push(wms_layer)
+
+
       }
 
       awcplotted = true;
@@ -1708,6 +1801,43 @@ function putAWCPoints(opt){
       mymap.removeControl(legend)
       awcplotted = false;
     }
+
+
+
+        console.log(t)
+      
+          mymap.setView([19.1110, 72.8112], 13);
+          fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
+          .then(result=>result.json())
+          .then((output)=>{
+            wms_layer1 = L.geoJson(output,{
+              onEachFeature: function(feature, layer){
+                layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
+              },
+              filter: function(feature, layer){
+                for(i of t){
+                  if(feature.properties.beat_no == i){
+                    return feature.properties.beat_no;
+                  }
+                }
+              }
+              
+            })
+            wms_layer1.addTo(mymap)
+            points.push(wms_layer1);
+          })
+
+          
+      }
+        
+      awcplotted = true;
+    }else{
+    awcplotted = false;
+     points.forEach(element => {
+        mymap.removeLayer(element)
+      });
+    }
+
 }
 
 

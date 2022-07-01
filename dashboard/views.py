@@ -45,8 +45,7 @@ def edu(request):
 
 
 def urban_livability(request):
-    return render(request, "dashboard/urban.html")       
-
+    return render(request, "dashboard/urban.html",{'title':'URBAN LIVABILITY'})      
 
 def rtp(request):
     # toilets = new_toilet.objects.all()
@@ -66,10 +65,12 @@ def chandrapurruralgis(request):
     return render(request, "dashboard/chandrapurruralgis.html") 
     
 def raigadgis(request):
-    return render(request, "dashboard/raigadgis.html")       
+    return render(request, "dashboard/raigadgis.html")  
 
 # urban nutrition route
 def urban_nutrition(request):
+
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'})
     return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'}) 
 
 # def schools(request):
