@@ -66,10 +66,12 @@ def chandrapurruralgis(request):
     return render(request, "dashboard/chandrapurruralgis.html") 
     
 def raigadgis(request):
-    return render(request, "dashboard/raigadgis.html")       
+    return render(request, "dashboard/raigadgis.html")  
 
 # urban nutrition route
 def urban_nutrition(request):
+
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'})
     return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION'}) 
 
 # def schools(request):
