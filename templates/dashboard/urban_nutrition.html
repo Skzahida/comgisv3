@@ -3,18 +3,25 @@
 {% block content %}
 
 <style>
-
-.leaflet-popup-content{
-    background: rgb(255 255 255 / 90%);
-    color: #000000;
-    width: auto;
-    font-size: 16px;
+.legend {
+    padding: 5px;
+    line-height: 18px;
+    background-color:rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
 }
-
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    /* opacity: 0.7; */
+}
+/* ll */
 
 label{
-    font-size: 15px; 
-    
+    font-size: 15px;
+
 
 }
 .multiselect {
@@ -75,7 +82,7 @@ label{
 #wardSdiv {
   display: none;
   border: 1px #dadada solid;
-  
+
 }
 
 #wardSdiv label {
@@ -112,10 +119,10 @@ label{
         border-style: groove;
         border-radius: 5px;
         margin: 20px;
-        
+
     }
-    
-    
+
+
     table,
     th,
     td {
@@ -124,16 +131,16 @@ label{
         padding: 2px 3px;
         text-align: center;
     }
-    
+
     th {
         font-weight: bold;
     }
-    
+
     tr:hover {
         background-color: #c9dbe6;
     }
 
-    
+
     .table {
         border-collapse: collapse;
         padding: 50px;
@@ -141,20 +148,20 @@ label{
         /* background:rgba(191, 149, 233, 0.473); */
     }
     /* css to customize Leaflet default styles  */
-    
+
     .leaflet-popup-content-wrapper {
         background: rgba(0, 0, 0, 0.9);
         color: #ffffff;
     }
-    
+
     .leaflet-popup-content {
         font-weight: bold;
     }
-    
+
     h6 {
         color: blue;
     }
-    
+
 </style>
 
 <div id="side-bar" style="background-color: rgba(255, 255, 255); height: 80%;">                <!-- Main container -->
@@ -173,7 +180,7 @@ label{
             <div class="checkbox" id="boundary">
               <tr>
                 <tb><label><input type="checkbox" value="{admin}" onchange="getWard(this)"></label></tb><tb><span> Admin Wards </span></label></tb>
-              </tr>  
+              </tr>
             </div>
          </div>
       </table>
@@ -186,14 +193,14 @@ label{
           <option value="Mumbai City">Mumbai: Mumbai City</option>
 
             <option value="Mumbai Suburban">Mumbai: Mumbai Suburban</option>
-            
 
-      </select> 
-  </div>  
+
+      </select>
+  </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
 
 <div class="tooltips" style="display:none;" title="Please select the ward" id="mumsubwards">
-  
+
   <label for="S">
       <input type="checkbox" id="wardS" value="S" onclick="ViewWards(this)" /><b>Ward S</b></label>
     <div id ="wardSdiv">
@@ -221,52 +228,52 @@ label{
         <input type="checkbox" id="Sward" value="floors" onchange="getWard(this)" disabled/>Floors</label>
         <label for="flats">
           <input type="checkbox" id="Sward" value="flats" onchange="getWard(this)" disabled/>Flats</label>
-        </p>                                
+        </p>
       </div>
     <br>
     <!-- <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>     -->
-    
-    
-<!--  
+
+
+<!--
   <label for="GS">
       <input type="checkbox" id="wardGS" value="GS" onclick="ViewWards(this)" /><b> GS</b></label>
     <div id ="wardGSdiv">
     <p style="padding-left: 30px;">
         <label for="worli-koliwada">
         <input type="checkbox" id="GSward" value="worli-koliwada" onchange="getWard(this)" />Worli-Koliwada</label>
-        
+
     <label for="GSlanes">
       <input type="checkbox" id="GSward" value="GSlanes" onchange="getWard(this)" />Lanes/Bin paths</label>
-    
+
       <label for="GSspots">
       <input type="checkbox" id="GSward" value="GSspots" onchange="getWard(this)" />Spots</label>
-      
+
       <label for="GSbubbles">
       <input type="checkbox" id="GSward" value="GSbubbles" onchange="getWard(this)"/>Bubbles</label>
-      
+
       <label for="GSzones">
       <input type="checkbox" id="GSward" value="GSzones" onchange="getWard(this)"/>Zones</label>
-     
-      
-          
+
+
+
     <label for="GSgrounds">
       <input type="checkbox" id="GSward" value="GSgrounds" onchange="getWard(this)" />Grounds</label>
-      
+
       <label for="GStoilets">
       <input type="checkbox" id="GSward" value="GStoilets" onchange="getWard(this)" />Public Toilets</label>
-      
+
     <label for="GScompost">
       <input type="checkbox" id="GSward" value="GScompost" onchange="getWard(this)" />Compost Pits</label>
-      
+
       <label for="GSopen_places">
       <input type="checkbox" id="GSward" value="GSopen_places" onchange="getWard(this)" />Open Places</label>
-    
+
       <label for="GStemples">
       <input type="checkbox" id="GSward" value="GStemples" onchange="getWard(this)" />Temples</label>
-    </p>                            
+    </p>
       </div> -->
-                                                                                                                               
-      
+
+
       <br>
     <label for="L">
       <input type="checkbox" id="wardL" value="L" onclick="ViewWards(this)" /><b> L</b></label>
@@ -275,43 +282,43 @@ label{
         <p style="padding-left: 30px;">
         <label for="L">
           <input type="checkbox" id="Lward" value="Lwardroads" onchange="getWard(this)"/>Roads</label>
-          
+
           <label for="L">
             <input type="checkbox" id="Lward" value="Lzones" onchange="getWard(this)"/>Zones</label>
-          
+
             <label for="L">
             <input type="checkbox" id="Lward" value="Lbuildings" onchange="getWard(this)"/>Raheja Buildings </label>
             </p>
           </div>
- 
+
       <br>
-    <a href="https://ee.humanitarianresponse.info/x/xsUkgeZ7"><u>Greenness SWM</u></a>                                                                                                                             
+    <a href="https://ee.humanitarianresponse.info/x/xsUkgeZ7"><u>Greenness SWM</u></a>
       <br>
       <br>
       <label for="K">
         <input type="checkbox" id="" value="Kwest" onclick="ViewWards(this)" /><b> K WEST</b></label>
         <br>
-        
+
       <div id ="wardkwestdiv">
         <p style="padding-left: 30px;">
         <label for="kwest">
           <input type="checkbox" id="Kwestward" value="ward61" onchange="getWard(this)"/>Corporator Ward 61</label>
-          
+
         <label for="kwest">
           <input type="checkbox" id="Kwestward" value="ward61buildings" onchange="getWard(this)"/>Buildings</label>
-          
+
           <label for="kwest">
             <input type="checkbox" id="Kwestward" value="ward61roads" onchange="getWard(this)"/>Roads</label>
-          
+
           <label for="kwest">
             <input type="checkbox" id="Kwestward" value="ward61edu" onchange="getWard(this)"/>Education Places</label>
-          
+
             <label for="kwest">
             <input type="checkbox" id="Kwestward" value="ward61government" onchange="getWard(this)" disabled/>Government Offices </label>
-            
+
             <label for="kwest">
-            <input type="checkbox" id="Kwestward" value="ward61fuel" onchange="getWard(this)"/>Power(Fuel) </label>  
-          </p>    
+            <input type="checkbox" id="Kwestward" value="ward61fuel" onchange="getWard(this)"/>Power(Fuel) </label>
+          </p>
           </div>
 
       <br>
@@ -330,14 +337,14 @@ label{
       <label for="H">
         <input type="checkbox" id="" value="" onchange="" disabled/>Ward M EAST</label>
         <br>
-        
+
         <label for="H">
           <input type="checkbox" id="" value="" onchange="" disabled/>Ward P NORTH</label>
         <br>
         <label for="H">
           <input type="checkbox" id="" value="" onchange="" disabled/>Ward P SOUTH</label>
           <br>
-          
+
           <label for="R">
             <input type="checkbox" id="" value="" onchange="" disabled/>Ward R NORTH</label>
           <br>
@@ -346,8 +353,8 @@ label{
             <br>
           <label for="R">
             <input type="checkbox" id="" value="" onchange="" disabled/>Ward R CENTRAL</label>
-          <br>                          
-            
+          <br>
+
           <label for="T">
             <input type="checkbox" id="" value="" onchange="" disabled/>Ward T</label>
             <br>
@@ -355,11 +362,11 @@ label{
             <input type="checkbox" id="" value="" onchange="" disabled/>Ward N</label>
   </div>
 
-<div class="tooltips">    
+<div class="tooltips">
   <div class="field_wrapper arrange" id="mumbaiCity" style="display:none;">
       <!-- <hr> -->
-      <div>            
-          <br> 
+      <div>
+          <br>
           <div class="multiselect">
               <div class="selectBox" onclick="showCheckboxes()">
                 <select>
@@ -368,7 +375,7 @@ label{
                 <div class="overSelect"></div>
               </div>
               <div class="tooltips" id="checkboxes">
-                
+
                 <!-- <label><b><input type="checkbox" id="Mumbai City" value="Mumbai City" onchange="getWard(this)" />Mumbai City</b></label> -->
                 <label for="A">
                   <input type="checkbox" id="ward" value="A" onchange="getWard(this)" />Ward A</label>
@@ -388,54 +395,54 @@ label{
                   <input type="checkbox" id="ward" value="GN" onchange="getWard(this)" />Ward GN</label>
                 <!-- <label for="GS">  -->
                   <!-- <input type="checkbox" id="ward" value="GS" onchange="getWard(this)" />Ward GS</label>  -->
-                  
-                  <label for="GS"> 
-                    <input type="checkbox" id="wardGS" value="GS" onclick="ViewWards(this)" />Ward GS</label>  
+
+                  <label for="GS">
+                    <input type="checkbox" id="wardGS" value="GS" onclick="ViewWards(this)" />Ward GS</label>
                   <div id ="wardGSdiv">
                   <p style="padding-left: 30px;">
                       <label for="worli-koliwada">
                       <input type="checkbox" id="GSward" value="worli-koliwada" onchange="getWard(this)" />Worli-Koliwada</label>
-                    
+
                       <label for="GSzones">
                         <input type="checkbox" id="GSward" value="GSzones" onchange="getWard(this)"/>Zones</label>
-                    
+
                         <label for="GSbubbles">
                           <input type="checkbox" id="GSward" value="GSbubbles" onchange="getWard(this)"/>Bubbles</label>
-                  
+
                           <label for="GSspots">
                             <input type="checkbox" id="GSward" value="GSspots" onchange="getWard(this)" />Spots</label>
-                                        
+
                   <label for="GSlanes">
                     <input type="checkbox" id="GSward" value="GSlanes" onchange="getWard(this)" />Lanes/Bin paths</label>
-                   
-                    
-                        
+
+
+
                   <label for="GSgrounds">
                     <input type="checkbox" id="GSward" value="GSgrounds" onchange="getWard(this)" />Grounds</label>
-                    
+
                     <label for="GStoilets">
                     <input type="checkbox" id="GSward" value="GStoilets" onchange="getWard(this)" />Public Toilets</label>
-                    
+
                   <label for="GScompost">
                     <input type="checkbox" id="GSward" value="GScompost" onchange="getWard(this)" />Compost Pits</label>
-                    
+
                     <label for="GSopen_places">
                     <input type="checkbox" id="GSward" value="GSopen_places" onchange="getWard(this)" />Open Places</label>
-                  
+
                     <label for="GStemples">
                     <input type="checkbox" id="GSward" value="GStemples" onchange="getWard(this)" />Temples</label>
-                  </p>         
-                  
-                  <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>    
-    
+                  </p>
+
+                  <a href="https://swk.communitygis.net/map/"><u>GS Ward(Worli -Koliwada) Waste Management</u></a>
+
                     </div>
-                
-  
-  
+
+
+
                 </div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            
+
 <div class="multiselect">
     <div class="selectBox" onclick="showCheckboxes1()">
       <select>
@@ -444,14 +451,14 @@ label{
       <div class="overSelect"></div>
     </div>
     <div class="tooltips" id="checkboxes1">
-      
+
       <label><b>OSM Data</b></label>
       <label for="building">
         <input type="checkbox" id="facility" value="building" onchange="getFacility(this)" />Buildings</label>
       <label for="roads">
         <input type="checkbox" id="facility" value="roads" onchange="getFacility(this)" />Roads</label>
-      
-      <label><b>DP Polygons</b></label>  
+
+      <label><b>DP Polygons</b></label>
       <label for="education">
         <input type="checkbox" id="facility" value="education" onchange="getFacility(this)" />Education</label>
       <label for="health">
@@ -474,10 +481,10 @@ label{
         <input type="checkbox" id="facility" value="transportation" onchange="getFacility(this)" />Transportation</label>
       <label for="waste_management">
           <input type="checkbox" id="facility" value="waste_management" onchange="getFacility(this)" disabled/>Waste Management</label>
-        
+
       <label for="fire_station">
         <input type="checkbox" id="facility" value="fire_station" onchange="getFacility(this)" disabled/>Fire Station</label>
-                                                      
+
       </div>
   </div>
   </div>
@@ -495,7 +502,7 @@ label{
 </div>
   </div>
   </div>
-</div>  
+</div>
 
 
 <div class="mutliselect border"  >
@@ -541,6 +548,23 @@ label{
         </div>
 
 
+        <button class="btn btn-outline-dark" onclick="putAWCPoints()">Anganwadi Centers</button>
+        </div>
+
+        <div class="border text-center">
+          <button class="btn btn-primary" id="loc" type="button" onclick="getLocation()">Get My Location</button>
+          <button class="btn btn-primary" id="ner" type="button" onclick="getNearest()">Nearest AWC</button>
+
+        </div>
+
+        <!-- <div id="output" class="border"> -->
+          <!-- {{ data|length }} -->
+          <!-- {% for i in data %}
+            <li>{{ i.latitude }}</li>
+          {% endfor %}
+        </div> -->
+
+
         <button class="btn btn-outline-dark" onclick="putAwcp()">Anganwadi Centers</button>
 
         <button class="btn btn-outline-dark" onclick="putAWCPoints()">Anganwadi Centers</button>
@@ -553,12 +577,13 @@ label{
 
  <div style="text-align: center"> 
     <button style="display: inline-block ;position: relative;top: 100px" id="closebutton" name="closebutton" class="btn btn-secondary"><span class="fa fa-power-off"></span></button> 
+
 </div>
 
 </div>
 </div>
-<div id="output"></div>
-    
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -567,9 +592,21 @@ label{
     <script src="{% static 'plugins/L.TileLayer.BetterWMS.js' %}"></script>
     <!-- <script src="{% static 'plugins/L.Geoserver.js' %}"></script> -->
 
-<script>  
+<script>
+
+
+// '{% for i in data %}'
+// // console.log('{{i.latitude}}')
+
+
+
+
+
+// '{% endfor %}'
+
 
 // beats
+var awcplotted = false;
 
 var awcplotted = false;
 
@@ -595,14 +632,27 @@ function putBeat(id){
           // cql_filter: `id='beatpolygons.${opt}'`,
           cql_filter: `id=${opt}`,
           // cql_filter: `ward_name='${opt}'`,
-          // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`                                        
-          // cql_filter: `district_n=${district}`,                                        
-        }); 
+          // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`
+          // cql_filter: `district_n=${district}`,
+        });
         // console.log(wms_layer)
 
+        // putAWCPoints()
+
+
         putAwcp()
+
         wmsLayer.addTo(mymap);
+
         layerArray.push(wmsLayer)
+
+        if(awcplotted && layerArray.length!=0) {
+          // awcplotted = true
+          putAWCPoints();
+          putAWCPoints();
+        }
+        // putAWCPoints()
+
         putAwcp()
 
        
@@ -614,20 +664,64 @@ function putBeat(id){
           putAWCPoints();
         }
 
+
         // console.log(wmsLayer.options.layers.slice(8,))
         // console.log(wmsLayer.options.cql_filter.slice(3,))
         // console.log(`${idArray},${layerArray}`)
     }else if(elem.checked==false){
         var index = idArray.indexOf(id)
+        console.log(index)
 
         mymap.removeLayer(layerArray[index])
         idArray.splice(index,1)              // delete idArray[index]
-        layerArray.splice(index,1)              // delete layerArray[index]
+        layerArray.splice(index,1)
+
+        if(awcplotted && layerArray.length!=0) {
+          // awcplotted = true
+          putAWCPoints();
+          putAWCPoints();
+        }
+        if(layerArray.length==0){
+          putAWCPoints()
+        }
         // console.log(`${index}:${idArray[index]}`)
     }
 }
 
 // beat end
+
+var showL = false;
+var marker
+function getLocation() {
+
+  if(!showL){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+      //You have your locaton here
+        // console.log("Latitude: " + pos.coords.latitude +
+        // "Longitude: " + pos.coords.longitude);
+        mymap.setView([pos.coords.latitude, pos.coords.longitude],13);
+        marker = L.marker([pos.coords.latitude, pos.coords.longitude],{
+          // icon: L.icon({
+          //   iconUrl:"{% static 'images/marker.png' %}"
+          // })
+        }).addTo(mymap);
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+    document.getElementById('loc').innerHTML = 'Remove My Location';
+    showL = true;
+  }else{
+    mymap.removeLayer(marker)
+    mymap.setView([19.076, 72.8777],5);
+    document.getElementById('loc').innerHTML = 'Get My Location';
+    showL = false
+  }
+
+
+}
+
 
 $(document).ready(function() {
 $('#indstate').on('change', function() {
@@ -646,10 +740,10 @@ $('#indstate').on('change', function() {
         $("#mumbaiCity").hide();
         $("#mumsubwards").show();
         // $("#block").hide();
-    }  
+    }
 });
 
-$('#view_s').on('change', function() { 
+$('#view_s').on('change', function() {
     if (this.value == 'All India View') {
         mymap.setView([20.5937, 78.9629], 4);
         $("#indiaview").show();
@@ -707,8 +801,8 @@ const domain = ['https://geoserver2.communitygis.net/', 'http://localhost/'];
   var wms_legend;
   let activatedHealthFacility={};
   var content,popup_layer;
-        
-        
+
+
         // $('select[multiple]').multiselect();
 var expanded = false;
 
@@ -756,7 +850,7 @@ function showCheckboxes2() {
           transparent: 'true',
           // cql_filter: `distname='${opt}'`,
     })
-    wms_layer.addTo(mymap) 
+    wms_layer.addTo(mymap)
 
     // console.log("kkkk")
   } else {
@@ -776,7 +870,7 @@ function ViewWards(obj) {
     layer = 'WARD-S:s_ward';
     currentPos = [19.126,72.9296];
   }
-    
+
   if(obj.value == 'GS'){
     var checkboxes1 = document.getElementById("wardGSdiv");
     var checkbox = document.getElementById("GSward")
@@ -797,7 +891,7 @@ function ViewWards(obj) {
   }
   if(checkboxes1.style.display == "block")
     expanded = true;
-  else  
+  else
     expanded = false;
 
     // alert(expanded);
@@ -818,7 +912,7 @@ function ViewWards(obj) {
         format: 'image/png',
         transparent: 'true',
         cql_filter: `Name='G/S'`,
-                                             
+
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
@@ -828,7 +922,7 @@ function ViewWards(obj) {
     if (wms_legend) {
         mymap.removeControl(wms_legend);
     }
-    console.log(wms_layer);  
+    console.log(wms_layer);
     }else{
 
 
@@ -838,7 +932,7 @@ function ViewWards(obj) {
         format: 'image/png',
         transparent: 'true',
         //cql_filter: `Name='${opt}'`,
-                                             
+
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
@@ -853,9 +947,9 @@ function ViewWards(obj) {
   } else {
     checkboxes1.style.display = "none";
     checkbox.style.display ="none";
-    expanded = false;    
+    expanded = false;
   }
-  
+
 }
   else{
     //removelayer for viewwards()
@@ -868,7 +962,7 @@ function ViewWards(obj) {
       removeLayer("geonode:L_ward_polygons_16Apr2020")
       else if(obj.value == "Kwest")
       removeLayer("ward61:k_west_mumbai")
-    
+
   }
 }
 
@@ -876,32 +970,32 @@ function getWard(obj) {
     let ward = obj.value;
     console.log("ward_value",ward);
     // alert("obj is-"+obj.value)
-    
+
     if ($(obj).is(":checked")) {
       // alert("Ward selected is",ward);
         if (ward == "A"){
             // var layer = {layer};
             // console.log(layer);
-            putWards("A")                                                                                       
+            putWards("A")
         }
         else if (ward == "B")
           putWards("B")
         else if (ward == "C")
-          putWards("C")  
+          putWards("C")
         else if (ward == "D")
-          putWards("D")  
+          putWards("D")
         else if (ward == "E")
-          putWards("E")  
+          putWards("E")
         else if (ward == "FN")
           putWards("F/N")     //use "FN" for islandcity layer
         else if (ward == "FS")
-          putWards("F/S")  
+          putWards("F/S")
         else if (ward == "GN")
-          putWards("G/N")  
+          putWards("G/N")
         else if (ward == "GS")
-          putWards("G/S")   
+          putWards("G/S")
         else if (ward == "{corporator}")
-          putCorpWards("{corporator}")  
+          putCorpWards("{corporator}")
         else if (ward == "{admin}")
           putAdminWards("{admin}")
           // ward 122
@@ -921,10 +1015,10 @@ function getWard(obj) {
         else if (ward == "Lwardroads")
           putLWard("Lwardroads")
         else if (ward == "Lzones")
-          putLWard("Lzones") 
+          putLWard("Lzones")
         else if (ward == "Lbuildings")
           putLWard("Lbuildings")
-          // ward 61 
+          // ward 61
         else if (ward == "ward61")
          putWard61("ward61")
         else if (ward == "ward61buildings")
@@ -939,7 +1033,7 @@ function getWard(obj) {
           putWard61("ward61government")
           // ward GS
         else if (ward == "worli-koliwada")
-          putGSWard("worli-koliwada")  
+          putGSWard("worli-koliwada")
         else if (ward == "GSlanes")
           putGSWard("GSlanes")
         else if (ward == "GSspots")
@@ -947,7 +1041,7 @@ function getWard(obj) {
           else if (ward == "GSbubbles")
           putGSWard("GSbubbles")
           else if (ward == "GSzones")
-          putGSWard("GSzones")    
+          putGSWard("GSzones")
           else if (ward == "GSgrounds")
           putGSWard("GSgrounds")
           else if (ward == "GStoilets")
@@ -958,13 +1052,13 @@ function getWard(obj) {
           putGSWard("GSopen_places")
           else if (ward == "GStemples")
           putGSWard("GStemples")
-          
-                  
-                
+
+
+
     } else {
         if (ward == "A"){
           removeWards("A")
-        }  
+        }
           else if (ward == "B")
           removeWards("B")
         else if (ward == "C")
@@ -987,28 +1081,28 @@ function getWard(obj) {
           removeLayer("geonode:mumbai_ward_boundary")
        //ward 122 - S ward-----------------------------
        else if (ward == "L")
-        removeLayer("geonode:L_ward_polygons_16Apr2020") 
+        removeLayer("geonode:L_ward_polygons_16Apr2020")
        else if (ward == 'ward122')
           removeLayer("WARD-S:ward_122_16sept2021")
         else if (ward == "122_plastic")
           removeLayer("WARD-S:ward_122_building_collecting_plastic")
        else if (ward == "buildings")
-          removeLayer("WARD-S:buildings")  
+          removeLayer("WARD-S:buildings")
         else if (ward == "zones")
-          removeLayer("WARD-S:zones") 
+          removeLayer("WARD-S:zones")
         else if (ward == "bubbles")
-          removeLayer("WARD-S:bubbles") 
+          removeLayer("WARD-S:bubbles")
         else if (ward == "spots")
           removeLayer("WARD-S:spots")
-         ///--ward L -------------------- 
+         ///--ward L --------------------
         else if (ward == "Lwardroads")
           removeLayer("geonode:osm_lward_roads_03Apr2020")
         else if (ward == "Lzones")
-          removeLayer("geonode:l_ward_15may") 
+          removeLayer("geonode:l_ward_15may")
         else if (ward == "Lbuildings")
-          removeLayer("geonode:raheja_lward_swm_5nov19") 
+          removeLayer("geonode:raheja_lward_swm_5nov19")
         //---ward 61--------------
-        
+
         else if (ward == "ward61"){
           // removeLayer("ward61:corporator61boundary")
           removeLayer("ward61:ward61_boundary_1nov21")
@@ -1044,9 +1138,9 @@ function getWard(obj) {
         else if (ward == "GStemples")
           removeLayer("worli-koliwada:temples_21june21")
         else if (ward == "worli-koliwada")
-          removeLayer("worli-koliwada:worli-koliwada_boundary_7oct21")  
+          removeLayer("worli-koliwada:worli-koliwada_boundary_7oct21")
       }
-      
+
 }
 
 
@@ -1061,14 +1155,14 @@ mymap.setView([19.0110, 72.8512], 12);
       if(facility =="building")
         putFacility1("building")
       else if (facility == "roads")
-        putFacility2("roads")  
+        putFacility2("roads")
       else if (facility == "education"){
-        putFacility("education")                                                                                       
+        putFacility("education")
       }
       else if (facility == "health")
         putFacility("health")
       else if (facility == "housing")
-        putFacility("housing")  
+        putFacility("housing")
       else if (facility == "municipal_services")
         putFacility("municipal_services")
       else if (facility == "offices")
@@ -1084,16 +1178,16 @@ mymap.setView([19.0110, 72.8512], 12);
       else if (facility == "transportation")
         putFacility("transportation")
       else if (facility == "fire_station")
-        putFacility("fire_station")                                    
-        
+        putFacility("fire_station")
+
   } else {
       if (facility == "education")
         removeFacility("education")
-      
+
         else if (facility == "health")
         removeFacility("health")
       else if (facility == "housing")
-        removeFacility("housing")  
+        removeFacility("housing")
       else if (facility == "municipal_services")
         removeFacility("municipal_services")
       else if (facility == "offices")
@@ -1111,15 +1205,15 @@ mymap.setView([19.0110, 72.8512], 12);
       else if (facility == "fire_station")
         removeWards1("fire_station")
       else if (facility == "building")
-        removeLayer("geonode:osm_building_islandcity_14june") 
+        removeLayer("geonode:osm_building_islandcity_14june")
       else if (facility == "roads")
-        removeLayer("geonode:osm_road_islandcity_14june")      
+        removeLayer("geonode:osm_road_islandcity_14june")
     }
 }
 function putWards(opt) {
     // var district = document.getElementById("district").value;
     console.log("putward",opt);
-    
+
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         // layers: 'geonode:island_city_revised_2_july',
         layers: 'geonode:mumbai_ward_boundary',
@@ -1127,8 +1221,8 @@ function putWards(opt) {
         transparent: 'true',
         cql_filter: `Name='${opt}'`,
         // cql_filter: `ward_name='${opt}'`,
-        // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`                                        
-        // cql_filter: `district_n=${district}`,                                        
+        // cql_filter: `${facility}>0.0 AND state_gen='${indstate}'`
+        // cql_filter: `district_n=${district}`,
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
@@ -1139,7 +1233,7 @@ function putWards(opt) {
     // }
     console.log(wms_layer);
 
-    //console.log(wms_legend); 
+    //console.log(wms_legend);
     // addWMSLegend(layer);
     // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&cql_filter=" + wms_layer.options.cql_filter;
     // console.log(TRIBLAYER);
@@ -1158,14 +1252,14 @@ function putLayer(opt) {
         format: 'image/png',
         transparent: 'true',
         cql_filter: `distname='${opt}'`,
-        
+
     });
     wms_layer.addTo(mymap);
     wardLayerList.push(wms_layer);
     // console.log(wms_layer);
     if(opt == 'Mumbai')
       mymap.setView([19.0110, 72.8512], 12);
-      
+
     else
       mymap.setView([19.1186, 72.8064], 12);
 }
@@ -1183,28 +1277,28 @@ function putWards122(opt) {
       currentPos = [19.119,72.9145]
       zoom_level = 14
     }
-    else if(ward == '122_plastic'){  
+    else if(ward == '122_plastic'){
       layer = "WARD-S:ward_122_building_collecting_plastic"
       currentPos = [19.119,72.9145]
       zoom_level = 14
     }
-    else if(ward == 'buildings'){    
-      layer = "WARD-S:buildings"  
+    else if(ward == 'buildings'){
+      layer = "WARD-S:buildings"
       currentPos = [19.119,72.9145]
       zoom_level = 14
     }
-    else if(ward == 'zones'){    
+    else if(ward == 'zones'){
       layer = "WARD-S:zones"
       currentPos = [19.119,72.9145]
       zoom_level = 14
     }
-    else if(ward == 'bubbles'){    
-      layer = "WARD-S:bubbles"   
+    else if(ward == 'bubbles'){
+      layer = "WARD-S:bubbles"
       currentPos = [19.119,72.9145]
       zoom_level = 14
     }
 
-    
+
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: layer,
         format: 'image/png',
@@ -1213,17 +1307,17 @@ function putWards122(opt) {
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
     // console.log(newLayerList);
-    mymap.setView(currentPos,zoom_level)  
+    mymap.setView(currentPos,zoom_level)
     // console.log(wms_layer);
     // addWMSLegend(layer);
-       
+
     if (wms_legend) {
       mymap.removeControl(wms_legend);
     }
     addWMSLegend(layer);
     //TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
     //console.log(TRIBLAYER);
-    mymap.addEventListener('click', Identify);        
+    mymap.addEventListener('click', Identify);
 }
 
 
@@ -1234,7 +1328,7 @@ function putGSWard(opt) {
     // console.log("putward122 is : "+opt);
     // mymap.setView([19.1176, 72.9060],11);
     let ward = opt;
-   
+
     //GS Ward
     if (ward == "worli-koliwada"){
       layer = "worli-koliwada:worli-koliwada_boundary_7oct21"
@@ -1246,49 +1340,49 @@ function putGSWard(opt) {
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-    else if(ward == 'GSspots'){  
+    else if(ward == 'GSspots'){
       // alert("spots")
       layer = "worli-koliwada:worli_spots_28june21"
       currentPos = [19.0209,72.8161]
       zoom_level = 17
-      
+
     }
-    else if(ward == 'GSbubbles'){    
-      layer = "worli-koliwada:worli_bubbles_28june21"  
+    else if(ward == 'GSbubbles'){
+      layer = "worli-koliwada:worli_bubbles_28june21"
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-    else if(ward == 'GSzones'){    
+    else if(ward == 'GSzones'){
       layer = "worli-koliwada:worli_zones_28june21"
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-    else if(ward == 'GSgrounds'){    
-      layer = "worli-koliwada:ground_10oct"   
+    else if(ward == 'GSgrounds'){
+      layer = "worli-koliwada:ground_10oct"
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-    else if(ward == 'GStoilets'){    
-      layer = "worli-koliwada:public_toilets_20june21"   
+    else if(ward == 'GStoilets'){
+      layer = "worli-koliwada:public_toilets_20june21"
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-    else if(ward == 'GScompost'){    
-      layer = "worli-koliwada:worli_pits28june21"   
+    else if(ward == 'GScompost'){
+      layer = "worli-koliwada:worli_pits28june21"
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-    else if(ward == 'GSopen_places'){    
-      layer = "worli-koliwada:worli_openplace_10oct"   
+    else if(ward == 'GSopen_places'){
+      layer = "worli-koliwada:worli_openplace_10oct"
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-    else if(ward == 'GStemples'){    
-      layer = "worli-koliwada:temples_21june21"   
+    else if(ward == 'GStemples'){
+      layer = "worli-koliwada:temples_21june21"
       currentPos = [19.0182,72.8168]
       zoom_level = 16
     }
-   
+
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: layer,
         format: 'image/png',
@@ -1297,11 +1391,11 @@ function putGSWard(opt) {
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
     // console.log(newLayerList);
-    mymap.setView(currentPos,zoom_level)  
+    mymap.setView(currentPos,zoom_level)
     // console.log(wms_layer);
     // -------------------------------TO BE cHECKED - Monika
     // addWMSLegend(layer);
-       
+
     if (wms_legend) {
       // alert(wms_legend)
       mymap.removeControl(wms_legend);
@@ -1309,7 +1403,7 @@ function putGSWard(opt) {
     // ------------------------------------------------------
     addWMSLegend(layer);
     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/worli-koliwada/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-    console.log(TRIBLAYER);        
+    console.log(TRIBLAYER);
 }
 
 
@@ -1319,24 +1413,24 @@ function putLWard(opt) {
     // console.log("putward122 is : "+opt);
     // mymap.setView([19.1176, 72.9060],11);
     let ward = opt;
-   
+
     //L Ward
-    if(ward == 'Lwardroads'){    
+    if(ward == 'Lwardroads'){
       layer = "geonode:osm_lward_roads_03Apr2020"
       currentPos = [19.094,72.8737]
       zoom_level = 14
      }
-    else if(ward == 'Lzones'){    
-      layer = "geonode:l_ward_15may" 
+    else if(ward == 'Lzones'){
+      layer = "geonode:l_ward_15may"
       currentPos = [19.094,72.8737]
-      zoom_level = 14 
+      zoom_level = 14
      }
-    else if(ward == 'Lbuildings'){    
+    else if(ward == 'Lbuildings'){
       layer = "geonode:raheja_lward_swm_5nov19"
       currentPos = [19.094,72.8737]
-      zoom_level = 14 
+      zoom_level = 14
     }
-   
+
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: layer,
         format: 'image/png',
@@ -1345,7 +1439,7 @@ function putLWard(opt) {
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
     // console.log(newLayerList);
-    mymap.setView(currentPos,zoom_level)  
+    mymap.setView(currentPos,zoom_level)
     // console.log(wms_layer);
     // addWMSLegend(layer);
     // alert(wms_legend)
@@ -1356,7 +1450,7 @@ function putLWard(opt) {
 
     addWMSLegend(layer);
     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-    console.log(TRIBLAYER);        
+    console.log(TRIBLAYER);
 }
 
 
@@ -1366,40 +1460,40 @@ function putWard61(opt) {
     // console.log("putward122 is : "+opt);
     // mymap.setView([19.1176, 72.9060],11);
     let ward = opt;
-   
-    if(ward == 'ward61'){    
+
+    if(ward == 'ward61'){
       // layer = "ward61:corporator61boundary"
       layer = "ward61:ward61_boundary_1nov21"
       currentPos = [19.1423,72.8137]
-      zoom_level = 14 
+      zoom_level = 14
     }
-    else if(ward == 'ward61buildings'){    
+    else if(ward == 'ward61buildings'){
       // layer = "ward61:buiding_polygon"
       layer = "ward61:buildings_2nov"
       currentPos = [19.1467,72.8283]
-      zoom_level = 16 
+      zoom_level = 16
     }
-    else if(ward == 'ward61roads'){    
+    else if(ward == 'ward61roads'){
       layer = "ward61:ward61osmroad25OCT"
       currentPos = [19.1467,72.8283]
-      zoom_level = 16  
+      zoom_level = 16
     }
-    else if(ward == 'ward61edu'){    
+    else if(ward == 'ward61edu'){
       layer = "ward61:education_polygon"
       currentPos = [19.1467,72.8283]
-      zoom_level = 16  
+      zoom_level = 16
     }
-    else if(ward == 'ward61fuel'){    
+    else if(ward == 'ward61fuel'){
       layer = "ward61:power_polygons"
       currentPos = [19.1467,72.8283]
-      zoom_level = 16 
+      zoom_level = 16
     }
-    else if(ward == 'ward61government'){    
+    else if(ward == 'ward61government'){
       layer = "ward61:government_polygon"
       currentPos = [19.1467,72.8283]
-      zoom_level = 16 
+      zoom_level = 16
     }
-   
+
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: layer,
         format: 'image/png',
@@ -1408,16 +1502,16 @@ function putWard61(opt) {
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
     // console.log(newLayerList);
-    mymap.setView(currentPos,zoom_level)  
+    mymap.setView(currentPos,zoom_level)
     // console.log(wms_layer);
     // addWMSLegend(layer);
-       
+
     if (wms_legend) {
       mymap.removeControl(wms_legend);
     }
     addWMSLegend(layer);
     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/ward61/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-    console.log(TRIBLAYER);        
+    console.log(TRIBLAYER);
 }
 
 
@@ -1432,14 +1526,14 @@ function putSlums(opt) {
         format: 'image/png',
         transparent: 'true',
         // cql_filter: `distname='${opt}'`,
-        
+
     });
     wms_layer.addTo(mymap);
     wardLayerList.push(wms_layer);
     console.log(wms_layer);
     if(opt == 'Mumbai')
       mymap.setView([19.0110, 72.8512], 12);
-      
+
     else
       mymap.setView([19.1186, 72.8064], 12);
 }
@@ -1448,9 +1542,91 @@ function putSlums(opt) {
 // awc
 
 
-var awcplotted = false;
+
 var points=[];
 var popup_layer=[];
+// function putAwcp(opt) {
+//     // var district = document.getElementById("district").value;
+//     // console.log("putlayer",opt);
+//     // console.log(layerArray)
+//     var wms_layer;
+
+
+//     if(!awcplotted){
+//       if(layerArray.length === 0){
+
+//         mymap.setView([19.1110, 72.8112], 13);
+//         // wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+//           wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+//             // layers: 'geonode:island_city_revised_2_july',
+//             layers: 'geonode:awc1',
+//             format: 'image/png',
+//             transparent: 'true',
+
+//             // cql_filter: `beat_no=${element.options.cql_filter.slice(3,)}`,
+
+//         });
+//         // var l =[1,2,3,5,4,6]
+//         // console.log(wms_layer)
+//         wms_layer.addTo(mymap);
+//         points.push(wms_layer);
+
+//         // console.log(awcplotted)
+
+
+
+//       }else{
+//         var t = layerArray.map(x => x.options.cql_filter.slice(3,))
+//         console.log(t.toString())
+
+//           mymap.setView([19.1110, 72.8112], 13);
+//           wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
+//               layers: 'geonode:awc1',
+//               format: 'image/png',
+//               transparent: 'true',
+//               cql_filter: `beat_no IN (${t})`,
+
+//           });
+//           console.log(wms_layer)
+//           wms_layer.addTo(mymap);
+//           points.push(wms_layer)
+
+
+//       }
+
+//       awcplotted = true;
+//     }else{
+//       console.log(popup_layer)
+//       // mymap.removeLayer(popup_layer);
+//       console.log(awcplotted)
+//       awcplotted = false;
+//       points.forEach(element => {
+//         mymap.removeLayer(element)
+//       });
+//     }
+
+// }
+
+
+// console.log(`{{ awcs }}`)
+var wms_layer1;
+var legend;
+function putAWCPoints(opt){
+
+
+  var MyIcon = L.icon({
+    iconUrl: '{% static "images/pink.png" %}',
+    iconSize:     [20, 50], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  });
+
+
+
+
+
 function putAwcp(opt) {
     // var district = document.getElementById("district").value;
     // console.log("putlayer",opt);
@@ -1463,12 +1639,48 @@ var popup_layer=[];
 var wms_layer1;
 function putAWCPoints(opt){
 
-    
+
 
     if(!awcplotted){
+
+
+      function getColor(d) {
+              return d > 1000 ? '#800026' :
+                                '#FFEDA0';
+              }
+
+            legend = L.control({position: 'bottomright'});
+
+            legend.onAdd = function (mymap) {
+
+                var div = L.DomUtil.create('div', 'info legend')
+
+                    div.innerHTML +='<i style="background-color:#ff00b6"></i>&ndash; <b>Complete Data</b><br>';
+                    div.innerHTML +='<i style="background-color:#0088ff"></i>&ndash; <b>Incomplete Data</b>';
+
+
+                return div;
+            };
+
+            legend.addTo(mymap);
+
+
       if(layerArray.length === 0){
 
         mymap.setView([19.1110, 72.8112], 13);
+
+          // fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
+          // .then(result=>result.json())
+          // .then((output)=>{
+          //   wms_layer1 = L.geoJson(output,{
+          //     onEachFeature: function(feature, layer){
+          //       layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
+          //     },
+          //   })
+          //   wms_layer1.addTo(mymap)
+          //   points.push(wms_layer1);
+          // })
+            // console.log('executing...')
 
         // wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
           wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
@@ -1478,17 +1690,22 @@ function putAWCPoints(opt){
             transparent: 'true',
             
             // cql_filter: `beat_no=${element.options.cql_filter.slice(3,)}`,
+
             
-        });
-        // var l =[1,2,3,5,4,6]
-        // console.log(wms_layer)
-        wms_layer.addTo(mymap);
-        
-        
-        points.push(wms_layer);
-          
-        // console.log(awcplotted)
-             
+          '{% for i in data %}'
+            // console.log(`${parseFloat('{{i.latitude}}')},${parseFloat('{{i.longitude}}')}`)
+            if('{{i.population}}'!='None'){
+              wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')],{icon: MyIcon}).addTo(mymap)
+              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
+              points.push(wms_layer1)
+
+            }
+            else{
+              wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')]).addTo(mymap)
+              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
+              points.push(wms_layer1)
+            }
+          '{% endfor %}'
 
 
           fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
@@ -1509,6 +1726,56 @@ function putAWCPoints(opt){
       }else{
         var t = layerArray.map(x => x.options.cql_filter.slice(3,))
 
+        console.log(t)
+
+          mymap.setView([19.1110, 72.8112], 13);
+          // fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
+          // .then(result=>result.json())
+          // .then((output)=>{
+          //   wms_layer1 = L.geoJson(output,{
+          //     onEachFeature: function(feature, layer){
+          //       layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
+          //     },
+          //     filter: function(feature, layer){
+          //       for(i of t){
+          //         if(feature.properties.beat_no == i){
+          //           return feature.properties.beat_no;
+          //         }
+          //       }
+          //     }
+
+          //   })
+          //   wms_layer1.addTo(mymap)
+          //   points.push(wms_layer1);
+          // })
+            t.forEach(element => {
+              '{% for i in data %}'
+                // console.log(`${parseFloat('{{i.latitude}}')},${parseFloat('{{i.longitude}}')}`)
+                if(element=='{{i.beat_no}}'){
+                  // wms_layer1 =  L.marker([parseFloat('{{i.longitude}}',{icon: MyIcon}),parseFloat('{{i.latitude}}')],{icon: MyIcon}).addTo(mymap)
+                  // wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
+                  // points.push(wms_layer1)
+                  if('{{i.population}}'!='None'){
+              wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')],{icon: MyIcon}).addTo(mymap)
+              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
+              points.push(wms_layer1)
+
+            }
+            else{
+              wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')]).addTo(mymap)
+              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
+              points.push(wms_layer1)
+            } 
+                }
+              '{% endfor %}'
+            });
+
+
+
+
+
+
+
         console.log(t.toString())
         
           mymap.setView([19.1110, 72.8112], 13);
@@ -1523,19 +1790,18 @@ function putAWCPoints(opt){
           wms_layer.addTo(mymap);
           points.push(wms_layer)
 
-          
+
       }
 
       awcplotted = true;
     }else{
-      console.log(popup_layer)
-      // mymap.removeLayer(popup_layer);
-      console.log(awcplotted)
-      awcplotted = false;
       points.forEach(element => {
         mymap.removeLayer(element)
       });
+      mymap.removeControl(legend)
+      awcplotted = false;
     }
+
 
 
         console.log(t)
@@ -1574,6 +1840,8 @@ function putAWCPoints(opt){
 
 }
 
+
+
 //to remove unchecked layer
 function removeWards1(opt) {
   // alert("In remove Wards"+opt);
@@ -1587,7 +1855,7 @@ function removeWards(opt) {
   // var a = "ward_name="+"'"+opt+"'";
   var a = "Name="+"'"+opt+"'";
   console.log(a);
-  
+
   newLayerList.forEach((layer, index) => {
     if (layer.options.cql_filter === a) {
         mymap.removeLayer(layer);
@@ -1618,7 +1886,7 @@ function putFacility(opt) {
   $('#output').append("<h3>" + id  + "</h3>");
   // console.log(document.getElementById('output'));
   // console.log(id);
-  //  return id;         
+  //  return id;
   });
   // console.log(document.getElementById('output').textContent);
   var checkedWard = document.getElementById('output').innerText;
@@ -1635,11 +1903,11 @@ function putFacility(opt) {
       var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
                           layers: 'geonode:island_city_revised_2_july',
                           format: 'image/png',
-                          
+
                           transparent: 'true',
                           cql_filter: `layer_name='${opt}' AND ward_name='${ward[i]}'`,
-                          // cql_filter: `layer_name='${opt}'`,                                        
-                          // cql_filter: `district_n=${district}`,                                        
+                          // cql_filter: `layer_name='${opt}'`,
+                          // cql_filter: `district_n=${district}`,
                       });
                       wms_layer.addTo(mymap);
                       newLayerList.push(wms_layer);
@@ -1652,23 +1920,23 @@ function putFacility(opt) {
                 // }
                 // addWMSLegend(wms_layer);
                       console.log(wms_layer);
-    }  
+    }
   }
 
 });
   var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
           layers: 'geonode:island_city_revised_2_july',
           format: 'image/png',
-          
+
           transparent: 'true',
           cql_filter: `layer_name='${opt}' AND ward_name='${newchecks}'`,
-          // cql_filter: `layer_name='${opt}'`,                                        
-          // cql_filter: `district_n=${district}`,                                        
+          // cql_filter: `layer_name='${opt}'`,
+          // cql_filter: `district_n=${district}`,
       });
       wms_layer.addTo(mymap);
       newLayerList.push(wms_layer);
       console.log(wms_layer);
-     
+
   }
   //buildings
 function putFacility1(opt) {
@@ -1679,11 +1947,11 @@ function putFacility1(opt) {
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: 'geonode:osm_building_islandcity_14june',
         format: 'image/png',
-        
+
         transparent: 'true',
         // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
-        // cql_filter: `layer_name='${opt}'`,                                        
-        // cql_filter: `district_n=${district}`,                                        
+        // cql_filter: `layer_name='${opt}'`,
+        // cql_filter: `district_n=${district}`,
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
@@ -1692,7 +1960,7 @@ function putFacility1(opt) {
     //     mymap.removeControl(wms_legend);
     // }
     console.log(wms_layer);
-    //console.log(wms_legend); 
+    //console.log(wms_legend);
     // addWMSLegend(layer);
     // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
     // // console.log(TRIBLAYER);
@@ -1709,11 +1977,11 @@ function putFacility2(opt) {
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: 'geonode:osm_road_islandcity_14june',
         format: 'image/png',
-        
+
         transparent: 'true',
         // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
-        // cql_filter: `layer_name='${opt}'`,                                        
-        // cql_filter: `district_n=${district}`,                                        
+        // cql_filter: `layer_name='${opt}'`,
+        // cql_filter: `district_n=${district}`,
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
@@ -1722,7 +1990,7 @@ function putFacility2(opt) {
     //     mymap.removeControl(wms_legend);
     // }
     console.log(wms_layer);
-    //console.log(wms_legend); 
+    //console.log(wms_legend);
     // addWMSLegend(layer);
     addWMSLegend(layer);
     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
@@ -1739,12 +2007,12 @@ function putCorpWards(opt) {
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: 'geonode:corporatorwardboundary_mumbai_13may',
         format: 'image/png',
-        
+
         transparent: 'true',
         // cql_filter: "district= Mumbai City",
         // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
-        // cql_filter: `layer_name='${opt}'`,                                        
-        // cql_filter: `district_n=${district}`,                                        
+        // cql_filter: `layer_name='${opt}'`,
+        // cql_filter: `district_n=${district}`,
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
@@ -1753,7 +2021,7 @@ function putCorpWards(opt) {
     //     mymap.removeControl(wms_legend);
     // }
     console.log(wms_layer);
-    //console.log(wms_legend); 
+    //console.log(wms_legend);
     // addWMSLegend(layer);
     // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
     // // console.log(TRIBLAYER);
@@ -1771,12 +2039,12 @@ function putAdminWards(opt) {
     var wms_layer = L.tileLayer.wms('https://geoserver2.communitygis.net/geoserver/wms', {
         layers: 'geonode:mumbai_ward_boundary',
         format: 'image/png',
-        
+
         transparent: 'true',
         // cql_filter: "district='" + opt + "'",
         // cql_filter: `layer_name='${opt}' AND ward_name='${ward}'`,
-        // cql_filter: `layer_name='${opt}'`,                                        
-        // cql_filter: `district_n=${district}`,                                        
+        // cql_filter: `layer_name='${opt}'`,
+        // cql_filter: `district_n=${district}`,
     });
     wms_layer.addTo(mymap);
     newLayerList.push(wms_layer);
@@ -1785,7 +2053,7 @@ function putAdminWards(opt) {
     //     mymap.removeControl(wms_legend);
     // }
     console.log(wms_layer);
-    //console.log(wms_legend); 
+    //console.log(wms_legend);
     // addWMSLegend(layer);
     // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
     // // console.log(TRIBLAYER);
@@ -1804,7 +2072,7 @@ function removeFacility(layer_name) {
     // if (wms_legend) {
     //     mymap.removeControl(wms_legend);
     // }
-  
+
     $('#output').each(function () {
       var text1 = document.getElementById('output').innerText;
 
@@ -1844,7 +2112,7 @@ function removeFacility(layer_name) {
 }
 
 function removeLayer(unchecked_layer) {
-  
+
 //   for(var i = 0; i < newLayerList.length ; i++){
 //     console.log("ARRAY LIST" + newLayerList[i.value])
 // }
@@ -1853,19 +2121,19 @@ function removeLayer(unchecked_layer) {
     console.log("newlayerlist :"+ layer.options.layers+":"+index)
   if (layer.options.layers === unchecked_layer) {
       mymap.removeLayer(layer);
-      
+
       newLayerList.splice(index, 1);
       if (wms_legend) {
         // alert(wms_legend)
         mymap.removeControl(wms_legend);
       }
       // mymap.removeControl(wmsLegend);
-  } 
+  }
   // if (wms_legend) {
   //   alert(wms_legend)
   //   mymap.removeControl(wms_legend);
   // }
-  
+
   });
 }
 
@@ -1916,7 +2184,7 @@ $.ajax({
             });
             if (feature.properties.zono_numbe) {
                 console.log("I reached at");
-                
+
                 if(feature.properties.zono_numbe == 1){
                     lanes = "Akbar saikh chowl,"+"Muktabai chowl,"+"Laxman patel chowl,"+"Sulochna bane chowl,"+"John golbo chowl,"+"Atmaram sonar chowl,"+"	Dilima house,"+"Kutina house,"+"Rita john house,"+"Anthony kini house,"+"Mahendra niwas,"+"Rojibai agosti chowl,"+"Micle josef chowl,"+"Savitribai chowl,"+"Tigdi chowl,"+"Narayan niwas chowl,"+"Nitore chowl,"+"Vitthal worlikar chowl,"+"Naryan krupa chowl,"+"Guru krupa chowl,"+"Parvati bai niwas";
 
@@ -1968,10 +2236,10 @@ $.ajax({
                     lanes = "Ganpti Mandir,"+"Amol classes,"+"Prakash Arun Band Pathk,"+"Shilpa Hair Saloon Galli,"+"Dr Yadav Galli,"+"Mary Nivas,"+"Shree Sai Krupa Market,"+"Hanuman Nivas,"+"SAP Enterpriser ,"+"Sangam Kridamandal,"+"Sangam Kridamandal 2	,"+"Sangam Kridamandal 3";
 
                 }
-                
+
                 content = "<table class = 'popupclass' ><tr colspan='5'><b>Zone Information</b></tr>" +
                     "<tr><td><b>Name</b></td><td>" + feature.properties.zone_name + "</td></tr>" +
-                    "<tr><td><b>Number </b></td><td>" + feature.properties.zono_numbe+ "</td></tr>" + 
+                    "<tr><td><b>Number </b></td><td>" + feature.properties.zono_numbe+ "</td></tr>" +
                     "<tr><td><b>Lanes</b></td><td>" + lanes+ "</td></tr>" +"</table>";
             }
             if (feature.properties.layer) {
@@ -1979,7 +2247,7 @@ $.ajax({
                 content = "<table class = 'popupclass' ><tr><td><b>BinPath Information</b></td><td></td></tr>" +
                     "<tr><td><b>Zone Name</b></td><td>" + feature.properties.zone_name + "</td></tr>" +
                     "<tr><td><b>Zone Id</b></td><td>" + feature.properties.zone_id+ "</td></tr>" + "</table>";
-            } 
+            }
             if (feature.properties.bubble_nm) {
                 console.log("I reached at");
                 content = "<table class = 'popupclass' ><tr><td><b>Bubble Information</b></td><td></td></tr>" +
@@ -1987,10 +2255,10 @@ $.ajax({
                     "<tr><td><b>Bubble Name: </b></td><td>" + feature.properties.bubble_nm + "</td></tr>" +
                     "<tr><td><b>Zone Name: </b></td><td>" + feature.properties.zone_name + "</td></tr>" +
                     "<tr><td><b>Zone Number: </b></td><td>" + feature.properties.zone_id+ "</td></tr>" + "</table>";
-            } 
+            }
             if (feature.properties.spot_id) {
                 // console.log("I reached at");
-            
+
                 str1 = feature.properties.zone_id
                 items = str1.split('_')
                 spot_num = items[items.length - 1]
@@ -2008,8 +2276,8 @@ $.ajax({
                     "<tr><td colSpan='5'><b>Zone ID: </b></td><td>" + feature.properties.zone_id + "</td></tr>" +
                     "<tr><td colSpan='5'><b>Zone Name: </b></td><td>" + feature.properties.zone_name+ "</td></tr>" +
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/SPOT21.4.2021/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            } 
-            
+            }
+
             if (feature.properties.Temple_nam) {
                 // console.log("For Grounds(lanmark menu)
                 str1 = feature.properties.Temple_nam
@@ -2021,12 +2289,12 @@ $.ajax({
                 // console.log
                 filename = Temple_nam+'.jpg';
                 console.log(filename)
-              
+
                 content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Worship Place Information</b></tr>"+
-                    
+
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +Temple_nam+ "</td></tr>" +
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Temple/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            } 
+            }
             if (feature.properties.ground) {
                 // console.log("For Grounds(lanmark menu)
                 str1 = feature.properties.ground
@@ -2038,9 +2306,9 @@ $.ajax({
                 // console.log
                 filename = ground_name+'.jpg';
                 console.log(filename)
-              
+
                 content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Ground Information</b></tr>"+
-                    
+
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +ground_name+ "</td></tr>" +
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Ground/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
             }
@@ -2055,18 +2323,18 @@ $.ajax({
                 // console.log
                 filename = Toilet_Nam+'.jpg';
                 console.log(filename)
-              
+
                 content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Toilet Information</b></tr>"+
-                    
+
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +Toilet_Nam+ "</td></tr>" +
 
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
 
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Public Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
 
-            } 
+            }
             if (feature.properties.opnplace) {
-                
+
                 str1 = feature.properties.opnplace
                 items = str1.split('.')
                 OpenPlace = items[items.length - 2]
@@ -2076,12 +2344,12 @@ $.ajax({
                 // console.log
                 filename = OpenPlace+'.jpg';
                 console.log(filename)
-              
+
                 content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Workship Places Information</b></tr>"+
-                    
+
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +OpenPlace+ "</td></tr>" +
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Open Spaces/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            } 
+            }
             if (feature.properties.Pits_Name) {
                 console.log("For Pits_Name(lanmark menu)")
                 str1 = feature.properties.Pits_Name
@@ -2093,9 +2361,9 @@ $.ajax({
                 // console.log
                 filename = Pits_Name+'.jpg';
                 console.log(filename)
-              
+
                 content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Pit Information</b></tr>"+
-                    
+
                     "<tr><td colSpan='5'><b>Name:</b></td><td>" +Pits_Name+ "</td></tr>" +
                     "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Pits/kandevadi composting.jpg' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
             }
@@ -2111,4 +2379,4 @@ $.ajax({
 
 </script>
 
-{% endblock %}              
+{% endblock %}
