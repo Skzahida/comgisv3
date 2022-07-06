@@ -592,6 +592,7 @@ function putBeat(id){
         // console.log(wms_layer)
         putAwcp()
         wmsLayer.addTo(mymap);
+        popup_layer="https://geonode.communitygis.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;    
         layerArray.push(wmsLayer)
         putAwcp()
         // console.log(wmsLayer.options.layers.slice(8,))
@@ -1458,7 +1459,7 @@ function putAwcp(opt) {
         
         
         points.push(wms_layer);
-          
+        // popup_layer="https://geonode.communitygis.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;    
         // console.log(awcplotted)
              
 
@@ -1820,7 +1821,7 @@ var Y = Math.trunc(mymap.layerPointToContainerPoint(e.layerPoint).y);
 // compose the URL for the request
 
 
-var URL = TRIBLAYER + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
+var URL = popup_layer + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
 // console.log(URL);
 //send GetFeatureInfo as asynchronous HTTP request using jQuery $.ajax
 $.ajax({
@@ -1835,192 +1836,14 @@ $.ajax({
             var popup = new L.Popup({
                 maxWidth: 300
             });
-            if (feature.properties.zono_numbe) {
-                console.log("I reached at");
-                
-                if(feature.properties.zono_numbe == 1){
-                    lanes = "Akbar saikh chowl,"+"Muktabai chowl,"+"Laxman patel chowl,"+"Sulochna bane chowl,"+"John golbo chowl,"+"Atmaram sonar chowl,"+"	Dilima house,"+"Kutina house,"+"Rita john house,"+"Anthony kini house,"+"Mahendra niwas,"+"Rojibai agosti chowl,"+"Micle josef chowl,"+"Savitribai chowl,"+"Tigdi chowl,"+"Narayan niwas chowl,"+"Nitore chowl,"+"Vitthal worlikar chowl,"+"Naryan krupa chowl,"+"Guru krupa chowl,"+"Parvati bai niwas";
-
-                }
-                if(feature.properties.zono_numbe == 2){
-                    lanes = "Jayhind Krida Mandal,"+"Naveet Galli,"+"Buddist chaal,"+"Ganesa krida mandal,"+"Sanjay krida mandal,"+"Sarasvati band pataka,"+"Lakshmi narayan sadan,"+"Kalikhan chaal,"+"Hamuman galli,"+"Buddey house,"+"Tare Galli";
-
-                }
-                if(feature.properties.zono_numbe == 3){
-                    lanes = "Our Lady Of Velenkanni Cross,"+"Bhandarwada Ground,"+"Siddhivinayak Grhanirmana Sanstha ,"+"Waras Lane,"+"Love Star Krida Mandal,"+"Love Star Krida Mandal 2,"+"Amar Prem Chowk,"+"Amar Prem Krida mandal,"+"Ram singh chowl,"+"Mohan jayram chowl	Bhagirathi,"+"Daru pawar chowl,"+"Munsipal chaowl,"+"Gokhran chowl,"+"Ganpat shivra chowl,"+"ramdhani gupta niwas chowl,"+"Atmaram kharote chowl,"+"Bhagirathi niwas,"+"Chikane house";
-                }
-                if(feature.properties.zono_numbe == 4){
-                    lanes = "Milinda mitra mandal,"+"Datta kupa mandal,"+"Datta kupa mandal 2,"+"Baji Bala mitra mandal,"+"Sangama krida mandal,"+"Sambhaji mitra mandal,"+"Lucky matton shop";
-
-                }
-                if(feature.properties.zono_numbe == 5){
-                    lanes = "Jamat Hall	Datta Kridamandal,"+"Baji Balmandal	Amol classes,"+"Pakhari Galli,"+"Bajar Galli,"+"Vijay Mitra Mandal,"+"Chotu Bai Ganapat House,"+"Fish Market,"+"Aaradhna,"+"Yashwant Asharm,"+"Teen Batti Naka,"+"Bal Mitra Seva Mandal";
-
-                }
-                if(feature.properties.zono_numbe == 6){
-                    lanes = "Bhagat Galli,"+"Tare Galli,"+"Balchandra Nivas	Vrundavan,"+"Gonta Galli,"+"Jagruti Mandal,"+"Swarajya Mandal,"+"Manik Nakva House,"+"Pimpal Galli,"+"Lakshimi Jaganath Shruti Nivas,"+"Randhir Seva Mandal,"+"Mata Hirkani Nivas,"+"Jay Malhar House,"+"Aanad Classes,"+"Aaradhna Shankar Mandir";
-
-                }
-                if(feature.properties.zono_numbe == 7){
-                    lanes = "Dukkur Galli,"+"Dukkur Galli 2,"+"Tare House,"+"Isana John Koli,"+"Amar Meghnath Mandal,"+"Sadguru Bhavan,"+"Dyaneshwar Mandal,"+"Ekvira Nivas (Shriram Galli)	Shriram Galli,"+"Shriram Galli 2,"+"Shri Lakshimi Nivas,"+"Amar Sports Clube,"+"120 Kridamandal,"+"K House (Sonapur Lane),"+"Sonapur Lane,"+"Dyaneshwar Kridamandal Mandal,"+"Shriram Galli 3,"+"Matru Smruti Nivas,"+"Sonapur Lane 2,"+"Ekvira Nivas (Sonpur Lane),"+"Sai baba mandir";
-
-                }
-                if(feature.properties.zono_numbe == 8){
-                    lanes = "Walmiki Chowk,"+"Ganesha Temple,"+"Walmiki Chowk 2,"+"Pandharinath Niwas,"+"Janaki sadhan,"+"Balvir Galli,"+"Parvatibai,"+"Parashuram Niwas,"+"Balvir Galli 2,"+"Balvir Galli 3,"+"Walmiki Chowk 3,"+"Shankar Patil Niwas";
-
-                }
-                if(feature.properties.zono_numbe == 9){
-                    lanes = "Taak galli,"+"Dinesh store,"+"Taak galli 1,"+"Shree krishna mandir,"+"taak galli,"+"Taak galli 2,"+"Sri sai madir ,"+"Sai baba madir,"+"Siddhivinayak krida mandal,"+"Sri ram galli,"+"Astik brass band Pathak	Amar meghnath mandal,"+"Nautan bala mitra mandal";
-
-                }
-                if(feature.properties.zono_numbe == 10){
-                    lanes = "Kranti Kridamandal,"+"Lkshimi Sahwas,"+"Ashish Bhavan ,"+"Vikas Mitra Mandam,"+"Vijay Jayant Koli Nivas,"+"Vikas Galli,"+"Mahapooja Mandal,"+"Vikas Galli,"+"Dinesh Store,"+"Taak Galli,"+"Shree Ganesh Seva Mandal,"+"Navjivan Kridamandal,"+"Navjivan Wasahat,"+"Navjivan Wasahat 2,"+"Killa (Worli Koliwada),"+"K House (Killa),"+"	Sai Baba Mandir (Navjivan)";
-
-                }
-                if(feature.properties.zono_numbe == 11){
-                    lanes = "Sri Sai Prasad Sadan,"+"Nikam House,"+"Frank Mery Villa,"+"Worli Village Nagari vikasa Sanstha,"+"Damodara Seva Mandal,"+"Damodara Ground,"+"Dattatraya save Mandal,"+"Datta mandir ";
-
-                }
-                if(feature.properties.zono_numbe == 12){
-                    lanes = "Golfadevi Navratrotsava Mandal,"+"Golfadevi Navratrotsava Mandal 2	,"+"Dhananjaya krida mandal,"+"Jana seva mandal,"+"Sai baba mandir Ghumata mandal,"+"Golfadevi mandir,"+"Golfadevi Krida mandal";
-
-                }
-                if(feature.properties.zono_numbe == 13){
-                    lanes = "Ganpti Mandir,"+"Amol classes,"+"Prakash Arun Band Pathk,"+"Shilpa Hair Saloon Galli,"+"Dr Yadav Galli,"+"Mary Nivas,"+"Shree Sai Krupa Market,"+"Hanuman Nivas,"+"SAP Enterpriser ,"+"Sangam Kridamandal,"+"Sangam Kridamandal 2	,"+"Sangam Kridamandal 3";
-
-                }
-                
-                content = "<table class = 'popupclass' ><tr colspan='5'><b>Zone Information</b></tr>" +
-                    "<tr><td><b>Name</b></td><td>" + feature.properties.zone_name + "</td></tr>" +
-                    "<tr><td><b>Number </b></td><td>" + feature.properties.zono_numbe+ "</td></tr>" + 
-                    "<tr><td><b>Lanes</b></td><td>" + lanes+ "</td></tr>" +"</table>";
-            }
-            if (feature.properties.layer) {
-                console.log("I reached at");
-                content = "<table class = 'popupclass' ><tr><td><b>BinPath Information</b></td><td></td></tr>" +
-                    "<tr><td><b>Zone Name</b></td><td>" + feature.properties.zone_name + "</td></tr>" +
-                    "<tr><td><b>Zone Id</b></td><td>" + feature.properties.zone_id+ "</td></tr>" + "</table>";
-            } 
-            if (feature.properties.bubble_nm) {
-                console.log("I reached at");
-                content = "<table class = 'popupclass' ><tr><td><b>Bubble Information</b></td><td></td></tr>" +
-                    "<tr><td><b>Bubble Id: </b></td><td>" + feature.properties.bubble_id + "</td></tr>" +
-                    "<tr><td><b>Bubble Name: </b></td><td>" + feature.properties.bubble_nm + "</td></tr>" +
-                    "<tr><td><b>Zone Name: </b></td><td>" + feature.properties.zone_name + "</td></tr>" +
-                    "<tr><td><b>Zone Number: </b></td><td>" + feature.properties.zone_id+ "</td></tr>" + "</table>";
-            } 
-            if (feature.properties.spot_id) {
-                // console.log("I reached at");
-            
-                str1 = feature.properties.zone_id
-                items = str1.split('_')
-                spot_num = items[items.length - 1]
-                fn = feature.properties.spot_name.trim()
-                // console.log(items[items.length - 1]);
-                // console.log(items);
-                // console.log
-                // filename = spot_num + '.' + feature.properties.spot_id +fn+'.jpg';
-                filename = spot_num + '.' + feature.properties.spot_id +fn;
-                console.log(filename)
-
-                content = "<table border = 2 class = 'popupclass' ><tr colspan='4'><b>Spot Information</b></tr>"+
-                    "<tr><td colSpan='5'><b>Spot Number: </b></td><td>" + feature.properties.spot_id + "</td></tr>" +
-                    "<tr><td colSpan='5'><b>Spot Name: </b></td><td>" + feature.properties.spot_name + "</td></tr>" +
-                    "<tr><td colSpan='5'><b>Zone ID: </b></td><td>" + feature.properties.zone_id + "</td></tr>" +
-                    "<tr><td colSpan='5'><b>Zone Name: </b></td><td>" + feature.properties.zone_name+ "</td></tr>" +
-                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/SPOT21.4.2021/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            } 
-            
-            if (feature.properties.Temple_nam) {
-                // console.log("For Grounds(lanmark menu)
-                str1 = feature.properties.Temple_nam
-                items = str1.split('.')
-                Temple_nam = items[items.length - 2]
-                fn = feature.properties.Temple_nam.trim()
-                console.log(items[items.length - 2 ]);
-                console.log(items);
-                // console.log
-                filename = Temple_nam+'.jpg';
-                console.log(filename)
-              
-                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Worship Place Information</b></tr>"+
-                    
-                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +Temple_nam+ "</td></tr>" +
-                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Temple/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            } 
-            if (feature.properties.ground) {
-                // console.log("For Grounds(lanmark menu)
-                str1 = feature.properties.ground
-                items = str1.split('.')
-                ground_name = items[items.length - 2]
-                fn = feature.properties.ground.trim()
-                console.log(items[items.length - 2 ]);
-                console.log(items);
-                // console.log
-                filename = ground_name+'.jpg';
-                console.log(filename)
-              
-                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Ground Information</b></tr>"+
-                    
-                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +ground_name+ "</td></tr>" +
-                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Ground/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            }
-            if (feature.properties.Toilet_Nam) {
-                console.log("For Toilets(lanmark menu)")
-                str1 = feature.properties.Toilet_Nam
-                items = str1.split('.')
-                Toilet_Nam = items[items.length - 2]
-                fn = feature.properties.Toilet_Nam.trim()
-                console.log(items[items.length - 2 ]);
-                console.log(items);
-                // console.log
-                filename = Toilet_Nam+'.jpg';
-                console.log(filename)
-              
-                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Toilet Information</b></tr>"+
-                    
-                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +Toilet_Nam+ "</td></tr>" +
-
-                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-
-                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Public Toilets/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-
-            } 
-            if (feature.properties.opnplace) {
-                
-                str1 = feature.properties.opnplace
-                items = str1.split('.')
-                OpenPlace = items[items.length - 2]
-                fn = feature.properties.opnplace.trim()
-                console.log(items[items.length - 2 ]);
-                console.log(items);
-                // console.log
-                filename = OpenPlace+'.jpg';
-                console.log(filename)
-              
-                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Workship Places Information</b></tr>"+
-                    
-                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +OpenPlace+ "</td></tr>" +
-                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Open Spaces/".concat(filename)+"' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            } 
-            if (feature.properties.Pits_Name) {
-                console.log("For Pits_Name(lanmark menu)")
-                str1 = feature.properties.Pits_Name
-                items = str1.split('.')
-                Pits_Name = items[items.length - 2]
-                fn = feature.properties.Pits_Name.trim()
-                console.log(items[items.length - 2 ]);
-                console.log(items);
-                // console.log
-                filename = Pits_Name+'.jpg';
-                console.log(filename)
-              
-                content = "<table border = 2 class = 'popupclass' ><tr colSpan='5'><b>Pit Information</b></tr>"+
-                    
-                    "<tr><td colSpan='5'><b>Name:</b></td><td>" +Pits_Name+ "</td></tr>" +
-                    "<tr><td colSpan='5 '><b>Image: </b></td><td><img class = 'popupimage' src='https://swk.communitygis.net/static/images/Pits/kandevadi composting.jpg' alt='image not found - '>"+filename+"</a></td></tr>" + "</table>";
-            }
-
+            if (feature.properties.id) {
+                            console.log("I reached at");
+                            content = "<table class = 'popupclass' ><tr colspan='5'><b>Beatormation</b></tr>" +
+                                "<tr><td><b>Beat Name</b></td><td>" + feature.fid_2 + "</td></tr>" +
+                                // "<tr><td><b>Number </b></td><td>" + feature.properties.zono_numbe+ "</td></tr>" + 
+                                // "<tr><td><b>Lanes</b></td><td>" + lanes+ "</td></tr>" +
+                                "</table>";
+                            }
             popup.setContent(content);
                 popup.setLatLng(e.latlng);
                 mymap.openPopup(popup);
