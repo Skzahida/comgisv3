@@ -598,6 +598,11 @@ var points=[];
 // beats
 var awcplotted = false;
 
+// beats
+var awcplotted = false;
+var points=[];
+
+
 var idArray = [];
 var layerArray = [];
 function putBeat(id){
@@ -663,6 +668,9 @@ function putBeat(id){
 
 var showL = false;
 
+
+var myLoc
+
 function getLocation() {
 
   if(!showL){
@@ -694,6 +702,24 @@ function getLocation() {
 
 }
 
+var nearest;
+var mindistance=99999999999;
+var distance;
+function getNearest(){
+  // nearest = myLoc;
+  points.forEach(element=>{
+    // console.log(L.latLng(myLoc))
+    distance=(myLoc.getLatLng().distanceTo(element.getLatLng())).toFixed(0)/1000;
+    if(distance<mindistance){
+      mindistance = distance;
+      nearest = element;
+    }
+    
+  })
+  nearest.openPopup();
+  console.log(nearest)
+  
+}
 
 
 
