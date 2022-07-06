@@ -547,36 +547,22 @@ label{
           <label for=""><input onchange="putBeat(10)" type="checkbox" id="10" name="" > <span>10</span></label>
         </div>
 
-
         <button class="btn btn-outline-dark" onclick="putAWCPoints()">Anganwadi Centers</button>
         </div>
 
         <div class="border text-center">
           <button class="btn btn-primary" id="loc" type="button" onclick="getLocation()">Get My Location</button>
-          <button class="btn btn-primary" id="ner" type="button" onclick="getNearest()">Nearest AWC</button>
+          <button class="btn btn-primary" id="ner" style="margin: 10px;" type="button" onclick="getNearest()">Nearest AWC</button>
 
         </div>
 
+        
         <!-- <div id="output" class="border"> -->
           <!-- {{ data|length }} -->
           <!-- {% for i in data %}
             <li>{{ i.latitude }}</li>
           {% endfor %}
         </div> -->
-
-
-        <button class="btn btn-outline-dark" onclick="putAwcp()">Anganwadi Centers</button>
-
-        <button class="btn btn-outline-dark" onclick="putAWCPoints()">Anganwadi Centers</button>
-        </div>
-
-      
-</div>
-
-
-
- <div style="text-align: center"> 
-    <button style="display: inline-block ;position: relative;top: 100px" id="closebutton" name="closebutton" class="btn btn-secondary"><span class="fa fa-power-off"></span></button> 
 
 </div>
 
@@ -604,10 +590,12 @@ label{
 
 // '{% endfor %}'
 
+var myLoc;
+
+var nearest;
+var points=[];
 
 // beats
-var awcplotted = false;
-
 var awcplotted = false;
 
 var idArray = [];
@@ -636,35 +624,16 @@ function putBeat(id){
           // cql_filter: `district_n=${district}`,
         });
         // console.log(wms_layer)
-
         // putAWCPoints()
-
-
-        putAwcp()
-
         wmsLayer.addTo(mymap);
 
         layerArray.push(wmsLayer)
-
         if(awcplotted && layerArray.length!=0) {
           // awcplotted = true
           putAWCPoints();
           putAWCPoints();
         }
         // putAWCPoints()
-
-        putAwcp()
-
-       
-        wmsLayer.addTo(mymap);
-        layerArray.push(wmsLayer)
-        if(awcplotted && layerArray.length!=0) {
-          awcplotted = true
-          putAWCPoints();
-          putAWCPoints();
-        }
-
-
         // console.log(wmsLayer.options.layers.slice(8,))
         // console.log(wmsLayer.options.cql_filter.slice(3,))
         // console.log(`${idArray},${layerArray}`)
@@ -681,7 +650,9 @@ function putBeat(id){
           putAWCPoints();
           putAWCPoints();
         }
-        if(layerArray.length==0){
+        if(layerArray.length==0 && awcplotted==true){
+          // console.log('trigggreed')
+          awcplotted=true;
           putAWCPoints()
         }
         // console.log(`${index}:${idArray[index]}`)
@@ -691,7 +662,7 @@ function putBeat(id){
 // beat end
 
 var showL = false;
-var marker
+
 function getLocation() {
 
   if(!showL){
@@ -701,11 +672,12 @@ function getLocation() {
         // console.log("Latitude: " + pos.coords.latitude +
         // "Longitude: " + pos.coords.longitude);
         mymap.setView([pos.coords.latitude, pos.coords.longitude],13);
-        marker = L.marker([pos.coords.latitude, pos.coords.longitude],{
+        myLoc = L.marker([pos.coords.latitude, pos.coords.longitude],{
           // icon: L.icon({
           //   iconUrl:"{% static 'images/marker.png' %}"
           // })
         }).addTo(mymap);
+        myLoc.bindPopup('my loc').openPopup()
       });
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -713,8 +685,8 @@ function getLocation() {
     document.getElementById('loc').innerHTML = 'Remove My Location';
     showL = true;
   }else{
-    mymap.removeLayer(marker)
-    mymap.setView([19.076, 72.8777],5);
+    mymap.removeLayer(myLoc)
+    mymap.setView([19.1110, 72.8112], 13);
     document.getElementById('loc').innerHTML = 'Get My Location';
     showL = false
   }
@@ -722,6 +694,26 @@ function getLocation() {
 
 }
 
+
+
+
+function getNearest(){
+  // nearest = myLoc;
+  var mindistance=99999999999999999;
+  var distance=0;
+  points.forEach(element=>{
+    // console.log(L.latLng(myLoc))
+    distance=(myLoc.getLatLng().distanceTo(element.getLatLng())).toFixed(0)/1000;
+    if(distance<mindistance){
+      mindistance = distance;
+      nearest = element;
+    }
+    
+  })
+  nearest.openPopup();
+  console.log(mindistance)
+  
+}
 
 $(document).ready(function() {
 $('#indstate').on('change', function() {
@@ -1543,7 +1535,7 @@ function putSlums(opt) {
 
 
 
-var points=[];
+
 var popup_layer=[];
 // function putAwcp(opt) {
 //     // var district = document.getElementById("district").value;
@@ -1613,7 +1605,6 @@ var wms_layer1;
 var legend;
 function putAWCPoints(opt){
 
-
   var MyIcon = L.icon({
     iconUrl: '{% static "images/pink.png" %}',
     iconSize:     [20, 50], // size of the icon
@@ -1623,26 +1614,7 @@ function putAWCPoints(opt){
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 
-
-
-
-
-function putAwcp(opt) {
-    // var district = document.getElementById("district").value;
-    // console.log("putlayer",opt);
-    // console.log(layerArray)
-    var wms_layer;
-
-
-var points=[];
-var popup_layer=[];
-var wms_layer1;
-function putAWCPoints(opt){
-
-
-
     if(!awcplotted){
-
 
       function getColor(d) {
               return d > 1000 ? '#800026' :
@@ -1664,7 +1636,6 @@ function putAWCPoints(opt){
 
             legend.addTo(mymap);
 
-
       if(layerArray.length === 0){
 
         mymap.setView([19.1110, 72.8112], 13);
@@ -1681,51 +1652,25 @@ function putAWCPoints(opt){
           //   points.push(wms_layer1);
           // })
             // console.log('executing...')
-
-        // wms_layer = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms', {
-          wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
-            // layers: 'geonode:island_city_revised_2_july',
-            layers: 'geonode:awc1',
-            format: 'image/png',
-            transparent: 'true',
-            
-            // cql_filter: `beat_no=${element.options.cql_filter.slice(3,)}`,
-
             
           '{% for i in data %}'
             // console.log(`${parseFloat('{{i.latitude}}')},${parseFloat('{{i.longitude}}')}`)
             if('{{i.population}}'!='None'){
               wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')],{icon: MyIcon}).addTo(mymap)
-              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
+              wms_layer1.bindPopup(`<div>District: <br>Prabhahg No: <br>Beat No: {{i.beat_no}}<br>Area ID: <br>Anganwadi No: <br>No of Households: <br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}<br>Pregnant Women: <br>Lactating Women: <br>Children: <br>Daily Count: <br>Food Consumed total: <br>Daily Consume: <br>Food Comsumption By Pregnant Women: <br>Food Consumption by Lactating Women: <br>Contact:  </div>`)
               points.push(wms_layer1)
 
             }
             else{
               wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')]).addTo(mymap)
-              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
+              wms_layer1.bindPopup(`<div>District: <br>Prabhahg No: <br>Beat No: {{i.beat_no}}<br>Area ID: <br>Anganwadi No: <br>No of Households: <br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}<br>Pregnant Women: <br>Lactating Women: <br>Children: <br>Daily Count: <br>Food Consumed total: <br>Daily Consume: <br>Food Comsumption By Pregnant Women: <br>Food Consumption by Lactating Women: <br>Contact:  </div>`)
               points.push(wms_layer1)
             }
           '{% endfor %}'
 
 
-          fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
-          .then(result=>result.json())
-          .then((output)=>{
-            wms_layer1 = L.geoJson(output,{
-              onEachFeature: function(feature, layer){
-                layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
-              },
-            })
-            wms_layer1.addTo(mymap)
-            points.push(wms_layer1);
-          })
-
-
-
-
       }else{
         var t = layerArray.map(x => x.options.cql_filter.slice(3,))
-
         console.log(t)
 
           mymap.setView([19.1110, 72.8112], 13);
@@ -1756,39 +1701,22 @@ function putAWCPoints(opt){
                   // wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
                   // points.push(wms_layer1)
                   if('{{i.population}}'!='None'){
-              wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')],{icon: MyIcon}).addTo(mymap)
-              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
-              points.push(wms_layer1)
+                    wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')],{icon: MyIcon}).addTo(mymap)
+                    wms_layer1.bindPopup(`<div>District: <br>Prabhahg No: <br>Beat No: {{i.beat_no}}<br>Area ID: <br>Anganwadi No: <br>No of Households: <br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}<br>Pregnant Women: <br>Lactating Women: <br>Children: <br>Daily Count: <br>Food Consumed total: <br>Daily Consume: <br>Food Comsumption By Pregnant Women: <br>Food Consumption by Lactating Women: <br>Contact:  </div>`)
+                    points.push(wms_layer1)
 
-            }
-            else{
-              wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')]).addTo(mymap)
-              wms_layer1.bindPopup(`<div >Beat No: {{i.beat_no}}<br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}  </div>`)
-              points.push(wms_layer1)
-            } 
+                  }
+                  else{
+                    wms_layer1 = L.marker([parseFloat('{{i.longitude}}'),parseFloat('{{i.latitude}}')]).addTo(mymap)
+                    wms_layer1.bindPopup(`<div>District: <br>Prabhahg No: <br>Beat No: {{i.beat_no}}<br>Area ID: <br>Anganwadi No: <br>No of Households: <br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}<br>Pregnant Women: <br>Lactating Women: <br>Children: <br>Daily Count: <br>Food Consumed total: <br>Daily Consume: <br>Food Comsumption By Pregnant Women: <br>Food Consumption by Lactating Women: <br>Contact:  </div>`)
+                    points.push(wms_layer1)
+                  } 
                 }
               '{% endfor %}'
             });
 
 
 
-
-
-
-
-        console.log(t.toString())
-        
-          mymap.setView([19.1110, 72.8112], 13);
-          wms_layer = L.tileLayer.betterWms('https://geonode.communitygis.in/geoserver/geonode/wms', {
-              layers: 'geonode:awc1',
-              format: 'image/png',
-              transparent: 'true',
-              cql_filter: `beat_no IN (${t})`,
-              
-          });
-          console.log(wms_layer)
-          wms_layer.addTo(mymap);
-          points.push(wms_layer)
 
 
       }
@@ -1798,46 +1726,10 @@ function putAWCPoints(opt){
       points.forEach(element => {
         mymap.removeLayer(element)
       });
+      points=[]
       mymap.removeControl(legend)
       awcplotted = false;
     }
-
-
-
-        console.log(t)
-      
-          mymap.setView([19.1110, 72.8112], 13);
-          fetch('https://geonode.communitygis.in/geoserver/geonode/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geonode%3Aawc1&outputFormat=application%2Fjson')
-          .then(result=>result.json())
-          .then((output)=>{
-            wms_layer1 = L.geoJson(output,{
-              onEachFeature: function(feature, layer){
-                layer.bindPopup(`<div >Beat No: ${feature.properties.beat_no}<br>Population: ${feature.properties.population}<br>Males: ${feature.properties.males}<br>Females: ${feature.properties.females}  </div>`)
-              },
-              filter: function(feature, layer){
-                for(i of t){
-                  if(feature.properties.beat_no == i){
-                    return feature.properties.beat_no;
-                  }
-                }
-              }
-              
-            })
-            wms_layer1.addTo(mymap)
-            points.push(wms_layer1);
-          })
-
-          
-      }
-        
-      awcplotted = true;
-    }else{
-    awcplotted = false;
-     points.forEach(element => {
-        mymap.removeLayer(element)
-      });
-    }
-
 }
 
 
