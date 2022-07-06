@@ -96,7 +96,7 @@ def urban_nutrition(request):
     # lng = [ i[0] for i in lng]
     data = Awc.objects.all()
     # print(data)
-    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION','user':user,'data':data})     
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION','data':data})     
 
 
 def loginUser(request):
