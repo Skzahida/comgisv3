@@ -590,10 +590,18 @@ label{
 
 // '{% endfor %}'
 
+var myLoc;
+
+var nearest;
+var points=[];
+
+// beats
+var awcplotted = false;
 
 // beats
 var awcplotted = false;
 var points=[];
+
 
 var idArray = [];
 var layerArray = [];
@@ -659,7 +667,10 @@ function putBeat(id){
 // beat end
 
 var showL = false;
+
+
 var myLoc
+
 function getLocation() {
 
   if(!showL){
@@ -674,6 +685,7 @@ function getLocation() {
           //   iconUrl:"{% static 'images/marker.png' %}"
           // })
         }).addTo(mymap);
+        myLoc.bindPopup('my loc').openPopup()
       });
     } else {
       console.log("Geolocation is not supported by this browser.");
@@ -706,6 +718,26 @@ function getNearest(){
   })
   nearest.openPopup();
   console.log(nearest)
+  
+}
+
+
+
+function getNearest(){
+  // nearest = myLoc;
+  var mindistance=99999999999999999;
+  var distance=0;
+  points.forEach(element=>{
+    // console.log(L.latLng(myLoc))
+    distance=(myLoc.getLatLng().distanceTo(element.getLatLng())).toFixed(0)/1000;
+    if(distance<mindistance){
+      mindistance = distance;
+      nearest = element;
+    }
+    
+  })
+  nearest.openPopup();
+  console.log(mindistance)
   
 }
 
@@ -1720,6 +1752,7 @@ function putAWCPoints(opt){
       points.forEach(element => {
         mymap.removeLayer(element)
       });
+      points=[]
       mymap.removeControl(legend)
       awcplotted = false;
     }
