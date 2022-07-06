@@ -1,8 +1,8 @@
-from asyncio.windows_events import NULL
-from operator import methodcaller
-from pickle import FALSE
-from subprocess import CREATE_NEW_CONSOLE
-from winreg import REG_DWORD_BIG_ENDIAN
+# from asyncio.windows_events import NULL
+# from operator import methodcaller
+# from pickle import FALSE
+# from subprocess import CREATE_NEW_CONSOLE
+# from winreg import REG_DWORD_BIG_ENDIAN
 from django.shortcuts import render,redirect
 from .models import User, Awc
 from django.contrib.auth import authenticate, login, logout
@@ -74,7 +74,7 @@ def chandrapurruralgis(request):
 def raigadgis(request):
     return render(request, "dashboard/raigadgis.html")   
 # is_authenticated = false    
-user={'is_authenticated':FALSE}
+user={'is_authenticated':False}
 # urban nutrition route
 def urban_nutrition(request):
     # tt = Commgis.objects.all()
