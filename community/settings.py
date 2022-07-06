@@ -26,7 +26,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','v3.communitygis.net','communitygis.net']
+# ALLOWED_HOSTS = ['127.0.0.1','v3.communitygis.net','communitygis.net']
+ALLOWED_HOSTS = [config('ALLOWED_HOST_1'), config('ALLOWED_HOST_2')]
 
 
 # Application definition
@@ -85,15 +86,12 @@ WSGI_APPLICATION = 'community.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME':'commgis',
-        'USER':'postgres',
-        'PASSWORD':'postgres',
-        'HOST':'localhost',
-        'PORT':5432,
-        # 'SECRET_KEY':')os$@dpb-xv6c@$3#at+nyf3-90-hhrg1jsh93!d%unqhg+$h2',
-        # 'ALLOWED_HOST_1':'127.0.0.1',
-        # 'ALLOWED_HOST_2':'staging.nowastes.in',
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
