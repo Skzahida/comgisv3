@@ -31,6 +31,10 @@ urlpatterns = [
 
     path('dashboard/raigadgis', views.raigadgis, name = 'raigadgis'),
     path('dashboard/urban_nutrition', views.urban_nutrition, name = 'urban_nutrition'),
+    path('dashboard/login',views.loginUser, name="login"),
+    path('dashboard/logoutUser',views.logoutUser,name = 'logoutUser'),
+    path('dashboard/profile',views.profile,name='profile'),
+    path('dashboard/aww_map',views.aww_map, name='aww_map')
     # path('',include(router.urls)),
     
 

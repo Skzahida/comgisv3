@@ -1,0 +1,345 @@
+{% extends 'base_urban.html' %}
+{% load static%}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+.legend {
+    padding: 5px;
+    line-height: 18px;
+    background-color:rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    /* opacity: 0.7; */
+}
+/* ll */
+
+label{
+    font-size: 15px;
+
+
+}
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+
+#checkboxes1 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes1 label {
+  display: block;
+}
+
+#checkboxes1 label:hover {
+  background-color: #1e90ff;
+}
+#ward122 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#ward122 label {
+  display: block;
+}
+#wardSdiv {
+  display: none;
+  border: 1px #dadada solid;
+
+}
+
+#wardSdiv label {
+  display: block;
+}
+
+#wardGSdiv {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#wardGSdiv label {
+  display: block;
+}
+
+#wardLdiv {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#wardkwestdiv label {
+  display: block;
+}
+#wardkwestdiv {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#wardLdiv label {
+  display: block;
+}
+.border {
+        padding: 6px 8px;
+        border-style: groove;
+        border-radius: 5px;
+        margin: 20px;
+
+    }
+
+
+    table,
+    th,
+    td {
+        border-bottom: 1px solid #ddd;
+        border-collapse: collapse;
+        padding: 2px 3px;
+        text-align: center;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #c9dbe6;
+    }
+
+
+    .table {
+        border-collapse: collapse;
+        padding: 50px;
+        font-weight: bold;
+        /* background:rgba(191, 149, 233, 0.473); */
+    }
+    /* css to customize Leaflet default styles  */
+
+    .leaflet-popup-content-wrapper {
+        background: rgba(0, 0, 0, 0.9);
+        color: #ffffff;
+    }
+
+    .leaflet-popup-content {
+        font-weight: bold;
+    }
+
+    h6 {
+        color: blue;
+    }
+
+</style>
+
+<div id="side-bar" style="background-color: rgba(255, 255, 255); height: 80%;">                <!-- Main container -->
+   
+    {{awc.latitude}}
+</div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="{% static 'js/jquery.multiselect.js'%}"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="{% static 'plugins/L.TileLayer.BetterWMS.js' %}"></script>
+    <!-- <script src="{% static 'plugins/L.Geoserver.js' %}"></script> -->
+
+<script>
+
+
+var hh = {
+"type": "FeatureCollection",
+"name": "awc_hh",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811110983532132, 19.141713390593758 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811139537125385, 19.141734805788705 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811152386242355, 19.141744799546345 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811173801437306, 19.141757648663312 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811195216632257, 19.141771925459945 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.81121948718652, 19.141797623693879 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811133826406746, 19.14168769235982 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811166663038989, 19.141704824515777 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811185222874613, 19.141724812031061 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811216631827193, 19.141743371866681 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811246613100124, 19.141760504022638 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811058159384586, 19.14169197539881 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811018184354026, 19.14168340932083 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810989630760758, 19.141674843242853 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810962504847168, 19.141667704844537 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810931095894574, 19.141656283407233 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810952511089525, 19.141637723571613 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810983920042105, 19.141647717329253 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811003907557392, 19.141653428047906 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811025322752343, 19.141659138766556 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811048165626957, 19.141667704844537 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811071008501557, 19.14166484948521 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.8112052103899, 19.141632012852959 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.81123233630349, 19.141642006610599 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811260889896758, 19.14165057268858 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811286588130699, 19.141681981641167 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811283732771372, 19.141709107554767 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811295154208665, 19.141733378109041 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811295154208665, 19.141763359381965 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811208065749227, 19.141609169978349 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811242330061134, 19.141619163735989 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811275166693392, 19.141623446774979 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811293726529001, 19.141646289649589 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811303720286645, 19.141670560203863 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811317997083279, 19.141700541476787 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811317997083279, 19.141723384351398 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811325135481596, 19.141747654905672 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811233763983154, 19.141574905666435 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811282305091709, 19.141590610142728 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811258034537431, 19.141580616385085 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811353689074863, 19.141759076342975 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811349406035873, 19.141730522749715 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811346550676546, 19.141696258437801 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811325135481596, 19.141583471744411 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.8113522613952, 19.141569194947781 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811372248910473, 19.141557773510478 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811395091785087, 19.141546352073171 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811415079300374, 19.141569194947781 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811389381066434, 19.141584899424075 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811362255152844, 19.141592037822392 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.81134369531722, 19.141607742298685 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811320852442606, 19.141622019095315 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811355116754527, 19.141640578930936 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811380814988453, 19.141620591415652 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811402230183404, 19.141609169978349 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811416506980038, 19.141603459259695 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811436494495325, 19.141593465502055 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811335129239239, 19.141666277164873 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810936806613228, 19.141756220983652 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810965360206495, 19.141766214741292 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811008190596382, 19.141760504022638 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811035316509987, 19.141779063858259 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810998196838739, 19.141789057615902 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811051020986241, 19.141797623693879 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811033888830295, 19.141810472810846 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811049593306578, 19.14183902640411 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811071008501528, 19.141856158560067 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811071008501528, 19.141829032646466 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810936806613199, 19.141776208498932 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810971070925106, 19.141800479053206 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811023895072651, 19.141580616385085 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811042454908275, 19.141570622627441 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811061014743885, 19.141550635112157 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811081002259172, 19.141534930635864 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811008190596354, 19.141563484229124 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811025322752315, 19.141550635112157 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811046737947251, 19.141536358315527 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811061014743885, 19.14151922615957 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810992486120057, 19.14154206903418 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811011045955681, 19.141540641354517 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811028178111641, 19.14151922615957 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811045310267588, 19.14151066008159 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810856856552064, 19.141527792237547 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810859711911391, 19.141497810964623 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810856856552064, 19.141476395769676 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810856856552064, 19.141447842176412 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810886837824981, 19.141520653839233 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810888265504644, 19.141497810964623 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810886837824981, 19.141474968090012 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810885410145318, 19.141447842176412 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810911108379258, 19.14151494312058 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810909680699595, 19.141496383284959 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810909680699595, 19.141477823449339 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810908253019932, 19.141449269856075 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810963932526803, 19.141420716262814 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810983920042077, 19.141426426981464 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811008190596354, 19.141437848418771 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811031033470968, 19.141444986817085 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810973926284433, 19.141395018028877 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.81099819683871, 19.141400728747531 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811018184353998, 19.141405011786521 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811039599548948, 19.141413577864498 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810982492362413, 19.141366464435613 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811006762916691, 19.141370747474603 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811035316509958, 19.141380741232247 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.811061014743885, 19.141389307310224 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810966787886116, 19.141506377042599 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.81095822180815, 19.141476395769676 ] } },
+{ "type": "Feature", "properties": { "id": null, "members": null, "childrens": null, "pregnant": null, "lactating": null, "yrs0_6": null, "yrs6-11": null, "yrs11-18": null, "males": null, "females": null, "awc_id": 91 }, "geometry": { "type": "Point", "coordinates": [ 72.810996769159047, 19.141489244886642 ] } }
+]
+}
+
+console.log('{{awc.latitude}}');
+var greenIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+
+
+mymap.setView([19.141826003916496,72.81109035015108],20)
+// L.marker([51.5, -0.09], {icon: greenIcon},{icon:greenIcon}).addTo(map);
+var marker = L.marker([parseFloat('{{awc.longitude}}'),parseFloat('{{awc.latitude}}')]).addTo(mymap);
+
+L.tileLayer.wms('https://geonode.communitygis.in/geoserver/geonode/wms',{
+    layers: 'geonode:beatpolygons',
+    format:'image/png',
+    transparent: 'true',
+    cql_filter:`id=3`,
+}).addTo(mymap)
+
+marker.bindPopup(`<i class="fa fa-edit mx-2" style="cursor: pointer;" onclick="location.href = '{% url 'profile' %}';"></i><i class="fa fa-trash mx-2" style="cursor: pointer;" onclick="location.href = '{% url 'profile' %}' "></i><br><div>District: <br>Prabhahg No: <br>Beat No: {{i.beat_no}}<br>Area ID: <br>Anganwadi No: <br>No of Households: <br>Population: {{i.population}}<br>Males: {{i.males}}<br>Females: {{i.females}}<br>Pregnant Women: <br>Lactating Women: <br>Children: <br>Daily Count: <br>Food Consumed total: <br>Daily Consume: <br>Food Comsumption By Pregnant Women: <br>Food Consumption by Lactating Women: <br>Contact:  </div>`)
+
+L.geoJson(hh,{
+    onEachFeature:function(feature,layer){
+        layer.bindPopup(`<i class="fa fa-edit mx-2" style="cursor: pointer;" onclick="location.href = '{% url 'profile' %}';"></i><i class="fa fa-trash mx-2" style="cursor: pointer;" onclick="location.href = '{% url 'profile' %}' "></i><br>House no: <br>Anganwadi No: <br>Members: <br>Males: {{i.males}}<br>Females: {{i.females}}<br>Pregnant Women: <br>Lactating Women: <br>Children: <br>Daily Count: <br>Food Consumed total: <br>Daily Consume: <br>Food Comsumption By Pregnant Women: <br>Food Consumption by Lactating Women: <br></div>`)
+    },
+    pointToLayer: function(feature, latlng){
+        return L.marker(latlng,{icon:greenIcon})
+    }
+    
+}).addTo(mymap)
+
+
+
+
+
+</script>
+
+{% endblock %}

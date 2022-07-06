@@ -120,15 +120,7 @@
 			}
 		</style>
 		{% block nav %} {% endblock%}
-		<div class="header" style=" background-color:forestgreen; color:aliceblue; top: 0;">
-			
-			<div class="project-title text-center"><h1>{{title}}</h1></div>
-	
-			<div class="header-right">
-					
-			</div>
-			
-		</div>
+		{% include 'dashboard/nav.html' %}
 		<div id="mapdiv" class="col-md-12"></div>
 
 		<script>
