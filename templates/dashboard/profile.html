@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    </head>
 <body>
     {% include 'dashboard/nav.html' %}
     <!-- <h1>{{ user }}</h1>
@@ -23,6 +23,163 @@
 
         {% if role == 'Supervisor' %}
         <h2>Supervisor role</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center p-2">
+                    <div class="container p-2 border d-grid">
+                        <button class="btn btn-primary m-2" onclick="putForm('CreateAww')">Create AWW</button><br>
+                        <button class="btn btn-primary m-2" onclick="putForm('UpdateData')">List of AWWs</button><br>
+                        <button class="btn btn-primary m-2" onclick="putForm('EditAwc')">Edit AWC Location/Polygon</button><br>
+                        <button class="btn btn-primary m-2" onclick="gotoMap(this.id)" id="sup">Map Interface</button><br>
+                        <button class="btn btn-primary m-2" onclick="putForm('Messages')">Messages</button><br>
+                        <button class="btn btn-primary m-2" onclick="putForm('Queries')">Send Queries</button>
+                    </div>
+                </div>
+                <div class="col text-center p-2">
+                    <div class="container border addData" id="CreateAww" style="background-color:aqua; height: 500px; overflow-y: scroll; display: none;">
+                        <div class="addData text-center container">
+                            <form action="createAww" method="POST">
+                                <input type="text" class="form-control mt-2 mb-2" name="name" placeholder="Name">
+                                <input type="text" class="form-control mt-2 mb-2" name="contact" id="" placeholder="Contact">
+                                <input type="text" class="form-control mt-2 mb-2" name="age" id="" placeholder="Age">
+                                <input type="date" class="form-control mt-2 mb-2" name="dob" id="">
+                                <input type="text" class="form-control mt-2 mb-2" name="email" id="" placeholder="Email">
+                                <input type="text" class="form-control mt-2 mb-2" name="awc_id" id="" placeholder="Awc ID">
+                                <input type="text" class="form-control mt-2 mb-2" name="edu" id="" placeholder="Highest Education Qualification">
+                                <label style="float: left;" class="form-label" for="">Gender : </label>
+                                <input type="radio" class="m-2" style="float: left;" name="gender" id=""><label style="float: left;" class="form-label" for="gender">Male</label>
+                                <input type="radio" class="m-2" style="float: left;" name="gender" id=""><label style="float: left;" class="form-label" for="gender">Female</label><br><br>
+                                <button class="btn btn-success mb-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container border" id="UpdateData" style="background-color:blueviolet; overflow-y: scroll; display: none;">
+                        <div class="addData">
+                            <ul style="list-style-type: none;">
+                                {% for i in aww %}
+                                <form action="deleteaww" id="{{ i.awwid }}" method="POST">
+                                    <input type="hidden" name="awwid" value="{{ i.awwid }}">
+                                    <li class="border m-1"><h5><span >AWW - {{ i.awwid }} Name: {{ i.name }}</span><span style="float:right;"><i class="fa fa-edit mx-2" onclick="putForm('CreateAww')"></i><i class="fa fa-trash mx-2" onclick="document.getElementById('{{ i.awwid }}').submit()"></i></span></h5><br></li>
+                                </form>
+                                {% endfor %}
+                                <!-- {% for i in hh %}
+                                <li class="border m-1"><h5><span style="float: left;">HH - {{ i.gid }}</span><span style="float:right;"><i class="fa fa-edit mx-2" onclick="putForm('AddHH')"></i><i class="fa fa-trash mx-2" onclick="putForm('AddHH')"></i></span></h5><br></li>
+                                {% endfor %} -->
+                                
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="container border" id="EditAwc" style="background-color:aqua; height: 500px; overflow-y: scroll; display: none;">
+                        <div class="addData text-center container">
+                            <form action="">
+                                <input type="text" class="form-control mt-2 mb-2" placeholder="State">
+                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Region">
+                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="District">
+                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Prabhag No">
+                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Beat No">
+                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Area ID">
+                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Anganwadi ID">
+                                <label for="" class="form-label"><b>AWC Location:</b> </label><br><button class="btn btn-primary mb-2">Present Location</button> <b>/</b> <button class="btn btn-primary mb-2">Locate From Map</button><br>
+
+                                <button class="btn btn-success mb-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container border" id="AddHH" style="background-color:aqua; height: 500px; overflow-y: scroll; display: none;">
+                        <div class="addData text-center container">
+                            <form action="addhh" method="POST"> 
+                                <input type="text" name="hid" class="form-control mt-2 mb-2" placeholder="HH id">
+                                <input type="text" name="members" class="form-control mt-2 mb-2" name="" id="" placeholder="No of members">
+                                <input type="text" name="children" class="form-control mt-2 mb-2" name="" id="" placeholder="Children">
+                                <input type="text" name="pregnant" class="form-control mt-2 mb-2" name="" id="" placeholder="Pregnant">
+                                <input type="text" name="lactating" class="form-control mt-2 mb-2" name="" id="" placeholder="Lactating">
+                                <input type="text" name="yrs06" class="form-control mt-2 mb-2" name="" id="" placeholder="0-6 years">
+                                <input type="text" name="yrs611" class="form-control mt-2 mb-2" name="" id="" placeholder="6-11 years">
+                                <input type="text" name="yrs1118" class="form-control mt-2 mb-2" name="" id="" placeholder="11-18 years">
+                                <input type="text" name="males" class="form-control mt-2 mb-2" name="" id="" placeholder="Males">
+                                <input type="text" name="females" class="form-control mt-2 mb-2" name="" id="" placeholder="Females">
+                                <label for="" class="form-label"><b>HH Location:</b> </label>
+                                <br><button class="btn btn-primary mb-2" onclick="getloc()" type="button">Present Location</button> 
+                                <input type="hidden" value="" name="lat" id="lat">
+                                <input type="hidden" value="" name="lng" id="lng">
+                                <script>
+                                    function getloc(){
+                                        if (navigator.geolocation) {
+                                            navigator.geolocation.getCurrentPosition(function(pos){
+                                                document.getElementById('lat').value = pos.coords.latitude
+                                                document.getElementById('lng').value = pos.coords.longitude
+                                            });
+                                        }
+                                    }
+                                  </script>
+                                <b>/</b>
+                                <!-- <button class="btn btn-primary mb-2" type="button">Locate From Map</button><br> -->
+
+                                <button class="btn btn-success mb-2" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container border" id="Queries" style="background-color:aqua; height: 500px; bottom: 0; display: none;">
+                        <div class="messages m-2" style="height: 80%; background-color:blue; border-radius: 5px; overflow-y: scroll;">
+                            <div>
+                                <ul style="list-style-type: none;padding: 0;">
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    <li class="border m-1"><h5>Query 1</h5></li>
+                                    
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="text-center container p-0">
+                            <form action="" class="row g-3">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Message" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+                                  </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container border" id="Messages" style="background-color:aqua; max-height: 500px; display: none; overflow-y: scroll;">
+                        
+                            <ul style="list-style-type: none;padding: 0;">
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                <li class="border m-1"><h5>Query 1</h5></li>
+                                
+                            </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endif %}
 
         {% if role == 'AWW' %}
@@ -34,7 +191,7 @@
                         <button class="btn btn-primary m-2" onclick="putForm('AddData')">Add Data</button><br>
                         <button class="btn btn-primary m-2" onclick="putForm('UpdateData')">Update Households Data</button><br>
                         <button class="btn btn-primary m-2" onclick="putForm('EditAwc')">Edit AWC Location/Polygon</button><br>
-                        <button class="btn btn-primary m-2" onclick="gotoMap()">Map Interface</button><br>
+                        <button class="btn btn-primary m-2" onclick="gotoMap(this.id)" id="aww">AWW Map Interface</button><br>
                         <button class="btn btn-primary m-2" onclick="putForm('Messages')">Messages</button><br>
                         <button class="btn btn-primary m-2" onclick="putForm('Queries')">Send Queries</button>
                     </div>
@@ -64,9 +221,16 @@
                         <div class="addData">
                             <button class="btn btn-primary mt-1" onclick="putForm('AddHH')">Add Household</button>
                             <ul style="list-style-type: none;">
-                                {% for i in data %}
-                                <li class="border m-1"><h5><span style="float: left;">HH - {{ i.fid }}</span><span style="float:right;"><i class="fa fa-edit mx-2" onclick="putForm('AddHH')"></i><i class="fa fa-trash mx-2" onclick="putForm('AddHH')"></i></span></h5><br></li>
+                                {% for i in hh %}
+                                <form action="deletehh" id="{{ i.hid }}" method="POST">
+                                    <input type="hidden" name="hid" value="{{ i.hid }}">
+                                    <li class="border m-1"><h5><span style="float: left;">HH - {{ i.hid }}</span><span style="float:right;"><i class="fa fa-edit mx-2" onclick="putForm('AddHH')"></i><i class="fa fa-trash mx-2" onclick="document.getElementById('{{ i.hid }}').submit()"></i></span></h5><br></li>
+                                </form>
                                 {% endfor %}
+                                <!-- {% for i in hh %}
+                                <li class="border m-1"><h5><span style="float: left;">HH - {{ i.gid }}</span><span style="float:right;"><i class="fa fa-edit mx-2" onclick="putForm('AddHH')"></i><i class="fa fa-trash mx-2" onclick="putForm('AddHH')"></i></span></h5><br></li>
+                                {% endfor %} -->
+                                
                             </ul>
 
                         </div>
@@ -89,20 +253,35 @@
                     </div>
                     <div class="container border" id="AddHH" style="background-color:aqua; height: 500px; overflow-y: scroll; display: none;">
                         <div class="addData text-center container">
-                            <form action="">
-                                <input type="text" class="form-control mt-2 mb-2" placeholder="HH id">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="No of members">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Children">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Pregnant">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Lactating">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="0-6 years">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="6-11 years">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="11-18 years">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Males">
-                                <input type="text" class="form-control mt-2 mb-2" name="" id="" placeholder="Females">
-                                <label for="" class="form-label"><b>HH Location:</b> </label><br><button class="btn btn-primary mb-2">Present Location</button> <b>/</b> <button class="btn btn-primary mb-2">Locate From Map</button><br>
+                            <form action="addhh" method="POST"> 
+                                <input type="text" name="hid" class="form-control mt-2 mb-2" placeholder="HH id">
+                                <input type="text" name="members" class="form-control mt-2 mb-2" name="" id="" placeholder="No of members">
+                                <input type="text" name="children" class="form-control mt-2 mb-2" name="" id="" placeholder="Children">
+                                <input type="text" name="pregnant" class="form-control mt-2 mb-2" name="" id="" placeholder="Pregnant">
+                                <input type="text" name="lactating" class="form-control mt-2 mb-2" name="" id="" placeholder="Lactating">
+                                <input type="text" name="yrs06" class="form-control mt-2 mb-2" name="" id="" placeholder="0-6 years">
+                                <input type="text" name="yrs611" class="form-control mt-2 mb-2" name="" id="" placeholder="6-11 years">
+                                <input type="text" name="yrs1118" class="form-control mt-2 mb-2" name="" id="" placeholder="11-18 years">
+                                <input type="text" name="males" class="form-control mt-2 mb-2" name="" id="" placeholder="Males">
+                                <input type="text" name="females" class="form-control mt-2 mb-2" name="" id="" placeholder="Females">
+                                <label for="" class="form-label"><b>HH Location:</b> </label>
+                                <br><button class="btn btn-primary mb-2" onclick="getloc()" type="button">Present Location</button> 
+                                <input type="hidden" value="" name="lat" id="lat">
+                                <input type="hidden" value="" name="lng" id="lng">
+                                <script>
+                                    function getloc(){
+                                        if (navigator.geolocation) {
+                                            navigator.geolocation.getCurrentPosition(function(pos){
+                                                document.getElementById('lat').value = pos.coords.latitude
+                                                document.getElementById('lng').value = pos.coords.longitude
+                                            });
+                                        }
+                                    }
+                                  </script>
+                                <b>/</b>
+                                <!-- <button class="btn btn-primary mb-2" type="button">Locate From Map</button><br> -->
 
-                                <button class="btn btn-success mb-2">Submit</button>
+                                <button class="btn btn-success mb-2" type="submit">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -175,8 +354,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
-
+    
     <script>
+
         var arr = []
         function putForm(cn){
             // console.log(cn)
@@ -188,8 +368,10 @@
             document.getElementById(arr[arr.length-1]).style.display = 'block';
         }
 
-        function gotoMap(){
-            location.href = "{% url 'aww_map' %}";
+        function gotoMap(val){
+            //console.log(val)
+            if(val=='sup') location.href = "{% url 'supervisior_map' %}";
+            else location.href = "{% url 'aww_map' %}";
         }
 
 
