@@ -34,7 +34,15 @@ urlpatterns = [
     path('dashboard/login',views.loginUser, name="login"),
     path('dashboard/logoutUser',views.logoutUser,name = 'logoutUser'),
     path('dashboard/profile',views.profile,name='profile'),
-    path('dashboard/aww_map',views.aww_map, name='aww_map')
+    path('dashboard/deletehh',views.deletehh,name="deletehh"),
+    path('dashboard/aww_map',views.aww_map, name='aww_map'),
+    path('dashboard/addhh',views.addhh,name="addhh"),
+    path('dashboard/beneficiaries',views.beneficiaries, name='beneficiaries'),
+    path('dashboard/events',views.events,name="events"),
+    path('dashboard/createAww',views.createaww,name="createAww"),
+    path('dashboard/deleteaww',views.deleteaww,name="deleteaww"),
+    path('dashboard/supervisior',views.supervisior_map,name='supervisior_map'),
+    path('dashboard/beneficiary_form/<int:id>',views.beneficiary_form,name='beneficiary_form')
     # path('',include(router.urls)),
     
 
