@@ -1,11 +1,15 @@
-# from asyncio.windows_events import NULL
-# from operator import methodcaller
-# from pickle import FALSE
-# from subprocess import CREATE_NEW_CONSOLE
-# from winreg import REG_DWORD_BIG_ENDIAN
+from asyncio.windows_events import NULL
+from operator import methodcaller
+from pickle import FALSE
+import re
+from subprocess import CREATE_NEW_CONSOLE
+from winreg import REG_DWORD_BIG_ENDIAN
 from django.shortcuts import render,redirect
-from .models import User, Awc
+from .models import User, Awc, AwcSpecific, Aww, HouseHolds
 from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.gis.geos import Point
+
 # from django.db import connection
 # from dashboard.models import IndiaFinal1617BasicLatlong
 # Create your views here.
@@ -96,8 +100,7 @@ def urban_nutrition(request):
     # lng = [ i[0] for i in lng]
     data = Awc.objects.all()
     # print(data)
-    
-    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION','data':data})     
+    return render(request, "dashboard/urban_nutrition.html",{'title':'URBAN NUTRITION','user':user,'data':data})     
 
 
 def loginUser(request):
@@ -144,10 +147,65 @@ def logoutUser(request):
 def profile(request):
     user = request.session['username']
     # print(user)
+    
+    # aww
     data = Awc.objects.all().order_by('fid')
-    return render(request, "dashboard/profile.html",{'user':user, 'role':request.session['role'],'data':data})
+    hh = HouseHolds.objects.all()
+    
+    # supervisior
+    aww = Aww.objects.all()
+    
+    return render(request, "dashboard/profile.html",{'user':user, 'role':request.session['role'],'data':data,'hh':hh,'aww':aww})
 
 def aww_map(request):
     awc = Awc.objects.filter(fid=2)
+    hh = HouseHolds.objects.all()
+    # print(hh[0].latitude)
     # print(awc[0].population)
-    return render(request, "dashboard/aww_map.html",{'awc':awc[0]})
+    return render(request, "dashboard/aww_map.html",{'awc':awc[0],'hh':hh})
+
+@csrf_exempt
+def addhh(request):
+    # print(request.POST)
+    hid1 = HouseHolds.objects.values_list('hid')
+    # hid1 = [ hid1[i] for i in hid1]
+    hid1=list(hid1)
+    hid1 = [i[0] for i in hid1]
+    # print(hid1)
+    if int(request.POST['hid']) not in hid1:
+        awchh = HouseHolds(hid=int(request.POST['hid']),noofmembers=int(request.POST['members']),children=int(request.POST['children']),pregnant=int(request.POST['pregnant']),lactating=int(request.POST['lactating']),yrs0_6=int(request.POST['yrs06']),yrs6_11=int(request.POST['yrs611']),yrs11_18=int(request.POST['yrs1118']),males=int(request.POST['males']),females=int(request.POST['females']),geom=Point(float(request.POST['lat']),float(request.POST['lng'])),awc_id = 91, longitude=float(request.POST['lat']), latitude = float(request.POST['lng']))
+        awchh.save()
+        return redirect('aww_map')
+    else:
+        HouseHolds.objects.filter(hid=int(request.POST['hid'])).update(noofmembers=int(request.POST['members']),children=int(request.POST['children']),pregnant=int(request.POST['pregnant']),lactating=int(request.POST['lactating']),yrs0_6=int(request.POST['yrs06']),yrs6_11=int(request.POST['yrs611']),yrs11_18=int(request.POST['yrs1118']),males=int(request.POST['males']),females=int(request.POST['females']),geom=Point(float(request.POST['lat']),float(request.POST['lng'])),awc_id = 91, longitude=float(request.POST['lat']), latitude = float(request.POST['lng']))
+    return redirect("profile")
+
+@csrf_exempt
+def deletehh(request):
+    HouseHolds.objects.filter(hid=int(request.POST['hid'])).delete()
+    return redirect('aww_map')
+
+def beneficiaries(request):
+    return render(request, 'dashboard/beneficiaries.html')
+
+def events(request):
+    return render(request,'dashboard/events.html')
+
+@csrf_exempt
+def createaww(request):
+    aww = Aww(awwid=6,name=request.POST['name'],age=int(request.POST['age']),contact=request.POST['contact'],awc_id=request.POST['awc_id'])
+    aww.save()
+    return redirect('profile')
+
+@csrf_exempt
+def deleteaww(request):
+    Aww.objects.filter(awwid=int(request.POST['awwid'])).delete()
+    return redirect('profile')
+
+def supervisior_map(request):
+    aww = Aww.objects.all()
+    return render(request, 'dashboard/supervisior_map.html',{'aww':aww})
+
+def beneficiary_form(request,id):
+    print(id)
+    return render(request, 'dashboard/beneficiary_form.html',{'bene':id})
