@@ -1,9 +1,3 @@
-# from asyncio.windows_events import NULL
-# from operator import methodcaller
-# from pickle import FALSE
-# import re
-# from subprocess import CREATE_NEW_CONSOLE
-# from winreg import REG_DWORD_BIG_ENDIAN
 from django.shortcuts import render,redirect
 from .models import User, Awc, AwcSpecific, Aww, HouseHolds
 from django.contrib.auth import authenticate, login, logout
