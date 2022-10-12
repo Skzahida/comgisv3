@@ -281,7 +281,7 @@ var LayerList = [];
 
 const domain = ['https://geoserver2.communitygis.net/','http://localhost/','https://geonode.communitygis.in/'];
 
-var rootUrl = domain[2] + 'geoserver/geonode/ows';
+var rootUrl = domain[0] + 'geoserver/geonode/ows';
 
 var defaultParameters = {
 service: 'WFS',
@@ -330,7 +330,7 @@ else if(amenity === 'Household Amenities'){
     if(houseLayerCode[index] == ''){
         alert('layer of '+ dis + ' not found');
     }else{
-        tempParameter.typeName = "geonode:household0";
+        tempParameter.typeName = "geonode:household";
         tempParameter.cql_filter="district_n='"+houseLayerCode[index]+"'";
         tempParameter.propertyName="the_geom,census_201,area_name,taluka_nam,district_n,msdw_taput,mroof_gra,plat_vent,nobathroom";
         info.addTo(mymap);
