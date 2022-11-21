@@ -203,3 +203,8 @@ def supervisior_map(request):
 def beneficiary_form(request,id):
     print(id)
     return render(request, 'dashboard/beneficiary_form.html',{'bene':id})
+
+def watergis(request):
+    return render(request,'dashboard/watergis.html')
+def capt_wells(request):
+    return render(request,'dashboard/capt_wells.html')
