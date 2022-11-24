@@ -237,6 +237,12 @@
 
             </div>
             <hr>
+                <h6>Maharashtra's Rivers</h6>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="{mah_river}" onchange="getBoundary(this)"><span> All Rivers </span></label>
+                </div>
+
+            
                 <h6>Mumbai's Rivers</h6>
                 <div class="checkbox">
                     <label><input type="checkbox" value="{poisar}" onchange="getBoundary(this)"><span> Poisar River </span></label>
@@ -955,7 +961,9 @@
                                             putwards("Mumbai Suburban", 'geonode:corporatorwardboundary_mumbai_13may');
                                         else if (boundary == "{mumadmsubwards}")
                                             putwards("Mumbai Suburban", 'geonode:mumbai_ward_boundary');
-                                       
+                                        else if (boundary == "{mah_river}"){
+                                            // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
+                                            putWMS1("maharashtra_rivers_from_osm"); }
                                         else if (boundary == "{mini_ws}"){
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
                                             putWMS1("mini_watershed_15distt_15nov22"); }
@@ -3163,6 +3171,8 @@ function setView1(layerName, selectedBoundary) {
                 mymap.setView([19.161106,72.858474],14);
             else if(layer == 'Mithi_River_Nov22')
                 mymap.setView([19.09546,72.87995],14);
+            else if(layer == 'maharashtra_rivers_from_osm')
+                mymap.setView([19.6322,76.032],7);
             if (wms_legend) {
                 mymap.removeControl(wms_legend);
             }
