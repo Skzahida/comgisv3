@@ -966,7 +966,7 @@
                                             putWMS1("maharashtra_rivers_from_osm"); }
                                         else if (boundary == "{mini_ws}"){
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
-                                            putWMS1("mini_watershed_15distt_15nov22"); }
+                                            putWMS1("mini_15_district0"); }
                                         else if (boundary == "{poisar}"){
                                             putWMS1("poisar_River_Nov22");
                                             console.log("Boundary is "+boundary)
@@ -3172,6 +3172,8 @@ function setView1(layerName, selectedBoundary) {
             else if(layer == 'Mithi_River_Nov22')
                 mymap.setView([19.09546,72.87995],14);
             else if(layer == 'maharashtra_rivers_from_osm')
+                mymap.setView([19.6322,76.032],7);
+            else if(layer == 'mini_15_district0')
                 mymap.setView([19.6322,76.032],7);
             if (wms_legend) {
                 mymap.removeControl(wms_legend);
