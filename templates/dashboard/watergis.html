@@ -264,16 +264,53 @@
                     <label><input type="checkbox" value="{mini_ws}" onchange="getBoundary(this)"><span> Mini Watershed Areas </span></label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="{ws}" onchange="getBoundary(this)"><span> WaterShed Areas </span></label>
+                    <label><input type="checkbox" disabled value="{ws}" onchange="getBoundary(this)"><span> WaterShed Areas(Disabled currently) </span></label>
                 </div>
-            <hr>
-                <h6><a href="#"> Capture Wells<a></a></h6>
-                
-            <hr>
-                <h6>Capture Trees</h6>
+            
                 
         </table>
     </div>
+    <div class="border">
+        <table>
+            <tr>
+                <h6>State Related Data</h6>
+            </tr>
+            <div class="text-center">
+                <div class="checkbox" id="stboun">
+                    <tr>
+                        <tb> <label><input type="checkbox" value="{mahadem}" onchange="getBoundaryst(this)"></tb><tb><span> Demography (Maharashtra's only as for now) </span></label></tb>
+                    </tr>
+                </div>
+                <div class="checkbox" id="stboun">
+                    <tr>
+                        <tb> <label><input type="checkbox" value="{mahatown}" onchange="getBoundaryst(this)"></tb><tb><span> Urban Areas (Maharashtra's only as for now) </span></label></tb>
+                    </tr>
+                </div>
+                <!-- <div class="checkbox">
+                    <label><input type="checkbox" value="{maharoad}" onchange="getBoundaryst(this)"><span>  Road Network (Maharashtra's only as for now)</span></label>
+                </div> -->
+                <div class="checkbox">
+                    <label><input type="checkbox" value="{mahaschool}" onchange="getBoundaryst(this)"><span> Schools (Maharashtra's only as for now) </span></label>
+                </div>
+
+                <!-- <div class="checkbox">
+                    <label><input type="checkbox" value="{govtri}" onchange="getBoundaryst(this)"><span> Government Schools (Maharashtra's only as for now) </span></label>
+                </div> -->
+
+                <!-- <div class="checkbox">
+                    <label><input type="checkbox" value="{aidtri}" onchange="getBoundaryst(this)"><span> Aided Schools (Maharashtra's only as for now) </span></label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="{mahatrib}" onchange="getBoundaryst(this)"><span> Tribal Areas (Maharashtra's only as for now) </span></label>
+                </div> -->
+            </div>
+        </table>
+    </div>
+    <hr>
+                <!-- <h6><a href="capt_wells"> Capture Wells<a></a></h6> -->
+                <!-- <h6><a href="https://myposhanvatika.in/captwellpic/"> Capture Wells<a></a></h6> -->
+                <a class = 'btn btn-secondary' href="https://myposhanvatika.in/captwellpic/" style="background-color: rgba(233, 89, 89, 0.508);">Capture Wells</a>
+            
     <!-- <div class="tooltips" id="viewwater">
 
         <select class='form-control' id="view_water">
@@ -282,14 +319,14 @@
               <option value="watershed">WaterShed View</option>
              </select>
     </div> -->
-    <div class="tooltips" id="view">
+    <!-- <div class="tooltips" id="view">
 
         <select class='form-control' id="view_s">
               <option value="All"> Select View </option>
               <option value="All India View"disabled>All India View</option>
               <option value="Navigated Area View">Navigated Area View</option>
              </select>
-    </div>
+    </div> -->
     &nbsp;&nbsp;
     <!--Starting of India View div--->
     <div id="indiaview" style="display: none;">
@@ -1009,7 +1046,7 @@
                                             removewards();
                                         else if (boundary == "{poisar}")
                                             removeWMS("poisar_River_Nov22");
-                                        else if (boundary == "{poisar}"){
+                                        else if (boundary == "{dahisar}"){
                                             removeWMS("Dahisar_River_Nov22");
                                             console.log("Boundary is "+boundary)
                                         }
@@ -1019,6 +1056,11 @@
                                             removeWMS("Oshiwara_River_Nov22");
                                             console.log("Boundary is "+boundary)
                                         }
+                                        else if (boundary == "{mini_ws}")
+                                            removeWMS("mini_15_district0")
+                                        else if (boundary == "{mah_river}"){
+                                            // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
+                                            removeWMS("maharashtra_rivers_from_osm"); }
                                         else
                                             removeWMS("geonode:maha_demography_with_mumbai");
                                         
