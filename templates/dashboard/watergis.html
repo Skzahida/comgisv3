@@ -209,7 +209,7 @@
     }
 </style>
 
-<div id="side-bar" style="background-color: rgba(255, 255, 255);">
+<div id="side-bar" style="background-color: rgba(255, 255, 255);overflow-y: scroll;max-height: 80vh;">
     <!-- side-bar container -->
 
 
@@ -268,30 +268,53 @@
                 </div>
             
                 
-        </table>
+        <!-- </table> -->
+    <!-- </div> -->
+    <hr>
+    <div>
+        <h6>Add Spots</h6>
+        <select class='form-control' id="view_water">
+            <option value="All"> Add Spots(Points)</option>
+            <option value="sewage_drop">Sewage drop in river</option>
+            <option value="waste_dump">Waste dumping spot near river</option>
+            <option value="temple">Temple near river</option>
+            <option value="sand_dredging">Sand Dredging as spot</option>
+            <option value="tree">Tree</option>
+            <option value="encroachemnt">encroahment </option>
+            <option value="blue_line">Red Line Spot</option>
+            <option value="red_line">Blue Line Spot</option>
+
+        </select>
     </div>
-    <div class="border">
-        <table>
+    </table>
+    </div>
+<div class="border">
+<table>
+    <tr>
+        <h6>State Related Data</h6>
+    </tr>
+    <div class="text-center">
+        <div class="checkbox" id="stboun">
             <tr>
-                <h6>State Related Data</h6>
+                <tb> <label><input type="checkbox" value="{mahadem}" onchange="getBoundaryst(this)"></tb><tb><span> Demography</span></label></tb>
             </tr>
-            <div class="text-center">
-                <div class="checkbox" id="stboun">
-                    <tr>
-                        <tb> <label><input type="checkbox" value="{mahadem}" onchange="getBoundaryst(this)"></tb><tb><span> Demography (Maharashtra's only as for now) </span></label></tb>
-                    </tr>
-                </div>
-                <div class="checkbox" id="stboun">
-                    <tr>
-                        <tb> <label><input type="checkbox" value="{mahatown}" onchange="getBoundaryst(this)"></tb><tb><span> Urban Areas (Maharashtra's only as for now) </span></label></tb>
-                    </tr>
-                </div>
-                <!-- <div class="checkbox">
-                    <label><input type="checkbox" value="{maharoad}" onchange="getBoundaryst(this)"><span>  Road Network (Maharashtra's only as for now)</span></label>
-                </div> -->
-                <div class="checkbox">
-                    <label><input type="checkbox" value="{mahaschool}" onchange="getBoundaryst(this)"><span> Schools (Maharashtra's only as for now) </span></label>
-                </div>
+        </div>
+        <div class="checkbox" id="stboun">
+            <tr>
+                <tb> <label><input type="checkbox" value="{mahatown}" onchange="getBoundaryst(this)"></tb><tb><span> Urban Areas </span></label></tb>
+            </tr>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" value="{maharoad}" onchange="getBoundaryst(this)"><span>  Road Network</span></label>
+        </div>
+        <div class="checkbox">
+                    <label><input type="checkbox" value="{mahaschool}" onchange="getBoundaryst(this)"><span> Schools</span></label>
+        </div>
+        <div class="checkbox" id="stboun">
+            <tr>
+                <tb> <label><input type="checkbox" value="{mahaengg}" onchange="getBoundaryst(this)"></tb><tb><span> Engineering Colleges</span></label></tb>
+            </tr>
+        </div>
 
                 <!-- <div class="checkbox">
                     <label><input type="checkbox" value="{govtri}" onchange="getBoundaryst(this)"><span> Government Schools (Maharashtra's only as for now) </span></label>
@@ -1092,6 +1115,8 @@
                                             putWMS("geonode:govt_schools_30april");
                                         else if (boundary == "{aidtri}")
                                             putWMS("geonode:aided_schools_30april");
+                                        else if (boundary =="{mahaengg}")
+                                            putWMS1("geonode:engg")
                                         else
                                             putWMS("geonode:school_16_17_11april");
                                     } else {
@@ -1108,6 +1133,8 @@
                                             removeWMS("geonode:govt_schools_30april");
                                         else if (boundary == "{aidtri}")
                                             removeWMS("geonode:aided_schools_30april");
+                                        else if (boundary =="{mahaengg}")
+                                            removeWMS("geonode:engg")
                                         else
                                             removeWMS("geonode:school_16_17_11april");
 
@@ -3019,7 +3046,7 @@ function setView1(layerName, selectedBoundary) {
 
                                     var URL = TRIBLAYER + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
                                     //console.log(e);
-                                    // console.log("URL",URL);
+                                    console.log("URL",URL);
                                     $.ajax({
                                         url: URL,
                                         dataType: "json",
@@ -3075,6 +3102,12 @@ function setView1(layerName, selectedBoundary) {
 
 
                                                 }
+                                                else if (feature.properties.institutec) {
+                                                    insti_content = "<table class = 'popupclass' ><tr><td><b>Institute Name</b></td><td>" + feature.properties.instituten + "</td></tr>" +
+                                                        "<tr><td><b>Institute Address</b></td><td>" + feature.properties.institutea + "</td></tr>" +
+                                                        "<tr><td><b>District Name</b></td><td>" + feature.properties.districtna + "</td></tr>" +
+                                                        "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.talukaname + "</td></tr></table>";
+                                                }
                                                  else {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>Facility Name</b></td><td>" + feature.properties.facltyname + "</td></tr>" +
                                                         "<tr><td><b>Facility Type</b></td><td>" + feature.properties.facltytyp + "</td></tr>" +
@@ -3094,6 +3127,7 @@ function setView1(layerName, selectedBoundary) {
                                                         `<tr><button type="button" class="btn btn-outline-dark" style="color:white;"><a style="color:white;text-decoration:none" href="https://ee.humanitarianresponse.info/x/#BLiUveaW">Click here for Correction/Feedbacks</a></button></tr>` +
                                                         "</table>";
                                                 }
+                                                
 
                                                 popup.setContent(insti_content);
                                                 popup.setLatLng(e.latlng);
@@ -3223,7 +3257,7 @@ function setView1(layerName, selectedBoundary) {
             console.log(wms_legend); 
             addWMSLegend(layer);
             // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/rtp/wms?service=WMS&version=1.1.0&request=GetMap&layers=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-            // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/rtp/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+            TRIBLAYER = "https://geonode.communitygis.in/geoserver/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer1.options.layers + "&QUERY_LAYERS=" + wms_layer1.options.layers;
 
             // console.log(TRIBLAYER);
 
