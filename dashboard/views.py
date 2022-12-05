@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from .models import User, Awc, AwcSpecific, Aww, HouseHolds
+from .models import User, Awc, AwcSpecific, Aww, HouseHolds,UploadWellPictureModel
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.gis.geos import Point
+from .forms import UploadWellPictureForm
 
 # from django.db import connection
 # from dashboard.models import IndiaFinal1617BasicLatlong
@@ -187,7 +188,7 @@ def events(request):
 
 @csrf_exempt
 def createaww(request):
-    aww = Aww(awwid=6,name=request.POST['name'],age=int(request.POST['age']),contact=request.POST['contact'],awc_id=request.POST['awc_id'])
+    aww = Aww(awwid=6,name=request.POST['name'],age=int(request.POST['age'],10),contact=request.POST['contact'],awc_id=int(request.POST['awc_id'],10))
     aww.save()
     return redirect('profile')
 
@@ -208,3 +209,47 @@ def watergis(request):
     return render(request,'dashboard/watergis.html')
 def capt_wells(request):
     return render(request,'dashboard/capt_wells.html')
+
+def uploadwellpic(request):
+    return render(request,'dashboard/uploadWellPic.html')
+
+def captwellpic(request):
+    form = UploadWellPictureForm()
+    global datauri
+    # if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest': 
+        datauri = request.POST['picture']
+    
+    if request.method == 'POST' and not request.is_ajax():
+        form = UploadWellPictureForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        name = request.POST.get('name')
+        well_nm = request.POST.get('well_nm')
+        radius = request.POST.get('radius')
+        depth = request.POST.get('depth')
+        level = request.POST.get('level')
+        village = request.POST.get('village')
+        district = request.POST.get('district')
+        state = request.POST.get('state')
+        pincode = request.POST.get('pincode')
+        lat = request.POST.get('lat')
+        lng = request.POST.get('lng')
+        try:
+            imgstr = re.search(r'base64,(.*)', datauri).group(1)
+            data = ContentFile(base64.b64decode(imgstr))
+            myfile = "WellPics/profile-"+time.strftime("%Y%m%d-%H%M%S")+".png"
+            fs = FileSystemStorage()
+            filename = fs.save(myfile, data)
+            picLocation = UploadWellPictureModel.objects.create(picture=filename, name=name, well_nm=well_nm, radius=radius, depth=depth, level=level, village=village, district=district, state=state,pincode=pincode, lat=lat, lng=lng)
+            picLocation.save()
+            datauri= False
+            del datauri
+        except NameError:
+            print("Image is not captured")
+    else:
+        form = UploadWellPictureForm()
+    return render(request,'dashboard/capt_wells.html',{})
+
+
+    
