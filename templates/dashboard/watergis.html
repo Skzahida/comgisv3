@@ -1110,10 +1110,11 @@
                                         mymap.setView([19.7515,75.7139],7);
                                         if (boundary == "{mahadem}")
                                             putWMS("geonode:maha_demography_with_mumbai");
-                                            else if(boundary == "{mahatown}"){
+                                        else if(boundary == "{mahatown}"){
                                                 putWMS("geonode:TownCensus_maharashtra_1_00");
                                             }
-                                        else if (boundary == "{maharoad}"){
+                                        else
+                                        if (boundary == "{maharoad}"){
                                             // if (district){
                                             //     console.log(district);
                                             //     putWMS("geonode:osm_highways");
@@ -1121,17 +1122,18 @@
                                             // else
                                                 putWMS("geonode:osm_highways");    
                                         }     
-                                        else if (boundary == "{mahatrib}")
-                                            putWMS("geonode:maha_tribal_villages_and_towns");
-                                        else if (boundary == "{govtri}")
-                                            putWMS("geonode:govt_schools_30april");
-                                        else if (boundary == "{aidtri}")
-                                            putWMS("geonode:aided_schools_30april");
+                                        // else if (boundary == "{mahatrib}")
+                                        //     putWMS("geonode:maha_tribal_villages_and_towns");
+                                        // else if (boundary == "{govtri}")
+                                        //     putWMS("geonode:govt_schools_30april");
+                                        // else if (boundary == "{aidtri}")
+                                        //     putWMS("geonode:aided_schools_30april");
                                         else if (boundary =="{mahaengg}")
                                             putWMS1("geonode:engg")
-                                        else
+                                        else if (boundary =="{mahaschool}")
                                             putWMS("geonode:school_16_17_11april");
-                                    } else {
+                                        } 
+                                    else {
                                         if (boundary == "{mahadem}")
                                             removeWMS("geonode:maha_demography_with_mumbai");
                                             else if(boundary == "{mahatown}"){
@@ -2319,7 +2321,7 @@
                                     console.log(wms_legend); 
                                     addWMSLegend(layer);
                                     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-                                    setView2(layer);
+                                    // setView2(layer);
                                     //styling(layer);
 
                                 }
@@ -3119,6 +3121,14 @@ function setView1(layerName, selectedBoundary) {
                                                         "<tr><td><b>Institute Address</b></td><td>" + feature.properties.institutea + "</td></tr>" +
                                                         "<tr><td><b>District Name</b></td><td>" + feature.properties.districtna + "</td></tr>" +
                                                         "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.talukaname + "</td></tr></table>";
+                                                }
+                                                else if(feature.properties.school_cod){
+                                                    insti_content = "<table class = 'popupclass' ><tr><td><b>School Name</b></td><td>" + feature.properties.school_nam + "</td></tr>" +
+                                                        
+                                                        "<tr><td><b>District Name</b></td><td>" + feature.properties.distname + "</td></tr>" +
+                                                        "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.block_name + "</td></tr>"+
+                                                        "<tr><td><b>Village Name</b></td><td>" + feature.properties.village_na + "</td></tr>" +
+                                                        "</table>";
                                                 }
                                                  else {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>Facility Name</b></td><td>" + feature.properties.facltyname + "</td></tr>" +
