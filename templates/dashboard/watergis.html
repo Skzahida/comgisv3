@@ -270,6 +270,21 @@
             </div>
     
              <hr>
+                <h6>Ground Water Recharge Priority </h6>
+                <ul><li><b>Region- Konkan</b></li>
+                    <ul><li><b>District - Thane</b></li>
+                        <ul><li><b>Taluka - Ambarnath</b></li>
+                            <ul>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="{ashele}" onchange="getBoundary(this)"><span> Ashele Village </span></label>
+                                </div>
+                            
+                            </ul>
+                        </ul>
+                    </ul>
+               
+               
+            <hr>
                 <h6>WaterShed Boundaries</h6>
                 <div class="checkbox">
                     <label><input type="checkbox" value="{mini_ws}" onchange="getBoundary(this)"><span> Mini Watershed Boundaries </span></label>
@@ -282,6 +297,20 @@
                     <a href= "https://geonode.communitygis.in/documents/417/link" target ="_blank">Watershed Boundaries</a>
                     </li></ul>
                 </div>
+            
+            <hr>
+                <h6>Water Quality - Nashik</h6>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="{nashik_turbidity}" onchange="getBoundary(this)"><span> on basis of <b> Turbidity </b></span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{nashik_alkalinity}" onchange="getBoundary(this)"><span> on basis of <b> Alkanility </b> </span></label>
+                </div>
+                
+               
+                
+            
+            
             
                 
         <!-- </table> -->
@@ -346,7 +375,7 @@
         </table>
     </div>
     <hr>
-                <!-- <h6><a href="capt_wells"> Capture Wells<a></a></h6> -->
+                <h6><a href="capt_wells"> Capture Wells<a></a></h6>
                 <!-- <h6><a href="https://myposhanvatika.in/captwellpic/"> Capture Wells<a></a></h6> -->
                 <a class = 'btn btn-secondary' href="https://myposhanvatika.in/captwellpic/" style="background-color: rgba(233, 89, 89, 0.508);">Capture Wells</a>
             
@@ -1059,6 +1088,20 @@
                                             putWMS1("Mithi_River_Nov22");
                                             console.log("Boundary is "+boundary)
                                         }
+                                        else if(boundary =="{ashele}")
+                                        {
+                                            // putWMS1("Maha_Demography_Maharashtra_16Aug22")
+                                            console.log("Boundary is "+boundary)
+                                        }
+                                        else if(boundary =='{nashik_turbidity}')
+                                        {
+                                            putWMS1("Nashik_water_quality_turbidity")
+                                        }
+                                        
+                                        else if(boundary =='{nashik_alkalinity}')
+                                        {
+                                            putWMS1("Nashik_water_quality_alkanility")
+                                        }
                                            //postgis
                                         
                                             
@@ -1100,8 +1143,17 @@
                                         else if (boundary == "{mah_river}"){
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
                                             removeWMS("maharashtra_rivers_from_osm"); }
+                                        else if(boundary =='{nashik_turbidity}')
+                                        {
+                                            removeWMS("Nashik_water_quality_turbidity")
+                                        }
+                                        else if(boundary =='{nashik_alkalinity}')
+                                        {
+                                            removeWMS("Nashik_water_quality_alkanility")
+                                        }
                                         else
                                             removeWMS("geonode:maha_demography_with_mumbai");
+                                        
                                         
                                     }
                                 }
@@ -2037,6 +2089,7 @@
                                 var wardLayerList = [];
                                 var wmshealthLayerList = [];
                                 var wms_legend;
+                                var wms_legend1;
                                 let insti_content;
                                 var searchControl;
 
@@ -2336,7 +2389,10 @@
                                     lagendGraphic = "https://geoserver2.communitygis.net/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer + "&LEGEND_OPTIONS=forceLabels:on";
                                     wms_legend = L.wmsLegend(lagendGraphic);
                                 }
-
+                                function addWMSLegend1(layer) {
+                                    lagendGraphic1 = "https://geonode.communitygis.in/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer + "&LEGEND_OPTIONS=forceLabels:on";
+                                    wms_legend1 = L.wmsLegend(lagendGraphic1);
+                                }
 
                                 function getColor(d) {
     return d < 500 ? '#008080' :
@@ -2607,6 +2663,9 @@ function setView1(layerName, selectedBoundary) {
                                 function removeWMS(unchecked_layer) {
                                     if (wms_legend) {
                                         mymap.removeControl(wms_legend);
+                                    }
+                                    if (wms_legend1) {
+                                        mymap.removeControl(wms_legend1);
                                     }
                                     newLayerList.forEach((layer, index) => {
                                         if (layer.options.layers === unchecked_layer) {
@@ -3126,6 +3185,18 @@ function setView1(layerName, selectedBoundary) {
                                                         "<tr><td><b>District Name</b></td><td>" + feature.properties.districtna + "</td></tr>" +
                                                         "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.talukaname + "</td></tr></table>";
                                                 }
+                                                else if (feature.properties.Turbidity){
+                                                    insti_content = "<table class = 'popupclass' ><tr><td><b>Location Source</b></td><td>" + feature.properties.SourceLoca + "</td></tr>" +
+                                                        "<tr><td><b>Taluka</b></td><td>" + feature.properties.taluka + "</td></tr>" +
+                                                        "<tr><td><b>Gram Panchayat</b></td><td>" + feature.properties.GP + "</td></tr>" +
+                                                        "<tr><td><b>Village</b></td><td>" + feature.properties.village + "</td></tr>"+
+                                                        "<tr><td><b>Alkalinity</b></td><td>" + feature.properties.Alkalinity + "</td></tr>"+
+                                                        "<tr><td><b>Chloride</b></td><td>" + feature.properties.Chloride + "</td></tr>"+
+                                                        "<tr><td><b>Fluoride</b></td><td>" + feature.properties.Fluoride + "</td></tr>"+
+                                                        "<tr><td><b>Nitrate</b></td><td>" + feature.properties.Nitrate + "</td></tr>"+
+                                                        "<tr><td><b>Sulphate</b></td><td>" + feature.properties.Sulphate + "</td></tr>"+
+                                                        "<tr><td><b>Turbidity</b></td><td>" + feature.properties.Turbidity + "</td></tr></table>";
+                                                }
                                                 else if(feature.properties.school_cod){
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>School Name</b></td><td>" + feature.properties.school_nam + "</td></tr>" +
                                                         
@@ -3277,11 +3348,28 @@ function setView1(layerName, selectedBoundary) {
                 mymap.setView([19.6322,76.032],7);
             else if(layer == 'mini_15_district0')
                 mymap.setView([19.6322,76.032],7);
+            else if(layer == 'ashele'){
+                mymap.setView([19.2107,73.1523],14);
+                addWMSLegend1(layer);
+            }
+            else if(layer == 'Nashik_water_quality_turbidity'){
+                mymap.setView([19.2107,73.1523],8);
+                // addWMSLegend1(layer);
+            }
+            else if(layer == 'Nashik_water_quality_alkanility'){
+                mymap.setView([19.2107,73.1523],8);
+                // addWMSLegend1(layer);
+            }
+            
             if (wms_legend) {
                 mymap.removeControl(wms_legend);
             }
+            if (wms_legend1) {
+                mymap.removeControl(wms_legend1);
+            }
             console.log(wms_legend); 
             addWMSLegend(layer);
+            addWMSLegend1(layer);
             // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/rtp/wms?service=WMS&version=1.1.0&request=GetMap&layers=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
             TRIBLAYER = "https://geonode.communitygis.in/geoserver/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer1.options.layers + "&QUERY_LAYERS=" + wms_layer1.options.layers;
 
