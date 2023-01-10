@@ -278,7 +278,12 @@
                                 <div class="checkbox">
                                     <label><input type="checkbox" value="{ashele}" onchange="getBoundary(this)"><span> Ashele Village </span></label>
                                 </div>
-                            
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="{ashele_priority}" onchange="getBoundary(this)"><span> Ashele-Priority of water recharge </span></label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="{ashele_line}" onchange="getBoundary(this)"><span> Ashele-Drainage/Lineament</span></label>
+                                </div>
                             </ul>
                         </ul>
                     </ul>
@@ -305,6 +310,33 @@
                 </div>
                 <div class="checkbox">    
                     <label><input type="checkbox" value="{nashik_alkalinity}" onchange="getBoundary(this)"><span> on basis of <b> Alkanility </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Ph </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Ph </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Ph </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Nitrates </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Flourides </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Chloride </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Sulphate </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Odour </b> </span></label>
+                </div>
+                <div class="checkbox">    
+                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Taste </b> </span></label>
                 </div>
                 
                
@@ -1090,7 +1122,18 @@
                                         }
                                         else if(boundary =="{ashele}")
                                         {
-                                            // putWMS1("Maha_Demography_Maharashtra_16Aug22")
+                                            putWMS1("Ashele_GW")
+                                            console.log("Boundary is "+boundary)
+                                        }
+                                        else if(boundary =="{ashele_priority}")
+                                        {
+                                            putWMS1("Ashele_priority")
+                                            console.log("Boundary is "+boundary)
+                                        }
+                                        else if(boundary =="{ashele_line}")
+                                        {
+                                            putWMS1("Ashele_line")
+                                            // putWMS1("Ashele_priority")
                                             console.log("Boundary is "+boundary)
                                         }
                                         else if(boundary =='{nashik_turbidity}')
@@ -1143,6 +1186,18 @@
                                         else if (boundary == "{mah_river}"){
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
                                             removeWMS("maharashtra_rivers_from_osm"); }
+                                        else if(boundary =='{ashele}')
+                                        {
+                                            removeWMS("Ashele_GW")
+                                        }  
+                                        else if(boundary =='{ashele_priority}')
+                                        {
+                                            removeWMS("Ashele_priority")
+                                        }  
+                                        else if(boundary =='{ashele_line}')
+                                        {
+                                            removeWMS("Ashele_line")
+                                        }   
                                         else if(boundary =='{nashik_turbidity}')
                                         {
                                             removeWMS("Nashik_water_quality_turbidity")
@@ -3348,8 +3403,16 @@ function setView1(layerName, selectedBoundary) {
                 mymap.setView([19.6322,76.032],7);
             else if(layer == 'mini_15_district0')
                 mymap.setView([19.6322,76.032],7);
-            else if(layer == 'ashele'){
-                mymap.setView([19.2107,73.1523],14);
+            else if(layer == 'Ashele_GW'){
+                mymap.setView([19.2107,73.1523],15);
+                addWMSLegend1(layer);
+            }
+            else if(layer == 'Ashele_priority'){
+                mymap.setView([19.2107,73.1523],15);
+                addWMSLegend1(layer);
+            }
+            else if(layer == 'Ashele_line'){
+                mymap.setView([19.2107,73.1523],15);
                 addWMSLegend1(layer);
             }
             else if(layer == 'Nashik_water_quality_turbidity'){
