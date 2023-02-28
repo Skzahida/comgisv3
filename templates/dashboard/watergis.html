@@ -237,6 +237,20 @@
 
             </div>
             <hr>
+            <h6>Rivers Basin</h6>
+            <ul><li><b>Pune </b></li>
+            <div class="checkbox">
+                <label><input type="checkbox" value="{pawana_basin}" onchange="getBoundary(this)"><span> Pawana Basin </span></label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="{indrayani_basin}" onchange="getBoundary(this)"><span> Indrayani Basin </span></label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" value="{agrani_basin}" onchange="getBoundary(this)"><span> Agrani Basin </span></label>
+            </div>
+        </ul>
+
+            <hr>
                 <h6>Rivers</h6>
                 <div class="checkbox">
                     <label><input type="checkbox" value="{mah_river}" onchange="getBoundary(this)"><span><b> All Maharashtra </b></span></label>
@@ -262,6 +276,12 @@
                 <li><b>Pune </b></li>
                 <div class="checkbox">
                     <label><input type="checkbox" value="{pawana}" onchange="getBoundary(this)"><span> Pawana River </span></label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="{indrayani}" onchange="getBoundary(this)"><span> Indrayani River </span></label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="{agrani}" onchange="getBoundary(this)"><span> Agrani River </span></label>
                 </div>
                 <li><b>Ambarnath </b></li>
                 <li><b>Jalgaon</b></li>
@@ -291,6 +311,23 @@
                             </ul>
                         </ul>
                     </ul>
+
+                    <li><b>Region- Pune</b></li>
+                        <ul><li><b>District - Satara</b></li>
+                            <ul><li><b>Taluka - Khatav</b></li>
+                                <ul>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="{ashele}" onchange="getBoundary(this)"><span> Ashele Village </span></label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="{ashele_priority}" onchange="getBoundary(this)"><span> Ashele-Priority of water recharge </span></label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="{ashele_line}" onchange="getBoundary(this)"><span> Ashele-Drainage/Lineament</span></label>
+                                    </div>
+                                </ul>
+                            </ul>
+                        </ul>
                
                
             <hr>
@@ -1108,6 +1145,10 @@
                                         else if (boundary == "{mini_ws}"){
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
                                             putWMS1("mini_15_district0"); }
+                                        else if (boundary == "{pawana_basin}"){// Rivers Basin 
+                                            putWMS1("Pawana_Basin_Layer0");
+                                            console.log("Boundary is "+boundary)
+                                        }    
                                         else if (boundary == "{poisar}"){
                                             putWMS1("poisar_River_Nov22");
                                             console.log("Boundary is "+boundary)
@@ -1121,7 +1162,7 @@
                                             console.log("Boundary is "+boundary)
                                         }
                                         else if (boundary == "{pawana}"){
-                                            putWMS1("Pawana_river");
+                                            putWMS1("River_line_layers");
                                             console.log("Boundary is "+boundary)
                                         }
                                         else if (boundary == "{mithi}"){
@@ -1177,10 +1218,12 @@
                                             removewards();
                                         else if (boundary == "{mumadm}")
                                             removewards();
+                                        else if (boundary == "{pawana_basin}")
+                                            removeWMS("Pawana_Basin_Layer0");  
                                         else if (boundary == "{poisar}")
                                             removeWMS("poisar_River_Nov22");
                                         else if (boundary == "{pawana}")
-                                            removeWMS("Pawana_river");    
+                                            removeWMS("River_line_layers");    
                                         else if (boundary == "{dahisar}"){
                                             removeWMS("Dahisar_River_Nov22");
                                             console.log("Boundary is "+boundary)
@@ -3401,13 +3444,15 @@ function setView1(layerName, selectedBoundary) {
             wms_layer1.addTo(mymap);
             newLayerList.push(wms_layer1);
             console.log(wms_layer1);
-            if(layer == 'poisar_River_Nov22')
+            if(layer == 'Pawana_Basin_Layer0')
+                mymap.setView([18.635,73.697],15);
+            else if(layer == 'poisar_River_Nov22')
                 mymap.setView([19.210712,72.835955],14);
             else if(layer == 'Dahisar_River_Nov22')
                 mymap.setView([19.255310,72.854402],14);
             else if(layer == 'Oshiwara_River_Nov22')
                 mymap.setView([19.161106,72.858474],14);
-            else if(layer == 'Pawana_river')
+            else if(layer == 'River_line_layers')
                 mymap.setView([18.685,73.671],12);
             else if(layer == 'Mithi_River_Nov22')
                 mymap.setView([19.09546,72.87995],14);
