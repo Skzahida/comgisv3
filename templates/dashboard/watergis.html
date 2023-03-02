@@ -278,7 +278,7 @@
                     <label><input type="checkbox" value="{pawana}" onchange="getBoundary(this)"><span> Pawana River</span></label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="{indrayani}" onchange="getBoundary(this)" disabled><span> Indrayani River</span></label>
+                    <label><input type="checkbox" value="{indrayani}" onchange="getBoundary(this)"><span> Indrayani River</span></label>
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox" value="{agrani}" onchange="getBoundary(this)" disabled><span> Agrani River</span></label>
@@ -1148,7 +1148,7 @@
                                         else if (boundary == "{pawana_basin}"){// Rivers Basin 
                                             putWMS1("Pawana_Basin_Layer0" );
                                             console.log("Boundary is "+boundary)
-                                        }    
+                                        }   
                                         else if (boundary == "{poisar}"){
                                             putWMS1("poisar_River_Nov22");
                                             console.log("Boundary is "+boundary)
@@ -1163,6 +1163,10 @@
                                         }
                                         else if (boundary == "{pawana}"){
                                             putWMS1("River_line_layers" );
+                                            console.log("Boundary is "+boundary)
+                                        }
+                                        else if (boundary == "{indrayani}"){
+                                            putWMS1("Indrayani_River_Merged_line" );
                                             console.log("Boundary is "+boundary)
                                         }
                                         else if (boundary == "{mithi}"){
@@ -1223,7 +1227,9 @@
                                         else if (boundary == "{poisar}")
                                             removeWMS("poisar_River_Nov22");
                                         else if (boundary == "{pawana}")
-                                            removeWMS("River_line_layers" );    
+                                            removeWMS("River_line_layers");
+                                        else if (boundary == "{indrayani}")
+                                            removeWMS("Indrayani_River_Merged_line");        
                                         else if (boundary == "{dahisar}"){
                                             removeWMS("Dahisar_River_Nov22");
                                             console.log("Boundary is "+boundary)
@@ -3454,6 +3460,8 @@ function setView1(layerName, selectedBoundary) {
                 mymap.setView([19.161106,72.858474],13);
             else if(layer == 'River_line_layers' )
                 mymap.setView([18.685,73.671],12);
+            else if(layer == 'Indrayani_River_Merged_line')
+                mymap.setView([18.672,73.609],11);
             else if(layer == 'Mithi_River_Nov22')
                 mymap.setView([19.09546,72.87995],14);
             else if(layer == 'maharashtra_rivers_from_osm')
