@@ -243,13 +243,12 @@
                 <label><input type="checkbox" value="{pawana_basin}" onchange="getBoundary(this)"><span> Pawana Basin </span></label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" value="{indrayani_basin}" onchange="getBoundary(this)"><span> Indrayani Basin </span></label>
+                <label><input type="checkbox" value="{indrayani_basin}" onchange="" disabled><span> Indrayani Basin </span></label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" value="{agrani_basin}" onchange="getBoundary(this)"><span> Agrani Basin </span></label>
+                <label><input type="checkbox" value="{agrani_basin}" onchange="" disabled><span> Agrani Basin </span></label>
             </div>
         </ul>
-
             <hr>
                 <h6>Rivers</h6>
                 <div class="checkbox">
@@ -281,7 +280,7 @@
                     <label><input type="checkbox" value="{indrayani}" onchange="getBoundary(this)"><span> Indrayani River </span></label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="{agrani}" onchange="getBoundary(this)"><span> Agrani River </span></label>
+                    <label><input type="checkbox" value="{agrani}" onchange="getBoundary(this)" disabled><span> Agrani River </span></label>
                 </div>
                 <li><b>Ambarnath </b></li>
                 <li><b>Jalgaon</b></li>
@@ -330,6 +329,7 @@
                         </ul>
                
                
+               
             <hr>
                 <h6>WaterShed Boundaries</h6>
                 <div class="checkbox">
@@ -353,31 +353,31 @@
                     <label><input type="checkbox" value="{nashik_alkalinity}" onchange="getBoundary(this)"><span> on basis of <b> Alkanility </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Ph </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_ph}" onchange="getBoundary(this)" ><span> on basis of <b> Ph </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Ph </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_tds}" onchange="getBoundary(this)" ><span> on basis of <b> TDS </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Ph </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_hardening}" onchange="getBoundary(this)" ><span> on basis of <b> Hardening </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Nitrates </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_nitrates}" onchange="getBoundary(this)" ><span> on basis of <b> Nitrates </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Flourides </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_fluorides}" onchange="getBoundary(this)" ><span> on basis of <b> Flourides </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Chloride </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_chlorides}" onchange="getBoundary(this)" ><span> on basis of <b> Chloride </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Sulphate </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_sulphates}" onchange="getBoundary(this)" ><span> on basis of <b> Sulphate </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Odour </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_odur}" onchange="getBoundary(this)" ><span> on basis of <b> Odour </b> </span></label>
                 </div>
                 <div class="checkbox">    
-                    <label><input type="checkbox" value="{}" onchange="" disabled><span> on basis of <b> Taste </b> </span></label>
+                    <label><input type="checkbox" value="{nashik_taste}" onchange="getBoundary(this)" ><span> on basis of <b> Taste </b> </span></label>
                 </div>
                 
                
@@ -1165,6 +1165,10 @@
                                             putWMS1("River_line_layers");
                                             console.log("Boundary is "+boundary)
                                         }
+                                        else if (boundary == "{indrayani}"){
+                                            putWMS1("Indrayani_River_Merged_line");
+                                            console.log("Boundary is "+boundary)
+                                        }
                                         else if (boundary == "{mithi}"){
                                             putWMS1("Mithi_River_Nov22");
                                             console.log("Boundary is "+boundary)
@@ -1194,6 +1198,43 @@
                                         {
                                             putWMS1("Nashik_water_quality_alkanility")
                                         }
+                                        else if(boundary =='{nashik_sulphates}')
+                                        {
+                                            putWMS1("Nashik_water_quality_Sulphate")
+                                        }
+                                        else if(boundary =='{nashik_ph}')
+                                        {
+                                            putWMS1("Nashik_water_quality_ph")
+                                        }
+                                        else if(boundary =='{nashik_tds}')
+                                        {
+                                            putWMS1("Nashik_water_quality_ph")
+                                        }
+                                        else if(boundary =='{nashik_hardening}')
+                                        {
+                                            putWMS1("Nashik_water_quality_ph")
+                                        }
+                                        else if(boundary =='{nashik_chlorides}')
+                                        {
+                                            putWMS1("Nashik_water_quality_Chloride")
+                                        }
+                                        else if(boundary =='{nashik_fluorides}')
+                                        {
+                                            putWMS1("Nashik_water_quality_Flourides")
+                                        }
+                                        else if(boundary =='{nashik_nitrates}')
+                                        {
+                                            putWMS1("Nashik_water_quality_Nitrates")
+                                        }
+                                        else if(boundary =='{nashik_odur}')
+                                        {
+                                            putWMS1("Nashik_water_quality_Odour")
+                                        }
+                                        else if(boundary =='{nashik_taste}')
+                                        {
+                                            putWMS1("Nashik_water_quality_Taste")
+                                        }
+                            
                                            //postgis
                                         
                                             
@@ -1223,7 +1264,9 @@
                                         else if (boundary == "{poisar}")
                                             removeWMS("poisar_River_Nov22");
                                         else if (boundary == "{pawana}")
-                                            removeWMS("River_line_layers");    
+                                            removeWMS("River_line_layers");  
+                                        else if (boundary == "{indrayani}")
+                                            removeWMS("Indrayani_River_Merged_line");   
                                         else if (boundary == "{dahisar}"){
                                             removeWMS("Dahisar_River_Nov22");
                                             console.log("Boundary is "+boundary)
@@ -1259,6 +1302,44 @@
                                         {
                                             removeWMS("Nashik_water_quality_alkanility")
                                         }
+                                        else if(boundary =='{nashik_sulphates}')
+                                        {
+                                            removeWMS("Nashik_water_quality_Sulphate")
+                                        }
+                                        else if(boundary =='{nashik_ph}')
+                                        {
+                                            removeWMS("Nashik_water_quality_ph")
+                                        }
+                                        else if(boundary =='{nashik_chlorides}')
+                                        {
+                                            removeWMS("Nashik_water_quality_Chloride")
+                                        }
+                                        else if(boundary =='{nashik_fluorides}')
+                                        {
+                                            removeWMS("Nashik_water_quality_Flourides")
+                                        }
+                                        else if(boundary =='{nashik_nitrates}')
+                                        {
+                                            removeWMS("Nashik_water_quality_Nitrates")
+                                        }
+                                        else if(boundary =='{nashik_odur}')
+                                        {
+                                            removeWMS("Nashik_water_quality_Odour")
+                                        }
+                                        else if(boundary =='{nashik_taste}')
+                                        {
+                                            removeWMS("Nashik_water_quality_Taste")
+                                        }
+                                        else if(boundary =='{nashik_tds}')
+                                        {
+                                            removeWMS("Nashik_water_quality_ph")
+                                        }
+                                        else if(boundary =='{nashik_hardening}')
+                                        {
+                                            removeWMS("Nashik_water_quality_ph")
+                                        }
+                            
+                                        
                                         else
                                             removeWMS("geonode:maha_demography_with_mumbai");
                                         
@@ -3303,6 +3384,12 @@ function setView1(layerName, selectedBoundary) {
                                                         "<tr><td><b>Fluoride</b></td><td>" + feature.properties.Fluoride + "</td></tr>"+
                                                         "<tr><td><b>Nitrate</b></td><td>" + feature.properties.Nitrate + "</td></tr>"+
                                                         "<tr><td><b>Sulphate</b></td><td>" + feature.properties.Sulphate + "</td></tr>"+
+                                                        "<tr><td><b>Ph</b></td><td>" + feature.properties.ph + "</td></tr>"+
+                                                        "<tr><td><b>Odour</b></td><td>" + feature.properties.odur + "</td></tr>"+
+                                                        "<tr><td><b>Color</b></td><td>" + feature.properties.color + "</td></tr>"+
+                                                        "<tr><td><b>Taste</b></td><td>" + feature.properties.Test + "</td></tr>"+
+                                                        "<tr><td><b>Total Hardening</b></td><td>" + feature.properties.TotalHardn + "</td></tr>"+
+                                                        "<tr><td><b>TDS</b></td><td>" + feature.properties.TDS + "</td></tr>"+
                                                         "<tr><td><b>Turbidity</b></td><td>" + feature.properties.Turbidity + "</td></tr></table>";
                                                 }
                                                 else if(feature.properties.school_cod){
@@ -3445,7 +3532,9 @@ function setView1(layerName, selectedBoundary) {
             newLayerList.push(wms_layer1);
             console.log(wms_layer1);
             if(layer == 'Pawana_Basin_Layer0')
-                mymap.setView([18.635,73.697],15);
+                mymap.setView([18.635,73.597],12);
+            if(layer =='Indrayani_River_Merged_line')
+                mymap.setView([18.718,73.72],12)
             else if(layer == 'poisar_River_Nov22')
                 mymap.setView([19.210712,72.835955],14);
             else if(layer == 'Dahisar_River_Nov22')
@@ -3472,7 +3561,10 @@ function setView1(layerName, selectedBoundary) {
                 mymap.setView([19.2107,73.1523],15);
                 addWMSLegend1(layer);
             }
-            else if(layer == 'Nashik_water_quality_turbidity'){
+            else if(layer == 'Nashik_water_quality_turbidity' || layer =='Nashik_water_quality_Sulphate'
+            || layer =='Nashik_water_quality_Chloride' || layer =='Nashik_water_quality_Flourides' || layer =='Nashik_water_quality_Nitrates'
+            || layer =='Nashik_water_quality_Odour' || layer =='Nashik_water_quality_Taste' || layer =='Nashik_water_quality_ph'
+            || layer =='Nashik_water_quality_hardening' || layer =='Nashik_water_quality_tds'){
                 mymap.setView([19.2107,73.1523],8);
                 // addWMSLegend1(layer);
             }
