@@ -1208,11 +1208,11 @@
                                         }
                                         else if(boundary =='{nashik_tds}')
                                         {
-                                            putWMS1("Nashik_water_quality_ph")
+                                            putWMS1("Nashik_water_quality_TDS")
                                         }
                                         else if(boundary =='{nashik_hardening}')
                                         {
-                                            putWMS1("Nashik_water_quality_ph")
+                                            putWMS1("Nashik_water_quality_Total_hardening")
                                         }
                                         else if(boundary =='{nashik_chlorides}')
                                         {
@@ -1332,11 +1332,11 @@
                                         }
                                         else if(boundary =='{nashik_tds}')
                                         {
-                                            removeWMS("Nashik_water_quality_ph")
+                                            removeWMS("Nashik_water_quality_TDS")
                                         }
                                         else if(boundary =='{nashik_hardening}')
                                         {
-                                            removeWMS("Nashik_water_quality_ph")
+                                            removeWMS("Nashik_water_quality_Total_hardening")
                                         }
                             
                                         
@@ -3564,7 +3564,7 @@ function setView1(layerName, selectedBoundary) {
             else if(layer == 'Nashik_water_quality_turbidity' || layer =='Nashik_water_quality_Sulphate'
             || layer =='Nashik_water_quality_Chloride' || layer =='Nashik_water_quality_Flourides' || layer =='Nashik_water_quality_Nitrates'
             || layer =='Nashik_water_quality_Odour' || layer =='Nashik_water_quality_Taste' || layer =='Nashik_water_quality_ph'
-            || layer =='Nashik_water_quality_hardening' || layer =='Nashik_water_quality_tds'){
+            || layer =='Nashik_water_quality_Total_hardening' || layer =='Nashik_water_quality_TDS'){
                 mymap.setView([19.2107,73.1523],8);
                 // addWMSLegend1(layer);
             }
