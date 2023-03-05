@@ -1,7 +1,13 @@
 from django.shortcuts import render,redirect
 from .models import User, Awc, AwcSpecific, Aww, HouseHolds,UploadWellPictureModel
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+import re
+import base64
+import time
+from django.core.files.base import ContentFile
+from django.core.files.storage import FileSystemStorage
 from django.contrib.gis.geos import Point
 from .forms import UploadWellPictureForm
 
@@ -207,13 +213,11 @@ def beneficiary_form(request,id):
 
 def watergis(request):
     return render(request,'dashboard/watergis.html')
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
 def capt_wells(request):
-    return render(request,'dashboard/capt_wells.html')
-
-def uploadwellpic(request):
-    return render(request,'dashboard/uploadWellPic.html')
-
-def captwellpic(request):
     form = UploadWellPictureForm()
     global datauri
     # if request.is_ajax():
@@ -250,6 +254,23 @@ def captwellpic(request):
     else:
         form = UploadWellPictureForm()
     return render(request,'dashboard/capt_wells.html',{})
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+def uploadwellpic(request):
+    if request.method == 'POST':
+        form = UploadWellPictureForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save()
+            instance.user = request.user
+            instance.save()
+            messages.success(request, "Registration successful." )
+            print("data is saved.")
+            return redirect('/capt_wells')
+    else:
+        form = UploadWellPictureForm()
+    return render(request,'dashboard/uploadWellPic.html',{})
 
 
     
