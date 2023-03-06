@@ -34,6 +34,7 @@ urlpatterns = [
     path('dashboard/watergis', views.watergis, name = 'watergis'),
     path('dashboard/capt_wells', views.capt_wells, name = 'capt_wells'),
     path('dashboard/uploadwellpic', views.uploadwellpic, name = 'uploadwellpic'),
+    path('dashboard/uploadwellpic/', views.uploadwellpic, name='uploadwellpic'),
     path('dashboard/login',views.loginUser, name="login"),
     path('dashboard/logoutUser',views.logoutUser,name = 'logoutUser'),
     path('dashboard/profile',views.profile,name='profile'),
