@@ -1,5 +1,4 @@
-{% extends 'dashboard/watergis_base.html' %}
-{% load static%} {% block content %}
+{% extends 'dashboard/watergis_base.html' %} {% load static%} {% block content %}
 <style>
     table,
     th,
@@ -238,104 +237,106 @@
             </div>
             <hr>
             <h6>Rivers Basin</h6>
-            <ul><li><b>Pune </b></li>
-            <div class="checkbox">
-                <label><input type="checkbox" value="{pawana_basin}" onchange="getBoundary(this)"><span> Pawana Basin </span></label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" value="{indrayani_basin}" onchange="" disabled><span> Indrayani Basin </span></label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" value="{agrani_basin}" onchange="" disabled><span> Agrani Basin </span></label>
-                <label><input type="checkbox" value="{indrayani_basin}" onchange="getBoundary(this)" disabled><span> Indrayani Basin</span></label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" value="{agrani_basin}" onchange="getBoundary(this)"disabled><span> Agrani Basin</span></label>
-            </div>
-        </ul>
-            <hr>
-                <h6>Rivers</h6>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="{mah_river}" onchange="getBoundary(this)"><span><b> All Maharashtra </b></span></label>
-                </div>
-
-            
-                <div>
-                   <b>Individual or area wise Rivers</b>
-                <ul><li><b>Mumbai</b></li>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="{poisar}" onchange="getBoundary(this)"><span> Poisar River </span></label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="{dahisar}" onchange="getBoundary(this)"><span> Dahisar River </span></label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="{mithi}" onchange="getBoundary(this)"><span> Mithi River </span></label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="{oshiwara}" onchange="getBoundary(this)"><span> Oshiwara River </span></label>
-                </div>
-                <li><b><a href = "fgis">Ahmednagar</a></b></li>
+            <ul>
                 <li><b>Pune </b></li>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="{pawana}" onchange="getBoundary(this)"><span> Pawana River</span></label>
+                    <label><input type="checkbox" value="{pawana_basin}" onchange="getBoundary(this)"><span> Pawana Basin </span></label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="{indrayani}" onchange="getBoundary(this)"><span> Indrayani River</span></label>
+                    <label><input type="checkbox" value="{indrayani_basin}" onchange="" disabled><span> Indrayani Basin </span></label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="{agrani}" onchange="getBoundary(this)" disabled><span> Agrani River </span></label>
-                    <label><input type="checkbox" value="{agrani}" onchange="getBoundary(this)" disabled><span> Agrani River</span></label>
+                    <label><input type="checkbox" value="{agrani_basin}" onchange="" disabled><span> Agrani Basin </span></label>
                 </div>
-                <li><b>Ambarnath </b></li>
-                <li><b>Jalgaon</b></li>
-                <li><b>Nashik</b></li>
-                <li><b>Parbhani</b></li>
-                <li><b>Solapur</b></li>
-                <li><b>Wardha</b></li>
-                
+            </ul>
+            <hr>
+            <h6>Rivers</h6>
+            <div class="checkbox">
+                <label><input type="checkbox" value="{mah_river}" onchange="getBoundary(this)"><span><b> All Maharashtra </b></span></label>
+            </div>
+
+
+            <div>
+                <b>Individual or area wise Rivers</b>
+                <ul>
+                    <li><b>Mumbai</b></li>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{poisar}" onchange="getBoundary(this)"><span> Poisar River </span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{dahisar}" onchange="getBoundary(this)"><span> Dahisar River </span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{mithi}" onchange="getBoundary(this)"><span> Mithi River </span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{oshiwara}" onchange="getBoundary(this)"><span> Oshiwara River </span></label>
+                    </div>
+                    <li><b><a href = "fgis">Ahmednagar</a></b></li>
+                    <li><b>Pune </b></li>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{pawana}" onchange="getBoundary(this)"><span> Pawana River </span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{indrayani}" onchange="getBoundary(this)"><span> Indrayani River </span></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{agrani}" onchange="getBoundary(this)" disabled><span> Agrani River </span></label>
+                    </div>
+                    <li><b>Ambarnath </b></li>
+                    <li><b>Jalgaon</b></li>
+                    <li><b>Nashik</b></li>
+                    <li><b>Parbhani</b></li>
+                    <li><b>Solapur</b></li>
+                    <li><b>Wardha</b></li>
+
                 </ul>
             </div>
-    
-             <hr>
-                <h6>Ground Water Recharge Priority </h6>
-                <ul><li><b>Region- Konkan</b></li>
-                    <ul><li><b>District - Thane</b></li>
-                        <ul><li><b>Taluka - Ambarnath</b></li>
-                            <ul>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="{ashele}" onchange="getBoundary(this)"><span> Ashele Village </span></label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="{ashele_priority}" onchange="getBoundary(this)"><span> Ashele-Priority of water recharge </span></label>
-                                </div>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" value="{ashele_line}" onchange="getBoundary(this)"><span> Ashele-Drainage/Lineament</span></label>
-                                </div>
-                            </ul>
+
+            <hr>
+            <h6>Ground Water Recharge Priority </h6>
+            <ul>
+                <li><b>Region- Konkan</b></li>
+                <ul>
+                    <li><b>District - Thane</b></li>
+                    <ul>
+                        <li><b>Taluka - Ambarnath</b></li>
+                        <ul>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="{ashele}" onchange="getBoundary(this)"><span> Ashele Village </span></label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="{ashele_priority}" onchange="getBoundary(this)"><span> Ashele-Priority of water recharge </span></label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="{ashele_line}" onchange="getBoundary(this)"><span> Ashele-Drainage/Lineament</span></label>
+                            </div>
                         </ul>
                     </ul>
+                </ul>
 
-                    <li><b>Region- Pune</b></li>
-                        <ul><li><b>District - Satara</b></li>
-                            <ul><li><b>Taluka - Khatav</b></li>
-                                <ul>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="{ashele}" onchange="getBoundary(this)"><span> Ashele Village </span></label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="{ashele_priority}" onchange="getBoundary(this)"><span> Ashele-Priority of water recharge </span></label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" value="{ashele_line}" onchange="getBoundary(this)"><span> Ashele-Drainage/Lineament</span></label>
-                                    </div>
-                                </ul>
-                            </ul>
+                <li><b>Region- Pune</b></li>
+                <ul>
+                    <li><b>District - Satara</b></li>
+                    <ul>
+                        <li><b>Taluka - Khatav</b></li>
+                        <ul>
+                            <!-- <div class="checkbox">
+                                <label><input type="checkbox" value="{ashele}" onchange="getBoundary(this)"><span> Ashele Village </span></label>
+                            </div> -->
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="{indrayani}" onchange="getBoundary(this)"><span> Indrayani-Priority of water recharge </span></label>
+                            </div>
+                            <!-- <div class="checkbox">
+                                <label><input type="checkbox" value="{ashele_line}" onchange="getBoundary(this)"><span> Ashele-Drainage/Lineament</span></label>
+                            </div> -->
                         </ul>
-               
-               
-               
-            <hr>
+                    </ul>
+                </ul>
+
+
+
+                <hr>
                 <h6>WaterShed Boundaries</h6>
                 <div class="checkbox">
                     <label><input type="checkbox" value="{mini_ws}" onchange="getBoundary(this)"><span> Mini Watershed Boundaries </span></label>
@@ -344,59 +345,61 @@
                     <label><input type="checkbox" disabled value="{ws}" onchange="getBoundary(this)"><span> WaterShed Boundaries (Disabled currently) </span></label>
                 </div>
                 <div>PDF's <br>
-                    <ul><li>
-                    <a href= "https://geonode.communitygis.in/documents/417/link" target ="_blank">Watershed Boundaries</a>
-                    </li></ul>
+                    <ul>
+                        <li>
+                            <a href="https://geonode.communitygis.in/documents/417/link" target="_blank">Watershed Boundaries</a>
+                        </li>
+                    </ul>
                 </div>
-            
-            <hr>
+
+                <hr>
                 <h6>Water Quality - Nashik</h6>
                 <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_turbidity}" onchange="getBoundary(this)"><span> on basis of <b> Turbidity </b></span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_alkalinity}" onchange="getBoundary(this)"><span> on basis of <b> Alkanility </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_ph}" onchange="getBoundary(this)" ><span> on basis of <b> Ph </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_tds}" onchange="getBoundary(this)" ><span> on basis of <b> TDS </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_hardening}" onchange="getBoundary(this)" ><span> on basis of <b> Hardening </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_nitrates}" onchange="getBoundary(this)" ><span> on basis of <b> Nitrates </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_fluorides}" onchange="getBoundary(this)" ><span> on basis of <b> Flourides </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_chlorides}" onchange="getBoundary(this)" ><span> on basis of <b> Chloride </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_sulphates}" onchange="getBoundary(this)" ><span> on basis of <b> Sulphate </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_odur}" onchange="getBoundary(this)" ><span> on basis of <b> Odour </b> </span></label>
                 </div>
-                <div class="checkbox">    
+                <div class="checkbox">
                     <label><input type="checkbox" value="{nashik_taste}" onchange="getBoundary(this)" ><span> on basis of <b> Taste </b> </span></label>
                 </div>
-                
-               
-                
-            
-            
-            
-                
-        <!-- </table> -->
-    <!-- </div> -->
-    <hr>
-    <div>
-        <h6>Add Spots</h6>
-        <select class='form-control' id="view_water">
+
+
+
+
+
+
+
+                <!-- </table> -->
+                <!-- </div> -->
+                <hr>
+                <div>
+                    <h6>Add Spots</h6>
+                    <select class='form-control' id="view_water">
             <option value="All"> Add Spots(Points)</option>
             <option value="sewage_drop">Sewage drop in river</option>
             <option value="waste_dump">Waste dumping spot near river</option>
@@ -408,36 +411,36 @@
             <option value="red_line">Blue Line Spot</option>
 
         </select>
+                </div>
+        </table>
     </div>
-    </table>
-    </div>
-<div class="border">
-<table>
-    <tr>
-        <h6>State Related Data</h6>
-    </tr>
-    <div class="text-center">
-        <div class="checkbox" id="stboun">
+    <div class="border">
+        <table>
             <tr>
-                <tb> <label><input type="checkbox" value="{mahadem}" onchange="getBoundaryst(this)"></tb><tb><span> Demography</span></label></tb>
+                <h6>State Related Data</h6>
             </tr>
-        </div>
-        <div class="checkbox" id="stboun">
-            <tr>
-                <tb> <label><input type="checkbox" value="{mahatown}" onchange="getBoundaryst(this)"></tb><tb><span> Urban Areas </span></label></tb>
-            </tr>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="{maharoad}" onchange="getBoundaryst(this)"><span>  Road Network</span></label>
-        </div>
-        <div class="checkbox">
+            <div class="text-center">
+                <div class="checkbox" id="stboun">
+                    <tr>
+                        <tb> <label><input type="checkbox" value="{mahadem}" onchange="getBoundaryst(this)"></tb><tb><span> Demography</span></label></tb>
+                    </tr>
+                </div>
+                <div class="checkbox" id="stboun">
+                    <tr>
+                        <tb> <label><input type="checkbox" value="{mahatown}" onchange="getBoundaryst(this)"></tb><tb><span> Urban Areas </span></label></tb>
+                    </tr>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="{maharoad}" onchange="getBoundaryst(this)"><span>  Road Network</span></label>
+                </div>
+                <div class="checkbox">
                     <label><input type="checkbox" value="{mahaschool}" onchange="getBoundaryst(this)"><span> Schools</span></label>
-        </div>
-        <div class="checkbox" id="stboun">
-            <tr>
-                <tb> <label><input type="checkbox" value="{mahaengg}" onchange="getBoundaryst(this)"></tb><tb><span> Engineering Colleges</span></label></tb>
-            </tr>
-        </div>
+                </div>
+                <div class="checkbox" id="stboun">
+                    <tr>
+                        <tb> <label><input type="checkbox" value="{mahaengg}" onchange="getBoundaryst(this)"></tb><tb><span> Engineering Colleges</span></label></tb>
+                    </tr>
+                </div>
 
                 <!-- <div class="checkbox">
                     <label><input type="checkbox" value="{govtri}" onchange="getBoundaryst(this)"><span> Government Schools (Maharashtra's only as for now) </span></label>
@@ -453,10 +456,10 @@
         </table>
     </div>
     <hr>
-                <h6><a href="capt_wells"> Capture Wells<a></a></h6>
-                <!-- <h6><a href="https://myposhanvatika.in/captwellpic/"> Capture Wells<a></a></h6> -->
-                <a class = 'btn btn-secondary' href="https://myposhanvatika.in/captwellpic/" style="background-color: rgba(233, 89, 89, 0.508);">Capture Wells</a>
-            
+    <h6><a href="capt_wells"> Capture Wells<a></a></h6>
+    <!-- <h6><a href="https://myposhanvatika.in/captwellpic/"> Capture Wells<a></a></h6> -->
+    <a class='btn btn-secondary' href="https://myposhanvatika.in/captwellpic/" style="background-color: rgba(233, 89, 89, 0.508);">Capture Wells</a>
+
     <!-- <div class="tooltips" id="viewwater">
 
         <select class='form-control' id="view_water">
@@ -485,7 +488,7 @@
                     <div class="multiselect">
                         <div class="selectBox" onclick="showCheckboxes2()">
                             <button type="button" style="width: 90%;font-size:12px" class="btn btn-outline-dark">Select Health Facility</button>
-                            
+
                             <div class="overSelect"></div>
                         </div>
 
@@ -893,7 +896,7 @@
                                         }
                                     });
 
-                                    $('#view_s').on('change', function() { 
+                                    $('#view_s').on('change', function() {
                                         if (this.value == 'All India View') {
                                             mymap.setView([20.5937, 78.9629], 4);
                                             $("#indiaview").show();
@@ -940,8 +943,7 @@
 
 
                                 //code for dependent dropdown start    
-                                function filterCSV(csv, key, value) 
-                                {
+                                function filterCSV(csv, key, value) {
                                     var result = [];
                                     var unique = [];
 
@@ -1066,7 +1068,7 @@
 
                                     });
 
-                                    $('#block_s').on("change", function(d){
+                                    $('#block_s').on("change", function(d) {
                                         clear_layer();
                                         var val3 = document.getElementById("indstate").value;
                                         //console.log(val1);
@@ -1131,7 +1133,7 @@
                                 function getBoundary(obj) {
                                     let boundary = obj.value;
                                     if ($(obj).is(":checked")) {
-                                        
+
                                         if (boundary == "{state}")
                                             putWMS("geonode:states_in_india");
                                         else if (boundary == "{district}")
@@ -1144,115 +1146,72 @@
                                             putwards("Mumbai Suburban", 'geonode:corporatorwardboundary_mumbai_13may');
                                         else if (boundary == "{mumadmsubwards}")
                                             putwards("Mumbai Suburban", 'geonode:mumbai_ward_boundary');
-                                        else if (boundary == "{mah_river}"){
+                                        else if (boundary == "{mah_river}") {
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
-                                            putWMS1("maharashtra_rivers_from_osm"); }
-                                        else if (boundary == "{mini_ws}"){
+                                            putWMS1("maharashtra_rivers_from_osm");
+                                        } else if (boundary == "{mini_ws}") {
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
-                                            putWMS1("mini_15_district0"); }
-                                        else if (boundary == "{pawana_basin}"){// Rivers Basin 
-                                            putWMS1("Pawana_Basin_Layer0" );
-                                            console.log("Boundary is "+boundary)
-                                        }   
-                                        else if (boundary == "{poisar}"){
+                                            putWMS1("mini_15_district0");
+                                        } else if (boundary == "{pawana_basin}") { // Rivers Basin 
+                                            putWMS1("Pawana_Basin_Layer0");
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{poisar}") {
                                             putWMS1("poisar_River_Nov22");
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{dahisar}"){
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{dahisar}") {
                                             putWMS1("Dahisar_River_Nov22");
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{oshiwara}"){
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{oshiwara}") {
                                             putWMS1("Oshiwara_River_Nov22");
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{pawana}"){
-                                            putWMS1("River_line_layers" );
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{indrayani}"){
-                                            putWMS1("Indrayani_River_Merged_line" );
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{indrayani}"){
-                                            putWMS1("Indrayani_River_Merged_line");
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{mithi}"){
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{pawana}") {
+                                            putWMS1("River_line_layers");
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{indrayani}") {
+                                            putWMS1("Indrayani_poly_merged");
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{mithi}") {
                                             putWMS1("Mithi_River_Nov22");
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if(boundary =="{ashele}")
-                                        {
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{ashele}") {
                                             putWMS1("Ashele_GW")
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if(boundary =="{ashele_priority}")
-                                        {
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{ashele_priority}") {
                                             putWMS1("Ashele_priority")
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if(boundary =="{ashele_line}")
-                                        {
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{ashele_line}") {
                                             putWMS1("Ashele_line")
-                                            // putWMS1("Ashele_priority")
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if(boundary =='{nashik_turbidity}')
-                                        {
+                                                // putWMS1("Ashele_priority")
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == '{nashik_turbidity}') {
                                             putWMS1("Nashik_water_quality_turbidity")
-                                        }
-                                        
-                                        else if(boundary =='{nashik_alkalinity}')
-                                        {
+                                        } else if (boundary == '{nashik_alkalinity}') {
                                             putWMS1("Nashik_water_quality_alkanility")
-                                        }
-                                        else if(boundary =='{nashik_sulphates}')
-                                        {
+                                        } else if (boundary == '{nashik_sulphates}') {
                                             putWMS1("Nashik_water_quality_Sulphate")
-                                        }
-                                        else if(boundary =='{nashik_ph}')
-                                        {
+                                        } else if (boundary == '{nashik_ph}') {
                                             putWMS1("Nashik_water_quality_ph")
-                                        }
-                                        else if(boundary =='{nashik_tds}')
-                                        {
+                                        } else if (boundary == '{nashik_tds}') {
                                             putWMS1("Nashik_water_quality_TDS")
-                                        }
-                                        else if(boundary =='{nashik_hardening}')
-                                        {
+                                        } else if (boundary == '{nashik_hardening}') {
                                             putWMS1("Nashik_water_quality_Total_hardening")
-                                        }
-                                        else if(boundary =='{nashik_chlorides}')
-                                        {
+                                        } else if (boundary == '{nashik_chlorides}') {
                                             putWMS1("Nashik_water_quality_Chloride")
-                                        }
-                                        else if(boundary =='{nashik_fluorides}')
-                                        {
+                                        } else if (boundary == '{nashik_fluorides}') {
                                             putWMS1("Nashik_water_quality_Flourides")
-                                        }
-                                        else if(boundary =='{nashik_nitrates}')
-                                        {
+                                        } else if (boundary == '{nashik_nitrates}') {
                                             putWMS1("Nashik_water_quality_Nitrates")
-                                        }
-                                        else if(boundary =='{nashik_odur}')
-                                        {
+                                        } else if (boundary == '{nashik_odur}') {
                                             putWMS1("Nashik_water_quality_Odour")
-                                        }
-                                        else if(boundary =='{nashik_taste}')
-                                        {
+                                        } else if (boundary == '{nashik_taste}') {
                                             putWMS1("Nashik_water_quality_Taste")
                                         }
-                            
-                                           //postgis
-                                        
-                                            
-                                        else if (boundary == "{ws}"){
+
+                                        //postgis
+                                        else if (boundary == "{ws}") {
                                             // putWMS("rtp:pune_toilets");
                                             putWMS1("rtp:pune_toilets");
-                                        }
-                                    
-                                        else
+                                        } else
                                             putWMS("geonode:maha_demography_with_mumbai");
 
                                     } else {
@@ -1269,93 +1228,58 @@
                                         else if (boundary == "{mumadm}")
                                             removewards();
                                         else if (boundary == "{pawana_basin}")
-                                            removeWMS("Pawana_Basin_Layer0" );  
+                                            removeWMS("Pawana_Basin_Layer0");
                                         else if (boundary == "{poisar}")
                                             removeWMS("poisar_River_Nov22");
                                         else if (boundary == "{pawana}")
-                                            removeWMS("River_line_layers");  
-                                        else if (boundary == "{indrayani}")
-                                            removeWMS("Indrayani_River_Merged_line");   
                                             removeWMS("River_line_layers");
                                         else if (boundary == "{indrayani}")
-                                            removeWMS("Indrayani_River_Merged_line");        
-                                        else if (boundary == "{dahisar}"){
+                                            removeWMS("Indrayani_River_Merged_line");
+                                        else if (boundary == "{dahisar}") {
                                             removeWMS("Dahisar_River_Nov22");
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{mithi}")
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{mithi}")
                                             removeWMS("Mithi_River_Nov22");
-                                        else if (boundary == "{oshiwara}"){
+                                        else if (boundary == "{oshiwara}") {
                                             removeWMS("Oshiwara_River_Nov22");
-                                            console.log("Boundary is "+boundary)
-                                        }
-                                        else if (boundary == "{mini_ws}")
+                                            console.log("Boundary is " + boundary)
+                                        } else if (boundary == "{mini_ws}")
                                             removeWMS("mini_15_district0")
-                                        else if (boundary == "{mah_river}"){
+                                        else if (boundary == "{mah_river}") {
                                             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
-                                            removeWMS("maharashtra_rivers_from_osm"); }
-                                        else if(boundary =='{ashele}')
-                                        {
+                                            removeWMS("maharashtra_rivers_from_osm");
+                                        } else if (boundary == '{ashele}') {
                                             removeWMS("Ashele_GW")
-                                        }  
-                                        else if(boundary =='{ashele_priority}')
-                                        {
+                                        } else if (boundary == '{ashele_priority}') {
                                             removeWMS("Ashele_priority")
-                                        }  
-                                        else if(boundary =='{ashele_line}')
-                                        {
+                                        } else if (boundary == '{ashele_line}') {
                                             removeWMS("Ashele_line")
-                                        }   
-                                        else if(boundary =='{nashik_turbidity}')
-                                        {
+                                        } else if (boundary == '{nashik_turbidity}') {
                                             removeWMS("Nashik_water_quality_turbidity")
-                                        }
-                                        else if(boundary =='{nashik_alkalinity}')
-                                        {
+                                        } else if (boundary == '{nashik_alkalinity}') {
                                             removeWMS("Nashik_water_quality_alkanility")
-                                        }
-                                        else if(boundary =='{nashik_sulphates}')
-                                        {
+                                        } else if (boundary == '{nashik_sulphates}') {
                                             removeWMS("Nashik_water_quality_Sulphate")
-                                        }
-                                        else if(boundary =='{nashik_ph}')
-                                        {
+                                        } else if (boundary == '{nashik_ph}') {
                                             removeWMS("Nashik_water_quality_ph")
-                                        }
-                                        else if(boundary =='{nashik_chlorides}')
-                                        {
+                                        } else if (boundary == '{nashik_chlorides}') {
                                             removeWMS("Nashik_water_quality_Chloride")
-                                        }
-                                        else if(boundary =='{nashik_fluorides}')
-                                        {
+                                        } else if (boundary == '{nashik_fluorides}') {
                                             removeWMS("Nashik_water_quality_Flourides")
-                                        }
-                                        else if(boundary =='{nashik_nitrates}')
-                                        {
+                                        } else if (boundary == '{nashik_nitrates}') {
                                             removeWMS("Nashik_water_quality_Nitrates")
-                                        }
-                                        else if(boundary =='{nashik_odur}')
-                                        {
+                                        } else if (boundary == '{nashik_odur}') {
                                             removeWMS("Nashik_water_quality_Odour")
-                                        }
-                                        else if(boundary =='{nashik_taste}')
-                                        {
+                                        } else if (boundary == '{nashik_taste}') {
                                             removeWMS("Nashik_water_quality_Taste")
-                                        }
-                                        else if(boundary =='{nashik_tds}')
-                                        {
+                                        } else if (boundary == '{nashik_tds}') {
                                             removeWMS("Nashik_water_quality_TDS")
-                                        }
-                                        else if(boundary =='{nashik_hardening}')
-                                        {
+                                        } else if (boundary == '{nashik_hardening}') {
                                             removeWMS("Nashik_water_quality_Total_hardening")
-                                        }
-                            
-                                        
-                                        else
+                                        } else
                                             removeWMS("geonode:maha_demography_with_mumbai");
-                                        
-                                        
+
+
                                     }
                                 }
 
@@ -1364,39 +1288,36 @@
                                     var district = document.getElementById('district').value;
                                     console.log(district);
                                     if ($(obj).is(":checked")) {
-                                        mymap.setView([19.7515,75.7139],7);
+                                        mymap.setView([19.7515, 75.7139], 7);
                                         if (boundary == "{mahadem}")
                                             putWMS("geonode:maha_demography_with_mumbai");
-                                        else if(boundary == "{mahatown}"){
-                                                putWMS("geonode:TownCensus_maharashtra_1_00");
-                                            }
-                                        else
-                                        if (boundary == "{maharoad}"){
+                                        else if (boundary == "{mahatown}") {
+                                            putWMS("geonode:TownCensus_maharashtra_1_00");
+                                        } else
+                                        if (boundary == "{maharoad}") {
                                             // if (district){
                                             //     console.log(district);
                                             //     putWMS("geonode:osm_highways");
                                             // } 
                                             // else
-                                                putWMS("geonode:osm_highways");    
-                                        }     
+                                            putWMS("geonode:osm_highways");
+                                        }
                                         // else if (boundary == "{mahatrib}")
                                         //     putWMS("geonode:maha_tribal_villages_and_towns");
                                         // else if (boundary == "{govtri}")
                                         //     putWMS("geonode:govt_schools_30april");
                                         // else if (boundary == "{aidtri}")
                                         //     putWMS("geonode:aided_schools_30april");
-                                        else if (boundary =="{mahaengg}")
+                                        else if (boundary == "{mahaengg}")
                                             putWMS1("geonode:engg")
-                                        else if (boundary =="{mahaschool}")
+                                        else if (boundary == "{mahaschool}")
                                             putWMS("geonode:school_16_17_11april");
-                                        } 
-                                    else {
+                                    } else {
                                         if (boundary == "{mahadem}")
                                             removeWMS("geonode:maha_demography_with_mumbai");
-                                            else if(boundary == "{mahatown}"){
-                                                removeWMS("geonode:TownCensus_maharashtra_1_00");
-                                            }
-                                        else if (boundary == "{maharoad}")
+                                        else if (boundary == "{mahatown}") {
+                                            removeWMS("geonode:TownCensus_maharashtra_1_00");
+                                        } else if (boundary == "{maharoad}")
                                             removeWMS("geonode:osm_highways");
                                         else if (boundary == "{mahatrib}")
                                             removeWMS("geonode:maha_tribal_villages_and_towns");
@@ -1404,7 +1325,7 @@
                                             removeWMS("geonode:govt_schools_30april");
                                         else if (boundary == "{aidtri}")
                                             removeWMS("geonode:aided_schools_30april");
-                                        else if (boundary =="{mahaengg}")
+                                        else if (boundary == "{mahaengg}")
                                             removeWMS("geonode:engg")
                                         else
                                             removeWMS("geonode:school_16_17_11april");
@@ -1415,13 +1336,13 @@
 
                                 function getBoundaryru(obj) {
                                     let boundary = obj.value;
-                                    console.log("boundary is "+boundary)
+                                    console.log("boundary is " + boundary)
                                     if ($(obj).is(":checked")) {
                                         if (boundary == "{mahatown}")
                                             putWMSru("geonode:TownCensus_maharashtra_1_00");
                                         else if (boundary == "{maharural}")
                                             putWMSru("geonode:maha_village_polygon_29mar");
-                                        
+
 
                                     } else {
                                         if (boundary == "{mahatown}")
@@ -2285,7 +2206,7 @@
                                 var newLayerList = [];
                                 var faciLayerList = [];
                                 var pinLayerList = [];
-                                var distLayerList = [];                            
+                                var distLayerList = [];
                                 var talLayerList = [];
                                 var wardLayerList = [];
                                 var wmshealthLayerList = [];
@@ -2328,18 +2249,18 @@
                                 })
 
                                 $('#block_s').on('change', function() {
-                                        if (area) {
+                                    if (area) {
                                         mymap.removeLayer(area);
-                                    }   
-                                        // clearpoint_layer();
+                                    }
+                                    // clearpoint_layer();
 
-                                        let taluka = document.getElementById('block_s').value;
+                                    let taluka = document.getElementById('block_s').value;
 
-                                        putWMSLayertaluka();
+                                    putWMSLayertaluka();
 
 
-                                        //mymap.spin(true,{lines: 15, length: 1, width: 50, scale: 200,radius: 200, color: "grey"});
-                                    })
+                                    //mymap.spin(true,{lines: 15, length: 1, width: 50, scale: 200,radius: 200, color: "grey"});
+                                })
 
 
                                 $('#pincode').on('change', function() {
@@ -2390,7 +2311,7 @@
                                     layer.setStyle({
                                         weight: 5
                                     });
-                                    
+
                                 }
 
 
@@ -2505,7 +2426,7 @@
                                     // console.log(wms_layer);
                                     wms_layer.addTo(mymap);
                                     setView('geonode:maha_taluka_13march2021', taluka);
-                                    
+
                                     talLayerList.push(wms_layer);
                                     // console.log(taluka);    
 
@@ -2549,7 +2470,7 @@
                                         transparent: 'true',
                                         // version: '1.3.0',
                                         cql_filter: "district='" + dist + "'",
-                                        
+
                                     });
                                     console.log(wms_layer);
                                     //clear_layer();
@@ -2576,7 +2497,7 @@
                                     if (wms_legend) {
                                         mymap.removeControl(wms_legend);
                                     }
-                                    console.log(wms_legend); 
+                                    console.log(wms_legend);
                                     addWMSLegend(layer);
                                     TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                                     // setView2(layer);
@@ -2590,40 +2511,43 @@
                                     lagendGraphic = "https://geoserver2.communitygis.net/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer + "&LEGEND_OPTIONS=forceLabels:on";
                                     wms_legend = L.wmsLegend(lagendGraphic);
                                 }
+
                                 function addWMSLegend1(layer) {
                                     lagendGraphic1 = "https://geonode.communitygis.in/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer + "&LEGEND_OPTIONS=forceLabels:on";
                                     wms_legend1 = L.wmsLegend(lagendGraphic1);
                                 }
 
                                 function getColor(d) {
-    return d < 500 ? '#008080' :
-            d > 500 ? '#5F9EA0' :
-                      '#FFEDA0';
-}
+                                    return d < 500 ? '#008080' :
+                                        d > 500 ? '#5F9EA0' :
+                                        '#FFEDA0';
+                                }
 
-function style(feature) {
-    if(feature.properties.daily_wast){
-        console.log(feature.properties.daily_wast);
-        return {
-        fillColor: getColor(feature.properties.daily_wast),
-        weight: 3,
-        opacity: 1,
-        color: 'white',
-        fillOpacity: 0.9
-    };
-    }
-    
-}
-var geojson_layer;
+                                function style(feature) {
+                                    if (feature.properties.daily_wast) {
+                                        console.log(feature.properties.daily_wast);
+                                        return {
+                                            fillColor: getColor(feature.properties.daily_wast),
+                                            weight: 3,
+                                            opacity: 1,
+                                            color: 'white',
+                                            fillOpacity: 0.9
+                                        };
+                                    }
 
-function styling(layer){
-    //var geojson_layer;
-     geojson_layer.eachLayer(function (layer) {  
-  if(layer.feature.properties.daily_wast == 2000) {    
-    layer.setStyle({fillColor :'red'}) 
-  }
-});
-}
+                                }
+                                var geojson_layer;
+
+                                function styling(layer) {
+                                    //var geojson_layer;
+                                    geojson_layer.eachLayer(function(layer) {
+                                        if (layer.feature.properties.daily_wast == 2000) {
+                                            layer.setStyle({
+                                                fillColor: 'red'
+                                            })
+                                        }
+                                    });
+                                }
 
 
                                 let area = null;
@@ -2655,16 +2579,16 @@ function styling(layer){
                                             }
                                             response.json().then(function(geojsonData) {
                                                 area = L.geoJson(geojsonData.features, {
-                                                    style : function(features){
-                                                    console.log('inside style');
-                                                    if(features.properties.daily_wast==2000){
-                                                        console.log(features.properties.daily_wast);
-                                                        //return {color: "red"};
-                                                        layer_url.setStyle({})
-                                                    }
-                                                }
-                                                //style : style
-                                                //onEachFeature: onEachFeature
+                                                    style: function(features) {
+                                                            console.log('inside style');
+                                                            if (features.properties.daily_wast == 2000) {
+                                                                console.log(features.properties.daily_wast);
+                                                                //return {color: "red"};
+                                                                layer_url.setStyle({})
+                                                            }
+                                                        }
+                                                        //style : style
+                                                        //onEachFeature: onEachFeature
                                                 }).addTo(mymap)
 
                                                 console.log(area);
@@ -2678,7 +2602,7 @@ function styling(layer){
                                 }
 
 
-                    
+
                                 function setView(layerName, selectedBoundary) {
                                     if (area) {
                                         mymap.removeLayer(area);
@@ -2739,40 +2663,40 @@ function styling(layer){
 
                                 // let area = null;
 
-function setView1(layerName, selectedBoundary) {
-    if (area) {
-        mymap.removeLayer(area);
-    }
-    let rootUrl = 'https://geoserver2.communitygis.net/geoserver/geonode/ows';
+                                function setView1(layerName, selectedBoundary) {
+                                    if (area) {
+                                        mymap.removeLayer(area);
+                                    }
+                                    let rootUrl = 'https://geoserver2.communitygis.net/geoserver/geonode/ows';
 
-    let options = {
-        service: 'WFS',
-        version: '1.0.0',
-        request: 'GetFeature',
-        outputFormat: 'application/json',
-        typeName: layerName,
-        cql_filter: `pincode='${selectedBoundary}'`,
-        propertyName: 'the_geom'
-    };
-    let parameters = L.Util.extend(options);
-    layer_url = rootUrl + L.Util.getParamString(parameters)
-    fetch(layer_url).then(
-        function(response) {
-            if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' +
-                    response.status);
-                return;
-            }
-            response.json().then(function(geojsonData) {
-                area = L.geoJson(geojsonData.features).addTo(mymap)
-                lat = area.getBounds()._northEast.lat
-                lng = area.getBounds()._northEast.lng
-                mymap.setView([lat, lng - 0.4], 10)
-            });
-        }).catch(function(err) {
-        console.log('Fetch Error :-S', err);
-    });
-}
+                                    let options = {
+                                        service: 'WFS',
+                                        version: '1.0.0',
+                                        request: 'GetFeature',
+                                        outputFormat: 'application/json',
+                                        typeName: layerName,
+                                        cql_filter: `pincode='${selectedBoundary}'`,
+                                        propertyName: 'the_geom'
+                                    };
+                                    let parameters = L.Util.extend(options);
+                                    layer_url = rootUrl + L.Util.getParamString(parameters)
+                                    fetch(layer_url).then(
+                                        function(response) {
+                                            if (response.status !== 200) {
+                                                console.log('Looks like there was a problem. Status Code: ' +
+                                                    response.status);
+                                                return;
+                                            }
+                                            response.json().then(function(geojsonData) {
+                                                area = L.geoJson(geojsonData.features).addTo(mymap)
+                                                lat = area.getBounds()._northEast.lat
+                                                lng = area.getBounds()._northEast.lng
+                                                mymap.setView([lat, lng - 0.4], 10)
+                                            });
+                                        }).catch(function(err) {
+                                        console.log('Fetch Error :-S', err);
+                                    });
+                                }
 
 
                                 function putWMSru(layer) {
@@ -2885,7 +2809,7 @@ function setView1(layerName, selectedBoundary) {
                                     };
                                 }
 
-                                
+
                                 function addSearchControl(layer, propertyName) {
                                     var searchControl = new L.Control.Search({
                                         layer: layer,
@@ -3324,7 +3248,7 @@ function setView1(layerName, selectedBoundary) {
 
                                     var URL = TRIBLAYER + '&BBOX=' + BBOX + '&FEATURE_COUNT=1&HEIGHT=' + HEIGHT + '&WIDTH=' + WIDTH + '&INFO_FORMAT=application%2Fjson&TILED=false&CRS=EPSG%3A3857&I=' + X + '&J=' + Y;
                                     //console.log(e);
-                                    console.log("URL",URL);
+                                    console.log("URL", URL);
                                     $.ajax({
                                         url: URL,
                                         dataType: "json",
@@ -3364,55 +3288,50 @@ function setView1(layerName, selectedBoundary) {
                                                         "<tr><td><b>Village</b></td><td>" + feature.properties.village_na + "</td></tr>" +
                                                         "<tr><td><b>School Name</b></td><td>" + feature.properties.school_nam + "</td></tr>";
 
-                                                }
-                                                else if (feature.properties.town_name) {
-                                                    insti_content = "<table class = 'popupclass' ><tr><td><b>Urban Areas</b></td><td>" + 
+                                                } else if (feature.properties.town_name) {
+                                                    insti_content = "<table class = 'popupclass' ><tr><td><b>Urban Areas</b></td><td>" +
                                                         "<tr><td><b>State</b></td><td>" + feature.properties.state_name + "</td></tr>" +
                                                         "<tr><td><b>District</b></td><td>" + feature.properties.district_n + "</td></tr>" +
-                                                        "<tr><td><b>Town Name</b></td><td>" + feature.properties.town_name + "</td></tr>"+
+                                                        "<tr><td><b>Town Name</b></td><td>" + feature.properties.town_name + "</td></tr>" +
                                                         "<tr><td><b>Total Houses</b></td><td>" + feature.properties.tot_hh + "</td></tr>" +
                                                         "<tr><td><b>Total Population</b></td><td>" + feature.properties.tot_pop + "</td></tr>" +
                                                         "<tr><td><b>Total Male Population</b></td><td>" + feature.properties.tot_mpop + "</td></tr>" +
                                                         "<tr><td><b>Total Female Population</b></td><td>" + feature.properties.tot_f_pop + "</td></tr>" +
                                                         "<tr><td><b>Total SC Population</b></td><td>" + feature.properties.tot_sc_pop + "</td></tr>" +
                                                         "<tr><td><b>Pucca Road</b></td><td>" + feature.properties.pucca_road + "</td></tr>" +
-                                                        "<tr><td><b>Kutcha Road</b></td><td>" + feature.properties.kutcha_roa + "</td></tr>" ;                                                      
+                                                        "<tr><td><b>Kutcha Road</b></td><td>" + feature.properties.kutcha_roa + "</td></tr>";
 
 
-                                                }
-                                                else if (feature.properties.institutec) {
+                                                } else if (feature.properties.institutec) {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>Institute Name</b></td><td>" + feature.properties.instituten + "</td></tr>" +
                                                         "<tr><td><b>Institute Address</b></td><td>" + feature.properties.institutea + "</td></tr>" +
                                                         "<tr><td><b>District Name</b></td><td>" + feature.properties.districtna + "</td></tr>" +
                                                         "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.talukaname + "</td></tr></table>";
-                                                }
-                                                else if (feature.properties.Turbidity){
+                                                } else if (feature.properties.Turbidity) {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>Location Source</b></td><td>" + feature.properties.SourceLoca + "</td></tr>" +
                                                         "<tr><td><b>Taluka</b></td><td>" + feature.properties.taluka + "</td></tr>" +
                                                         "<tr><td><b>Gram Panchayat</b></td><td>" + feature.properties.GP + "</td></tr>" +
-                                                        "<tr><td><b>Village</b></td><td>" + feature.properties.village + "</td></tr>"+
-                                                        "<tr><td><b>Alkalinity</b></td><td>" + feature.properties.Alkalinity + "</td></tr>"+
-                                                        "<tr><td><b>Chloride</b></td><td>" + feature.properties.Chloride + "</td></tr>"+
-                                                        "<tr><td><b>Fluoride</b></td><td>" + feature.properties.Fluoride + "</td></tr>"+
-                                                        "<tr><td><b>Nitrate</b></td><td>" + feature.properties.Nitrate + "</td></tr>"+
-                                                        "<tr><td><b>Sulphate</b></td><td>" + feature.properties.Sulphate + "</td></tr>"+
-                                                        "<tr><td><b>Ph</b></td><td>" + feature.properties.ph + "</td></tr>"+
-                                                        "<tr><td><b>Odour</b></td><td>" + feature.properties.odur + "</td></tr>"+
-                                                        "<tr><td><b>Color</b></td><td>" + feature.properties.color + "</td></tr>"+
-                                                        "<tr><td><b>Taste</b></td><td>" + feature.properties.Test + "</td></tr>"+
-                                                        "<tr><td><b>Total Hardening</b></td><td>" + feature.properties.TotalHardn + "</td></tr>"+
-                                                        "<tr><td><b>TDS</b></td><td>" + feature.properties.TDS + "</td></tr>"+
+                                                        "<tr><td><b>Village</b></td><td>" + feature.properties.village + "</td></tr>" +
+                                                        "<tr><td><b>Alkalinity</b></td><td>" + feature.properties.Alkalinity + "</td></tr>" +
+                                                        "<tr><td><b>Chloride</b></td><td>" + feature.properties.Chloride + "</td></tr>" +
+                                                        "<tr><td><b>Fluoride</b></td><td>" + feature.properties.Fluoride + "</td></tr>" +
+                                                        "<tr><td><b>Nitrate</b></td><td>" + feature.properties.Nitrate + "</td></tr>" +
+                                                        "<tr><td><b>Sulphate</b></td><td>" + feature.properties.Sulphate + "</td></tr>" +
+                                                        "<tr><td><b>Ph</b></td><td>" + feature.properties.ph + "</td></tr>" +
+                                                        "<tr><td><b>Odour</b></td><td>" + feature.properties.odur + "</td></tr>" +
+                                                        "<tr><td><b>Color</b></td><td>" + feature.properties.color + "</td></tr>" +
+                                                        "<tr><td><b>Taste</b></td><td>" + feature.properties.Test + "</td></tr>" +
+                                                        "<tr><td><b>Total Hardening</b></td><td>" + feature.properties.TotalHardn + "</td></tr>" +
+                                                        "<tr><td><b>TDS</b></td><td>" + feature.properties.TDS + "</td></tr>" +
                                                         "<tr><td><b>Turbidity</b></td><td>" + feature.properties.Turbidity + "</td></tr></table>";
-                                                }
-                                                else if(feature.properties.school_cod){
+                                                } else if (feature.properties.school_cod) {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>School Name</b></td><td>" + feature.properties.school_nam + "</td></tr>" +
-                                                        
+
                                                         "<tr><td><b>District Name</b></td><td>" + feature.properties.distname + "</td></tr>" +
-                                                        "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.block_name + "</td></tr>"+
+                                                        "<tr><td><b>Taluka Name</b></td><td>" + feature.properties.block_name + "</td></tr>" +
                                                         "<tr><td><b>Village Name</b></td><td>" + feature.properties.village_na + "</td></tr>" +
                                                         "</table>";
-                                                }
-                                                 else {
+                                                } else {
                                                     insti_content = "<table class = 'popupclass' ><tr><td><b>Facility Name</b></td><td>" + feature.properties.facltyname + "</td></tr>" +
                                                         "<tr><td><b>Facility Type</b></td><td>" + feature.properties.facltytyp + "</td></tr>" +
                                                         "<tr><td><b>Amenities</b></td><td>" + feature.properties.amenities + "</td></tr>" +
@@ -3431,7 +3350,7 @@ function setView1(layerName, selectedBoundary) {
                                                         `<tr><button type="button" class="btn btn-outline-dark" style="color:white;"><a style="color:white;text-decoration:none" href="https://ee.humanitarianresponse.info/x/#BLiUveaW">Click here for Correction/Feedbacks</a></button></tr>` +
                                                         "</table>";
                                                 }
-                                                
+
 
                                                 popup.setContent(insti_content);
                                                 popup.setLatLng(e.latlng);
@@ -3516,141 +3435,132 @@ function setView1(layerName, selectedBoundary) {
 
                                 //Water Gis function
 
-        // function getBoundary(obj) {
-        //     let boundary = obj.value;
-        //     if ($(obj).is(":checked")) {
-        //         if (boundary == "{mini_ws}"){
-        //             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
-        //             putWMS("mini_watershed_15distt_15nov22");            //postgis
-        //         }
-                    
-        //         else if (boundary == "{ws}"){
-        //             // putWMS("rtp:pune_toilets");
-        //             putWMS("rtp:pune_toilets");
-        //         }
-        //     }
-        // }
+                                // function getBoundary(obj) {
+                                //     let boundary = obj.value;
+                                //     if ($(obj).is(":checked")) {
+                                //         if (boundary == "{mini_ws}"){
+                                //             // putWMS("rtp:mumbai_toilets_nancleared");  //shapefile
+                                //             putWMS("mini_watershed_15distt_15nov22");            //postgis
+                                //         }
 
-        function putWMS1(layer) {
-            console.log("layer"+layer);
-            var wms_layer1 = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/wms', {
-                layers: layer,
-                format: 'image/png',
-                transparent: 'true',
-                zoom:'14',
-                // propertyName: 'field_13,latitude,longitude', 
-            });
-            wms_layer1.addTo(mymap);
-            newLayerList.push(wms_layer1);
-            console.log(wms_layer1);
-            if(layer == 'Pawana_Basin_Layer0')
-                mymap.setView([18.635,73.597],12);
-            if(layer =='Indrayani_River_Merged_line')
-                mymap.setView([18.718,73.72],12)
-            if(layer == 'Pawana_Basin_Layer0' )
-                mymap.setView([18.637,73.605],11);
-            else if(layer == 'poisar_River_Nov22')
-                mymap.setView([19.210712,72.835955],14);
-            else if(layer == 'Dahisar_River_Nov22')
-                mymap.setView([19.255310,72.854402],14);
-            else if(layer == 'Oshiwara_River_Nov22')
-                mymap.setView([19.161106,72.858474],13);
-            else if(layer == 'River_line_layers' )
-                mymap.setView([18.663,73.59],12);
-            else if(layer == 'Indrayani_River_Merged_line')
-                mymap.setView([18.672,73.609],11);
-            else if(layer == 'Mithi_River_Nov22')
-                mymap.setView([19.09546,72.87995],14);
-            else if(layer == 'maharashtra_rivers_from_osm')
-                mymap.setView([19.6322,76.032],7);
-            else if(layer == 'mini_15_district0')
-                mymap.setView([19.6322,76.032],7);
-            else if(layer == 'Ashele_GW'){
-                mymap.setView([19.2107,73.1523],15);
-                addWMSLegend1(layer);
-            }
-            else if(layer == 'Ashele_priority'){
-                mymap.setView([19.2107,73.1523],15);
-                addWMSLegend1(layer);
-            }
-            else if(layer == 'Ashele_line'){
-                mymap.setView([19.2107,73.1523],15);
-                addWMSLegend1(layer);
-            }
-            else if(layer == 'Nashik_water_quality_turbidity' || layer =='Nashik_water_quality_Sulphate'
-            || layer =='Nashik_water_quality_Chloride' || layer =='Nashik_water_quality_Flourides' || layer =='Nashik_water_quality_Nitrates'
-            || layer =='Nashik_water_quality_Odour' || layer =='Nashik_water_quality_Taste' || layer =='Nashik_water_quality_ph'
-            || layer =='Nashik_water_quality_Total_hardening' || layer =='Nashik_water_quality_TDS'){
-                mymap.setView([19.2107,73.1523],8);
-                // addWMSLegend1(layer);
-            }
-            else if(layer == 'Nashik_water_quality_alkanility'){
-                mymap.setView([19.2107,73.1523],8);
-                // addWMSLegend1(layer);
-            }
-            
-            if (wms_legend) {
-                mymap.removeControl(wms_legend);
-            }
-            if (wms_legend1) {
-                mymap.removeControl(wms_legend1);
-            }
-            console.log(wms_legend); 
-            addWMSLegend(layer);
-            addWMSLegend1(layer);
-            // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/rtp/wms?service=WMS&version=1.1.0&request=GetMap&layers=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
-            TRIBLAYER = "https://geonode.communitygis.in/geoserver/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer1.options.layers + "&QUERY_LAYERS=" + wms_layer1.options.layers;
+                                //         else if (boundary == "{ws}"){
+                                //             // putWMS("rtp:pune_toilets");
+                                //             putWMS("rtp:pune_toilets");
+                                //         }
+                                //     }
+                                // }
 
-            // console.log(TRIBLAYER);
+                                function putWMS1(layer) {
+                                    console.log("layer" + layer);
+                                    var wms_layer1 = L.tileLayer.wms('https://geonode.communitygis.in/geoserver/wms', {
+                                        layers: layer,
+                                        format: 'image/png',
+                                        transparent: 'true',
+                                        zoom: '14',
+                                        // propertyName: 'field_13,latitude,longitude', 
+                                    });
+                                    wms_layer1.addTo(mymap);
+                                    newLayerList.push(wms_layer1);
+                                    console.log(wms_layer1);
+                                    if (layer == 'Pawana_Basin_Layer0')
+                                        mymap.setView([18.635, 73.597], 12);
+                                    if (layer == 'Indrayani_poly_merged')
+                                        mymap.setView([18.718, 73.72], 12)
+                                    else if (layer == 'poisar_River_Nov22')
+                                        mymap.setView([19.210712, 72.835955], 14);
+                                    else if (layer == 'Dahisar_River_Nov22')
+                                        mymap.setView([19.255310, 72.854402], 14);
+                                    else if (layer == 'Oshiwara_River_Nov22')
+                                        mymap.setView([19.161106, 72.858474], 14);
+                                    else if (layer == 'River_line_layers')
+                                        mymap.setView([18.685, 73.671], 12);
+                                    else if (layer == 'Mithi_River_Nov22')
+                                        mymap.setView([19.09546, 72.87995], 14);
+                                    else if (layer == 'maharashtra_rivers_from_osm')
+                                        mymap.setView([19.6322, 76.032], 7);
+                                    else if (layer == 'mini_15_district0')
+                                        mymap.setView([19.6322, 76.032], 7);
+                                    else if (layer == 'Ashele_GW') {
+                                        mymap.setView([19.2107, 73.1523], 15);
+                                        addWMSLegend1(layer);
+                                    } else if (layer == 'Ashele_priority') {
+                                        mymap.setView([19.2107, 73.1523], 15);
+                                        addWMSLegend1(layer);
+                                    } else if (layer == 'Ashele_line') {
+                                        mymap.setView([19.2107, 73.1523], 15);
+                                        addWMSLegend1(layer);
+                                    } else if (layer == 'Nashik_water_quality_turbidity' || layer == 'Nashik_water_quality_Sulphate' ||
+                                        layer == 'Nashik_water_quality_Chloride' || layer == 'Nashik_water_quality_Flourides' || layer == 'Nashik_water_quality_Nitrates' ||
+                                        layer == 'Nashik_water_quality_Odour' || layer == 'Nashik_water_quality_Taste' || layer == 'Nashik_water_quality_ph' ||
+                                        layer == 'Nashik_water_quality_Total_hardening' || layer == 'Nashik_water_quality_TDS') {
+                                        mymap.setView([19.2107, 73.1523], 8);
+                                        // addWMSLegend1(layer);
+                                    } else if (layer == 'Nashik_water_quality_alkanility') {
+                                        mymap.setView([19.2107, 73.1523], 8);
+                                        // addWMSLegend1(layer);
+                                    }
 
-        }
+                                    if (wms_legend) {
+                                        mymap.removeControl(wms_legend);
+                                    }
+                                    if (wms_legend1) {
+                                        mymap.removeControl(wms_legend1);
+                                    }
+                                    console.log(wms_legend);
+                                    addWMSLegend(layer);
+                                    addWMSLegend1(layer);
+                                    // TRIBLAYER = "https://geoserver2.communitygis.net/geoserver/rtp/wms?service=WMS&version=1.1.0&request=GetMap&layers=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                                    TRIBLAYER = "https://geonode.communitygis.in/geoserver/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer1.options.layers + "&QUERY_LAYERS=" + wms_layer1.options.layers;
+
+                                    console.log(TRIBLAYER);
+
+                                }
 
 
-        
-        $('#view_water').on('change', function() { 
-                if (this.value == 'mini_watershed') {
-                    mymap.setView([20.5937, 78.9629], 4);
-                    $("#indiaview").show();
-                    $("#navigatedarea").hide();
 
-                    distLayerList.forEach(l => {
-                        mymap.removeLayer(l);
-                    })
+                                $('#view_water').on('change', function() {
+                                    if (this.value == 'mini_watershed') {
+                                        mymap.setView([20.5937, 78.9629], 4);
+                                        $("#indiaview").show();
+                                        $("#navigatedarea").hide();
 
-                    pinLayerList.forEach(l => {
-                        mymap.removeLayer(l);
-                    })
+                                        distLayerList.forEach(l => {
+                                            mymap.removeLayer(l);
+                                        })
 
-                    if (area) {
-                        mymap.removeLayer(area);
-                    }
-                    clear_layer();
-                    clearpoint_layer();
-                    removeWFSfac();
-                    removeKoboHealthFacity();
-                    removeKoboHealthFacitywms(facility);
-                    clear_distlayer();
-                    clear_pinlayer();
+                                        pinLayerList.forEach(l => {
+                                            mymap.removeLayer(l);
+                                        })
 
-                } else if (this.value == 'watershed') {
-                    wmshealthLayerList.forEach(l => {
-                        mymap.removeLayer(l);
-                    })
+                                        if (area) {
+                                            mymap.removeLayer(area);
+                                        }
+                                        clear_layer();
+                                        clearpoint_layer();
+                                        removeWFSfac();
+                                        removeKoboHealthFacity();
+                                        removeKoboHealthFacitywms(facility);
+                                        clear_distlayer();
+                                        clear_pinlayer();
+
+                                    } else if (this.value == 'watershed') {
+                                        wmshealthLayerList.forEach(l => {
+                                            mymap.removeLayer(l);
+                                        })
 
 
-                    $("#indiaview").hide();
-                    $("#navigatedarea").show();
-                    clear_layer();
-                    clearpoint_layer();
-                    removeWFSfac();
-                    removeKoboHealthFacity();
-                    removeKoboHealthFacitywms(facility);
-                    clear_distlayer();
-                    clear_pinlayer();
-                }
+                                        $("#indiaview").hide();
+                                        $("#navigatedarea").show();
+                                        clear_layer();
+                                        clearpoint_layer();
+                                        removeWFSfac();
+                                        removeKoboHealthFacity();
+                                        removeKoboHealthFacitywms(facility);
+                                        clear_distlayer();
+                                        clear_pinlayer();
+                                    }
 
-            });
-        
-    </script>
+                                });
+                            </script>
 
-    {% endblock %}
+                            {% endblock %}
